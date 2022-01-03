@@ -8,8 +8,6 @@ export async function getManifest() {
 
   // update this file to update this manifest.json
   // can also be conditional based on your need
-  // @ts-ignore
-  // @ts-ignore
   const manifest: Manifest.WebExtensionManifest = {
     manifest_version: 2,
     name: pkg.displayName || pkg.name,
