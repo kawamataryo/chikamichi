@@ -12,7 +12,7 @@
               stroke-linejoin="round"
               stroke-width="2"
               viewBox="0 0 24 24"
-              class="absolute  w-20px h-20px pl-12px pt-12px"
+              class="absolute  w-20px h-20px pl-12px pt-10px"
             ><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
             <input
               id="username"
@@ -20,7 +20,7 @@
               v-model="searchWord"
               class="shadow appearance-none border border-gray-400 rounded-5px w-full py-12px px-12px text-gray-700 leading-tight focus:outline-none focus:shadow-outline box-border bg-white pl-43px"
               type="search"
-              placeholder="Search histories.."
+              placeholder="Search for.."
               autofocus
               @keypress.ctrl.enter.exact.prevent.="onEnterWithControl"
               @keydown.down.prevent="onArrowDown"
@@ -63,9 +63,9 @@
                   </ul>
                 </template>
                 <template v-else>
-                  <div class="flex min-h-15vh w-full justify-center items-center flex-row">
-                    <Logo width="50" height="50" class="opacity-40 mr-15px" />
-                    <p class="text-16px text-gray-400 font-bold leading-26px">
+                  <div class="flex min-h-15vh w-full justify-center items-center flex-row opacity-40">
+                    <Logo width="50" height="50" class="mr-15px" />
+                    <p class="text-16px text-black font-bold leading-26px">
                       Fussy<br />History Search
                     </p>
                   </div>
@@ -74,12 +74,23 @@
             </nav>
           </div>
           <div class="flex border border-gray-200 h-40px justify-between px-20px border-solid items-center text-11px text-gray-500">
-            <p class="m-0">
-              <span class="bg-gray-200 rounded-3px pa-5px inline-block">↑</span><span class="bg-gray-200 rounded-3px pa-5px inline-block">↓</span>Navigate, <span class="bg-gray-200 rounded-3px pa-5px inline-block ml-10px">Enter</span>Open,<span class="ml-10px p-3px bg-gray-200 rounded-3px pa-5px inline-block">Ctrl + Enter</span>Open in new tab
-            </p>
-            <p class="m-0 grid items-center grid-flow-col gap-10px">
-              <span>Fussy history search</span>
-            </p>
+            <div class="flex">
+              <p class="mr-10px">
+                <span class="bg-gray-200 rounded-3px px-5px py-4px inline-block mr-3px">↑</span>
+                <span class="bg-gray-200 rounded-3px px-5px py-4px inline-block">↓</span>
+                or
+                <span class="bg-gray-200 rounded-3px px-5px py-4px inline-block mr-3px">Ctrl + n</span>
+                <span class="bg-gray-200 rounded-3px px-5px py-4px inline-block mr-3px">Ctrol + p</span>
+                Navigate,
+              </P>
+              <p class="mr-10px">
+                <span class="bg-gray-200 rounded-3px px-5px py-4px inline-block mr-3px">Enter</span>Open,
+              </p>
+              <P>
+                <span class="bg-gray-200 rounded-3px px-5px py-4px inline-block mr-3px">Ctrl + Enter</span>
+                Open in new tab
+              </p>
+            </div>
           </div>
         </div>
       </div>
