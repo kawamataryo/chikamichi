@@ -3,7 +3,7 @@
 
 # Fussy history search
 
-A very simple Chrome extension that enables fuzzy search of browsing histories.
+A very simple Chrome extension that enables fuzzy search of browsing histories. Inspired by [Sidekick](https://www.meetsidekick.com/) search dialog.
 
 ## ✨ Features
 
