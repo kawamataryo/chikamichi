@@ -1,0 +1,167 @@
+<template>
+  <div v-if="showModal" class="fixed z-99999 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <div class="position relative min-h-screen">
+      <div class="fixed inset-0 bg-black bg-opacity-60 transition-opacity" aria-hidden="true" @click="onCloseModal"></div>
+      <div class="absolute align-bottom bg-white rounded-5px text-left overflow-hidden shadow-xl transform transition-all -translate-x-1/2 left-1/2 top-10vh w-500px max-w-screen-80vw">
+        <div class="relative text-gray-600 focus-within:text-gray-400">
+          <div class="p-20px pb-0">
+            <svg
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              class="absolute  w-20px h-20px pl-12px pt-12px"
+            ><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            <input
+              id="username"
+              ref="searchInput"
+              v-model="searchWord"
+              class="shadow appearance-none border border-gray-400 rounded-5px w-full py-12px px-12px text-gray-700 leading-tight focus:outline-none focus:shadow-outline box-border bg-white pl-43px"
+              type="search"
+              placeholder="Search histories.."
+              autofocus
+              @keypress.ctrl.enter.exact.prevent.="onEnterWithControl"
+              @keydown.down.prevent="onArrowDown"
+              @keydown.up.prevent="onArrowUp"
+              @keypress.enter.exact.prevent="onEnter"
+              @keydown.ctrl.n.prevent="onArrowDown"
+              @keydown.ctrl.p.prevent="onArrowUp"
+              @keydown.esc.prevent="onCloseModal"
+            >
+            <nav class="m overflow-scroll max-h-50vh" role="navigation">
+              <template v-if="searchResult.length">
+                <ul class="pl-0">
+                  <li
+                    v-for="(item, i) in searchResult"
+                    :key="i"
+                    :ref="el => { if (el) searchResultRefs[i] = el }"
+                    :aria-selected="i === selectedNumber"
+                    class="block rounded-5px"
+                    :class="{ 'bg-blue-200': i === selectedNumber }"
+                    role="option"
+                  >
+                    <a :href="item.url" class="p-6px block text-13px flex items-center text-black hover:no-underline no-underline">
+                      <img :src="`https://www.google.com/s2/favicons?domain=${item.hostname}`" alt="" class="w-16px h-16px mr-8px inline-block" /><span class="overflow-hidden display-block whitespace-nowrap text-over overflow-ellipsis">{{ item.title }}</span></a>
+                  </li>
+                </ul>
+              </template>
+              <template v-else>
+                <template v-if="searchWord">
+                  <ul class="pl-0">
+                    <li
+                      :ref="el => { if (el) searchResultRefs[0] = el }"
+                      :aria-selected="true"
+                      class="block rounded-5px"
+                      :class="{ 'bg-blue-200': true }"
+                      role="option"
+                    >
+                      <a :href="`https://www.google.com/search?q=${searchWord}`" class="p-6px block text-13px flex items-center text-black hover:no-underline no-underline">
+                        <img :src="`https://www.google.com/s2/favicons?domain=google.com`" alt="" class="w-16px h-16px mr-8px inline-block" /><span class="overflow-hidden display-block whitespace-nowrap text-over overflow-ellipsis">"{{ searchWord }}" search with google</span></a>
+                    </li>
+                  </ul>
+                </template>
+                <template v-else>
+                  <div class="flex min-h-15vh w-full justify-center items-center flex-row">
+                    <Logo width="50" height="50" class="opacity-40 mr-15px" />
+                    <p class="text-16px text-gray-400 font-bold leading-26px">
+                      Fussy<br />History Search
+                    </p>
+                  </div>
+                </template>
+              </template>
+            </nav>
+          </div>
+          <div class="flex border border-gray-200 h-40px justify-between px-20px border-solid items-center text-11px text-gray-500">
+            <p class="m-0">
+              <span class="bg-gray-200 rounded-3px pa-5px inline-block">↑</span><span class="bg-gray-200 rounded-3px pa-5px inline-block">↓</span>Navigate, <span class="bg-gray-200 rounded-3px pa-5px inline-block ml-10px">Enter</span>Open,<span class="ml-10px p-3px bg-gray-200 rounded-3px pa-5px inline-block">Ctrl + Enter</span>Open in new tab
+            </p>
+            <p class="m-0 grid items-center grid-flow-col gap-10px">
+              <span>Fussy history search</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script lang="ts" setup>
+import 'virtual:windi.css'
+import Fuse from 'fuse.js'
+import { nextTick } from 'vue-demi'
+import { STORE_KEY, useStore } from '~/contentScripts/store'
+
+const store = inject<ReturnType<typeof useStore>>(STORE_KEY)
+if (!store)
+  throw new Error('store is not provided')
+
+const searchWord = computed({
+  get() {
+    return store.state.searchWord
+  },
+  set(value: string) {
+    store.changeSearchWord(value)
+  },
+})
+
+// modal control
+const showModal = computed(() => store.state.showModal)
+const onCloseModal = () => {
+  searchWord.value = ''
+  store.toggleModal()
+}
+
+const histories = computed(() => store.state.histories)
+const selectedNumber = ref(0)
+
+// fussy search powered by Fuse.js https://fusejs.io/
+const searchResult = computed(() => {
+  if (!histories.value) return []
+  const fuse = new Fuse(histories.value, {
+    keys: [
+      'title',
+      'url',
+    ],
+    threshold: 0.2,
+  })
+  return fuse.search(searchWord.value, { limit: 10 }).map(result => result.item)
+})
+watch(searchResult, () => {
+  selectedNumber.value = 0
+})
+
+// focus to input when modal open
+const searchInput = ref<HTMLInputElement | null>(null)
+watch(showModal, async(next, _) => {
+  await nextTick()
+  if (next && searchInput.value)
+    searchInput.value.focus()
+})
+
+// Key event
+const searchResultRefs = ref<HTMLImageElement[]>([])
+const onEnter = () => {
+  if (searchResultRefs.value) {
+    const linkEl = searchResultRefs.value[selectedNumber.value].querySelector('a')
+    window.location.href = linkEl!.href
+  }
+}
+const onEnterWithControl = () => {
+  if (searchResultRefs.value) {
+    const linkEl = searchResultRefs.value[selectedNumber.value].querySelector('a')
+    window.open(linkEl!.href, '_blank')
+  }
+}
+const onArrowDown = () => {
+  if (searchResult.value.length > selectedNumber.value + 1) {
+    selectedNumber.value++
+  }
+}
+const onArrowUp = () => {
+  if (selectedNumber.value > 0) {
+    selectedNumber.value--
+  }
+}
+</script>
