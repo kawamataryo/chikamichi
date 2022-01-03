@@ -22,3 +22,9 @@ I am currently in the process of submitting an extension to the public.
 
 ## 👨‍💻 Contributing
 Contributions are welcome 🎉 We accept contributions via Pull Requests.
+
+## 💕 Thanks
+This extension uses the following library.
+
+* [Viteese-webext](https://github.com/antfu/vitesse-webext)
+* [Fuse.js](https://fusejs.io/)
