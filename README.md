@@ -20,6 +20,15 @@ https://user-images.githubusercontent.com/11070996/147921381-500b1045-c544-4938-
 
 I am currently in the process of submitting an extension to the public.
 
+## 💻 Usage
+
+| command                       | action                                   |
+|-------------------------------|------------------------------------------|
+| Option(Alt) + f               | Open search dialog                       |
+| ↓ or ↑ (Ctrl + n or Ctrl + p) | Select history                           |
+| Enter                         | Open the selected hisotry url            |
+| Ctrl + Enter                  | Open the selected history url in new tab |
+
 ## 👨‍💻 Contributing
 Contributions are welcome 🎉 We accept contributions via Pull Requests.
 
