@@ -22,7 +22,7 @@
                 class="shadow appearance-none border border-gray-400 rounded-5px w-full py-12px px-12px text-gray-700 leading-tight focus:outline-none focus:shadow-outline box-border bg-white pl-43px"
                 type="search"
                 placeholder="Search for.."
-                @keypress.ctrl.enter.exact.prevent.="onEnterWithControl"
+                @keypress.ctrl.enter.exact.prevent="onEnterWithControl"
                 @keydown.down.prevent="onArrowDown"
                 @keydown.up.prevent="onArrowUp"
                 @keypress.enter.exact.prevent="onEnter"
