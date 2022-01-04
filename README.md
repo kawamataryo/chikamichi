@@ -3,11 +3,11 @@
 
 # Fussy history search
 
-A very simple Chrome extension that enables fuzzy search of browsing histories. Inspired by [Sidekick](https://www.meetsidekick.com/) search dialog.
+A very simple Chrome extension that enables fuzzy search of browsing histories and bookmark and tab. Inspired by [Sidekick](https://www.meetsidekick.com/) search dialog.
 
 ## ✨ Features
 
-- ⚡️ Fuzzy search your browsing history and bookmark. powered by [Fuse.js](https://fusejs.io/)
+- ⚡️ Fuzzy search your browsing history and bookmark and tab. powered by [Fuse.js](https://fusejs.io/)
 - 🔐 All processing is done within the browser. No history data will be sent to the any server.
 
 ## 🎬 Demo
