@@ -1,5 +1,5 @@
 import { sendMessage } from 'webext-bridge'
-import { History } from 'webextension-polyfill'
+import { Bookmarks, History } from 'webextension-polyfill'
 
 // only on dev mode
 if (import.meta.hot) {
@@ -9,30 +9,49 @@ if (import.meta.hot) {
   import('./contentScriptHMR')
 }
 
-const removeDuplicates = (histories: History.HistoryItem[]) => {
+const getSearchItemsFromHistories = (histories: History.HistoryItem[]) => {
+  // remove duplicates
   return Array.from(
     histories
       .reduce(
-        (map, currentItem) => map.set(currentItem.title!, currentItem),
-        new Map<string, History.HistoryItem>(),
+        (map, currentItem) => map.set(currentItem.title!, {
+          url: currentItem.url!,
+          title: currentItem.title!,
+          hostname: new URL(currentItem.url!).hostname,
+          type: 'history',
+        }),
+        new Map<string, SearchItem>(),
       )
       .values(),
   )
 }
 
-const addHostname = (histories: History.HistoryItem[]) => {
-  return histories.map((item) => {
-    const url = new URL(item.url!)
-    return {
-      ...item,
-      hostname: url.hostname,
-    }
-  },
-  )
+// FIXME: want to rewrite it into a clean recursive function that doesn't use side effects.
+const getSearchItemsFromBookmarks = (bookmarkTreeNodes: Bookmarks.BookmarkTreeNode[]) => {
+  const result: SearchItem[] = []
+
+  const getTitleAndUrl = (bookmarkTreeNodes: Bookmarks.BookmarkTreeNode[]) => {
+    bookmarkTreeNodes.forEach((node) => {
+      if (node.children) {
+        getTitleAndUrl(node.children)
+        return
+      }
+
+      result.push({
+        url: node.url!,
+        title: node.title,
+        hostname: new URL(node.url!).hostname,
+        type: 'bookmark',
+      })
+    })
+  }
+  getTitleAndUrl(bookmarkTreeNodes)
+  return result
 }
 
 browser.commands.onCommand.addListener(async() => {
-  const result = await browser.history.search({
+  const bookmarks = await browser.bookmarks.getTree()
+  const histories = await browser.history.search({
     text: '',
     maxResults: 10000,
   })
@@ -43,7 +62,12 @@ browser.commands.onCommand.addListener(async() => {
 
   await sendMessage(
     'history-search',
-    { result: JSON.stringify(addHostname(removeDuplicates(result))) },
+    {
+      result: JSON.stringify([
+        ...getSearchItemsFromBookmarks(bookmarks),
+        ...getSearchItemsFromHistories(histories),
+      ]),
+    },
     {
       context: 'content-script',
       tabId: tab.id!,

@@ -1,23 +1,21 @@
-import { History } from 'webextension-polyfill'
-
 type State = {
   showModal: boolean
-  histories: History.HistoryItem[]
+  searchItems: SearchItem[]
   searchWord: string
 }
 
 export const useStore = () => {
   const state = reactive<State>({
     showModal: false,
-    histories: [],
+    searchItems: [],
     searchWord: '',
   })
 
   const toggleModal = () => {
     state.showModal = !state.showModal
   }
-  const changeHistories = (histories: State['histories']) => {
-    state.histories = histories
+  const changeHistories = (searchItems: State['searchItems']) => {
+    state.searchItems = searchItems
   }
   const changeSearchWord = (word: string) => {
     state.searchWord = word

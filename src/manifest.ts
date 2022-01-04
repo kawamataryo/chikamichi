@@ -40,6 +40,7 @@ export async function getManifest() {
       'http://*/',
       'https://*/',
       'history',
+      'bookmarks',
     ],
     content_scripts: [{
       matches: ['http://*/*', 'https://*/*'],

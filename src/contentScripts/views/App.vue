@@ -42,8 +42,14 @@
                       :class="{ 'bg-blue-200': i === selectedNumber }"
                       role="option"
                     >
-                      <a :href="item.url" class="p-6px block text-13px flex items-center text-black hover:no-underline no-underline">
-                        <img :src="`https://www.google.com/s2/favicons?domain=${item.hostname}`" alt="" class="w-16px h-16px mr-8px inline-block" /><span class="overflow-hidden display-block whitespace-nowrap text-over overflow-ellipsis">{{ item.title }}</span></a>
+                      <a :href="item.url" class="p-6px block text-13px flex items-center text-black hover:no-underline no-underline justify-between">
+                        <span class="flex items-center w-440px">
+                          <img :src="`https://www.google.com/s2/favicons?domain=${item.hostname}`" alt="" class="w-16px h-16px mr-8px inline-block" /><span class="overflow-hidden display-block whitespace-nowrap text-over overflow-ellipsis">{{ item.title }}</span>
+                        </span>
+                        <span class="px-8px py-3px rounded-5px text-gray-400">
+                          {{ item.type }}
+                        </span>
+                      </a>
                     </li>
                   </ul>
                 </template>
@@ -125,13 +131,13 @@ const onCloseModal = () => {
   store.toggleModal()
 }
 
-const histories = computed(() => store.state.histories)
+const searchItems = computed(() => store.state.searchItems)
 const selectedNumber = ref(0)
 
 // fussy search powered by Fuse.js https://fusejs.io/
 const searchResult = computed(() => {
-  if (!histories.value) return []
-  const fuse = new Fuse(histories.value, {
+  if (!searchItems.value) return []
+  const fuse = new Fuse(searchItems.value, {
     keys: [
       'title',
       'url',
