@@ -50,7 +50,7 @@
                         <span class="flex items-center w-440px">
                           <img :src="item.faviconUrl" alt="" class="w-16px h-16px mr-8px inline-block" /><span class="overflow-hidden display-block whitespace-nowrap text-over overflow-ellipsis">{{ item.title }}</span>
                         </span>
-                        <span class="px-8px py-3px rounded-5px text-gray-400">
+                        <span class="px-8px py-3px rounded-5px text-gray-400 bg-gray-100">
                           {{ item.type }}
                         </span>
                       </a>
@@ -198,14 +198,12 @@ const onEnterWithControl = async() => {
   await changePage(true)
 }
 const onArrowDown = () => {
-  if (searchResult.value.length > selectedNumber.value + 1) {
+  if (searchResult.value.length > selectedNumber.value + 1)
     selectedNumber.value++
-  }
 }
 const onArrowUp = () => {
-  if (selectedNumber.value > 0) {
+  if (selectedNumber.value > 0)
     selectedNumber.value--
-  }
 }
 </script>
 
