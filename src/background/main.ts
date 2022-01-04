@@ -1,5 +1,5 @@
-import { sendMessage } from 'webext-bridge'
-import { Bookmarks, History } from 'webextension-polyfill'
+import { onMessage, sendMessage } from 'webext-bridge'
+import { Bookmarks, History, Tabs } from 'webextension-polyfill'
 
 // only on dev mode
 if (import.meta.hot) {
@@ -9,6 +9,8 @@ if (import.meta.hot) {
   import('./contentScriptHMR')
 }
 
+const faviconUrl = (url: string) => `https://www.google.com/s2/favicons?domain=${new URL(url).hostname}`
+
 const getSearchItemsFromHistories = (histories: History.HistoryItem[]) => {
   // remove duplicates
   return Array.from(
@@ -17,7 +19,7 @@ const getSearchItemsFromHistories = (histories: History.HistoryItem[]) => {
         (map, currentItem) => map.set(currentItem.title!, {
           url: currentItem.url!,
           title: currentItem.title!,
-          hostname: new URL(currentItem.url!).hostname,
+          faviconUrl: faviconUrl(currentItem.url!),
           type: 'history',
         }),
         new Map<string, SearchItem>(),
@@ -40,7 +42,7 @@ const getSearchItemsFromBookmarks = (bookmarkTreeNodes: Bookmarks.BookmarkTreeNo
       result.push({
         url: node.url!,
         title: node.title,
-        hostname: new URL(node.url!).hostname,
+        faviconUrl: faviconUrl(node.url!),
         type: 'bookmark',
       })
     })
@@ -49,7 +51,18 @@ const getSearchItemsFromBookmarks = (bookmarkTreeNodes: Bookmarks.BookmarkTreeNo
   return result
 }
 
+const getSearchItemsFromTabs = (tabs: Tabs.Tab[]) => {
+  return tabs.map(tab => ({
+    url: tab.url,
+    title: tab.title,
+    faviconUrl: faviconUrl(tab.url!),
+    type: 'tab',
+    tabId: tab.id,
+  }))
+}
+
 browser.commands.onCommand.addListener(async() => {
+  const tabs = await browser.tabs.query({})
   const bookmarks = await browser.bookmarks.getTree()
   const histories = await browser.history.search({
     text: '',
@@ -64,6 +77,7 @@ browser.commands.onCommand.addListener(async() => {
     'history-search',
     {
       result: JSON.stringify([
+        ...getSearchItemsFromTabs(tabs),
         ...getSearchItemsFromBookmarks(bookmarks),
         ...getSearchItemsFromHistories(histories),
       ]),
@@ -73,4 +87,10 @@ browser.commands.onCommand.addListener(async() => {
       tabId: tab.id!,
     },
   )
+})
+
+onMessage('change-current-tab', async(request) => {
+  const tab = await browser.tabs.get(request.data.tabId)
+  await browser.tabs.update(request.data.tabId, { active: true })
+  await browser.windows.update(tab.windowId!, { focused: true })
 })

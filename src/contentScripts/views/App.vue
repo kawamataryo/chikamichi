@@ -44,10 +44,11 @@
                       class="block rounded-5px"
                       :class="{ 'bg-blue-200': i === selectedNumber }"
                       role="option"
+                      :data-tabid="item.tabId"
                     >
                       <a :href="item.url" class="p-6px block text-13px flex items-center text-black hover:no-underline no-underline justify-between">
                         <span class="flex items-center w-440px">
-                          <img :src="`https://www.google.com/s2/favicons?domain=${item.hostname}`" alt="" class="w-16px h-16px mr-8px inline-block" /><span class="overflow-hidden display-block whitespace-nowrap text-over overflow-ellipsis">{{ item.title }}</span>
+                          <img :src="item.faviconUrl" alt="" class="w-16px h-16px mr-8px inline-block" /><span class="overflow-hidden display-block whitespace-nowrap text-over overflow-ellipsis">{{ item.title }}</span>
                         </span>
                         <span class="px-8px py-3px rounded-5px text-gray-400">
                           {{ item.type }}
@@ -112,6 +113,7 @@
 import 'virtual:windi.css'
 import Fuse from 'fuse.js'
 import { nextTick } from 'vue-demi'
+import { sendMessage } from 'webext-bridge'
 import { STORE_KEY, useStore } from '~/contentScripts/store'
 
 const store = inject<ReturnType<typeof useStore>>(STORE_KEY)
@@ -162,18 +164,38 @@ watch(showModal, async(next, _) => {
 })
 
 // Key event
-const searchResultRefs = ref<HTMLImageElement[]>([])
-const onEnter = () => {
+const searchResultRefs = ref<HTMLElement[]>([])
+
+const changePage = async(isNewTab = false) => {
   if (searchResultRefs.value) {
-    const linkEl = searchResultRefs.value[selectedNumber.value].querySelector('a')
-    window.location.href = linkEl!.href
+    const targetEl = searchResultRefs.value[selectedNumber.value]
+    // if selected tab link, send change tab message to background script
+    if (targetEl.dataset.tabid) {
+      await sendMessage(
+        'change-current-tab',
+        {
+          tabId: parseInt(targetEl.dataset.tabid),
+        },
+      )
+      store.toggleModal()
+      return
+    }
+    // otherwise, open the link in the specified way.
+    const linkEl = targetEl.querySelector('a')
+    if (isNewTab)
+      window.open(linkEl!.href, '_blank')
+    else
+      window.location.href = linkEl!.href
+
+    store.toggleModal()
   }
 }
-const onEnterWithControl = () => {
-  if (searchResultRefs.value) {
-    const linkEl = searchResultRefs.value[selectedNumber.value].querySelector('a')
-    window.open(linkEl!.href, '_blank')
-  }
+
+const onEnter = async() => {
+  await changePage()
+}
+const onEnterWithControl = async() => {
+  await changePage(true)
 }
 const onArrowDown = () => {
   if (searchResult.value.length > selectedNumber.value + 1) {
