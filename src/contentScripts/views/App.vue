@@ -3,7 +3,7 @@
     <div v-if="showModal" class="fixed z-99999 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
       <div class="position relative min-h-screen">
         <div class="fixed inset-0 bg-black bg-opacity-60 transition-opacity" aria-hidden="true" @click="onCloseModal"></div>
-        <div class="absolute align-bottom bg-white rounded-5px text-left overflow-hidden shadow-xl transform transition-all -translate-x-1/2 left-1/2 top-10vh w-580px max-w-screen-80vw">
+        <div class="absolute align-bottom bg-white rounded-5px text-left overflow-hidden shadow-xl transform transition-all -translate-x-1/2 left-1/2 top-10vh w-650px max-w-screen-90vw">
           <div class="relative text-gray-600 focus-within:text-gray-400">
             <div class="p-20px pb-0">
               <IconSearch width="20" height="20" class="absolute ml-12px mt-12px" />
