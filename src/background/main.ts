@@ -11,12 +11,12 @@ if (import.meta.hot) {
 
 const faviconUrl = (url: string) => `https://www.google.com/s2/favicons?domain=${new URL(url).hostname}`
 
-const getSearchItemsFromHistories = (histories: History.HistoryItem[]) => {
+const convertToSearchItemsFromHistories = (histories: History.HistoryItem[]): SearchItem[] => {
   // remove duplicates
   return Array.from(
     histories
       .reduce(
-        (map, currentItem) => map.set(currentItem.title!, {
+        (map, currentItem) => map.set(currentItem.url!, {
           url: currentItem.url!,
           title: currentItem.title!,
           faviconUrl: faviconUrl(currentItem.url!),
@@ -28,10 +28,9 @@ const getSearchItemsFromHistories = (histories: History.HistoryItem[]) => {
   )
 }
 
-// FIXME: want to rewrite it into a clean recursive function that doesn't use side effects.
-const getSearchItemsFromBookmarks = (bookmarkTreeNodes: Bookmarks.BookmarkTreeNode[]) => {
+const convertToSearchItemsFromBookmarks = (bookmarkTreeNodes: Bookmarks.BookmarkTreeNode[]): SearchItem[] => {
+  // FIXME: want to rewrites it into a clean recursive function that doesn't use side effects.
   const result: SearchItem[] = []
-
   const getTitleAndUrl = (bookmarkTreeNodes: Bookmarks.BookmarkTreeNode[]) => {
     bookmarkTreeNodes.forEach((node) => {
       if (node.children) {
@@ -51,14 +50,25 @@ const getSearchItemsFromBookmarks = (bookmarkTreeNodes: Bookmarks.BookmarkTreeNo
   return result
 }
 
-const getSearchItemsFromTabs = (tabs: Tabs.Tab[]) => {
+const convertToSearchItemsFromTabs = (tabs: Tabs.Tab[]): SearchItem[] => {
   return tabs.map(tab => ({
-    url: tab.url,
-    title: tab.title,
+    url: tab.url!,
+    title: tab.title!,
     faviconUrl: faviconUrl(tab.url!),
     type: 'tab',
     tabId: tab.id,
   }))
+}
+
+const removeDeprecatedItem = (searchItems: SearchItem[]) => {
+  return Array.from(
+    searchItems
+      .reduce(
+        (map, currentItem) => map.set(currentItem.url!, currentItem),
+        new Map<string, SearchItem>(),
+      )
+      .values(),
+  )
 }
 
 browser.commands.onCommand.addListener(async() => {
@@ -76,11 +86,11 @@ browser.commands.onCommand.addListener(async() => {
   await sendMessage(
     'history-search',
     {
-      result: JSON.stringify([
-        ...getSearchItemsFromTabs(tabs),
-        ...getSearchItemsFromBookmarks(bookmarks),
-        ...getSearchItemsFromHistories(histories),
-      ]),
+      result: JSON.stringify(removeDeprecatedItem([
+        ...convertToSearchItemsFromHistories(histories),
+        ...convertToSearchItemsFromBookmarks(bookmarks),
+        ...convertToSearchItemsFromTabs(tabs),
+      ])),
     },
     {
       context: 'content-script',
