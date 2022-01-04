@@ -42,7 +42,11 @@
                     >
                       <button class="p-6px block text-13px flex items-center text-black justify-between border-none w-full cursor-pointer bg-white rounded-5px" type="button" :class="{ 'bg-blue-200': i === selectedNumber }">
                         <span class="flex items-center w-440px">
-                          <img :src="item.faviconUrl" alt="" class="w-16px h-16px mr-8px inline-block" /><span class="overflow-hidden display-block whitespace-nowrap text-over overflow-ellipsis">{{ item.title }}</span>
+                          <img :src="item.faviconUrl" alt="" class="w-16px h-16px mr-8px inline-block" />
+                          <span class="overflow-hidden block whitespace-nowrap text-over overflow-ellipsis mr-5px">{{ item.title }}</span>
+                          <span class="overflow-hidden text-gray-400 text-11px block whitespace-nowrap text-over overflow-ellipsis max-w-200px">
+                            {{ item.url }}
+                          </span>
                         </span>
                         <span class="px-8px py-3px rounded-5px text-gray-400 bg-gray-100">
                           {{ item.type }}
@@ -58,11 +62,13 @@
                         :ref="el => { if (el) searchResultRefs[0] = el }"
                         :aria-selected="true"
                         class="block rounded-5px"
-                        :class="{ 'bg-blue-200': true }"
+                        :data-url="`https://www.google.com/search?q=${searchWord}`"
                         role="option"
+                        @click="onClick(`https://www.google.com/search?q=${searchWord}`)"
                       >
-                        <a :href="`https://www.google.com/search?q=${searchWord}`" class="p-6px block text-13px flex items-center text-black hover:no-underline no-underline">
-                          <img :src="`https://www.google.com/s2/favicons?domain=google.com`" alt="" class="w-16px h-16px mr-8px inline-block" /><span class="overflow-hidden display-block whitespace-nowrap text-over overflow-ellipsis">"{{ searchWord }}" search with google</span></a>
+                        <button class="p-6px block text-13px flex items-center text-black border-none w-full cursor-pointer rounded-5px bg-blue-200" type="button">
+                          <img :src="`https://www.google.com/s2/favicons?domain=google.com`" alt="" class="w-16px h-16px mr-8px inline-block" /><span class="overflow-hidden display-block whitespace-nowrap text-over overflow-ellipsis">"{{ searchWord }}" search with google</span>
+                        </button>
                       </li>
                     </ul>
                   </template>
