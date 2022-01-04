@@ -6,15 +6,7 @@
         <div class="absolute align-bottom bg-white rounded-5px text-left overflow-hidden shadow-xl transform transition-all -translate-x-1/2 left-1/2 top-10vh w-580px max-w-screen-80vw">
           <div class="relative text-gray-600 focus-within:text-gray-400">
             <div class="p-20px pb-0">
-              <svg
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                viewBox="0 0 24 24"
-                class="absolute  w-20px h-20px ml-12px mt-12px"
-              ><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+              <IconSearch width="20" height="20" class="absolute ml-12px mt-12px" />
               <input
                 id="username"
                 ref="searchInput"
