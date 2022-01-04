@@ -13,13 +13,13 @@
                 stroke-linejoin="round"
                 stroke-width="2"
                 viewBox="0 0 24 24"
-                class="absolute  w-20px h-20px pl-12px pt-10px"
+                class="absolute  w-20px h-20px ml-12px mt-12px"
               ><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
               <input
                 id="username"
                 ref="searchInput"
                 v-model="searchWord"
-                class="shadow appearance-none border border-gray-400 rounded-5px w-full py-12px px-12px text-gray-700 leading-tight focus:outline-none focus:shadow-outline box-border bg-white pl-43px"
+                class="shadow appearance-none border border-gray-400 rounded-5px w-full py-12px px-12px text-gray-700 leading-tight focus:outline-none focus:shadow-outline box-border bg-white pl-43px text-16px"
                 type="search"
                 placeholder="Search for.."
                 @keydown.stop.exact
@@ -41,19 +41,21 @@
                       :key="i"
                       :ref="el => { if (el) searchResultRefs[i] = el }"
                       :aria-selected="i === selectedNumber"
-                      class="block rounded-5px"
-                      :class="{ 'bg-blue-200': i === selectedNumber }"
+                      class="block"
+
                       role="option"
                       :data-tabid="item.tabId"
+                      :data-url="item.url"
+                      @click="onClick(item.url, item.tabId)"
                     >
-                      <a :href="item.url" class="p-6px block text-13px flex items-center text-black hover:no-underline no-underline justify-between">
+                      <button class="p-6px block text-13px flex items-center text-black justify-between border-none w-full cursor-pointer bg-white rounded-5px" type="button" :class="{ 'bg-blue-200': i === selectedNumber }">
                         <span class="flex items-center w-440px">
                           <img :src="item.faviconUrl" alt="" class="w-16px h-16px mr-8px inline-block" /><span class="overflow-hidden display-block whitespace-nowrap text-over overflow-ellipsis">{{ item.title }}</span>
                         </span>
                         <span class="px-8px py-3px rounded-5px text-gray-400 bg-gray-100">
                           {{ item.type }}
                         </span>
-                      </a>
+                      </button>
                     </li>
                   </ul>
                 </template>
@@ -163,10 +165,29 @@ watch(showModal, async(next, _) => {
     searchInput.value.focus()
 })
 
+// click event
+const onClick = async(url: string, tabId?: number) => {
+  // if selected tab link, send change tab message to background script
+  if (tabId) {
+    await sendMessage(
+      'change-current-tab',
+      {
+        tabId,
+      },
+    )
+    store.toggleModal()
+    return
+  }
+  // otherwise, open the link.
+  // FIXME: I want to be able to jump to a new tab.
+  window.location.href = url
+  store.toggleModal()
+}
+
 // Key event
 const searchResultRefs = ref<HTMLElement[]>([])
 
-const changePage = async(isNewTab = false) => {
+const changePageWithKeyEvent = async(isNewTab = false) => {
   if (searchResultRefs.value) {
     const targetEl = searchResultRefs.value[selectedNumber.value]
     // if selected tab link, send change tab message to background script
@@ -181,21 +202,21 @@ const changePage = async(isNewTab = false) => {
       return
     }
     // otherwise, open the link in the specified way.
-    const linkEl = targetEl.querySelector('a')
+    const url = targetEl.dataset.url
     if (isNewTab)
-      window.open(linkEl!.href, '_blank')
+      window.open(url!, '_blank')
     else
-      window.location.href = linkEl!.href
+      window.location.href = url!
 
     store.toggleModal()
   }
 }
 
 const onEnter = async() => {
-  await changePage()
+  await changePageWithKeyEvent()
 }
 const onEnterWithControl = async() => {
-  await changePage(true)
+  await changePageWithKeyEvent(true)
 }
 const onArrowDown = () => {
   if (searchResult.value.length > selectedNumber.value + 1)
