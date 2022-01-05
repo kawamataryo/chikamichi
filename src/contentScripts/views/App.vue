@@ -115,6 +115,7 @@ import Fuse from 'fuse.js'
 import { nextTick } from 'vue-demi'
 import { sendMessage } from 'webext-bridge'
 import { STORE_KEY, useStore } from '~/contentScripts/store'
+import { FUSE_THRESHOLD_VALUE } from '~/contentScripts/constants'
 
 const store = inject<ReturnType<typeof useStore>>(STORE_KEY)
 if (!store)
@@ -147,7 +148,7 @@ const searchResult = computed(() => {
       'title',
       'url',
     ],
-    threshold: 0.4,
+    threshold: FUSE_THRESHOLD_VALUE,
   })
   return fuse.search(searchWord.value, { limit: 10 }).map(result => result.item)
 })
