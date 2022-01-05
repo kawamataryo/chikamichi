@@ -147,7 +147,7 @@ const searchResult = computed(() => {
       'title',
       'url',
     ],
-    threshold: 0.2,
+    threshold: 0.4,
   })
   return fuse.search(searchWord.value, { limit: 10 }).map(result => result.item)
 })
