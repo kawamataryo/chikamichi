@@ -25,8 +25,8 @@ export async function getManifest() {
       // @ts-ignore
       'run-search': {
         suggested_key: {
-          default: 'Alt+F',
-          mac: 'Alt+F',
+          default: 'Alt+K',
+          mac: 'Alt+K',
         },
         description: 'Run history search',
       },

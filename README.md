@@ -24,7 +24,7 @@ I am currently in the process of submitting an extension to the public.
 
 | command                       | action                                   |
 |-------------------------------|------------------------------------------|
-| Option(Alt) + f               | Open search dialog                       |
+| Alt + k                       | Open search dialog                       |
 | ↓ or ↑ (Ctrl + n or Ctrl + p) | Select history                           |
 | Enter                         | Open the selected hisotry url            |
 | Ctrl + Enter                  | Open the selected history url in new tab |

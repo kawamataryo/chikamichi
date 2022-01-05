@@ -7,9 +7,9 @@
       </p>
     </div>
     <div class="text-center mt-10px">
-      <span class="bg-gray-200 rounded-3px px-8px py-4px inline-block mr-3px">Option(Alt)</span>
+      <span class="bg-gray-200 rounded-3px px-8px py-4px inline-block mr-3px">Alt</span>
       +
-      <span class="bg-gray-200 rounded-3px px-8px py-4px inline-block mr-3px">f</span>
+      <span class="bg-gray-200 rounded-3px px-8px py-4px inline-block mr-3px">p</span>
     </div>
     <!-- TODO enable dark mode -->
     <!--    <div class="mt-2">-->
