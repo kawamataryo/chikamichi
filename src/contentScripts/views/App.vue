@@ -3,7 +3,7 @@
     <div v-if="showModal" class="fixed z-99999 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
       <div class="position relative min-h-screen">
         <div class="fixed inset-0 bg-black bg-opacity-60 transition-opacity" aria-hidden="true" @click="onCloseModal"></div>
-        <div class="absolute align-bottom bg-white rounded-5px text-left overflow-hidden shadow-xl transform transition-all -translate-x-1/2 left-1/2 top-10vh w-650px max-w-screen-90vw">
+        <div class="absolute align-bottom bg-white rounded-5px text-left overflow-hidden shadow-xl transform transition-all -translate-x-1/2 left-1/2 top-10vh w-650px max-w-screen-90vw dark:bg-gray-800 dark:text-bg-gray-100">
           <div class="relative text-gray-600 focus-within:text-gray-400">
             <div class="p-20px pb-0">
               <IconSearch width="20" height="20" class="absolute ml-12px mt-12px" />
@@ -11,7 +11,7 @@
                 id="username"
                 ref="searchInput"
                 v-model="searchWord"
-                class="shadow appearance-none border border-gray-400 rounded-5px w-full py-12px px-12px text-gray-700 leading-tight focus:outline-none focus:shadow-outline box-border bg-white pl-43px text-16px"
+                class="shadow appearance-none border border-gray-400 rounded-5px w-full py-12px px-12px text-gray-700 leading-tight focus:outline-none focus:shadow-outline box-border bg-white pl-43px text-16px dark:bg-gray-700 dark:text-gray-300 dark:focus:shadow-none dark:border-0"
                 type="search"
                 placeholder="Search for.."
                 @keydown.stop.exact
@@ -40,7 +40,7 @@
                       :data-url="item.url"
                       @click="onClick(item.url, item.tabId)"
                     >
-                      <button class="p-6px block text-13px flex items-center text-black justify-between border-none w-full cursor-pointer bg-white rounded-5px" type="button" :class="{ 'bg-blue-200': i === selectedNumber }">
+                      <button class="p-6px block text-13px flex items-center text-black justify-between border-none w-full cursor-pointer bg-white rounded-5px dark:bg-gray-800 dark:text-gray-200" type="button" :class="{ 'bg-blue-200': i === selectedNumber, 'dark:bg-blue-700': i === selectedNumber }">
                         <span class="flex items-center w-440px">
                           <img :src="item.faviconUrl" alt="" class="w-16px h-16px mr-8px inline-block" />
                           <span class="overflow-hidden block whitespace-nowrap text-over overflow-ellipsis mr-5px">{{ item.title }}</span>
@@ -48,7 +48,7 @@
                             {{ item.url }}
                           </span>
                         </span>
-                        <span class="px-8px py-3px rounded-5px text-gray-400 bg-gray-100">
+                        <span class="px-8px py-3px rounded-5px text-gray-400 bg-gray-100 dark:bg-gray-600 dark:text-gray-200">
                           {{ item.type }}
                         </span>
                       </button>
@@ -66,7 +66,7 @@
                         role="option"
                         @click="onClick(`https://www.google.com/search?q=${searchWord}`)"
                       >
-                        <button class="p-6px block text-13px flex items-center text-black border-none w-full cursor-pointer rounded-5px bg-blue-200" type="button">
+                        <button class="p-6px block text-13px flex items-center text-black border-none w-full cursor-pointer rounded-5px bg-blue-200 dark:bg-blue-800 dark:text-gray-200" type="button">
                           <img :src="`https://www.google.com/s2/favicons?domain=google.com`" alt="" class="w-16px h-16px mr-8px inline-block" /><span class="overflow-hidden display-block whitespace-nowrap text-over overflow-ellipsis">"{{ searchWord }}" search with google</span>
                         </button>
                       </li>
@@ -74,8 +74,9 @@
                   </template>
                   <template v-else>
                     <div class="flex min-h-15vh w-full justify-center items-center flex-row opacity-40">
-                      <Logo width="50" height="50" class="mr-15px" />
-                      <p class="text-16px text-black font-bold leading-26px">
+                      <Logo width="50" height="50" class="mr-15px dark:hidden" />
+                      <Logo width="50" height="50" class="mr-15px hidden dark:block" dark />
+                      <p class="text-16px text-black font-bold leading-26px dark:text-gray-100">
                         Fussy<br />History Search
                       </p>
                     </div>
@@ -83,21 +84,21 @@
                 </template>
               </nav>
             </div>
-            <div class="flex border border-gray-200 h-40px justify-between px-20px border-solid items-center text-11px text-gray-500">
+            <div class="flex border-t-1px border-b-0 border-l-0 border-r-0 border-t-gray-200 h-40px justify-between px-20px items-center border-solid text-11px text-gray-500 dark:border-t-gray-700 dark:text-gray-200 rounded-b-5px">
               <div class="flex">
                 <p class="mr-10px">
-                  <span class="bg-gray-200 rounded-3px px-5px py-4px inline-block mr-3px">↑</span>
-                  <span class="bg-gray-200 rounded-3px px-5px py-4px inline-block">↓</span>
+                  <span class="bg-gray-200 dark:bg-gray-600 dark:text-gray-200 rounded-3px px-5px py-4px inline-block mr-3px">↑</span>
+                  <span class="bg-gray-200 dark:bg-gray-600 dark:text-gray-200 rounded-3px px-5px py-4px inline-block">↓</span>
                   or
-                  <span class="bg-gray-200 rounded-3px px-5px py-4px inline-block mr-3px">Ctrl + n</span>
-                  <span class="bg-gray-200 rounded-3px px-5px py-4px inline-block mr-3px">Ctrol + p</span>
+                  <span class="bg-gray-200 dark:bg-gray-600 dark:text-gray-200 rounded-3px px-5px py-4px inline-block mr-3px">Ctrl + n</span>
+                  <span class="bg-gray-200 dark:bg-gray-600 dark:text-gray-200 rounded-3px px-5px py-4px inline-block mr-3px">Ctrol + p</span>
                   Navigate,
                 </p>
                 <p class="mr-10px">
-                  <span class="bg-gray-200 rounded-3px px-5px py-4px inline-block mr-3px">Enter</span>Open,
+                  <span class="bg-gray-200 dark:bg-gray-600 dark:text-gray-200 rounded-3px px-5px py-4px inline-block mr-3px">Enter</span>Open,
                 </p>
                 <p>
-                  <span class="bg-gray-200 rounded-3px px-5px py-4px inline-block mr-3px">Ctrl + Enter</span>
+                  <span class="bg-gray-200 dark:bg-gray-600 dark:text-white rounded-3px px-5px py-4px inline-block mr-3px">Ctrl + Enter</span>
                   Open in new tab
                 </p>
               </div>

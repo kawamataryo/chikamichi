@@ -2,7 +2,7 @@ import { resolve } from 'path'
 import { defineConfig } from 'windicss/helpers'
 
 export default defineConfig({
-  darkMode: 'class',
+  darkMode: 'media',
   // https://windicss.org/posts/v30.html#attributify-mode
   extract: {
     include: [
