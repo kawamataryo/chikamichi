@@ -74,16 +74,14 @@
                   </template>
                   <template v-else>
                     <div class="flex min-h-15vh w-full justify-center items-center flex-row opacity-40">
-                      <div class="relative ">
-                        <div class="absolute transform -translate-y-1/2 top-1/2 -left-55px">
-                          <Logo width="45" height="45" class="mr-15px dark:hidden" />
-                          <Logo width="45" height="45" class="mr-15px hidden dark:block" dark />
-                        </div>
-                        <p class="text-24px text-black font-bold leading-20px dark:text-gray-100">
-                          Chikamichi<br />
-                          <span class="text-12px">Fuzzy search for anything</span>
-                        </p>
+                      <div class="mr-10px">
+                        <Logo width="45" height="45" class="dark:hidden" />
+                        <Logo width="45" height="45" class="hidden dark:block" dark />
                       </div>
+                      <p class="text-24px text-black font-bold leading-20px dark:text-gray-100">
+                        Chikamichi<br />
+                        <span class="text-12px">Fuzzy search for anything</span>
+                      </p>
                     </div>
                   </template>
                 </template>
