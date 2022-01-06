@@ -1,6 +1,6 @@
 {
-  "name": "fussy-histoty-search",
-  "displayName": "Fussy history search",
+  "name": "chikamichi",
+  "displayName": "Chikamichi",
   "version": "0.0.1",
   "description": "A very simple Chrome extension that enables fuzzy search of browsing histories and bookmark and tab",
   "private": true,

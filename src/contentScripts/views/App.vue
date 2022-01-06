@@ -74,11 +74,16 @@
                   </template>
                   <template v-else>
                     <div class="flex min-h-15vh w-full justify-center items-center flex-row opacity-40">
-                      <Logo width="50" height="50" class="mr-15px dark:hidden" />
-                      <Logo width="50" height="50" class="mr-15px hidden dark:block" dark />
-                      <p class="text-16px text-black font-bold leading-26px dark:text-gray-100">
-                        Fussy<br />History Search
-                      </p>
+                      <div class="relative ">
+                        <div class="absolute transform -translate-y-1/2 top-1/2 -left-55px">
+                          <Logo width="45" height="45" class="mr-15px dark:hidden" />
+                          <Logo width="45" height="45" class="mr-15px hidden dark:block" dark />
+                        </div>
+                        <p class="text-24px text-black font-bold leading-20px dark:text-gray-100">
+                          Chikamichi<br />
+                          <span class="text-12px">Fuzzy search for anything</span>
+                        </p>
+                      </div>
                     </div>
                   </template>
                 </template>
@@ -141,7 +146,7 @@ const onCloseModal = () => {
 const searchItems = computed(() => store.state.searchItems)
 const selectedNumber = ref(0)
 
-// fussy search powered by Fuse.js https://fusejs.io/
+// fuzzy search powered by Fuse.js https://fusejs.io/
 const searchResult = computed(() => {
   if (!searchItems.value) return []
   const fuse = new Fuse(searchItems.value, {
