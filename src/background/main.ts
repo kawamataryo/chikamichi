@@ -76,7 +76,9 @@ browser.commands.onCommand.addListener(async() => {
   const bookmarks = await browser.bookmarks.getTree()
   const histories = await browser.history.search({
     text: '',
-    maxResults: 100000,
+    maxResults: 10000,
+    // Search up to 30 days in advance.
+    startTime: new Date().setDate(new Date().getDate() - 30),
   })
   const [tab] = await browser.tabs.query({
     active: true,
