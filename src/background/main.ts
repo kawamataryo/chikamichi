@@ -12,20 +12,12 @@ if (import.meta.hot) {
 const faviconUrl = (url: string) => `https://www.google.com/s2/favicons?domain=${new URL(url).hostname}`
 
 const convertToSearchItemsFromHistories = (histories: History.HistoryItem[]): SearchItem[] => {
-  // remove duplicates
-  return Array.from(
-    histories
-      .reduce(
-        (map, currentItem) => map.set(currentItem.url!, {
-          url: currentItem.url!,
-          title: currentItem.title!,
-          faviconUrl: faviconUrl(currentItem.url!),
-          type: 'history',
-        }),
-        new Map<string, SearchItem>(),
-      )
-      .values(),
-  )
+  return histories.map(history => ({
+    url: history.url!,
+    title: history.title!,
+    faviconUrl: faviconUrl(history.url!),
+    type: 'history',
+  }))
 }
 
 const convertToSearchItemsFromBookmarks = (bookmarkTreeNodes: Bookmarks.BookmarkTreeNode[]): SearchItem[] => {
@@ -64,7 +56,9 @@ const removeDeprecatedItem = (searchItems: SearchItem[]) => {
   return Array.from(
     searchItems
       .reduce(
-        (map, currentItem) => map.set(currentItem.url!, currentItem),
+        (map, currentItem) =>
+          // Remove duplicates in url with Anchors link removed
+          map.set(currentItem.url.split('#')[0]!, currentItem),
         new Map<string, SearchItem>(),
       )
       .values(),
