@@ -4,7 +4,7 @@
 # Chikamichi
 
 A very simple Chrome extension that enables fuzzy search of browsing histories and bookmark and tab. Inspired by [Sidekick](https://www.meetsidekick.com/) search dialog.  
-The Japanese meaning of chikamichi is a shortcut.
+The Japanese meaning of `chikamichi` is a shorter way.
 
 ## ✨ Features
 
@@ -13,7 +13,7 @@ The Japanese meaning of chikamichi is a shortcut.
 
 ## 🎬 Demo
 
-https://user-images.githubusercontent.com/11070996/148464196-4334e547-6d96-4c00-b2cc-2b8f2a9c57eb.mp4
+https://user-images.githubusercontent.com/11070996/148466942-4dbd6b8a-a9cf-46f0-83bf-bc80e2da85c0.mp4
 
 ## 📦 install
 
