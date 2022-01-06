@@ -13,7 +13,7 @@ The Japanese meaning of chikamichi is a shortcut.
 
 ## 🎬 Demo
 
-https://user-images.githubusercontent.com/11070996/147921381-500b1045-c544-4938-bc5f-f88759cc415b.mp4
+https://user-images.githubusercontent.com/11070996/148464196-4334e547-6d96-4c00-b2cc-2b8f2a9c57eb.mp4
 
 ## 📦 install
 
