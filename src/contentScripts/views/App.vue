@@ -1,3 +1,9 @@
+<!--
+TODO: Split the component into the following units
+- Modal
+- SearchForm
+- SearchItem
+-->
 <template>
   <transition name="fade">
     <div v-if="showModal" class="fixed z-99999 inset-0 overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
