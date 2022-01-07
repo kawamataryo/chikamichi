@@ -57,8 +57,7 @@ const removeDeprecatedItem = (searchItems: SearchItem[]) => {
     searchItems
       .reduce(
         (map, currentItem) =>
-          // Remove duplicates in url with Anchors link removed
-          map.set(currentItem.url.split('#')[0]!, currentItem),
+          map.set(currentItem.url, currentItem),
         new Map<string, SearchItem>(),
       )
       .values(),
