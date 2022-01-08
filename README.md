@@ -15,11 +15,9 @@ The Japanese meaning of `chikamichi` is a shorter way.
 
 https://user-images.githubusercontent.com/11070996/148467373-6204d7ee-4a78-456d-975a-06ef2294ac9c.mp4
 
-## 📦 install
+## 📦 Install
 
-// TODO
-
-I am currently in the process of submitting an extension to the public.
+Please install from [Chrome Web Store](https://chrome.google.com/webstore/detail/chikamichi/gkhobepjbiepngbeikhbpnfgjcjgmgha)
 
 ## 💻 Usage
 
