@@ -28,6 +28,8 @@ Please install from [Chrome Web Store](https://chrome.google.com/webstore/detail
 | Enter                         | Open the selected hisotry url            |
 | Ctrl + Enter                  | Open the selected history url in new tab |
 
+⚠️ *Warning* Chrome web store and chrome's new tab page do not load the extension script, so it does not start.
+
 ## 👨‍💻 Contributing
 Contributions are welcome 🎉 We accept contributions via Pull Requests.
 
