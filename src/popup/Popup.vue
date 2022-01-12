@@ -13,7 +13,7 @@
     <div class="text-center mt-10px">
       <span class="bg-gray-200 dark:bg-gray-600 dark:text-white rounded-3px px-8px py-4px inline-block mr-3px">Alt</span>
       <span class="dark:text-white mr-3px">+</span>
-      <span class="bg-gray-200 dark:bg-gray-600 dark:text-white rounded-3px px-8px py-4px inline-block mr-3px">p</span>
+      <span class="bg-gray-200 dark:bg-gray-600 dark:text-white rounded-3px px-8px py-4px inline-block mr-3px">k</span>
     </div>
     <!-- TODO enable dark mode -->
     <!--    <div class="mt-2">-->
