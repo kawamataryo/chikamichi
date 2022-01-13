@@ -1,5 +1,6 @@
 import { onMessage, sendMessage } from 'webext-bridge'
 import { Bookmarks, History, Tabs } from 'webextension-polyfill'
+import { SEARCH_ITEM_TYPE } from '~/constants'
 
 // only on dev mode
 if (import.meta.hot) {
@@ -16,7 +17,7 @@ const convertToSearchItemsFromHistories = (histories: History.HistoryItem[]): Se
     url: history.url!,
     title: history.title!,
     faviconUrl: faviconUrl(history.url!),
-    type: 'history',
+    type: SEARCH_ITEM_TYPE.HISTORY,
   }))
 }
 
@@ -34,7 +35,7 @@ const convertToSearchItemsFromBookmarks = (bookmarkTreeNodes: Bookmarks.Bookmark
         url: node.url!,
         title: node.title,
         faviconUrl: faviconUrl(node.url!),
-        type: 'bookmark',
+        type: SEARCH_ITEM_TYPE.BOOKMARK,
       })
     })
   }
@@ -47,7 +48,7 @@ const convertToSearchItemsFromTabs = (tabs: Tabs.Tab[]): SearchItem[] => {
     url: tab.url!,
     title: tab.title!,
     faviconUrl: faviconUrl(tab.url!),
-    type: 'tab',
+    type: SEARCH_ITEM_TYPE.TAB,
     tabId: tab.id,
   }))
 }
