@@ -68,12 +68,12 @@ TODO: Split the component into the following units
                         :ref="el => { if (el) searchResultRefs[0] = el }"
                         :aria-selected="true"
                         class="block rounded-5px"
-                        :data-url="`https://www.google.com/search?q=${searchWord}`"
+                        :data-url="`https://www.google.com/search?q=${searchWordFallback}`"
                         role="option"
-                        @click="onClick(`https://www.google.com/search?q=${searchWord}`)"
+                        @click="onClick(`https://www.google.com/search?q=${searchWordFallback}`)"
                       >
                         <button class="p-6px block text-13px flex items-center text-black border-none w-full cursor-pointer rounded-5px bg-blue-200 dark:bg-blue-800 dark:text-gray-200" type="button">
-                          <img :src="`https://www.google.com/s2/favicons?domain=google.com`" alt="" class="w-16px h-16px mr-8px inline-block" /><span class="overflow-hidden display-block whitespace-nowrap text-over overflow-ellipsis">"{{ searchWord }}" search with google</span>
+                          <img :src="`https://www.google.com/s2/favicons?domain=google.com`" alt="" class="w-16px h-16px mr-8px inline-block" /><span class="overflow-hidden display-block whitespace-nowrap text-over overflow-ellipsis">"{{ searchWordFallback }}" search with google</span>
                         </button>
                       </li>
                     </ul>
@@ -125,7 +125,7 @@ import Fuse from 'fuse.js'
 import { nextTick } from 'vue-demi'
 import { sendMessage } from 'webext-bridge'
 import { STORE_KEY, useStore } from '~/contentScripts/store'
-import { FUSE_THRESHOLD_VALUE } from '~/contentScripts/constants'
+import { FUSE_THRESHOLD_VALUE, SEARCH_ITEM_TYPE, SEARCH_TARGET_REGEX } from '~/constants'
 
 const store = inject<ReturnType<typeof useStore>>(STORE_KEY)
 if (!store)
@@ -139,6 +139,12 @@ const searchWord = computed({
     store.changeSearchWord(value)
   },
 })
+const searchWordFallback = computed(() => {
+  if (SEARCH_TARGET_REGEX.EITHER.test(searchWord.value))
+    return searchWord.value.match(SEARCH_TARGET_REGEX.EITHER)![1]
+
+  return searchWord.value
+})
 
 // modal control
 const showModal = computed(() => store.state.showModal)
@@ -148,19 +154,40 @@ const onCloseModal = () => {
 }
 
 const searchItems = computed(() => store.state.searchItems)
+const searchItemsOnlyHistory = computed(() => store.state.searchItems.filter(i => i.type === SEARCH_ITEM_TYPE.HISTORY))
+const searchItemsOnlyBookmark = computed(() => store.state.searchItems.filter(i => i.type === SEARCH_ITEM_TYPE.BOOKMARK))
+const searchItemsOnlyTab = computed(() => store.state.searchItems.filter(i => i.type === SEARCH_ITEM_TYPE.TAB))
 const selectedNumber = ref(0)
 
-// fuzzy search powered by Fuse.js https://fusejs.io/
 const searchResult = computed(() => {
   if (!searchItems.value) return []
-  const fuse = new Fuse(searchItems.value, {
+
+  let target = searchItems.value
+  let word = searchWord.value
+
+  // Selecting targets with the prefix
+  if (SEARCH_TARGET_REGEX.HISTORY.test(word)) {
+    target = searchItemsOnlyHistory.value
+    word = word.match(SEARCH_TARGET_REGEX.HISTORY)![1] || 'h' // The 'h' in all URLs is set to fallback.
+  }
+  else if (SEARCH_TARGET_REGEX.BOOKMARK.test(word)) {
+    target = searchItemsOnlyBookmark.value
+    word = word.match(SEARCH_TARGET_REGEX.BOOKMARK)![1] || 'h'
+  }
+  else if (SEARCH_TARGET_REGEX.TAB.test(word)) {
+    target = searchItemsOnlyTab.value
+    word = word.match(SEARCH_TARGET_REGEX.TAB)![1] || 'h'
+  }
+
+  // fuzzy search powered by Fuse.js https://fusejs.io/
+  const fuse = new Fuse(target, {
     keys: [
       'title',
       'url',
     ],
     threshold: FUSE_THRESHOLD_VALUE,
   })
-  return fuse.search(searchWord.value, { limit: 10 }).map(result => result.item)
+  return fuse.search(word, { limit: 10 }).map(result => result.item)
 })
 watch(searchResult, () => {
   selectedNumber.value = 0
@@ -188,7 +215,6 @@ const onClick = async(url: string, tabId?: number) => {
     return
   }
   // otherwise, open the link.
-  // FIXME: I want to be able to jump to a new tab.
   window.location.href = url
   store.toggleModal()
 }
