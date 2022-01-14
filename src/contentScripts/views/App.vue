@@ -47,7 +47,7 @@ TODO: Split the component into the following units
                       @click="onClick(item.url, item.tabId)"
                     >
                       <button class="p-6px block text-13px flex items-center text-black justify-between border-none w-full cursor-pointer bg-white rounded-5px dark:bg-gray-800 dark:text-gray-200" type="button" :class="{ 'bg-blue-200': i === selectedNumber, 'dark:bg-blue-700': i === selectedNumber }">
-                        <span class="flex items-center w-540px">
+                        <span class="flex items-center w-520px">
                           <img :src="item.faviconUrl" alt="" class="w-16px h-16px mr-8px inline-block" />
                           <span class="overflow-hidden block whitespace-nowrap text-over overflow-ellipsis mr-5px">{{ item.title }}</span>
                           <span class="overflow-hidden text-gray-400 text-11px block whitespace-nowrap text-over overflow-ellipsis max-w-300px ml-auto mr-5px">
@@ -125,7 +125,11 @@ import Fuse from 'fuse.js'
 import { nextTick } from 'vue-demi'
 import { sendMessage } from 'webext-bridge'
 import { STORE_KEY, useStore } from '~/contentScripts/store'
-import { FUSE_THRESHOLD_VALUE, SEARCH_ITEM_TYPE, SEARCH_TARGET_REGEX } from '~/constants'
+import {
+  FUSE_OPTIONS,
+  SEARCH_ITEM_TYPE,
+  SEARCH_TARGET_REGEX,
+} from '~/constants'
 
 const store = inject<ReturnType<typeof useStore>>(STORE_KEY)
 if (!store)
@@ -180,13 +184,7 @@ const searchResult = computed(() => {
   }
 
   // fuzzy search powered by Fuse.js https://fusejs.io/
-  const fuse = new Fuse(target, {
-    keys: [
-      'title',
-      'url',
-    ],
-    threshold: FUSE_THRESHOLD_VALUE,
-  })
+  const fuse = new Fuse(target, FUSE_OPTIONS)
   return fuse.search(word, { limit: 10 }).map(result => result.item)
 })
 watch(searchResult, () => {
