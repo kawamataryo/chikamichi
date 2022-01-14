@@ -47,11 +47,11 @@ TODO: Split the component into the following units
                       @click="onClick(item.url, item.tabId)"
                     >
                       <button class="p-6px block text-13px flex items-center text-black justify-between border-none w-full cursor-pointer bg-white rounded-5px dark:bg-gray-800 dark:text-gray-200" type="button" :class="{ 'bg-blue-200': i === selectedNumber, 'dark:bg-blue-700': i === selectedNumber }">
-                        <span class="flex items-center w-440px">
+                        <span class="flex items-center w-540px">
                           <img :src="item.faviconUrl" alt="" class="w-16px h-16px mr-8px inline-block" />
                           <span class="overflow-hidden block whitespace-nowrap text-over overflow-ellipsis mr-5px">{{ item.title }}</span>
-                          <span class="overflow-hidden text-gray-400 text-11px block whitespace-nowrap text-over overflow-ellipsis max-w-200px">
-                            {{ item.url }}
+                          <span class="overflow-hidden text-gray-400 text-11px block whitespace-nowrap text-over overflow-ellipsis max-w-300px ml-auto mr-5px">
+                            {{ item.url.replace(/^(?:https?:\/\/)?(?:www\.)?/i, '') }}
                           </span>
                         </span>
                         <span class="px-8px py-3px rounded-5px text-gray-400 bg-gray-100 dark:bg-gray-600 dark:text-gray-200">
