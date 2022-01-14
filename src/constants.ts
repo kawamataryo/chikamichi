@@ -1,4 +1,4 @@
-export const FUSE_THRESHOLD_VALUE = 0.3
+import Fuse from 'fuse.js'
 
 export const SEARCH_TARGET_REGEX = {
   HISTORY: /^\/h\s(.*)/,
@@ -12,3 +12,11 @@ export const SEARCH_ITEM_TYPE = {
   BOOKMARK: 'bookmark',
   TAB: 'tab',
 } as const
+
+export const FUSE_OPTIONS: Fuse.IFuseOptions<any> = {
+  keys: [
+    'title',
+    'url',
+  ],
+  threshold: 0.4,
+}
