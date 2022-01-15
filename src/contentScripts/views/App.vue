@@ -35,27 +35,25 @@ TODO: Split the component into the following units
                 <template v-if="searchResult.length">
                   <ul class="pl-0">
                     <li
-                      v-for="(item, i) in searchResult"
+                      v-for="(result, i) in searchResult"
                       :key="i"
                       :ref="el => { if (el) searchResultRefs[i] = el }"
                       :aria-selected="i === selectedNumber"
                       class="block"
 
                       role="option"
-                      :data-tabid="item.tabId"
-                      :data-url="item.url"
-                      @click="onClick(item.url, item.tabId)"
+                      :data-tabid="result.item.tabId"
+                      :data-url="result.item.url"
+                      @click="onClick(result.item.url, result.item.tabId)"
                     >
                       <button class="p-6px block text-13px flex items-center text-black justify-between border-none w-full cursor-pointer bg-white rounded-5px dark:bg-gray-800 dark:text-gray-200" type="button" :class="{ 'bg-blue-200': i === selectedNumber, 'dark:bg-blue-700': i === selectedNumber }">
                         <span class="flex items-center w-520px">
-                          <img :src="item.faviconUrl" alt="" class="w-16px h-16px mr-8px inline-block" />
-                          <span class="overflow-hidden block whitespace-nowrap text-over overflow-ellipsis mr-5px">{{ item.title }}</span>
-                          <span class="overflow-hidden text-gray-400 text-11px block whitespace-nowrap text-over overflow-ellipsis max-w-300px ml-auto mr-5px">
-                            {{ item.url.replace(/^(?:https?:\/\/)?(?:www\.)?/i, '') }}
-                          </span>
+                          <img :src="result.item.faviconUrl" alt="" class="w-16px h-16px mr-8px inline-block" />
+                          <highlighter class="overflow-hidden block whitespace-nowrap text-over overflow-ellipsis mr-5px" :item="result.item.highlightedTitle" />
+                          <highlighter class="overflow-hidden text-gray-400 text-11px block whitespace-nowrap text-over overflow-ellipsis max-w-300px ml-auto mr-5px" :item="result.item.highlightedUrl" />
                         </span>
                         <span class="px-8px py-3px rounded-5px text-gray-400 bg-gray-100 dark:bg-gray-600 dark:text-gray-200">
-                          {{ item.type }}
+                          {{ result.item.type }}
                         </span>
                       </button>
                     </li>
@@ -163,6 +161,24 @@ const searchItemsOnlyBookmark = computed(() => store.state.searchItems.filter(i 
 const searchItemsOnlyTab = computed(() => store.state.searchItems.filter(i => i.type === SEARCH_ITEM_TYPE.TAB))
 const selectedNumber = ref(0)
 
+const getHighlightedTitle = (result: Fuse.FuseResult<SearchItem>) => ({
+  indices: result.matches?.find(m => m.key === 'title')?.indices as ([number, number][] | undefined),
+  text: result.item.title,
+})
+const getHighlightedUrl = (result: Fuse.FuseResult<SearchItem>) => {
+  const urlRegex = /^(?:https?:\/\/)?(?:www\.)?/i
+  const urlMatch = result.item.url.match(urlRegex)
+  const urlMatchedLength = urlMatch ? urlMatch[0].length : 0
+  const indices = result.matches
+    ?.find(m => m.key === 'url')
+    ?.indices.map(([i, j]) => [i - urlMatchedLength, j - urlMatchedLength])
+    .filter(indice => indice[0] >= 0)
+  return {
+    indices: indices as ([number, number][] | undefined),
+    text: result.item.url.replace(urlRegex, ''),
+  }
+}
+
 const searchResult = computed(() => {
   if (!searchItems.value) return []
 
@@ -185,8 +201,18 @@ const searchResult = computed(() => {
 
   // fuzzy search powered by Fuse.js https://fusejs.io/
   const fuse = new Fuse(target, FUSE_OPTIONS)
-  return fuse.search(word, { limit: 10 }).map(result => result.item)
+  return fuse.search(word, { limit: 10 }).map((result) => {
+    return {
+      ...result,
+      item: {
+        ...result.item,
+        highlightedTitle: getHighlightedTitle(result),
+        highlightedUrl: getHighlightedUrl(result),
+      },
+    }
+  })
 })
+
 watch(searchResult, () => {
   selectedNumber.value = 0
 })
