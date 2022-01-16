@@ -17,7 +17,9 @@ https://user-images.githubusercontent.com/11070996/148467373-6204d7ee-4a78-456d-
 
 ## 📦 Install
 
-Please install from [Chrome Web Store](https://chrome.google.com/webstore/detail/chikamichi/gkhobepjbiepngbeikhbpnfgjcjgmgha)
+Please install from:
+ - [Firefox Add-Ons Repository (AMO)](https://addons.mozilla.org/firefox/addon/chikamichi/)
+ - [Chrome Web Store](https://chrome.google.com/webstore/detail/chikamichi/gkhobepjbiepngbeikhbpnfgjcjgmgha)
 
 ## 💻 Usage
 
