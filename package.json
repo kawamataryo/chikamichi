@@ -28,6 +28,7 @@
     "@ffflorian/jszip-cli": "^3.1.5",
     "@iconify/json": "^1.1.408",
     "@types/fs-extra": "^9.0.13",
+    "@types/lodash.debounce": "^4.0.6",
     "@types/node": "^16.10.2",
     "@types/webextension-polyfill": "^0.8.0",
     "@typescript-eslint/eslint-plugin": "^4.32.0",
@@ -58,6 +59,7 @@
   },
   "dependencies": {
     "fuse.js": "^6.5.3",
+    "lodash.debounce": "^4.0.8",
     "vue-fuse": "^4.0.3"
   }
 }
