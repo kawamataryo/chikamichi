@@ -5,6 +5,7 @@ specifiers:
   '@ffflorian/jszip-cli': ^3.1.5
   '@iconify/json': ^1.1.408
   '@types/fs-extra': ^9.0.13
+  '@types/lodash.debounce': ^4.0.6
   '@types/node': ^16.10.2
   '@types/webextension-polyfill': ^0.8.0
   '@typescript-eslint/eslint-plugin': ^4.32.0
@@ -19,6 +20,7 @@ specifiers:
   fs-extra: ^10.0.0
   fuse.js: ^6.5.3
   kolorist: ^1.5.0
+  lodash.debounce: ^4.0.8
   npm-run-all: ^4.1.5
   prettier: ^2.5.1
   rimraf: ^3.0.2
@@ -37,6 +39,7 @@ specifiers:
 
 dependencies:
   fuse.js: 6.5.3
+  lodash.debounce: 4.0.8
   vue-fuse: 4.0.3_fuse.js@6.5.3+vue@3.2.19
 
 devDependencies:
@@ -44,6 +47,7 @@ devDependencies:
   '@ffflorian/jszip-cli': 3.1.5
   '@iconify/json': 1.1.408
   '@types/fs-extra': 9.0.13
+  '@types/lodash.debounce': 4.0.6
   '@types/node': 16.10.2
   '@types/webextension-polyfill': 0.8.0
   '@typescript-eslint/eslint-plugin': 4.32.0_eslint@7.32.0+typescript@4.4.3
@@ -544,6 +548,16 @@ packages:
 
   /@types/json5/0.0.29:
     resolution: {integrity: sha1-7ihweulOEdK4J7y+UnC86n8+ce4=}
+    dev: true
+
+  /@types/lodash.debounce/4.0.6:
+    resolution: {integrity: sha512-4WTmnnhCfDvvuLMaF3KV4Qfki93KebocUF45msxhYyjMttZDQYzHkO639ohhk8+oco2cluAFL3t5+Jn4mleylQ==}
+    dependencies:
+      '@types/lodash': 4.14.178
+    dev: true
+
+  /@types/lodash/4.14.178:
+    resolution: {integrity: sha512-0d5Wd09ItQWH1qFbEyQ7oTQ3GZrMfth5JkbN3EvTKLXcHLRDSXeLnlvlOn0wvxVIwK5o2M8JzP/OWz7T3NRsbw==}
     dev: true
 
   /@types/minimatch/3.0.5:
@@ -3582,6 +3596,10 @@ packages:
   /lodash.clonedeep/4.5.0:
     resolution: {integrity: sha1-4j8/nE+Pvd6HJSnBBxhXoIblzO8=}
     dev: true
+
+  /lodash.debounce/4.0.8:
+    resolution: {integrity: sha1-gteb/zCmfEAF/9XiUVMArZyk168=}
+    dev: false
 
   /lodash.defaults/4.2.0:
     resolution: {integrity: sha1-0JF4cW/+pN3p5ft7N/bwgCJ0WAw=}

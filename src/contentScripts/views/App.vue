@@ -124,6 +124,7 @@ import 'virtual:windi.css'
 import Fuse from 'fuse.js'
 import { nextTick } from 'vue-demi'
 import { sendMessage } from 'webext-bridge'
+import debounce from 'lodash.debounce'
 import { STORE_KEY, useStore } from '~/contentScripts/store'
 import {
   FUSE_OPTIONS,
@@ -139,9 +140,11 @@ const searchWord = computed({
   get() {
     return store.state.searchWord
   },
-  set(value: string) {
+  // NOTE: When hold the key, the character will be insert repeatedly. This causes the setter to be called repeatedly at high speed.
+  // Writing the store is expensive, so too many calls can cause performance problems. So use debounce to avoid this.
+  set: debounce((value: string) => {
     store.changeSearchWord(value)
-  },
+  }, 100),
 })
 const searchWordFallback = computed(() => {
   if (SEARCH_TARGET_REGEX.EITHER.test(searchWord.value))
