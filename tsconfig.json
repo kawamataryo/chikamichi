@@ -13,7 +13,8 @@
     "noUnusedLocals": true,
     "forceConsistentCasingInFileNames": true,
     "types": [
-      "vite/client"
+      "vite/client",
+      "vitest/globals"
     ],
     "paths": {
       "~/*": ["src/*"]

@@ -21,7 +21,8 @@
     "start:firefox": "web-ext run --source-dir ./extension --target=firefox-desktop",
     "clear": "rimraf extension/dist extension/manifest.json extension.*",
     "lint": "eslint 'src/**/*.{json,ts,js,vue}'",
-    "format": "prettier --write 'src/**/*.{json,ts,js,vue}'"
+    "format": "prettier --write 'src/**/*.{json,ts,js,vue}'",
+    "test": "vitest"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.9.0",
@@ -51,6 +52,7 @@
     "unplugin-vue-components": "^0.15.4",
     "vite": "^2.6.2",
     "vite-plugin-windicss": "^1.4.8",
+    "vitest": "^0.1.20",
     "vue": "^3.2.19",
     "vue-demi": "^0.11.4",
     "web-ext": "^6.4.0",

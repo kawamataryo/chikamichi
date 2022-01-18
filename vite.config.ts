@@ -104,4 +104,7 @@ export default defineConfig(({ command }) => ({
       config: windiConfig,
     }),
   ],
+  test: {
+    globals: true,
+  },
 }))
