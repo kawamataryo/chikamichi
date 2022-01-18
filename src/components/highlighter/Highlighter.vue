@@ -20,7 +20,7 @@ export default defineComponent({
           'span',
           {
             class:
-                'font-black inline-block bg-yellow-200/50 dark:bg-yellow-200/30',
+                'dark:text-blue-400 text-blue-600 inline-block font-bold',
           },
           el.text,
         )
