@@ -1,6 +1,4 @@
 <script lang="ts">
-import 'virtual:windi.css'
-
 import { PropType, defineComponent } from 'vue'
 import { h } from 'vue-demi'
 import { HighlighterItem } from './types'
