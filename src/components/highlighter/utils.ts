@@ -6,7 +6,7 @@ interface SplitHighlighterItem {
 }
 
 export const splitHighlighterItem = (
-  item: HighlighterItem
+  item: HighlighterItem,
 ): SplitHighlighterItem[] => {
   if (!item.indices || item.indices.length === 0)
     return [{ highlight: false, text: item.text }]
