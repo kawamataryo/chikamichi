@@ -23,12 +23,11 @@ export async function getManifest() {
     },
     commands: {
       // @ts-ignore
-      'run-search': {
+      _execute_browser_action: {
         suggested_key: {
           default: 'Alt+K',
           mac: 'Alt+K',
         },
-        description: 'Run history search',
       },
     },
     icons: {
@@ -39,17 +38,8 @@ export async function getManifest() {
     permissions: [
       'tabs',
       'windows',
-      'http://*/',
-      'https://*/',
       'history',
       'bookmarks',
-    ],
-    content_scripts: [{
-      matches: ['http://*/*', 'https://*/*'],
-      js: ['./dist/contentScripts/index.global.js'],
-    }],
-    web_accessible_resources: [
-      'dist/contentScripts/style.css',
     ],
   }
 
@@ -57,7 +47,6 @@ export async function getManifest() {
     // for content script, as browsers will cache them for each reload,
     // we use a background script to always inject the latest version
     // see src/background/contentScriptHMR.ts
-    delete manifest.content_scripts
     manifest.permissions?.push('webNavigation')
 
     // this is required on dev for Vite script to load
