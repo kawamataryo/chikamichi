@@ -1,14 +1,5 @@
-import { onMessage, sendMessage } from 'webext-bridge'
 import { Bookmarks, History, Tabs } from 'webextension-polyfill'
 import { SEARCH_ITEM_TYPE } from '~/constants'
-
-// only on dev mode
-if (import.meta.hot) {
-  // @ts-expect-error for background HMR
-  import('/@vite/client')
-  // load latest content script
-  import('./contentScriptHMR')
-}
 
 const faviconUrl = (url: string) => `https://www.google.com/s2/favicons?domain=${new URL(url).hostname}`
 
@@ -65,7 +56,7 @@ const removeDeprecatedItem = (searchItems: SearchItem[]) => {
   )
 }
 
-browser.commands.onCommand.addListener(async() => {
+export const getSearchItems = async() => {
   const tabs = await browser.tabs.query({})
   const bookmarks = await browser.bookmarks.getTree()
   const histories = await browser.history.search({
@@ -74,41 +65,10 @@ browser.commands.onCommand.addListener(async() => {
     // Search up to 30 days in advance.
     startTime: new Date().setDate(new Date().getDate() - 30),
   })
-  const [tab] = await browser.tabs.query({
-    active: true,
-    currentWindow: true,
-  })
 
-  await sendMessage(
-    'history-search',
-    {
-      result: JSON.stringify(removeDeprecatedItem([
-        ...convertToSearchItemsFromHistories(histories),
-        ...convertToSearchItemsFromBookmarks(bookmarks),
-        ...convertToSearchItemsFromTabs(tabs),
-      ])),
-    },
-    {
-      context: 'content-script',
-      tabId: tab.id!,
-    },
-  )
-})
-
-onMessage('change-current-tab', async(request) => {
-  const tab = await browser.tabs.get(request.data.tabId)
-  await browser.tabs.update(request.data.tabId, { active: true })
-  await browser.windows.update(tab.windowId!, { focused: true })
-})
-
-onMessage('update-current-page', async(request) => {
-  const [tab] = await browser.tabs.query({
-    active: true,
-    currentWindow: true,
-  })
-  await browser.tabs.update(tab.id, { url: request.data.url })
-})
-
-onMessage('open-new-tab-page', async(request) => {
-  await browser.tabs.create({ url: request.data.url })
-})
+  return removeDeprecatedItem([
+    ...convertToSearchItemsFromHistories(histories),
+    ...convertToSearchItemsFromBookmarks(bookmarks),
+    ...convertToSearchItemsFromTabs(tabs),
+  ])
+}

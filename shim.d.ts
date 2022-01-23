@@ -8,5 +8,7 @@ declare module 'webext-bridge' {
     'get-current-tab': ProtocolWithReturn<{ tabId: number }, { title?: string }>
     'history-search': { result: string | undefined }
     'change-current-tab': { tabId: number }
+    'update-current-page': { url: string }
+    'open-new-tab-page': { url: string }
   }
 }
