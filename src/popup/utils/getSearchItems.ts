@@ -4,7 +4,15 @@ import { SEARCH_ITEM_TYPE } from '~/constants'
 const faviconUrl = (url: string) => `https://www.google.com/s2/favicons?domain=${new URL(url).hostname}`
 
 const convertToSearchItemsFromHistories = (histories: History.HistoryItem[]): SearchItem[] => {
-  return histories.map(history => ({
+  return histories.filter((history) => {
+    // remove google search's history
+    if (/google\..+\/search/.test(history.url!))
+      return false
+    // remove anker link
+    if (/.+#.+/.test(history.url!))
+      return false
+    return true
+  }).map(history => ({
     url: history.url!,
     title: history.title!,
     faviconUrl: faviconUrl(history.url!),
@@ -61,7 +69,7 @@ export const getSearchItems = async() => {
   const bookmarks = await browser.bookmarks.getTree()
   const histories = await browser.history.search({
     text: '',
-    maxResults: 10000,
+    maxResults: 5000,
     // Search up to 30 days in advance.
     startTime: new Date().setDate(new Date().getDate() - 30),
   })

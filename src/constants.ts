@@ -15,6 +15,7 @@ export const SEARCH_ITEM_TYPE = {
 
 export const FUSE_OPTIONS: Fuse.IFuseOptions<any> = {
   includeMatches: true,
+  ignoreLocation: true,
   keys: ['title', 'url'],
   threshold: 0.4,
 }
