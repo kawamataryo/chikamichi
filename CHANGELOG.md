@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## 2.2.0
+### fix
+- Improve search performance.
+  - Enabled Fuse ExtendedSearch option
+
 ## 2.1.0
 ### fix
 - Improve search performance.
