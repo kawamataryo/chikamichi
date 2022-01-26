@@ -19,3 +19,9 @@ export const FUSE_OPTIONS: Fuse.IFuseOptions<any> = {
   keys: ['title', 'url'],
   threshold: 0.4,
 }
+
+export const PAGES = {
+  SEARCH: 'search',
+  INFO: 'info',
+  SETTINGS: 'settings',
+} as const

@@ -18,3 +18,8 @@ body,
     hover:opacity-100 hover:text-teal-600;
   font-size: 0.9em;
 }
+
+
+.info-key-text {
+  @apply bg-blue-200 dark:bg-blue-800 px-7px py-1px rounded-3px dark:text-white
+}

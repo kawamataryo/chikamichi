@@ -5,7 +5,7 @@ TODO:Split the component into the following units
 - SearchItem
 -->
 <template>
-  <div class="flex justify-between flex-col text-gray-600 focus-within:text-gray-400 h-full bg-white dark:bg-gray-800 dark:text-bg-gray-100">
+  <div class="flex justify-between flex-col focus-within:text-gray-400 h-full">
     <div class="p-20px pb-0 flex flex-col h-full">
       <div>
         <IconSearch width="20" height="20" class="absolute ml-12px mt-12px" />
@@ -49,7 +49,7 @@ TODO:Split the component into the following units
                   <highlighter class="overflow-hidden block whitespace-nowrap text-over overflow-ellipsis mr-5px" :item="result.item.highlightedTitle" />
                   <highlighter class="overflow-hidden text-gray-400 text-11px block whitespace-nowrap text-over overflow-ellipsis max-w-300px ml-auto mr-5px" :item="result.item.highlightedUrl" />
                 </span>
-                <span class="px-8px py-3px rounded-5px text-gray-400 bg-gray-100 dark:bg-gray-600 dark:text-gray-200">
+                <span class="px-8px py-3px rounded-5px text-gray-400 bg-gray-200 dark:bg-gray-600 dark:text-gray-200">
                   {{ result.item.type }}
                 </span>
               </button>
