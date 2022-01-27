@@ -38,7 +38,7 @@
       <p class="mt-10px">
         If you have any questions, feature requests, or bug reports, please let us know.
       </p>
-      <button type="button" class="bg-blue-200 hover:bg-blue-300 dark:bg-blue-700 dark:hover:bg-blue-600 dark:text-white font-bold py-2 px-4 rounded mt-15px" @click="openNewTab('https://github.com/kawamataryo/chikamichi/issues/new')">
+      <button type="button" class="bg-blue-100 dark:bg-blue-700 dark:text-white font-bold py-2 px-4 rounded mt-15px" @click="openNewTab('https://github.com/kawamataryo/chikamichi/issues/new')">
         Open GitHub issue
       </button>
     </div>

@@ -21,5 +21,9 @@ body,
 
 
 .info-key-text {
-  @apply bg-blue-200 dark:bg-blue-800 px-7px py-1px rounded-3px dark:text-white
+  @apply bg-blue-100 dark:bg-blue-800 px-7px py-1px rounded-3px dark:text-white
+}
+
+.selected-item {
+  @apply bg-blue-100 dark:bg-blue-800
 }

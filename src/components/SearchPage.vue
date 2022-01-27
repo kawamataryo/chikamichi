@@ -13,7 +13,7 @@ TODO:Split the component into the following units
           id="username"
           ref="searchInput"
           v-model="searchWord"
-          class="appearance-none border border-gray-400 rounded-5px w-full py-12px px-12px text-gray-700 leading-tight focus:outline-none focus:shadow-none focus:border-gray-400 box-border bg-white pl-43px text-16px dark:bg-gray-700 dark:text-gray-300 dark:focus:shadow-none dark:border-0 mb-16px"
+          class="appearance-none border border-gray-400 rounded-5px w-full py-12px px-12px text-gray-700 leading-tight focus:outline-none focus:shadow-none focus:border-gray-400 focus:ring-0 box-border bg-white pl-43px text-16px dark:bg-gray-700 dark:text-gray-300 dark:focus:shadow-none dark:border-0 mb-16px"
           type="search"
           placeholder="Search for.."
           @keydown.stop.exact
@@ -43,7 +43,7 @@ TODO:Split the component into the following units
               :data-url="result.item.url"
               @click="onClick(result.item.url, result.item.tabId)"
             >
-              <button class="p-6px block text-13px flex items-center text-black justify-between border-none w-full cursor-pointer bg-white rounded-5px dark:bg-gray-800 dark:text-gray-200" type="button" :class="{ 'bg-blue-200': i === selectedNumber, 'dark:bg-blue-700': i === selectedNumber }">
+              <button class="p-6px block text-13px flex items-center text-black justify-between border-none w-full cursor-pointer bg-white rounded-5px dark:bg-gray-800 dark:text-gray-200" type="button" :class="{ 'selected-item': i === selectedNumber }">
                 <span class="flex items-center w-520px">
                   <img :src="result.item.faviconUrl" alt="" class="w-16px h-16px mr-8px inline-block" />
                   <highlighter class="overflow-hidden block whitespace-nowrap text-over overflow-ellipsis mr-5px" :item="result.item.highlightedTitle" />
@@ -67,7 +67,7 @@ TODO:Split the component into the following units
                 role="option"
                 @click="onClick(`https://www.google.com/search?q=${searchWordFallback}`)"
               >
-                <button class="p-6px block text-13px flex items-center text-black border-none w-full cursor-pointer rounded-5px bg-blue-200 dark:bg-blue-800 dark:text-gray-200" type="button">
+                <button class="p-6px block text-13px flex items-center text-black border-none w-full cursor-pointer rounded-5px bg-blue-100 dark:bg-blue-800 dark:text-gray-200" type="button">
                   <img :src="`https://www.google.com/s2/favicons?domain=google.com`" alt="" class="w-16px h-16px mr-8px inline-block" /><span class="overflow-hidden display-block whitespace-nowrap text-over overflow-ellipsis">"{{ searchWordFallback }}" search with google</span>
                 </button>
               </li>
