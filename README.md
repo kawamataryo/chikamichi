@@ -13,24 +13,32 @@ The Japanese meaning of `chikamichi` is a shorter way.
 
 ## 🎬 Demo
 
-https://user-images.githubusercontent.com/11070996/148467373-6204d7ee-4a78-456d-975a-06ef2294ac9c.mp4
+https://user-images.githubusercontent.com/11070996/151462764-4c196ea8-e5d0-4190-be9b-e5d79bf454ab.mp4
 
 ## 📦 Install
 
 Please install from:
- - [Firefox Add-Ons Repository (AMO)](https://addons.mozilla.org/firefox/addon/chikamichi/)
- - [Chrome Web Store](https://chrome.google.com/webstore/detail/chikamichi/gkhobepjbiepngbeikhbpnfgjcjgmgha)
+- [Firefox Add-Ons Repository (AMO)](https://addons.mozilla.org/firefox/addon/chikamichi/)
+- [Chrome Web Store](https://chrome.google.com/webstore/detail/chikamichi/gkhobepjbiepngbeikhbpnfgjcjgmgha)
 
 ## 💻 Usage
 
-| command                       | action                                   |
-|-------------------------------|------------------------------------------|
-| Alt + k                       | Open search dialog                       |
-| ↓ or ↑ (Ctrl + n or Ctrl + p) | Select history                           |
-| Enter                         | Open the selected hisotry url            |
-| Ctrl + Enter                  | Open the selected history url in new tab |
+### Shortcuts
 
-⚠️ **Warning** Chrome web store and chrome's new tab page do not load the extension script, so it does not start.
+| shortcut                              | action                                   |
+|---------------------------------------|------------------------------------------|
+| `Alt + k`                             | Open search dialog                       |
+| `↓` or `↑` (`Ctrl + n` or `Ctrl + p`) | Select history                           |
+| `Enter`                               | Open the selected hisotry url            |
+| `Ctrl + Enter`                        | Open the selected history url in new tab |
+
+### Search commands
+
+| commands | action                |
+|----------|-----------------------|
+| `/h`     | Search only histories |
+| `/b`     | Search only bookmarks |
+| `/t`     | Search only tabs      |
 
 ## 👨‍💻 Contributing
 Contributions are welcome 🎉 We accept contributions via Pull Requests.
