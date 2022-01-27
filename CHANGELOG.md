@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## 2.3.1
+### fix
+- fix selected color
+
 ## 2.3.0
 ### feature
 - Add side menu and info page
