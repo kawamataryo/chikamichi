@@ -1,6 +1,6 @@
 <template>
   <div class="h-full w-full flex flex-col p-20px overflow-scroll dark:text-gray-200 grid grid-flow-col grid-flow-row gap-4">
-    <div class="border-gray-400 order-1px rounded-5px p-15px col-span-2 col-start-1">
+    <div class="border-gray-400 border-1px rounded-5px p-20px col-span-2 col-start-1">
       <h1 class="text-lg">
         🔍 Search commands
       </h1>
@@ -14,7 +14,7 @@
         </li>
       </ul>
     </div>
-    <div class="border-gray-400 order-1px rounded-5px p-15px col-span-2 col-start-1">
+    <div class="border-gray-400 border-1px rounded-5px p-20px col-span-2 col-start-1">
       <h1 class="text-lg">
         ⌨ Shortcut
       </h1>
@@ -31,7 +31,7 @@
         </li>
       </ul>
     </div>
-    <div class="border-gray-400 order-1px rounded-5px p-10px row-span-1 col-start-3 col-span-1 p-15px">
+    <div class="border-gray-400 border-1px rounded-5px row-span-1 col-start-3 col-span-1 p-20px">
       <h1 class="text-lg">
         📮 Feedback & Support
       </h1>
