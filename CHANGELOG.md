@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## 2.4.0
+### feature
+- add setting page and default search prefix
+
 ## 2.3.2
 ### chore
 - fix button color
