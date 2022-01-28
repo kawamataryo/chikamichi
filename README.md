@@ -8,7 +8,8 @@ Simple shortcuts and a simple interface make it easy to use.
 
 Inspired by [Sidekick](https://www.meetsidekick.com/) search dialog.  
 The Japanese meaning of `chikamichi` is a shorter way.
-
+  
+<a href="https://www.producthunt.com/posts/chikamichi?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-chikamichi" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=328833&theme=light" alt="Chikamichi - Chrome extension that enables fuzzy search for anything | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
 ## ✨ Features
 
 - ⚡️ Fuzzy search your browsing history and bookmark and tab. powered by [Fuse.js](https://fusejs.io/)
