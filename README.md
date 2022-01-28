@@ -3,7 +3,10 @@
 
 # Chikamichi
 
-A very simple Chrome extension that enables fuzzy search of browsing histories and bookmark and tab. Inspired by [Sidekick](https://www.meetsidekick.com/) search dialog.  
+Chikamichi is an extension that makes it very easy to navigate pages in Chrome or Firefox. You can search and navigate across browser history, bookmarks, and tabs.
+Simple shortcuts and a simple interface make it easy to use.  
+
+Inspired by [Sidekick](https://www.meetsidekick.com/) search dialog.  
 The Japanese meaning of `chikamichi` is a shorter way.
 
 ## ✨ Features
@@ -29,8 +32,8 @@ Please install from:
 |---------------------------------------|------------------------------------------|
 | `Alt + k`                             | Open search dialog                       |
 | `↓` or `↑` (`Ctrl + n` or `Ctrl + p`) | Select history                           |
-| `Enter`                               | Open the selected hisotry url            |
-| `Ctrl + Enter`                        | Open the selected history url in new tab |
+| `Enter`                               | Open the selected url            |
+| `Ctrl + Enter`                        | Open the selected url in new tab |
 
 ### Search commands
 
