@@ -121,6 +121,7 @@ import {
   SEARCH_ITEM_TYPE,
   SEARCH_TARGET_REGEX,
 } from '~/constants'
+import { defaultSearchPrefix } from '~/logic'
 
 interface Props {
   searchItems: SearchItem[]
@@ -128,7 +129,7 @@ interface Props {
 
 const props = defineProps<Props>()
 
-const _searchWord = ref('')
+const _searchWord = ref(defaultSearchPrefix.value)
 const searchWord = computed({
   get() {
     return _searchWord.value

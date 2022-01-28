@@ -1,8 +1,9 @@
 <template>
   <main class="w-700px h-440px flex bg-white dark:bg-gray-800 text-gray-600 dark:text-bg-gray-100">
     <div class="w-650px">
-      <SearchPage v-if="currentPage === PAGES.SEARCH" :search-items="searchItems" />
-      <InfoPage v-if="currentPage === PAGES.INFO" />
+      <PageSearch v-if="currentPage === PAGES.SEARCH" :search-items="searchItems" />
+      <PageInfo v-if="currentPage === PAGES.INFO" />
+      <PageSetting v-if="currentPage === PAGES.SETTING" />
     </div>
     <div class="w-50px border-l-1px dark:border-l-gray-700 border-l-gray-200">
       <SideMenu :current-page="currentPage" @change="changePage" />

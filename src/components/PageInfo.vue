@@ -4,7 +4,7 @@
       <h1 class="text-lg">
         🔍 Search commands
       </h1>
-      <ul class="text-sm mt-10px">
+      <ul class="text-sm mt-10px text-xs">
         <li>・<span class="info-key-text mr-5px">/ t</span> Search your tabs</li>
         <li class="mt-10px">
           ・<span class="info-key-text mr-5px">/ b</span> Search your bookmarks
@@ -18,7 +18,7 @@
       <h1 class="text-lg">
         ⌨ Shortcut
       </h1>
-      <ul class="text-sm mt-10px">
+      <ul class="text-sm mt-10px text-xs">
         <li>・<span class="info-key-text mr-5px">Alt(Option) + k</span>Open or Close Search form</li>
         <li class="mt-10px">
           ・<span class="info-key-text">↑</span> <span class="info-key-text">↓</span>or<span class="info-key-text">Ctrl + n</span> <span class="info-key-text">Ctrl + p</span> Select item
@@ -35,7 +35,7 @@
       <h1 class="text-lg">
         📮 Feedback & Support
       </h1>
-      <p class="mt-10px">
+      <p class="mt-10px text-xs">
         If you have any questions, feature requests, or bug reports, please let us know.
       </p>
       <button type="button" class="bg-blue-100 dark:bg-blue-800 dark:text-white font-bold py-2 px-4 rounded mt-15px" @click="openNewTab('https://github.com/kawamataryo/chikamichi/issues/new')">

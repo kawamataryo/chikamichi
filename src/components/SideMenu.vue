@@ -6,6 +6,9 @@
     <li class="p-10px rounded-full mt-10px dark:hover:bg-gray-700 hover:bg-gray-200 cursor-pointer" :class="currentTabClasses(PAGES.INFO)" @click="changePage(PAGES.INFO)">
       <IconInfo width="18" height="18" class="m-auto" />
     </li>
+    <li class="p-10px rounded-full mt-10px dark:hover:bg-gray-700 hover:bg-gray-200 cursor-pointer" :class="currentTabClasses(PAGES.SETTING)" @click="changePage(PAGES.SETTING)">
+      <IconGear width="18" height="18" class="m-auto" />
+    </li>
   </ul>
 </template>
 

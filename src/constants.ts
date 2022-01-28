@@ -23,5 +23,11 @@ export const FUSE_OPTIONS: Fuse.IFuseOptions<any> = {
 export const PAGES = {
   SEARCH: 'search',
   INFO: 'info',
-  SETTINGS: 'settings',
+  SETTING: 'setting',
 } as const
+
+export const SEARCH_PREFIX = {
+  HISTORY: '/h ',
+  BOOKMARK: '/b ',
+  TAB: '/t ',
+}
