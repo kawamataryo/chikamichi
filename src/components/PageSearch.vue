@@ -63,12 +63,12 @@ TODO:Split the component into the following units
                 :ref="el => { if (el) searchResultRefs[0] = el }"
                 :aria-selected="true"
                 class="block rounded-5px"
-                :data-url="`https://www.google.com/search?q=${searchWordFallback}`"
                 role="option"
-                @click="onClick(`https://www.google.com/search?q=${searchWordFallback}`)"
+                data-is-search
+                @click="browserSearch(searchWordFallback)"
               >
                 <button class="p-6px block text-13px flex items-center text-black border-none w-full cursor-pointer rounded-5px bg-blue-100 dark:bg-blue-800 dark:text-gray-200" type="button">
-                  <img :src="`https://www.google.com/s2/favicons?domain=google.com`" alt="" class="w-16px h-16px mr-8px inline-block" /><span class="overflow-hidden display-block whitespace-nowrap text-over overflow-ellipsis">"{{ searchWordFallback }}" search with google</span>
+                  <img :src="searchEngineRef?.favIconUrl" alt="" class="w-16px h-16px mr-8px inline-block" /><span class="overflow-hidden display-block whitespace-nowrap text-over overflow-ellipsis">"{{ searchWordFallback }}" search with {{ searchEngineRef?.name }}</span>
                 </button>
               </li>
             </ul>
@@ -116,6 +116,7 @@ import Fuse from 'fuse.js'
 import { sendMessage } from 'webext-bridge'
 import debounce from 'lodash.debounce'
 import { nextTick } from 'vue-demi'
+import { Search } from 'webextension-polyfill'
 import {
   FUSE_OPTIONS,
   SEARCH_ITEM_TYPE,
@@ -238,9 +239,24 @@ const onClick = async(url: string, tabId?: number) => {
 // Key event
 const searchResultRefs = ref<HTMLElement[]>([])
 
+const browserSearch = async(query: string, inNewTab?: boolean) => await browser.search.search({
+  query,
+  tabId: inNewTab
+    ? undefined
+    : (await browser.tabs.query({
+      active: true,
+      currentWindow: true,
+    }))[0].id,
+})
+
 const changePageWithKeyEvent = async(isNewTab = false) => {
   if (searchResultRefs.value) {
     const targetEl = searchResultRefs.value[selectedNumber.value]
+    if (targetEl.dataset.isSearch !== undefined) {
+      await browserSearch(searchWordFallback.value, isNewTab)
+      closePopup()
+      return
+    }
     // if selected tab link, send change tab message to background script
     if (targetEl.dataset.tabid) {
       await sendMessage(
@@ -291,9 +307,13 @@ const onEsc = () => {
   closePopup()
 }
 
+const searchEngineRef = ref<Search.SearchEngine | null>(null)
+
 onMounted(async() => {
   await nextTick()
   if (searchInput.value)
     searchInput.value.focus()
+
+  searchEngineRef.value = (await browser.search.get()).find((e: Search.SearchEngine) => e.isDefault)
 })
 </script>

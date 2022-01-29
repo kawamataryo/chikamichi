@@ -40,6 +40,7 @@ export async function getManifest() {
       'windows',
       'history',
       'bookmarks',
+      'search',
     ],
   }
 
