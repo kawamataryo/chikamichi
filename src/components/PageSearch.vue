@@ -28,13 +28,13 @@ TODO:Split the component into the following units
           @keydown.esc.prevent="onEsc"
         >
       </div>
-      <nav class="m overflow-scroll h-full" role="navigation">
+      <nav class="m h-full" role="navigation">
         <template v-if="searchResult.length">
           <ul class="pl-0">
             <li
               v-for="(result, i) in searchResult"
               :key="i"
-              :ref="el => { if (el) searchResultRefs[i] = el }"
+              :ref="el => { if (el) searchResultRefs[i] = el as HTMLElement }"
               :aria-selected="i === selectedNumber"
               class="block"
 
@@ -60,7 +60,7 @@ TODO:Split the component into the following units
           <template v-if="searchWord">
             <ul class="pl-0">
               <li
-                :ref="el => { if (el) searchResultRefs[0] = el }"
+                :ref="el => { if (el) searchResultRefs[0] = el as HTMLElement }"
                 :aria-selected="true"
                 class="block rounded-5px"
                 :data-url="`https://www.google.com/search?q=${searchWordFallback}`"
