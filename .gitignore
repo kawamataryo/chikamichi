@@ -15,3 +15,4 @@ node_modules
 src/auto-imports.d.ts
 src/components.d.ts
 components.d.ts
+yarn.lock
