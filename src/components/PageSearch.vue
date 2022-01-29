@@ -63,12 +63,12 @@ TODO:Split the component into the following units
                 :ref="el => { if (el) searchResultRefs[0] = el as HTMLElement }"
                 :aria-selected="true"
                 class="block rounded-5px"
-                :data-url="`https://www.google.com/search?q=${searchWordFallback}`"
                 role="option"
-                @click="onClick(`https://www.google.com/search?q=${searchWordFallback}`)"
+                data-is-search
+                @click="browserSearch(searchWordFallback)"
               >
                 <button class="p-6px block text-13px flex items-center text-black border-none w-full cursor-pointer rounded-5px bg-blue-100 dark:bg-blue-800 dark:text-gray-200" type="button">
-                  <img :src="`https://www.google.com/s2/favicons?domain=google.com`" alt="" class="w-16px h-16px mr-8px inline-block" /><span class="overflow-hidden display-block whitespace-nowrap text-over overflow-ellipsis">"{{ searchWordFallback }}" search with google</span>
+                  <img :src="searchEngineRef?.favIconUrl" alt="" class="w-16px h-16px mr-8px inline-block" /><span class="overflow-hidden display-block whitespace-nowrap text-over overflow-ellipsis">"{{ searchWordFallback }}" search with {{ searchEngineRef?.name }}</span>
                 </button>
               </li>
             </ul>
@@ -116,6 +116,7 @@ import Fuse from 'fuse.js'
 import { sendMessage } from 'webext-bridge'
 import debounce from 'lodash.debounce'
 import { nextTick } from 'vue-demi'
+import { Search } from 'webextension-polyfill'
 import {
   FUSE_OPTIONS,
   SEARCH_ITEM_TYPE,
@@ -238,9 +239,36 @@ const onClick = async(url: string, tabId?: number) => {
 // Key event
 const searchResultRefs = ref<HTMLElement[]>([])
 
+const browserSearch = async(query: string, inNewTab?: boolean) => {
+  if (browser.search.search) {
+    // Firefox API
+    await browser.search.search({
+      query,
+      tabId: inNewTab
+        ? undefined
+        : (await browser.tabs.query({
+          active: true,
+          currentWindow: true,
+        }))[0].id,
+    })
+  }
+  else {
+    // Chrome API
+    await browser.search.query({
+      text: query,
+      disposition: inNewTab ? browser.search.Disposition.NEW_TAB : browser.search.Disposition.CURRENT_TAB,
+    })
+  }
+}
+
 const changePageWithKeyEvent = async(isNewTab = false) => {
   if (searchResultRefs.value) {
     const targetEl = searchResultRefs.value[selectedNumber.value]
+    if (targetEl.dataset.isSearch !== undefined) {
+      await browserSearch(searchWordFallback.value, isNewTab)
+      closePopup()
+      return
+    }
     // if selected tab link, send change tab message to background script
     if (targetEl.dataset.tabid) {
       await sendMessage(
@@ -291,9 +319,23 @@ const onEsc = () => {
   closePopup()
 }
 
+const searchEngineRef = ref<Pick<Search.SearchEngine, 'name' | 'favIconUrl'> | null>(null)
+
 onMounted(async() => {
   await nextTick()
   if (searchInput.value)
     searchInput.value.focus()
+
+  if (browser.search.get) {
+    // This API is only available in Firefox
+    searchEngineRef.value = (await browser.search.get()).find((e: Search.SearchEngine) => e.isDefault)
+  }
+  else {
+    searchEngineRef.value = {
+      name: 'browser',
+      // Copied from IconSearch.vue
+      favIconUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" role="img" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>',
+    }
+  }
 })
 </script>
