@@ -1,6 +1,13 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## 2.5.0
+### feature
+- use browser's search engine instead of Google. #12 thanks  @Merlin04 
+
+### bugfix
+- fix overflow bug. #11 thanks @Merlin04
+
 ## 2.4.0
 ### feature
 - add setting page and default search prefix

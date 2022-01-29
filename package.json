@@ -1,7 +1,7 @@
 {
   "name": "chikamichi",
   "displayName": "Chikamichi",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "description": "Chikamichi is an extension that makes it easy to navigate pages in Chrome. You can search and navigate across browser history, bookmarks, and tabs.",
   "private": true,
   "scripts": {
