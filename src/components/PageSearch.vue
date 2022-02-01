@@ -16,13 +16,9 @@ TODO:Split the component into the following units
           class="appearance-none border border-gray-400 rounded-5px w-full py-12px px-12px text-gray-700 leading-tight focus:outline-none focus:shadow-none focus:border-gray-400 focus:ring-0 box-border bg-white pl-43px text-16px dark:bg-gray-700 dark:text-gray-300 dark:focus:shadow-none dark:border-0 mb-16px"
           type="search"
           placeholder="Search for.."
-          @keydown.stop.exact
-          @keypress.stop.exact
-          @keyup.stop.exact
-          @keypress.ctrl.enter.exact.prevent="onEnterWithControl"
+          @keypress="onKeypress"
           @keydown.down.prevent="onArrowDown"
           @keydown.up.prevent="onArrowUp"
-          @keypress.enter.exact.prevent="onEnter"
           @keydown.ctrl.n.prevent="onArrowDown"
           @keydown.ctrl.p.prevent="onArrowUp"
           @keydown.esc.prevent="onEsc"
@@ -301,11 +297,9 @@ const changePageWithKeyEvent = async(isNewTab = false) => {
   }
 }
 
-const onEnter = async() => {
-  await changePageWithKeyEvent()
-}
-const onEnterWithControl = async() => {
-  await changePageWithKeyEvent(true)
+const onKeypress = async(keyEvent: { code: string; ctrlKey?: boolean }) => {
+  if (keyEvent.code === 'Enter')
+    await changePageWithKeyEvent(!!keyEvent.ctrlKey)
 }
 const onArrowDown = () => {
   if (searchResult.value.length > selectedNumber.value + 1)
