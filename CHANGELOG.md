@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## 2.6.0
+### feature
+- add theme setting
+
 ## 2.5.1
 ### bugfix
 - fixed a problem with ctrl+enter not working on Windows #14
