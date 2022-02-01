@@ -2,7 +2,7 @@
   "name": "chikamichi",
   "displayName": "Chikamichi",
   "version": "2.6.0",
-  "description": "Chikamichi is an extension that makes it easy to navigate pages. You can search and navigate across history, bookmarks, and tabs.",
+  "description": "Command pallet for the browser. Enables fuzzy search for histories, tabs and bookmarks.",
   "private": true,
   "scripts": {
     "dev": "npm run clear && cross-env NODE_ENV=development run-p dev:*",
