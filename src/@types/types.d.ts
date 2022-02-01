@@ -5,4 +5,5 @@ type SearchItem = {
   type: 'history' | 'bookmark' | 'tab'
   tabId?: number
 }
+
 type ValueOf<T> = T[keyof T]

@@ -28,8 +28,31 @@
       </div>
     </div>
     <div class="border-gray-400 border-1px rounded-5px p-20px col-span-2 col-start-1">
-      <div class="flex justify-center items-center h-full text-sm opacity-50">
-        Coming Soon
+      <h1 class="text-lg">
+        🎨 Theme
+      </h1>
+      <div class="grid grid-col-3 mt-10px">
+        <div class="col-span-1 col-start-1 flex justify-center items-center flex-col text-center">
+          <input id="auto" v-model="theme" type="radio" value="auto" class="cursor-pointer" />
+          <label for="auto" class="cursor-pointer">
+            <IconDarkLight width="50" class="h-50px mt-10px" />
+            Auto
+          </label>
+        </div>
+        <div class="col-span-1 col-start-2 flex justify-center items-center flex-col text-center">
+          <input id="light" v-model="theme" type="radio" value="light" class="cursor-pointer" />
+          <label for="light" class="cursor-pointer">
+            <IconSun width="50" class="h-50px mt-10px" />
+            Light
+          </label>
+        </div>
+        <div class="col-span-1 col-start-3 flex justify-center items-center flex-col text-center">
+          <input id="dark" v-model="theme" type="radio" value="dark" class="cursor-pointer" />
+          <label for="dark" class="cursor-pointer">
+            <IconMoon width="50" class="h-50px mt-10px" />
+            Dark
+          </label>
+        </div>
       </div>
     </div>
     <div class="border-gray-400 border-1px rounded-5px p-20px col-span-2 col-start-3 row-start-1">
@@ -46,6 +69,7 @@
 </template>
 
 <script setup lang="ts">
-import { defaultSearchPrefix } from '~/logic'
+import { defaultSearchPrefix, theme } from '~/logic'
 import { SEARCH_PREFIX } from '~/constants'
+import IconDarkLight from '~/components/icons/IconLightDark.vue'
 </script>

@@ -64,7 +64,7 @@ TODO:Split the component into the following units
                 @click="browserSearch(searchWordFallback)"
               >
                 <button class="p-6px block text-13px flex items-center text-black border-none w-full cursor-pointer rounded-5px bg-blue-100 dark:bg-blue-800 dark:text-gray-200" type="button">
-                  <img :src="searchEngineRef?.favIconUrl" alt="" class="w-16px h-16px mr-8px inline-block" /><span class="overflow-hidden display-block whitespace-nowrap text-over overflow-ellipsis">"{{ searchWordFallback }}" search with {{ searchEngineRef?.name }}</span>
+                  <img :src="searchEngineRef?.favIconUrl" alt="" class="w-16px h-16px mr-8px inline-block text-gray-700 dark:text-gray-300" /><span class="overflow-hidden display-block whitespace-nowrap text-over overflow-ellipsis">"{{ searchWordFallback }}" search with {{ searchEngineRef?.name }}</span>
                 </button>
               </li>
             </ul>
@@ -114,11 +114,11 @@ import debounce from 'lodash.debounce'
 import { nextTick } from 'vue-demi'
 import { Search } from 'webextension-polyfill'
 import {
-  FUSE_OPTIONS,
+  FUSE_OPTIONS, PAGES, SEARCH_ICON_DATA_URL_DARK, SEARCH_ICON_DATA_URL_LIGHT,
   SEARCH_ITEM_TYPE,
-  SEARCH_TARGET_REGEX,
+  SEARCH_TARGET_REGEX, THEME,
 } from '~/constants'
-import { defaultSearchPrefix } from '~/logic'
+import { defaultSearchPrefix, theme } from '~/logic'
 
 interface Props {
   searchItems: SearchItem[]
@@ -320,16 +320,17 @@ onMounted(async() => {
   if (searchInput.value)
     searchInput.value.focus()
 
+  const defaultSearchEngineValue = {
+    name: 'browser',
+    favIconUrl: theme.value === THEME.DARK ? SEARCH_ICON_DATA_URL_DARK : SEARCH_ICON_DATA_URL_LIGHT,
+  }
+
   if (browser.search.get) {
     // This API is only available in Firefox
-    searchEngineRef.value = (await browser.search.get()).find((e: Search.SearchEngine) => e.isDefault)
+    searchEngineRef.value = (await browser.search.get()).find((e: Search.SearchEngine) => e.isDefault) || defaultSearchEngineValue
   }
   else {
-    searchEngineRef.value = {
-      name: 'browser',
-      // Copied from IconSearch.vue
-      favIconUrl: 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" role="img" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>',
-    }
+    searchEngineRef.value = defaultSearchEngineValue
   }
 })
 </script>
