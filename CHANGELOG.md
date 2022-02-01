@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## 2.5.1
+### bugfix
+- fixed a problem with ctrl+enter not working on Windows #14
+
 ## 2.5.0
 ### feature
 - use browser's search engine instead of Google. #12 thanks  @Merlin04 
