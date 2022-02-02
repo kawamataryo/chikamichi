@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## 2.6.1
+### chore
+- add autocomplete off. #17 thanks @Ademking
+
 ## 2.6.0
 ### feature
 - add theme setting
