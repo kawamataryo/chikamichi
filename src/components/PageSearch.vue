@@ -15,6 +15,7 @@ TODO:Split the component into the following units
           v-model="searchWord"
           class="appearance-none border border-gray-400 rounded-5px w-full py-12px px-12px text-gray-700 leading-tight focus:outline-none focus:shadow-none focus:border-gray-400 focus:ring-0 box-border bg-white pl-43px text-16px dark:bg-gray-700 dark:text-gray-300 dark:focus:shadow-none dark:border-0 mb-16px"
           type="search"
+          autocomplete="off"
           placeholder="Search for.."
           @keypress="onKeypress"
           @keydown.down.prevent="onArrowDown"
