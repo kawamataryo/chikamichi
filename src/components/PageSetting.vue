@@ -1,5 +1,5 @@
 <template>
-  <div class="h-full w-full flex flex-col p-20px overflow-scroll dark:text-gray-200 grid grid-cols-4 grid-rows-2 gap-4">
+  <div class="h-full w-full flex flex-col p-20px overflow-hidden dark:text-gray-200 grid grid-cols-4 grid-rows-2 gap-4">
     <div class="border-gray-400 border-1px rounded-5px p-20px col-span-2 col-start-1">
       <h1 class="text-lg">
         🔍 Default search prefix
