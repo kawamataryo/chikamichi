@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## 2.6.3
+### design
+- fixed the layout of search results #21
+
 ## 2.6.2
 ### chore
 - fix overflow-scroll. #19 thanks @Ademking
