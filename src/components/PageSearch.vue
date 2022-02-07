@@ -41,10 +41,12 @@ TODO:Split the component into the following units
               @click="onClick(result.item.url, result.item.tabId)"
             >
               <button class="p-6px block text-13px flex items-center text-black justify-between border-none w-full cursor-pointer bg-white rounded-5px dark:bg-gray-800 dark:text-gray-200" type="button" :class="{ 'selected-item': i === selectedNumber }">
-                <span class="flex items-center w-520px">
+                <span class="flex items-center">
                   <img :src="result.item.faviconUrl" alt="" class="w-16px h-16px mr-8px inline-block" />
-                  <highlighter class="overflow-hidden block whitespace-nowrap text-over overflow-ellipsis mr-5px" :item="result.item.highlightedTitle" />
-                  <highlighter class="overflow-hidden text-gray-400 text-11px block whitespace-nowrap text-over overflow-ellipsis max-w-300px ml-auto mr-5px" :item="result.item.highlightedUrl" />
+                  <span class="flex flex-col w-496px text-left">
+                    <highlighter class="overflow-hidden block whitespace-nowrap text-over overflow-ellipsis mr-5px" :item="result.item.highlightedTitle" />
+                    <highlighter class="overflow-hidden text-gray-400 text-11px block whitespace-nowrap text-over overflow-ellipsis max-w-496px text-left mt-4px" :item="result.item.highlightedUrl" :class="{ hidden: i !== selectedNumber }" />
+                  </span>
                 </span>
                 <span class="px-8px py-3px rounded-5px text-gray-400 bg-gray-200 dark:bg-gray-600 dark:text-gray-200">
                   {{ result.item.type }}

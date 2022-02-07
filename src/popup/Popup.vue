@@ -1,5 +1,5 @@
 <template>
-  <main class="w-700px h-440px flex bg-white dark:bg-gray-800 text-gray-600 dark:text-bg-gray-100 overflow-hidden">
+  <main class="w-700px h-450px flex bg-white dark:bg-gray-800 text-gray-600 dark:text-bg-gray-100 overflow-hidden">
     <div class="w-650px">
       <PageSearch v-if="currentPage === PAGES.SEARCH" :search-items="searchItems" />
       <PageInfo v-if="currentPage === PAGES.INFO" />
