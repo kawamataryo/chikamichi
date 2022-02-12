@@ -1,9 +1,13 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## 2.7.1
+### bugfix
+- fixed to not show top-level bookmark folder name
+
 ## 2.7.0
 ### feature
-- search bookmarks by parent folder name.
+- search bookmarks by parent folder name
 
 ## 2.6.3
 ### design
