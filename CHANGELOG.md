@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## 2.7.0
+### feature
+- search bookmarks by parent folder name.
+
 ## 2.6.3
 ### design
 - fixed the layout of search results #21

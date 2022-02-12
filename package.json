@@ -1,7 +1,7 @@
 {
   "name": "chikamichi",
   "displayName": "Chikamichi",
-  "version": "2.6.3",
+  "version": "2.7.0",
   "description": "Command pallet for the browser. Enables fuzzy search for histories, tabs and bookmarks.",
   "private": true,
   "scripts": {
