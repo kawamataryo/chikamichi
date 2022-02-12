@@ -16,7 +16,20 @@ export const SEARCH_ITEM_TYPE = {
 export const FUSE_OPTIONS: Fuse.IFuseOptions<any> = {
   useExtendedSearch: true,
   includeMatches: true,
-  keys: ['title', 'url'],
+  keys: [
+    {
+      name: 'title',
+      weight: 1,
+    },
+    {
+      name: 'url',
+      weight: 0.8,
+    },
+    {
+      name: 'folderName',
+      weight: 0.3,
+    },
+  ],
   threshold: 0.4,
 }
 
