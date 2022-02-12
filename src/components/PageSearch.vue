@@ -44,7 +44,10 @@ TODO:Split the component into the following units
                 <span class="flex items-center">
                   <img :src="result.item.faviconUrl" alt="" class="w-16px h-16px mr-8px inline-block" />
                   <span class="flex flex-col w-496px text-left">
-                    <highlighter class="overflow-hidden block whitespace-nowrap text-over overflow-ellipsis mr-5px" :item="result.item.highlightedTitle" />
+                    <span class="block break-all">
+                      <span v-show="result.item.folderName" class="mr-5px">[<highlighter class="overflow-hidden whitespace-nowrap text-over overflow-ellipsis" :item="result.item.highlightedFolderName" />]</span>
+                      <highlighter class="overflow-hidden whitespace-nowrap text-over overflow-ellipsis mr-5px" :item="result.item.highlightedTitle" />
+                    </span>
                     <highlighter class="overflow-hidden text-gray-400 text-11px block whitespace-nowrap text-over overflow-ellipsis max-w-496px text-left mt-4px" :item="result.item.highlightedUrl" :class="{ hidden: i !== selectedNumber }" />
                   </span>
                 </span>
@@ -122,6 +125,7 @@ import {
   SEARCH_TARGET_REGEX, THEME,
 } from '~/constants'
 import { defaultSearchPrefix, theme } from '~/logic'
+import { getHighlightedProperty, getHighlightedUrl } from '~/popup/utils/getSearchItems'
 
 interface Props {
   searchItems: SearchItem[]
@@ -153,24 +157,6 @@ const searchItemsOnlyBookmark = computed(() => props.searchItems.filter(i => i.t
 const searchItemsOnlyTab = computed(() => props.searchItems.filter(i => i.type === SEARCH_ITEM_TYPE.TAB))
 const selectedNumber = ref(0)
 
-const getHighlightedTitle = (result: Fuse.FuseResult<SearchItem>) => ({
-  indices: result.matches?.find(m => m.key === 'title')?.indices as ([number, number][] | undefined),
-  text: result.item.title,
-})
-const getHighlightedUrl = (result: Fuse.FuseResult<SearchItem>) => {
-  const urlRegex = /^(?:https?:\/\/)?(?:www\.)?/i
-  const urlMatch = result.item.url.match(urlRegex)
-  const urlMatchedLength = urlMatch ? urlMatch[0].length : 0
-  const indices = result.matches
-    ?.find(m => m.key === 'url')
-    ?.indices.map(([i, j]) => [i - urlMatchedLength, j - urlMatchedLength])
-    .filter(indice => indice[0] >= 0)
-  return {
-    indices: indices as ([number, number][] | undefined),
-    text: result.item.url.replace(urlRegex, ''),
-  }
-}
-
 const searchResult = computed(() => {
   if (!searchItems.value) return []
 
@@ -198,8 +184,9 @@ const searchResult = computed(() => {
       ...result,
       item: {
         ...result.item,
-        highlightedTitle: getHighlightedTitle(result),
+        highlightedTitle: getHighlightedProperty(result, 'title'),
         highlightedUrl: getHighlightedUrl(result),
+        highlightedFolderName: getHighlightedProperty(result, 'folderName'),
       },
     }
   })

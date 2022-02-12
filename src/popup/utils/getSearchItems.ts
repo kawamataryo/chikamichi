@@ -1,4 +1,5 @@
 import { Bookmarks, History, Tabs } from 'webextension-polyfill'
+import Fuse from 'fuse.js'
 import { SEARCH_ITEM_TYPE } from '~/constants'
 
 export const faviconUrl = (url: string) => `https://www.google.com/s2/favicons?domain=${new URL(url).hostname}`
@@ -39,7 +40,7 @@ export const convertToSearchItemsFromBookmarks = (bookmarkTreeNodes: Bookmarks.B
         title: node.title,
         faviconUrl: faviconUrl(node.url),
         type: SEARCH_ITEM_TYPE.BOOKMARK,
-        folderName,
+        folderName: folderName === 'Bookmarks Bar' ? '' : folderName, // Exclude top level folder name.
       })
     })
   }
@@ -85,4 +86,23 @@ export const getSearchItems = async() => {
     ...convertToSearchItemsFromBookmarks(bookmarks),
     ...convertToSearchItemsFromTabs(tabs),
   ])
+}
+
+export const getHighlightedProperty = (result: Fuse.FuseResult<SearchItem>, key: keyof SearchItem) => ({
+  indices: result.matches?.find(m => m.key === key)?.indices as ([number, number][] | undefined),
+  text: result.item[key],
+})
+
+export const getHighlightedUrl = (result: Fuse.FuseResult<SearchItem>) => {
+  const urlRegex = /^(?:https?:\/\/)?(?:www\.)?/i
+  const urlMatch = result.item.url.match(urlRegex)
+  const urlMatchedLength = urlMatch ? urlMatch[0].length : 0
+  const indices = result.matches
+    ?.find(m => m.key === 'url')
+    ?.indices.map(([i, j]) => [i - urlMatchedLength, j - urlMatchedLength])
+    .filter(indice => indice[0] >= 0)
+  return {
+    indices: indices as ([number, number][] | undefined),
+    text: result.item.url.replace(urlRegex, ''),
+  }
 }
