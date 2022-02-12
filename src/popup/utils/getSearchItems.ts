@@ -40,7 +40,7 @@ export const convertToSearchItemsFromBookmarks = (bookmarkTreeNodes: Bookmarks.B
         title: node.title,
         faviconUrl: faviconUrl(node.url),
         type: SEARCH_ITEM_TYPE.BOOKMARK,
-        folderName: folderName === 'Bookmarks Bar' ? '' : folderName, // Exclude top level folder name.
+        folderName: node.parentId === '1' ? '' : folderName, // Exclude top level folder name.
       })
     })
   }
