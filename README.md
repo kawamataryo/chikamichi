@@ -1,7 +1,7 @@
 <img width="100" src="https://user-images.githubusercontent.com/11070996/147922657-3c079672-edbd-4993-a645-f71a2739b18c.png#gh-dark-mode-only"/>
 <img width="100" src="https://user-images.githubusercontent.com/11070996/147922660-890e2d96-26ee-4358-afc4-8421e9a05d5d.png#gh-light-mode-only"/>
 
-# Chikamichi
+# Chikamichi - Quickly find a page
 
 Chikamichi is an extension that makes it very easy to navigate pages in Chrome or Firefox. You can search and navigate across browser history, bookmarks, and tabs.
 Simple shortcuts and a simple interface make it easy to use.  
