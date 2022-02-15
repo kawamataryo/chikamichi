@@ -44,9 +44,9 @@ TODO:Split the component into the following units
                 <span class="flex items-center">
                   <img :src="result.item.faviconUrl" alt="" class="w-16px h-16px mr-8px inline-block" />
                   <span class="flex flex-col w-496px text-left">
-                    <span class="block break-all">
-                      <span v-show="result.item.folderName" class="mr-5px">[<highlighter class="overflow-hidden whitespace-nowrap text-over overflow-ellipsis" :item="result.item.highlightedFolderName" />]</span>
-                      <highlighter class="overflow-hidden whitespace-nowrap text-over overflow-ellipsis mr-5px" :item="result.item.highlightedTitle" />
+                    <span class="block break-all text-over overflow-ellipsis max-w-496px overflow-hidden">
+                      <span v-show="result.item.folderName" class="mr-5px">[<highlighter :item="result.item.highlightedFolderName" />]</span>
+                      <highlighter class="whitespace-nowrap" :item="result.item.highlightedTitle" />
                     </span>
                     <highlighter class="overflow-hidden text-gray-400 text-11px block whitespace-nowrap text-over overflow-ellipsis max-w-496px text-left mt-4px" :item="result.item.highlightedUrl" :class="{ hidden: i !== selectedNumber }" />
                   </span>
