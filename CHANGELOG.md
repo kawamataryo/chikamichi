@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## 2.7.2
+### bugfix
+- fixed overflow bug
+
 ## 2.7.1
 ### bugfix
 - fixed to not show top-level bookmark folder name
