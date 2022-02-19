@@ -120,12 +120,12 @@ import debounce from 'lodash.debounce'
 import { nextTick } from 'vue-demi'
 import { Search } from 'webextension-polyfill'
 import {
-  FUSE_OPTIONS, PAGES, SEARCH_ICON_DATA_URL_DARK, SEARCH_ICON_DATA_URL_LIGHT,
+  FUSE_OPTIONS, SEARCH_ICON_DATA_URL_DARK, SEARCH_ICON_DATA_URL_LIGHT,
   SEARCH_ITEM_TYPE,
   SEARCH_TARGET_REGEX, THEME,
 } from '~/constants'
 import { defaultSearchPrefix, theme } from '~/logic'
-import { getHighlightedProperty, getHighlightedUrl } from '~/popup/utils/getSearchItems'
+import { getHighlightedProperty, getHighlightedUrl } from '~/popup/utils/highlight'
 
 interface Props {
   searchItems: SearchItem[]
