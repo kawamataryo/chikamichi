@@ -1,6 +1,6 @@
 import { randCatchPhrase, randNumber, randUrl, randUuid } from '@ngneat/falso'
-import { Bookmarks } from 'webextension-polyfill'
-import { convertToSearchItemsFromBookmarks, faviconUrl } from '~/popup/utils/getSearchItems'
+import { Bookmarks, History } from 'webextension-polyfill'
+import { convertToSearchItemsFromBookmarks, convertToSearchItemsFromHistories, faviconUrl } from '~/popup/utils/getSearchItems'
 import { SEARCH_ITEM_TYPE } from '~/constants'
 
 vi.mock('webextension-polyfill', () => ({}))
@@ -14,6 +14,12 @@ const generateBookmark = (): Bookmarks.BookmarkTreeNode => ({
   dateAdded: randNumber(),
   dateGroupModified: randNumber(),
   type: 'bookmark' as const,
+})
+
+const generateHistory = (args: { title?: string; url?: string} = {}): History.HistoryItem => ({
+  id: randUuid(),
+  url: args.url ?? randUrl(),
+  title: args.title ?? randCatchPhrase(),
 })
 
 describe('convertToSearchItemsFromBookmarks', () => {
@@ -67,5 +73,74 @@ describe('convertToSearchItemsFromBookmarks', () => {
       folderName: nestedFolder.title,
     },
     ])
+  })
+
+  describe('convertToSearchItemsFromHistories', () => {
+    it('get search items from histories', () => {
+      const histories = [generateHistory(), generateHistory()]
+
+      const searchItems = convertToSearchItemsFromHistories(histories)
+
+      expect(searchItems.length).toBe(2)
+      expect(searchItems).toEqual([
+        {
+          url: histories[0].url,
+          title: histories[0].title!,
+          faviconUrl: faviconUrl(histories[0].url!),
+          type: SEARCH_ITEM_TYPE.HISTORY,
+          folderName: '',
+        },
+        {
+          url: histories[1].url,
+          title: histories[1].title!,
+          faviconUrl: faviconUrl(histories[1].url!),
+          type: SEARCH_ITEM_TYPE.HISTORY,
+          folderName: '',
+        },
+      ])
+    })
+  })
+
+  it('remove google search histories', () => {
+    const histories = [generateHistory({ url: 'https://www.google.com/search?q=Compiler+API' }), generateHistory()]
+
+    const searchItems = convertToSearchItemsFromHistories(histories)
+
+    expect(searchItems.length).toBe(1)
+    expect(searchItems).toEqual([
+      {
+        url: histories[1].url,
+        title: histories[1].title!,
+        faviconUrl: faviconUrl(histories[1].url!),
+        type: SEARCH_ITEM_TYPE.HISTORY,
+        folderName: '',
+      },
+    ])
+  })
+
+  it('remove same title histories', () => {
+    const histories = [generateHistory({ title: 'titleA' }), generateHistory({ title: 'titleB' }), generateHistory({ title: 'titleA' })]
+
+    const searchItems = convertToSearchItemsFromHistories(histories)
+
+    expect(searchItems.length).toBe(2)
+    expect(searchItems).toContainEqual(
+      {
+        url: histories[1].url,
+        title: histories[1].title!,
+        faviconUrl: faviconUrl(histories[1].url!),
+        type: SEARCH_ITEM_TYPE.HISTORY,
+        folderName: '',
+      },
+    )
+    expect(searchItems).toContainEqual(
+      {
+        url: histories[2].url,
+        title: histories[2].title!,
+        faviconUrl: faviconUrl(histories[2].url!),
+        type: SEARCH_ITEM_TYPE.HISTORY,
+        folderName: '',
+      },
+    )
   })
 })

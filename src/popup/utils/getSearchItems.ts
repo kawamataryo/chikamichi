@@ -3,13 +3,22 @@ import { SEARCH_ITEM_TYPE } from '~/constants'
 
 export const faviconUrl = (url: string) => `https://www.google.com/s2/favicons?domain=${new URL(url).hostname}`
 
+const removeDeprecatedItem = (searchItems: SearchItem[], key: 'title' | 'url') => {
+  return Array.from(
+    searchItems
+      .reduce(
+        (map, currentItem) =>
+          map.set(currentItem[key], currentItem),
+        new Map<string, SearchItem>(),
+      )
+      .values(),
+  )
+}
+
 export const convertToSearchItemsFromHistories = (histories: History.HistoryItem[]): SearchItem[] => {
-  return histories.filter((history) => {
+  const searchItems = histories.filter((history) => {
     // remove google search's history
     if (/google\..+\/search/.test(history.url!))
-      return false
-    // remove anker link
-    if (/.+#.+/.test(history.url!))
       return false
     return true
   }).map(history => ({
@@ -19,6 +28,9 @@ export const convertToSearchItemsFromHistories = (histories: History.HistoryItem
     type: SEARCH_ITEM_TYPE.HISTORY,
     folderName: '',
   }))
+
+  // remove same title items
+  return removeDeprecatedItem(searchItems, 'title')
 }
 
 export const convertToSearchItemsFromBookmarks = (bookmarkTreeNodes: Bookmarks.BookmarkTreeNode[]): SearchItem[] => {
@@ -58,18 +70,6 @@ export const convertToSearchItemsFromTabs = (tabs: Tabs.Tab[]): SearchItem[] => 
   }))
 }
 
-const removeDeprecatedItem = (searchItems: SearchItem[]) => {
-  return Array.from(
-    searchItems
-      .reduce(
-        (map, currentItem) =>
-          map.set(currentItem.url, currentItem),
-        new Map<string, SearchItem>(),
-      )
-      .values(),
-  )
-}
-
 export const getSearchItems = async() => {
   const tabs = await browser.tabs.query({})
   const bookmarks = await browser.bookmarks.getTree()
@@ -84,5 +84,5 @@ export const getSearchItems = async() => {
     ...convertToSearchItemsFromHistories(histories),
     ...convertToSearchItemsFromBookmarks(bookmarks),
     ...convertToSearchItemsFromTabs(tabs),
-  ])
+  ], 'url')
 }
