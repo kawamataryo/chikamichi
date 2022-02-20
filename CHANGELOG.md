@@ -1,6 +1,9 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## 2.9.0
+### feature
+- expand the number of search displays #26
 ## 2.8.0
 ### feature
 - remove same title histories
