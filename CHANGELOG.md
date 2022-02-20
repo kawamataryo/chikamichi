@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## 2.10.0
+### feature
+- add favorite items
+
 ## 2.9.0
 ### feature
 - expand the number of search displays #26
