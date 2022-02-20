@@ -25,7 +25,7 @@ TODO:Split the component into the following units
           @keydown.esc.prevent="onEsc"
         >
       </div>
-      <nav class="m h-full" role="navigation">
+      <nav ref="searchResultWrapperRef" class="m h-330px overflow-y-scroll">
         <template v-if="searchResult.length">
           <ul class="pl-0">
             <li
@@ -34,7 +34,6 @@ TODO:Split the component into the following units
               :ref="el => { if (el) searchResultRefs[i] = el as HTMLElement }"
               :aria-selected="i === selectedNumber"
               class="block"
-
               role="option"
               :data-tabid="result.item.tabId"
               :data-url="result.item.url"
@@ -156,6 +155,7 @@ const searchItemsOnlyHistory = computed(() => props.searchItems.filter(i => i.ty
 const searchItemsOnlyBookmark = computed(() => props.searchItems.filter(i => i.type === SEARCH_ITEM_TYPE.BOOKMARK))
 const searchItemsOnlyTab = computed(() => props.searchItems.filter(i => i.type === SEARCH_ITEM_TYPE.TAB))
 const selectedNumber = ref(0)
+const searchResultWrapperRef = ref<HTMLElement | null>(null)
 
 const searchResult = computed(() => {
   if (!searchItems.value) return []
@@ -179,7 +179,7 @@ const searchResult = computed(() => {
 
   // fuzzy search powered by Fuse.js https://fusejs.io/
   const fuse = new Fuse(target, FUSE_OPTIONS)
-  return fuse.search(word, { limit: 10 }).map((result) => {
+  return fuse.search(word, { limit: 100 }).map((result) => {
     return {
       ...result,
       item: {
@@ -194,6 +194,7 @@ const searchResult = computed(() => {
 
 watch(searchResult, () => {
   selectedNumber.value = 0
+  searchResultWrapperRef.value?.scrollTo(0, 0)
 })
 
 const closePopup = () => { window.close() }
@@ -291,13 +292,32 @@ const onKeypress = async(keyEvent: { code: string; ctrlKey?: boolean }) => {
   if (keyEvent.code === 'Enter')
     await changePageWithKeyEvent(!!keyEvent.ctrlKey)
 }
+
+const fixScrollPosition = () => {
+  if (!searchResultWrapperRef.value)
+    return
+
+  const wrapperElm = searchResultWrapperRef.value
+  const { top: wrapperTop, height: wrapperHeight } = wrapperElm.getBoundingClientRect()
+  const selectedItemRef = searchResultRefs.value[selectedNumber.value]
+  const { top: selectedItemTop, height: selectedItemHeight } = selectedItemRef.getBoundingClientRect()
+  if (selectedItemTop + selectedItemHeight > wrapperTop + wrapperHeight)
+    wrapperElm.scrollTo(0, wrapperElm.scrollTop + selectedItemHeight)
+  if (selectedItemTop < wrapperTop)
+    wrapperElm.scrollTo(0, wrapperElm.scrollTop - selectedItemHeight)
+}
+
 const onArrowDown = () => {
-  if (searchResult.value.length > selectedNumber.value + 1)
+  if (searchResult.value.length > selectedNumber.value + 1) {
     selectedNumber.value++
+    fixScrollPosition()
+  }
 }
 const onArrowUp = () => {
-  if (selectedNumber.value > 0)
+  if (selectedNumber.value > 0) {
     selectedNumber.value--
+    fixScrollPosition()
+  }
 }
 const onEsc = () => {
   closePopup()
