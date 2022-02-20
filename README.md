@@ -35,6 +35,7 @@ Please install from:
 | `↓` or `↑` (`Ctrl + n` or `Ctrl + p`) | Select history                           |
 | `Enter`                               | Open the selected url            |
 | `Ctrl + Enter`                        | Open the selected url in new tab |
+| `Ctrl + f`                            | Add favorite |
 
 ### Search commands
 
@@ -43,6 +44,9 @@ Please install from:
 | `/h`     | Search only histories |
 | `/b`     | Search only bookmarks |
 | `/t`     | Search only tabs      |
+
+### Favorite
+Items with a star to the right of the search item are registered as favorites. Items registered as favorites will be displayed in the initial view. However, if a search prefix has been set, the search prefix will take precedence.
 
 ## 👨‍💻 Contributing
 Contributions are welcome 🎉 We accept contributions via Pull Requests.
