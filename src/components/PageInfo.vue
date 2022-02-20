@@ -29,6 +29,9 @@
         <li class="mt-10px">
           ・<span class="info-key-text mr-5px">Ctrl + Enter</span>Open page in new tab
         </li>
+        <li class="mt-10px">
+          ・<span class="info-key-text mr-5px">Ctrl + f</span>Add to Favorites
+        </li>
       </ul>
     </div>
     <div class="border-gray-400 border-1px rounded-5px row-span-1 col-start-3 col-span-1 p-20px">

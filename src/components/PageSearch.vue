@@ -22,6 +22,7 @@ TODO:Split the component into the following units
           @keydown.up.prevent="onArrowUp"
           @keydown.ctrl.n.prevent="onArrowDown"
           @keydown.ctrl.p.prevent="onArrowUp"
+          @keydown.ctrl.f.prevent="onFavoriteClick"
           @keydown.esc.prevent="onEsc"
         >
       </div>
@@ -217,10 +218,8 @@ const searchResult = computed(() => {
   })
 })
 
-watch(searchResult, () => {
-  selectedNumber.value = 0
-})
 watch(searchWord, () => {
+  selectedNumber.value = 0
   searchResultWrapperRef.value?.scrollTo(0, 0)
 })
 
@@ -349,7 +348,8 @@ const onArrowUp = () => {
 const onEsc = () => {
   closePopup()
 }
-const onFavoriteClick = (item: SearchItem) => {
+const onFavoriteClick = () => {
+  const item = searchResult.value[selectedNumber.value]
   if (isFavorite(item.url)) {
     favoriteItems.value = JSON.stringify(parsedFavoriteItems.value.filter(i => i.url !== item.url))
   }
