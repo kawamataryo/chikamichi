@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## 2.11.0
+### feature
+- add favorite shortcut
+
 ## 2.10.0
 ### feature
 - add favorite items
