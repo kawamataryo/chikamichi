@@ -1,5 +1,4 @@
 import { splitHighlighterItem } from '~/components/highlighter/utils'
-import { HighlighterItem } from '~/components/highlighter/types'
 
 describe('can be split without a indices.', () => {
   it('can be split with do not match', () => {

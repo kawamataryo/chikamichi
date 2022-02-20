@@ -35,23 +35,29 @@ TODO:Split the component into the following units
               :aria-selected="i === selectedNumber"
               class="block"
               role="option"
-              :data-tabid="result.item.tabId"
-              :data-url="result.item.url"
-              @click="onClick(result.item.url, result.item.tabId)"
+              :data-tabid="result.tabId"
+              :data-url="result.url"
+              @click="onClick(result.url, result.tabId)"
             >
               <button class="p-6px block text-13px flex items-center text-black justify-between border-none w-full cursor-pointer bg-white rounded-5px dark:bg-gray-800 dark:text-gray-200" type="button" :class="{ 'selected-item': i === selectedNumber }">
                 <span class="flex items-center">
-                  <img :src="result.item.faviconUrl" alt="" class="w-16px h-16px mr-8px inline-block" />
-                  <span class="flex flex-col w-496px text-left">
+                  <img :src="result.faviconUrl" alt="" class="w-16px h-16px mr-8px inline-block" />
+                  <span class="flex flex-col w-440px text-left">
                     <span class="block break-all text-over overflow-ellipsis max-w-496px overflow-hidden">
-                      <span v-show="result.item.folderName" class="mr-5px">[<highlighter :item="result.item.highlightedFolderName" />]</span>
-                      <highlighter class="whitespace-nowrap" :item="result.item.highlightedTitle" />
+                      <span v-show="result.folderName" class="mr-5px">[<highlighter :item="result.highlightedFolderName" />]</span>
+                      <highlighter class="whitespace-nowrap" :item="result.highlightedTitle" />
                     </span>
-                    <highlighter class="overflow-hidden text-gray-400 text-11px block whitespace-nowrap text-over overflow-ellipsis max-w-496px text-left mt-4px" :item="result.item.highlightedUrl" :class="{ hidden: i !== selectedNumber }" />
+                    <highlighter class="overflow-hidden text-gray-400 text-11px block whitespace-nowrap text-over overflow-ellipsis max-w-496px text-left mt-4px" :item="result.highlightedUrl" :class="{ hidden: i !== selectedNumber }" />
                   </span>
                 </span>
-                <span class="px-8px py-3px rounded-5px text-gray-400 bg-gray-200 dark:bg-gray-600 dark:text-gray-200">
-                  {{ result.item.type }}
+                <span class="items-center flex">
+                  <span class="px-8px py-3px rounded-5px text-gray-400 bg-gray-200 dark:bg-gray-600 dark:text-gray-200 mr-5px">
+                    {{ result.type }}
+                  </span>
+                  <span class="inline-block p-3px mr-15px" @click.stop="onFavoriteClick(result)">
+                    <ToggleStar v-if="!result.tabId" :value="result.isFavorite" />
+                    <div v-else class="w-18px h-18px" />
+                  </span>
                 </span>
               </button>
             </li>
@@ -118,12 +124,13 @@ import { sendMessage } from 'webext-bridge'
 import debounce from 'lodash.debounce'
 import { nextTick } from 'vue-demi'
 import { Search } from 'webextension-polyfill'
+import ToggleStar from './ToggleStar.vue'
 import {
   FUSE_OPTIONS, SEARCH_ICON_DATA_URL_DARK, SEARCH_ICON_DATA_URL_LIGHT,
   SEARCH_ITEM_TYPE,
   SEARCH_TARGET_REGEX, THEME,
 } from '~/constants'
-import { defaultSearchPrefix, theme } from '~/logic'
+import { defaultSearchPrefix, theme, favoriteItems } from '~/logic'
 import { getHighlightedProperty, getHighlightedUrl } from '~/popup/utils/highlight'
 
 interface Props {
@@ -156,12 +163,32 @@ const searchItemsOnlyBookmark = computed(() => props.searchItems.filter(i => i.t
 const searchItemsOnlyTab = computed(() => props.searchItems.filter(i => i.type === SEARCH_ITEM_TYPE.TAB))
 const selectedNumber = ref(0)
 const searchResultWrapperRef = ref<HTMLElement | null>(null)
+const parsedFavoriteItems = computed(() => JSON.parse(favoriteItems.value) as FavoriteItem[])
+
+const initialSearchItems = computed(() => {
+  return parsedFavoriteItems.value.map(i => ({
+    ...i,
+    highlightedTitle: { indices: undefined, text: i.title },
+    highlightedUrl: { indices: undefined, text: i.url },
+    highlightedFolderName: { indices: undefined, text: i.folderName },
+    isFavorite: true,
+    tabId: undefined,
+  }))
+})
+const isFavorite = (url: string) => {
+  return parsedFavoriteItems.value.some((i: FavoriteItem) => i.url === url)
+}
 
 const searchResult = computed(() => {
   if (!searchItems.value) return []
 
   let target = searchItems.value
   let word = searchWord.value
+
+  if (!word) {
+    // initial display
+    return initialSearchItems.value.slice(0, 100)
+  }
 
   // Selecting targets with the prefix
   if (SEARCH_TARGET_REGEX.HISTORY.test(word)) {
@@ -179,21 +206,21 @@ const searchResult = computed(() => {
 
   // fuzzy search powered by Fuse.js https://fusejs.io/
   const fuse = new Fuse(target, FUSE_OPTIONS)
-  return fuse.search(word, { limit: 100 }).map((result) => {
+  return fuse.search<SearchItem>(word, { limit: 100 }).map((result) => {
     return {
-      ...result,
-      item: {
-        ...result.item,
-        highlightedTitle: getHighlightedProperty(result, 'title'),
-        highlightedUrl: getHighlightedUrl(result),
-        highlightedFolderName: getHighlightedProperty(result, 'folderName'),
-      },
+      ...result.item,
+      highlightedTitle: getHighlightedProperty(result, 'title'),
+      highlightedUrl: getHighlightedUrl(result),
+      highlightedFolderName: getHighlightedProperty(result, 'folderName'),
+      isFavorite: isFavorite(result.item.url),
     }
   })
 })
 
 watch(searchResult, () => {
   selectedNumber.value = 0
+})
+watch(searchWord, () => {
   searchResultWrapperRef.value?.scrollTo(0, 0)
 })
 
@@ -321,6 +348,20 @@ const onArrowUp = () => {
 }
 const onEsc = () => {
   closePopup()
+}
+const onFavoriteClick = (item: SearchItem) => {
+  if (isFavorite(item.url)) {
+    favoriteItems.value = JSON.stringify(parsedFavoriteItems.value.filter(i => i.url !== item.url))
+  }
+  else {
+    favoriteItems.value = JSON.stringify([...parsedFavoriteItems.value, {
+      url: item.url,
+      title: item.title,
+      faviconUrl: item.faviconUrl,
+      type: item.type,
+      folderName: item.folderName,
+    }])
+  }
 }
 
 const searchEngineRef = ref<Pick<Search.SearchEngine, 'name' | 'favIconUrl'> | null>(null)

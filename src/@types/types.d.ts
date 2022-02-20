@@ -8,3 +8,22 @@ type SearchItem = {
 }
 
 type ValueOf<T> = T[keyof T]
+
+type HighlighterItem = {
+  indices?: [number, number][]
+  text: string
+}
+
+type SearchItemWithHighlight = SearchItem & {
+  highlightedTitle: HighlighterItem
+  highlightedUrl: HighlighterItem
+  highlightedFolderName: HighlighterItem
+}
+
+type FavoriteItem = {
+  title: string
+  url: string
+  faviconUrl: string
+  folderName?: string
+  type: 'history' | 'bookmark'
+}

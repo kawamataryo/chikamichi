@@ -1,5 +1,3 @@
-import { HighlighterItem } from './types'
-
 interface SplitHighlighterItem {
   highlight: boolean
   text: string
