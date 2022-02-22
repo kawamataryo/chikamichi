@@ -21,7 +21,8 @@
     "lint": "eslint 'src/**/*.{json,ts,js,vue}'",
     "format": "prettier --write 'src/**/*.{json,ts,js,vue}'",
     "test": "vitest",
-    "test:ci": "vitest run"
+    "test:ci": "vitest run",
+    "prepare": "husky install"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.16.1",
@@ -64,5 +65,9 @@
     "fuse.js": "^6.5.3",
     "lodash.debounce": "^4.0.8",
     "vue-fuse": "^4.0.3"
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix",
+    "*.{json,ts,js,vue}": "prettier --write"
   }
 }
