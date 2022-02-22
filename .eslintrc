@@ -1,3 +1,6 @@
 {
-  "extends": "@antfu"
+  "extends": ["@antfu", "prettier"],
+  "rules": {
+    "@typescript-eslint/consistent-type-imports": "off"
+  }
 }
