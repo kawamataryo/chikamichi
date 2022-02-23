@@ -3,6 +3,7 @@
     :width="18"
     :height="18"
     :border="props.value"
+    cy-data="toggle-star"
     @click="emit('click')"
   />
 </template>
