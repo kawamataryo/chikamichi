@@ -2,6 +2,13 @@
 All notable changes to this project will be documented in this file.
 
 ## 2.11.1
+### feat
+- open new tab with cmd + enter
+
+### clean
+- add favorite click event test
+
+## 2.11.1
 ### clean
 - update dependencies
 - add cypress test
