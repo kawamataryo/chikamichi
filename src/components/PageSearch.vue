@@ -17,6 +17,7 @@ TODO:Split the component into the following units
           type="search"
           autocomplete="off"
           placeholder="Search for.."
+          data-cy="search-input"
           @keypress="onKeypress"
           @keydown.down.prevent="onArrowDown"
           @keydown.up.prevent="onArrowUp"
@@ -26,7 +27,11 @@ TODO:Split the component into the following units
           @keydown.esc.prevent="onEsc"
         />
       </div>
-      <nav ref="searchResultWrapperRef" class="m h-330px overflow-y-scroll">
+      <nav
+        ref="searchResultWrapperRef"
+        class="m h-330px overflow-y-scroll"
+        data-cy="search-result-wrapper"
+      >
         <template v-if="searchResult.length">
           <ul class="pl-0">
             <li
@@ -43,6 +48,7 @@ TODO:Split the component into the following units
               <button
                 class="p-6px block text-13px flex items-center text-black justify-between border-none w-full cursor-pointer bg-white rounded-5px dark:bg-gray-800 dark:text-gray-200"
                 type="button"
+                :data-cy="`search-result-${i}`"
                 :class="{ 'selected-item': i === selectedNumber }"
               >
                 <span class="flex items-center">
@@ -75,6 +81,7 @@ TODO:Split the component into the following units
                 <span class="items-center flex">
                   <span
                     class="px-8px py-3px rounded-5px text-gray-400 bg-gray-200 dark:bg-gray-600 dark:text-gray-200 mr-5px"
+                    :data-cy="`search-result-type-${i}`"
                   >
                     {{ result.type }}
                   </span>
@@ -106,6 +113,7 @@ TODO:Split the component into the following units
               >
                 <button
                   class="p-6px block text-13px flex items-center text-black border-none w-full cursor-pointer rounded-5px bg-blue-100 dark:bg-blue-800 dark:text-gray-200"
+                  data-cy="browser-search-btn"
                   type="button"
                 >
                   <img

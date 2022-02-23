@@ -1,6 +1,7 @@
 {
   "extends": ["@antfu", "prettier"],
   "rules": {
-    "@typescript-eslint/consistent-type-imports": "off"
+    "@typescript-eslint/consistent-type-imports": "off",
+    "node/no-callback-literal": "off"
   }
 }

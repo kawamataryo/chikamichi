@@ -1,9 +1,10 @@
-name: "Vitest"
+name: Cypress Tests
+
 on:
   push:
 
 jobs:
-  vitest-run:
+  cypress-run:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -23,5 +24,11 @@ jobs:
         with:
           node-version: 16.x
           cache: "pnpm"
-      - run: |
-          pnpm run test:ci
+      - name: Build extension
+        run: pnpm build
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          install: false
+          start: pnpm run serve
+          wait-on: 'http://localhost:3000'
