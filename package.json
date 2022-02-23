@@ -23,7 +23,9 @@
     "test": "vitest",
     "test:ci": "vitest run",
     "prepare": "husky install",
-    "serve": "serve extension -l 3000"
+    "serve": "serve extension -l 3000",
+    "cypress:run": "cypress run",
+    "cypress:open": "cypress open"
   },
   "devDependencies": {
     "@antfu/eslint-config": "0.16.1",
