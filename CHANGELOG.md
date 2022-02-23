@@ -1,6 +1,13 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## 2.11.1
+### clean
+- update dependencies
+- add cypress test
+- fix type error
+- lint and format code
+
 ## 2.11.0
 ### feature
 - add favorite shortcut
