@@ -1,7 +1,7 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
-## 2.11.1
+## 2.11.2
 ### feat
 - open new tab with cmd + enter
 
