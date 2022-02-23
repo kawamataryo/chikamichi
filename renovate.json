@@ -5,6 +5,7 @@
   "pin": {
     "automerge": true
   },
+  "prConcurrentLimit": 4,
   "packageRules": [
     {
       "packagePatterns": ["^@types/"],
