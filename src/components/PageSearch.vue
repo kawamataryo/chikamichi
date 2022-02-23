@@ -22,6 +22,7 @@ TODO:Split the component into the following units
           placeholder="Search for.."
           data-cy="search-input"
           @keypress="onKeypress"
+          @keydown.meta.enter.exact.prevent="onKeypress"
           @keydown.down.prevent="onArrowDown"
           @keydown.up.prevent="onArrowUp"
           @keydown.ctrl.n.prevent="onArrowDown"
@@ -90,6 +91,7 @@ TODO:Split the component into the following units
                   </span>
                   <span
                     class="inline-block p-3px mr-15px"
+                    :data-cy="`search-result-favorite-${i}`"
                     @click.stop="onFavoriteClick"
                   >
                     <ToggleStar
@@ -391,9 +393,14 @@ const changePageWithKeyEvent = async (isNewTab = false) => {
   }
 };
 
-const onKeypress = async (keyEvent: { code: string; ctrlKey?: boolean }) => {
+const onKeypress = async (keyEvent: {
+  code: string;
+  ctrlKey?: boolean;
+  metaKey?: boolean;
+}) => {
+  console.log(keyEvent);
   if (keyEvent.code === "Enter")
-    await changePageWithKeyEvent(!!keyEvent.ctrlKey);
+    await changePageWithKeyEvent(!!keyEvent.ctrlKey || !!keyEvent.metaKey);
 };
 
 const fixScrollPosition = () => {
