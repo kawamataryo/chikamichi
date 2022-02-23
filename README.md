@@ -1,6 +1,9 @@
 <img width="100" src="https://user-images.githubusercontent.com/11070996/147922657-3c079672-edbd-4993-a645-f71a2739b18c.png#gh-dark-mode-only"/>
 <img width="100" src="https://user-images.githubusercontent.com/11070996/147922660-890e2d96-26ee-4358-afc4-8421e9a05d5d.png#gh-light-mode-only"/>
 
+<a href="https://chrome.google.com/webstore/detail/chikamichi-quickly-find-a/gkhobepjbiepngbeikhbpnfgjcjgmgha"><img alt="Chrome web store version" src="https://img.shields.io/chrome-web-store/v/gkhobepjbiepngbeikhbpnfgjcjgmgha.svg"></a>
+<a href="https://chrome.google.com/webstore/detail/chikamichi-quickly-find-a/gkhobepjbiepngbeikhbpnfgjcjgmgha"><img alt="Chrome web store rating" src="https://img.shields.io/chrome-web-store/stars/gkhobepjbiepngbeikhbpnfgjcjgmgha.svg"></a>
+<a href="https://chrome.google.com/webstore/detail/chikamichi-quickly-find-a/gkhobepjbiepngbeikhbpnfgjcjgmgha"><img alt="Chrome Web Store users" src="https://img.shields.io/chrome-web-store/users/gkhobepjbiepngbeikhbpnfgjcjgmgha"></a>
 [![CI:UT](https://github.com/kawamataryo/chikamichi/actions/workflows/cypress-test.yaml/badge.svg)](https://github.com/kawamataryo/chikamcichi/actions/workflows/cypress-test.yaml)
 [![CI:E2E](https://github.com/kawamataryo/chikamichi/actions/workflows/test.yaml/badge.svg)](https://github.com/kawamataryo/chikamcichi/actions/workflows/test.yaml)
 <a href="https://github.com/kawamataryo/vue-word-highlighter" target="__blank"><img alt="GitHub stars" src="https://img.shields.io/github/stars/kawamataryo/chikamichi?style=social"></a>
