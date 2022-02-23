@@ -1,5 +1,20 @@
 {
-  "extends": [
-    "config:base"
+  "extends": ["config:base", ":timezone(Asia/Tokyo)"],
+  "labels": ["dependencies", "renovate"],
+  "dependencyDashboard": true,
+  "pin": {
+    "automerge": true
+  },
+  "packageRules": [
+    {
+      "packagePatterns": ["^@types/"],
+      "automerge": true
+    },
+    {
+      "groupName": "linters",
+      "extends": ["packages:linters"],
+      "packageNames": ["prettier"],
+      "packagePatterns": ["^@typescript-eslint/"]
+    }
   ]
 }
