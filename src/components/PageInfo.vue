@@ -1,6 +1,7 @@
 <template>
   <div
     class="h-full w-full flex flex-col p-20px overflow-hidden dark:text-gray-200 grid grid-flow-col grid-flow-row gap-4"
+    data-cy="page-info"
   >
     <div
       class="border-gray-400 border-1px rounded-5px p-20px col-span-2 col-start-1"

@@ -5,6 +5,7 @@
     <li
       class="p-10px rounded-full dark:hover:bg-gray-700 hover:bg-gray-200 cursor-pointer"
       :class="currentTabClasses(PAGES.SEARCH)"
+      data-cy="search-tab-btn"
       @click="changePage(PAGES.SEARCH)"
     >
       <IconSearch width="18" height="18" class="m-auto" />
@@ -12,6 +13,7 @@
     <li
       class="p-10px rounded-full mt-10px dark:hover:bg-gray-700 hover:bg-gray-200 cursor-pointer"
       :class="currentTabClasses(PAGES.INFO)"
+      data-cy="info-tab-btn"
       @click="changePage(PAGES.INFO)"
     >
       <IconInfo width="18" height="18" class="m-auto" />
@@ -19,6 +21,7 @@
     <li
       class="p-10px rounded-full mt-10px dark:hover:bg-gray-700 hover:bg-gray-200 cursor-pointer"
       :class="currentTabClasses(PAGES.SETTING)"
+      data-cy="setting-tab-btn"
       @click="changePage(PAGES.SETTING)"
     >
       <IconGear width="18" height="18" class="m-auto" />

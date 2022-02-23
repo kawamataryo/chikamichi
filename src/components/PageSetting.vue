@@ -1,6 +1,7 @@
 <template>
   <div
     class="h-full w-full flex flex-col p-20px overflow-hidden dark:text-gray-200 grid grid-cols-4 grid-rows-2 gap-4"
+    data-cy="page-setting"
   >
     <div
       class="border-gray-400 border-1px rounded-5px p-20px col-span-2 col-start-1"
@@ -15,6 +16,7 @@
           id="grid-state"
           v-model="defaultSearchPrefix"
           class="block appearance-none w-full bg-gray-100 boarder-gray-100 dark:bg-gray-300 border dark:border-gray-300 text-gray-700 py-2 px-4 pr-3 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+          data-cy="select-prefix"
         >
           <option value="">none</option>
           <option :value="SEARCH_PREFIX.BOOKMARK">
@@ -54,6 +56,7 @@
             type="radio"
             value="auto"
             class="cursor-pointer"
+            data-cy="radio-auto"
           />
           <label for="auto" class="cursor-pointer">
             <IconDarkLight width="50" class="h-50px mt-10px" />
@@ -69,6 +72,7 @@
             type="radio"
             value="light"
             class="cursor-pointer"
+            data-cy="radio-light"
           />
           <label for="light" class="cursor-pointer">
             <IconSun width="50" class="h-50px mt-10px" />
@@ -84,6 +88,7 @@
             type="radio"
             value="dark"
             class="cursor-pointer"
+            data-cy="radio-dark"
           />
           <label for="dark" class="cursor-pointer">
             <IconMoon width="50" class="h-50px mt-10px" />

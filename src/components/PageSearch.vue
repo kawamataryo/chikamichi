@@ -5,7 +5,10 @@ TODO:Split the component into the following units
 - SearchItem
 -->
 <template>
-  <div class="flex justify-between flex-col focus-within:text-gray-400 h-full">
+  <div
+    class="flex justify-between flex-col focus-within:text-gray-400 h-full"
+    data-cy="page-search"
+  >
     <div class="p-20px pb-0 flex flex-col h-full">
       <div>
         <IconSearch width="20" height="20" class="absolute ml-12px mt-12px" />
@@ -132,6 +135,7 @@ TODO:Split the component into the following units
           <template v-else>
             <div
               class="flex w-full h-full justify-center items-center flex-row opacity-40"
+              data-cy="search-result-empty"
             >
               <div class="mr-10px">
                 <Logo width="45" height="45" class="dark:hidden" />

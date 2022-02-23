@@ -10,6 +10,7 @@
     :height="height"
     preserveAspectRatio="xMidYMid meet"
     viewBox="0 0 24 24"
+    data-cy="icon-star"
   >
     <path
       fill="currentColor"
@@ -26,6 +27,7 @@
     :width="width"
     :height="height"
     preserveAspectRatio="xMidYMid meet"
+    data-cy="icon-star-border"
     viewBox="0 0 24 24"
   >
     <path
