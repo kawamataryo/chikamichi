@@ -6,7 +6,6 @@
 <a href="https://chrome.google.com/webstore/detail/chikamichi-quickly-find-a/gkhobepjbiepngbeikhbpnfgjcjgmgha"><img alt="Chrome Web Store users" src="https://img.shields.io/chrome-web-store/users/gkhobepjbiepngbeikhbpnfgjcjgmgha"></a>
 [![CI:UT](https://github.com/kawamataryo/chikamichi/actions/workflows/cypress-test.yaml/badge.svg)](https://github.com/kawamataryo/chikamcichi/actions/workflows/cypress-test.yaml)
 [![CI:E2E](https://github.com/kawamataryo/chikamichi/actions/workflows/test.yaml/badge.svg)](https://github.com/kawamataryo/chikamcichi/actions/workflows/test.yaml)
-<a href="https://github.com/kawamataryo/vue-word-highlighter" target="__blank"><img alt="GitHub stars" src="https://img.shields.io/github/stars/kawamataryo/chikamichi?style=social"></a>
 
 # Chikamichi - Quickly find a page
 
