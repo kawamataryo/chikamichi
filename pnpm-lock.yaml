@@ -40,9 +40,13 @@ specifiers:
   vitest: 0.5.5
   vue: 3.2.31
   vue-demi: 0.12.1
+  vue-word-highlighter: ^1.0.4
   web-ext: 6.7.0
   webext-bridge: 5.0.3
   webextension-polyfill: 0.8.0
+
+dependencies:
+  vue-word-highlighter: 1.0.4_vue@3.2.31
 
 devDependencies:
   '@antfu/eslint-config': 0.16.1_eslint@8.9.0+typescript@4.5.5
@@ -6047,6 +6051,21 @@ packages:
       - stylus
     dev: true
 
+  /vue-demi/0.11.4_vue@3.2.31:
+    resolution: {integrity: sha512-/3xFwzSykLW2HiiLie43a+FFgNOcokbBJ+fzvFXd0r2T8MYohqvphUyDQ8lbAwzQ3Dlcrb1c9ykifGkhSIAk6A==}
+    engines: {node: '>=12'}
+    hasBin: true
+    requiresBuild: true
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0-rc.1
+      vue: ^3.0.0-0 || ^2.6.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
+      vue: 3.2.31
+    dev: false
+
   /vue-demi/0.12.1_vue@3.2.31:
     resolution: {integrity: sha512-QL3ny+wX8c6Xm1/EZylbgzdoDolye+VpCXRhI2hug9dJTP3OUJ3lmiKN3CsVV3mOJKwFi0nsstbgob0vG7aoIw==}
     engines: {node: '>=12'}
@@ -6079,6 +6098,19 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /vue-word-highlighter/1.0.4_vue@3.2.31:
+    resolution: {integrity: sha512-jtwnkEBnwMzmKTvpStbffbEpWkW4Fpb2ErdqDqAGOZlrjCgTJczBCpIQiGyBF2jNvYxvCvN5HqIldoNaMS0XYQ==}
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0-rc.1
+      vue: ^2.0.0 || >=3.0.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
+      vue: 3.2.31
+      vue-demi: 0.11.4_vue@3.2.31
+    dev: false
 
   /vue/3.2.31:
     resolution: {integrity: sha512-odT3W2tcffTiQCy57nOT93INw1auq5lYLLYtWpPYQQYQOOdHiqFct9Xhna6GJ+pJQaF67yZABraH47oywkJgFw==}

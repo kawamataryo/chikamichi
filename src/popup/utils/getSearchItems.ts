@@ -99,9 +99,9 @@ export const getSearchItems = async () => {
   const bookmarks = await browser.bookmarks.getTree();
   const histories = await browser.history.search({
     text: "",
-    maxResults: 8000,
+    maxResults: 30000,
     // Search up to 30 days in advance.
-    startTime: new Date().setDate(new Date().getDate() - 30),
+    startTime: new Date().setDate(new Date().getDate() - 180),
   });
 
   return [

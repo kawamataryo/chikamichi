@@ -66,20 +66,29 @@ TODO:Split the component into the following units
                       class="block break-all text-over overflow-ellipsis max-w-496px overflow-hidden"
                     >
                       <span v-show="result.folderName" class="mr-5px"
-                        >[<highlighter
-                          :item="result.highlightedFolderName"
-                        />]</span
+                        >[<WordHighlighter
+                          :query="searchWord"
+                          split-by-space
+                          highlight-class="highlight-word"
+                          >{{ result.folderName }}</WordHighlighter
+                        >]</span
                       >
-                      <highlighter
+                      <WordHighlighter
                         class="whitespace-nowrap"
-                        :item="result.highlightedTitle"
-                      />
+                        :query="searchWord"
+                        split-by-space
+                        highlight-class="highlight-word"
+                        >{{ result.title }}</WordHighlighter
+                      >
                     </span>
-                    <highlighter
+                    <WordHighlighter
                       class="overflow-hidden text-gray-400 text-11px block whitespace-nowrap text-over overflow-ellipsis max-w-496px text-left mt-4px"
-                      :item="result.highlightedUrl"
+                      :query="searchWord"
+                      split-by-space
+                      highlight-class="highlight-word"
                       :class="{ hidden: i !== selectedNumber }"
-                    />
+                      >{{ result.url }}</WordHighlighter
+                    >
                   </span>
                 </span>
                 <span class="items-center flex">
@@ -203,6 +212,7 @@ import { sendMessage } from "webext-bridge";
 import debounce from "lodash.debounce";
 import { nextTick } from "vue-demi";
 import type { Search } from "webextension-polyfill";
+import WordHighlighter from "vue-word-highlighter";
 import ToggleStar from "./ToggleStar.vue";
 import {
   FUSE_OPTIONS,
@@ -213,10 +223,6 @@ import {
   THEME,
 } from "~/constants";
 import { defaultSearchPrefix, favoriteItems, theme } from "~/logic";
-import {
-  getHighlightedProperty,
-  getHighlightedUrl,
-} from "~/popup/utils/highlight";
 
 interface Props {
   searchItems: SearchItem[];
@@ -261,9 +267,6 @@ const parsedFavoriteItems = computed(
 const initialSearchItems = computed(() => {
   return parsedFavoriteItems.value.map((i) => ({
     ...i,
-    highlightedTitle: { indices: undefined, text: i.title },
-    highlightedUrl: { indices: undefined, text: i.url },
-    highlightedFolderName: { indices: undefined, text: i.folderName || "" },
     isFavorite: true,
     tabId: undefined,
   }));
@@ -300,9 +303,6 @@ const searchResult = computed(() => {
   return fuse.search<SearchItem>(word, { limit: 100 }).map((result) => {
     return {
       ...result.item,
-      highlightedTitle: getHighlightedProperty(result, "title"),
-      highlightedUrl: getHighlightedUrl(result),
-      highlightedFolderName: getHighlightedProperty(result, "folderName"),
       isFavorite: isFavorite(result.item.url),
     };
   });
@@ -398,7 +398,6 @@ const onKeypress = async (keyEvent: {
   ctrlKey?: boolean;
   metaKey?: boolean;
 }) => {
-  console.log(keyEvent);
   if (keyEvent.code === "Enter")
     await changePageWithKeyEvent(!!keyEvent.ctrlKey || !!keyEvent.metaKey);
 };
