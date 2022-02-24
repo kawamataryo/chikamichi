@@ -27,7 +27,7 @@ TODO:Split the component into the following units
           @keydown.up.prevent="onArrowUp"
           @keydown.ctrl.n.prevent="onArrowDown"
           @keydown.ctrl.p.prevent="onArrowUp"
-          @keydown.ctrl.f.prevent="onFavoriteClick"
+          @keydown.ctrl.f.prevent="onFavorite"
           @keydown.esc.prevent="onEsc"
         />
       </div>
@@ -101,7 +101,7 @@ TODO:Split the component into the following units
                   <span
                     class="inline-block p-3px mr-15px"
                     :data-cy="`search-result-favorite-${i}`"
-                    @click.stop="onFavoriteClick"
+                    @click.stop="onFavorite"
                   >
                     <ToggleStar
                       v-if="!result.tabId"
@@ -439,8 +439,11 @@ const onArrowUp = () => {
 const onEsc = () => {
   closePopup();
 };
-const onFavoriteClick = () => {
+const onFavorite = () => {
   const item = searchResult.value[selectedNumber.value];
+  if (item.tabId) {
+    return;
+  }
   if (isFavorite(item.url)) {
     favoriteItems.value = JSON.stringify(
       parsedFavoriteItems.value.filter((i) => i.url !== item.url)
