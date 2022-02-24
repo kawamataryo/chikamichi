@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## 2.13.1
+### fix
+- fix history search settings
+
 ## 2.13.0
 ### feat
 - improve search performance.
