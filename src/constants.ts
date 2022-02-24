@@ -18,8 +18,12 @@ export const FUSE_OPTIONS: Fuse.IFuseOptions<any> = {
   includeMatches: true,
   keys: [
     {
-      name: "title",
+      name: "searchTerm",
       weight: 1,
+    },
+    {
+      name: "title",
+      weight: 0.8,
     },
     {
       name: "url",

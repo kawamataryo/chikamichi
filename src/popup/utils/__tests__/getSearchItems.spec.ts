@@ -55,6 +55,7 @@ describe("convertToSearchItemsFromBookmarks", () => {
         faviconUrl: faviconUrl(bookmark1.url!),
         type: SEARCH_ITEM_TYPE.BOOKMARK,
         folderName: "",
+        searchTerm: `${bookmark1.title} ${bookmark1.url}`,
       },
       {
         url: bookmark2.url,
@@ -62,6 +63,7 @@ describe("convertToSearchItemsFromBookmarks", () => {
         faviconUrl: faviconUrl(bookmark2.url!),
         type: SEARCH_ITEM_TYPE.BOOKMARK,
         folderName: folder.title,
+        searchTerm: `${bookmark2.title} ${bookmark2.url} ${folder.title}`,
       },
       {
         url: bookmark3.url,
@@ -69,6 +71,7 @@ describe("convertToSearchItemsFromBookmarks", () => {
         faviconUrl: faviconUrl(bookmark3.url!),
         type: SEARCH_ITEM_TYPE.BOOKMARK,
         folderName: `${folder.title}/${nestedFolder.title}`,
+        searchTerm: `${bookmark3.title} ${bookmark3.url} ${folder.title}/${nestedFolder.title}`,
       },
     ]);
   });
@@ -87,6 +90,7 @@ describe("convertToSearchItemsFromBookmarks", () => {
           faviconUrl: faviconUrl(histories[0].url!),
           type: SEARCH_ITEM_TYPE.HISTORY,
           folderName: "",
+          searchTerm: `${histories[0].title!} ${histories[0].url}`,
         },
         {
           url: histories[1].url,
@@ -94,6 +98,7 @@ describe("convertToSearchItemsFromBookmarks", () => {
           faviconUrl: faviconUrl(histories[1].url!),
           type: SEARCH_ITEM_TYPE.HISTORY,
           folderName: "",
+          searchTerm: `${histories[1].title!} ${histories[1].url}`,
         },
       ]);
     });
@@ -115,6 +120,7 @@ describe("convertToSearchItemsFromBookmarks", () => {
         faviconUrl: faviconUrl(histories[1].url!),
         type: SEARCH_ITEM_TYPE.HISTORY,
         folderName: "",
+        searchTerm: `${histories[1].title!} ${histories[1].url}`,
       },
     ]);
   });
@@ -135,6 +141,7 @@ describe("convertToSearchItemsFromBookmarks", () => {
       faviconUrl: faviconUrl(histories[1].url!),
       type: SEARCH_ITEM_TYPE.HISTORY,
       folderName: "",
+      searchTerm: `${histories[1].title!} ${histories[1].url}`,
     });
     expect(searchItems).toContainEqual({
       url: histories[2].url,
@@ -142,6 +149,7 @@ describe("convertToSearchItemsFromBookmarks", () => {
       faviconUrl: faviconUrl(histories[2].url!),
       type: SEARCH_ITEM_TYPE.HISTORY,
       folderName: "",
+      searchTerm: `${histories[2].title!} ${histories[2].url}`,
     });
   });
 });

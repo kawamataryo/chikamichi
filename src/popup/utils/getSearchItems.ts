@@ -4,6 +4,10 @@ import { SEARCH_ITEM_TYPE } from "~/constants";
 export const faviconUrl = (url: string) =>
   `https://www.google.com/s2/favicons?domain=${new URL(url).hostname}`;
 
+const generateSearchTerm = (...args: string[]): string => {
+  return args.filter((arg) => arg).join(" ");
+};
+
 const removeDeprecatedItem = (
   searchItems: SearchItem[],
   key: "title" | "url"
@@ -33,6 +37,7 @@ export const convertToSearchItemsFromHistories = (
       faviconUrl: faviconUrl(history.url!),
       type: SEARCH_ITEM_TYPE.HISTORY,
       folderName: "",
+      searchTerm: generateSearchTerm(history.title!, history.url!),
     }));
 
   // remove same title items
@@ -50,22 +55,24 @@ export const convertToSearchItemsFromBookmarks = (
   ) => {
     bookmarkTreeNodes.forEach((node) => {
       if (node.type !== "bookmark" && node.children) {
-        const folderName = node.parentId === "0" ? "" : node.title;
-        getTitleAndUrl(node.children, [...folderNames, folderName]);
+        const _folderName = node.parentId === "0" ? "" : node.title;
+        getTitleAndUrl(node.children, [...folderNames, _folderName]);
         return;
       }
 
       if (!node.url) return;
 
+      const folderName =
+        node.parentId === "1"
+          ? ""
+          : folderNames.filter((name) => name).join("/"); // Exclude top level folder name
       result.push({
         url: node.url,
         title: node.title,
         faviconUrl: faviconUrl(node.url),
         type: SEARCH_ITEM_TYPE.BOOKMARK,
-        folderName:
-          node.parentId === "1"
-            ? ""
-            : folderNames.filter((name) => name).join("/"), // Exclude top level folder name.
+        folderName,
+        searchTerm: generateSearchTerm(node.title, node.url, folderName),
       });
     });
   };
@@ -83,6 +90,7 @@ export const convertToSearchItemsFromTabs = (
     type: SEARCH_ITEM_TYPE.TAB,
     tabId: tab.id,
     folderName: "",
+    searchTerm: generateSearchTerm(tab.title!, tab.url!),
   }));
 };
 
@@ -91,7 +99,7 @@ export const getSearchItems = async () => {
   const bookmarks = await browser.bookmarks.getTree();
   const histories = await browser.history.search({
     text: "",
-    maxResults: 5000,
+    maxResults: 8000,
     // Search up to 30 days in advance.
     startTime: new Date().setDate(new Date().getDate() - 30),
   });

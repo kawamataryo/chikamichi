@@ -5,6 +5,7 @@ interface SearchItem {
   type: "history" | "bookmark" | "tab";
   tabId?: number;
   folderName?: string;
+  searchTerm: string;
 }
 
 type ValueOf<T> = T[keyof T];
