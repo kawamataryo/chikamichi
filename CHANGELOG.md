@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## 2.13.2
+### chore
+- fix favorite logic
+
 ## 2.13.1
 ### fix
 - fix history search settings
