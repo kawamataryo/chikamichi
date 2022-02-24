@@ -46,11 +46,12 @@ export const convertToSearchItemsFromBookmarks = (
   const result: SearchItem[] = [];
   const getTitleAndUrl = (
     bookmarkTreeNodes: Bookmarks.BookmarkTreeNode[],
-    folderName = ""
+    folderNames: string[]
   ) => {
     bookmarkTreeNodes.forEach((node) => {
       if (node.type !== "bookmark" && node.children) {
-        getTitleAndUrl(node.children, node.title);
+        const folderName = node.parentId === "0" ? "" : node.title;
+        getTitleAndUrl(node.children, [...folderNames, folderName]);
         return;
       }
 
@@ -61,11 +62,14 @@ export const convertToSearchItemsFromBookmarks = (
         title: node.title,
         faviconUrl: faviconUrl(node.url),
         type: SEARCH_ITEM_TYPE.BOOKMARK,
-        folderName: node.parentId === "1" ? "" : folderName, // Exclude top level folder name.
+        folderName:
+          node.parentId === "1"
+            ? ""
+            : folderNames.filter((name) => name).join("/"), // Exclude top level folder name.
       });
     });
   };
-  getTitleAndUrl(bookmarkTreeNodes);
+  getTitleAndUrl(bookmarkTreeNodes, []);
   return result;
 };
 
@@ -92,12 +96,9 @@ export const getSearchItems = async () => {
     startTime: new Date().setDate(new Date().getDate() - 30),
   });
 
-  return removeDeprecatedItem(
-    [
-      ...convertToSearchItemsFromHistories(histories),
-      ...convertToSearchItemsFromBookmarks(bookmarks),
-      ...convertToSearchItemsFromTabs(tabs),
-    ],
-    "url"
-  );
+  return [
+    ...convertToSearchItemsFromHistories(histories),
+    ...convertToSearchItemsFromBookmarks(bookmarks),
+    ...convertToSearchItemsFromTabs(tabs),
+  ];
 };

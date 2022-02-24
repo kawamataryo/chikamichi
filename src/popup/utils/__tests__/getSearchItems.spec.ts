@@ -68,7 +68,7 @@ describe("convertToSearchItemsFromBookmarks", () => {
         title: bookmark3.title,
         faviconUrl: faviconUrl(bookmark3.url!),
         type: SEARCH_ITEM_TYPE.BOOKMARK,
-        folderName: nestedFolder.title,
+        folderName: `${folder.title}/${nestedFolder.title}`,
       },
     ]);
   });
