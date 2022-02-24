@@ -278,8 +278,10 @@ const initialSearchItems = computed(() => {
     tabId: undefined,
   }));
 });
-const isFavorite = (url: string) => {
-  return parsedFavoriteItems.value.some((i: FavoriteItem) => i.url === url);
+const isFavorite = (url: string, title: string) => {
+  return parsedFavoriteItems.value.some(
+    (i: FavoriteItem) => i.url === url && i.title === title
+  );
 };
 
 const searchResult = computed(() => {
@@ -310,7 +312,7 @@ const searchResult = computed(() => {
   return fuse.search<SearchItem>(word, { limit: 100 }).map((result) => {
     return {
       ...result.item,
-      isFavorite: isFavorite(result.item.url),
+      isFavorite: isFavorite(result.item.url, result.item.title),
     };
   });
 });
@@ -444,7 +446,7 @@ const onFavorite = () => {
   if (item.tabId) {
     return;
   }
-  if (isFavorite(item.url)) {
+  if (isFavorite(item.url, item.title)) {
     favoriteItems.value = JSON.stringify(
       parsedFavoriteItems.value.filter((i) => i.url !== item.url)
     );
