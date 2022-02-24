@@ -76,6 +76,6 @@
     "*.{json,ts,js,vue}": "prettier --write"
   },
   "dependencies": {
-    "vue-word-highlighter": "^1.0.4"
+    "vue-word-highlighter": "1.0.4"
   }
 }
