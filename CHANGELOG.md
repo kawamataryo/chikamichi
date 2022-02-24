@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## 2.12.0
+### feat
+- improve search performance.
+- show all parent folder name
+
 ## 2.11.2
 ### feat
 - open new tab with cmd + enter
