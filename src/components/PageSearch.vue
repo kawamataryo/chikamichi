@@ -193,12 +193,19 @@ TODO:Split the component into the following units
             >Enter</span
           >Open,
         </p>
-        <p>
+        <p class="mr-10px">
           <span
             class="bg-gray-200 dark:bg-gray-600 dark:text-white rounded-3px px-5px py-4px inline-block mr-3px"
             >Ctrl + Enter</span
           >
-          Open in new tab
+          Open in new tab,
+        </p>
+        <p>
+          <span
+            class="bg-gray-200 dark:bg-gray-600 dark:text-white rounded-3px px-5px py-4px inline-block mr-3px"
+            >Ctrl + f</span
+          >
+          Add favorite
         </p>
       </div>
     </div>
