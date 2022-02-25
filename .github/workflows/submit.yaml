@@ -1,7 +1,7 @@
-name: "submit"
-on: 
+name: "Submit"
+on:
   workflow_dispatch:
-    
+
 jobs:
   submit:
     runs-on: ubuntu-latest
@@ -30,4 +30,3 @@ jobs:
         uses: plasmo-corp/bpp@v1
         with:
           keys: ${{ secrets.SUBMIT_KEYS }}
-

@@ -6,6 +6,7 @@ on:
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
+    container: cypress/browsers:node16.5.0-chrome97-ff96
     steps:
       - uses: actions/checkout@v2
       - name: Cache pnpm modules
@@ -26,9 +27,31 @@ jobs:
           cache: "pnpm"
       - name: Build extension
         run: pnpm build
-      - name: Cypress run
+      # tests multiple browser
+      - name: Cypress run on Chrome
         uses: cypress-io/github-action@v2
         with:
           install: false
           start: pnpm run serve
           wait-on: 'http://localhost:3000'
+          browser: chrome
+      - name: Cypress run on Firefox
+        uses: cypress-io/github-action@v2
+        with:
+          install: false
+          start: pnpm run serve
+          wait-on: 'http://localhost:3000'
+          browser: firefox
+      - name: Cypress run on Edge
+        uses: cypress-io/github-action@v2
+        with:
+          install: false
+          start: pnpm run serve
+          wait-on: 'http://localhost:3000'
+          browser: edge
+      # upload artifact
+      - uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
