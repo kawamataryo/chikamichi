@@ -2,8 +2,8 @@ import {
   generateBookmark,
   generateHistory,
   generateTab,
-  setupExtensionEnvironment,
-} from "cypress/support/utls";
+} from "cypress/fixtures/fixtures";
+import { setupExtensionEnvironment } from "cypress/support/support";
 import { SEARCH_PREFIX } from "~/constants";
 
 describe("App", () => {
@@ -177,7 +177,7 @@ describe("App", () => {
     cy.get("[data-cy=search-result-1]")
       .get("[data-cy=icon-star]")
       .should("be.visible");
-    // check un favorite
+    // un check favorite
     cy.get("[data-cy=search-input]").type("history-item");
     cy.get("[data-cy=search-result-0]").should("have.class", "selected-item");
     cy.get("[data-cy=search-input]").type("{ctrl}f");
