@@ -10,7 +10,12 @@ export const generateHistory = (
 });
 
 export const generateBookmark = (
-  args: { title?: string; url?: string } = {}
+  args: {
+    title?: string;
+    url?: string;
+    children?: Bookmarks.BookmarkTreeNode[];
+    type?: Bookmarks.BookmarkTreeNodeType;
+  } = {}
 ): Bookmarks.BookmarkTreeNode => ({
   id: randUuid(),
   parentId: randUuid(),
@@ -19,7 +24,8 @@ export const generateBookmark = (
   title: args.title ?? randCatchPhrase(),
   dateAdded: randNumber(),
   dateGroupModified: randNumber(),
-  type: "bookmark" as const,
+  type: args.type ?? ("bookmark" as const),
+  children: args.children ?? [],
 });
 
 export const generateTab = (

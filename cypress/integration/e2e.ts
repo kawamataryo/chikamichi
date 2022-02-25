@@ -12,9 +12,23 @@ describe("App", () => {
       onBeforeLoad(win: Cypress.AUTWindow & { chrome: typeof chrome }) {
         setupExtensionEnvironment({
           win,
-          bookmarks: [...Array(3)].map((_, i) =>
-            generateBookmark({ title: `bookmark-item-${i}` })
-          ),
+          bookmarks: [
+            generateBookmark({
+              title: "folder",
+              type: "folder",
+              children: [
+                generateBookmark({ title: `folder-item` }),
+                generateBookmark({
+                  title: `nested-folder`,
+                  type: "folder",
+                  children: [generateBookmark({ title: `nested-folder-item` })],
+                }),
+              ],
+            }),
+            ...[...Array(3)].map((_, i) =>
+              generateBookmark({ title: `bookmark-item-${i}` })
+            ),
+          ],
           histories: [...Array(3)].map((_, i) =>
             generateHistory({ title: `history-item-${i}` })
           ),
@@ -26,7 +40,7 @@ describe("App", () => {
     });
   });
 
-  it("search result", async () => {
+  it("search result", () => {
     // ---------------------------------------------------------
     // show tabs
     // ---------------------------------------------------------
@@ -44,6 +58,17 @@ describe("App", () => {
       "bookmark-item-0"
     );
     cy.get("[data-cy=search-result-type-0]").should("have.text", "bookmark");
+    cy.get("[data-cy=search-input]").clear();
+    // show bookmark folder name
+    cy.get("[data-cy=search-input]").type("folder-item");
+    cy.get("[data-cy=search-result-0]").should(
+      "include.text",
+      "[folder]folder-item"
+    );
+    cy.get("[data-cy=search-result-1]").should(
+      "include.text",
+      "[folder/nested-folder]nested-folder-item"
+    );
     cy.get("[data-cy=search-input]").clear();
 
     // ---------------------------------------------------------
