@@ -1,3 +1,4 @@
+import { onMessage } from "webext-bridge";
 import { Bookmarks, History, Tabs } from "webextension-polyfill";
 
 export const setupExtensionEnvironment = ({
@@ -14,15 +15,23 @@ export const setupExtensionEnvironment = ({
   win.chrome = win.chrome || {};
   (win.chrome.runtime as Partial<typeof chrome.runtime>) = {
     id: "12345",
-    getManifest: cy.stub().returns({}),
-    getURL: cy.stub().returns("chrome-extension://12345/"),
+    getManifest: cy
+      .stub()
+      .as("getManifest")
+      .returns({
+        action: {
+          default_popup: "popup.html",
+        },
+      }),
+    getURL: cy.stub().as("getURL").returns(""),
     sendMessage: cy.stub(),
     onMessage: {
-      addListener: cy.stub(),
+      addListener: cy.stub().as("onMessage.addListener"),
     } as any,
     onConnect: {
-      addListener: cy.stub(),
+      addListener: cy.stub().as("onConnect.addListener"),
     } as any,
+    connect: cy.stub().as("connect"),
   };
   (win.chrome.history as Partial<typeof chrome.history>) = {
     search: ((_: any, callback: (data: any[]) => void) => {
@@ -45,4 +54,5 @@ export const setupExtensionEnvironment = ({
   } as any;
   win.close = cy.stub();
   win.postMessage = cy.stub();
+  (win.URL as any) = cy.stub().as("URL").returns({ pathname: "/__/" });
 };
