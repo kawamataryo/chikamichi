@@ -44,13 +44,6 @@ jobs:
           start: pnpm run serve
           wait-on: 'http://localhost:3000'
           browser: firefox
-      - name: Cypress run on Edge
-        uses: cypress-io/github-action@v2
-        with:
-          install: false
-          start: pnpm run serve
-          wait-on: 'http://localhost:3000'
-          browser: edge
       # upload artifact
       - uses: actions/upload-artifact@v2
         if: failure()
