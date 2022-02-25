@@ -3,9 +3,9 @@ lockfileVersion: 5.3
 specifiers:
   '@antfu/eslint-config': 0.16.1
   '@ffflorian/jszip-cli': 3.1.6
-  '@iconify/json': 2.1.6
+  '@iconify/json': 2.1.7
   '@ngneat/falso': 2.27.0
-  '@types/chrome': 0.0.178
+  '@types/chrome': 0.0.179
   '@types/fs-extra': 9.0.13
   '@types/lodash.debounce': 4.0.6
   '@types/node': 17.0.19
@@ -40,7 +40,7 @@ specifiers:
   vitest: 0.5.5
   vue: 3.2.31
   vue-demi: 0.12.1
-  vue-word-highlighter: ^1.0.4
+  vue-word-highlighter: 1.0.4
   web-ext: 6.7.0
   webext-bridge: 5.0.3
   webextension-polyfill: 0.8.0
@@ -51,9 +51,9 @@ dependencies:
 devDependencies:
   '@antfu/eslint-config': 0.16.1_eslint@8.9.0+typescript@4.5.5
   '@ffflorian/jszip-cli': 3.1.6
-  '@iconify/json': 2.1.6
+  '@iconify/json': 2.1.7
   '@ngneat/falso': 2.27.0
-  '@types/chrome': 0.0.178
+  '@types/chrome': 0.0.179
   '@types/fs-extra': 9.0.13
   '@types/lodash.debounce': 4.0.6
   '@types/node': 17.0.19
@@ -341,8 +341,8 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
-  /@iconify/json/2.1.6:
-    resolution: {integrity: sha512-FkNXp+U7+Qk5bzVwkf1PxWBMy1/zTYXkjgDvc9yCOXFf5rJ/nAbtsiMGW+QK6atZaBV2h/h+WTPN3eTZdJglQg==}
+  /@iconify/json/2.1.7:
+    resolution: {integrity: sha512-vC6mIZVMQY2X2sBSW4CNSH+pdi9mwLNZj+VwDXI9tqD2fkWXdXI9OCiCR0D4yqx3Vdg0ttcizXqAmhWQoHD1Sw==}
     dependencies:
       '@iconify/types': 1.0.12
       pathe: 0.0.2
@@ -427,8 +427,8 @@ packages:
     resolution: {integrity: sha512-/ceqdqeRraGolFTcfoXNiqjyQhZzbINDngeoAq9GoHa8PPK1yNzTaxWjA6BFWp5Ua9JpXEMSS4s5i9tS0hOJtw==}
     dev: true
 
-  /@types/chrome/0.0.178:
-    resolution: {integrity: sha512-U+G5YG2pH0qvLrYVJ9aT5VbPXYR3fAFyCuRBRAA14Pv7GrkFzDJuXPspgdeLYaKzGEp4rymUkuqUOuFz18LI1g==}
+  /@types/chrome/0.0.179:
+    resolution: {integrity: sha512-60zloNApIf88RwiG3Q7E+4NBG+znchhWmcaEVAAhUZahQbft5LWBzij4sinsfpAwbTtuWdFfUSpZsFhXTEFPVw==}
     dependencies:
       '@types/filesystem': 0.0.32
       '@types/har-format': 1.2.8

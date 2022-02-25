@@ -30,9 +30,9 @@
   "devDependencies": {
     "@antfu/eslint-config": "0.16.1",
     "@ffflorian/jszip-cli": "3.1.6",
-    "@iconify/json": "2.1.6",
+    "@iconify/json": "2.1.7",
     "@ngneat/falso": "2.27.0",
-    "@types/chrome": "0.0.178",
+    "@types/chrome": "0.0.179",
     "@types/fs-extra": "9.0.13",
     "@types/lodash.debounce": "4.0.6",
     "@types/node": "17.0.19",
@@ -76,6 +76,6 @@
     "*.{json,ts,js,vue}": "prettier --write"
   },
   "dependencies": {
-    "vue-word-highlighter": "^1.0.4"
+    "vue-word-highlighter": "1.0.4"
   }
 }
