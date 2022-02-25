@@ -45,9 +45,3 @@ jobs:
           start: pnpm run serve
           wait-on: 'http://localhost:3000'
           browser: firefox
-      # upload artifact
-      - uses: actions/upload-artifact@v2
-        if: failure()
-        with:
-          name: cypress-videos
-          path: cypress/videos
