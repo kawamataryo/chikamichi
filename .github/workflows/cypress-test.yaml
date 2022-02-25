@@ -6,7 +6,9 @@ on:
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
-    container: cypress/browsers:node16.5.0-chrome97-ff96
+    container:
+      image: cypress/browsers:node16.5.0-chrome97-ff96
+      options: --user 1001
     steps:
       - uses: actions/checkout@v2
       - name: Cache pnpm modules
