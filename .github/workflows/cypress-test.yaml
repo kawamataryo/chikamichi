@@ -8,6 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: cypress/browsers:node16.5.0-chrome97-ff96
+      # @see https://github.com/cypress-io/github-action/issues/446#issuecomment-987015822
       options: --user 1001
     steps:
       - uses: actions/checkout@v2
