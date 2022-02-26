@@ -8,23 +8,9 @@ interface SearchItem {
   searchTerm: string;
 }
 
-type ValueOf<T> = T[keyof T];
-
-interface HighlighterItem {
-  indices?: [number, number][];
-  text: string;
-}
-
-type SearchItemWithHighlight = SearchItem & {
-  highlightedTitle: HighlighterItem;
-  highlightedUrl: HighlighterItem;
-  highlightedFolderName: HighlighterItem;
+type SearchItemWithFavoriteAndMatchedWord = SearchItem & {
+  isFavorite: boolean;
+  matchedWord: RegExp | string;
 };
 
-interface FavoriteItem {
-  title: string;
-  url: string;
-  faviconUrl: string;
-  folderName?: string;
-  type: "history" | "bookmark";
-}
+type ValueOf<T> = T[keyof T];

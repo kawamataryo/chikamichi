@@ -3,10 +3,7 @@
     class="w-700px h-450px flex bg-white dark:bg-gray-800 text-gray-600 dark:text-bg-gray-100 overflow-hidden"
   >
     <div class="w-650px">
-      <PageSearch
-        v-if="currentPage === PAGES.SEARCH"
-        :search-items="searchItems"
-      />
+      <PageSearch v-if="currentPage === PAGES.SEARCH" />
       <PageInfo v-if="currentPage === PAGES.INFO" />
       <PageSetting v-if="currentPage === PAGES.SETTING" />
     </div>
@@ -17,16 +14,8 @@
 </template>
 
 <script lang="ts" setup>
-import type { useStore } from "~/popup/utils/store";
-import { STORE_KEY } from "~/popup/utils/store";
 import { PAGES, THEME } from "~/constants";
 import { theme } from "~/logic";
-
-// searchItem
-const store = inject<ReturnType<typeof useStore>>(STORE_KEY);
-if (!store) throw new Error("store is not provided");
-
-const searchItems = computed(() => store.state.searchItems);
 
 const currentPage = ref<ValueOf<typeof PAGES>>(PAGES.SEARCH);
 const changePage = (pageId: ValueOf<typeof PAGES>) => {
