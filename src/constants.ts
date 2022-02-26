@@ -16,6 +16,7 @@ export const SEARCH_ITEM_TYPE = {
 export const FUSE_OPTIONS: Fuse.IFuseOptions<any> = {
   useExtendedSearch: true,
   ignoreLocation: true,
+  includeMatches: true,
   keys: [
     {
       name: "searchTerm",

@@ -67,7 +67,7 @@ TODO:Split the component into the following units
                     >
                       <span v-show="result.folderName" class="mr-5px"
                         >[<WordHighlighter
-                          :query="searchWord"
+                          :query="result.matchedWord"
                           split-by-space
                           highlight-class="highlight-word"
                           >{{ result.folderName }}</WordHighlighter
@@ -75,7 +75,7 @@ TODO:Split the component into the following units
                       >
                       <WordHighlighter
                         class="whitespace-nowrap"
-                        :query="searchWord"
+                        :query="result.matchedWord"
                         split-by-space
                         highlight-class="highlight-word"
                         >{{ result.title }}</WordHighlighter
@@ -83,7 +83,7 @@ TODO:Split the component into the following units
                     </span>
                     <WordHighlighter
                       class="overflow-hidden text-gray-400 text-11px block whitespace-nowrap text-over overflow-ellipsis max-w-496px text-left mt-4px"
-                      :query="searchWord"
+                      :query="result.matchedWord"
                       split-by-space
                       highlight-class="highlight-word"
                       :class="{ hidden: i !== selectedNumber }"
@@ -230,6 +230,7 @@ import {
   THEME,
 } from "~/constants";
 import { defaultSearchPrefix, favoriteItems, theme } from "~/logic";
+import { getMatchedRegExp } from "~/popup/utils/getMatchedRegExp";
 
 interface Props {
   searchItems: SearchItem[];
@@ -276,6 +277,7 @@ const initialSearchItems = computed(() => {
     ...i,
     isFavorite: true,
     tabId: undefined,
+    matchedWord: "",
   }));
 });
 const isFavorite = (url: string, title: string) => {
@@ -313,6 +315,10 @@ const searchResult = computed(() => {
     return {
       ...result.item,
       isFavorite: isFavorite(result.item.url, result.item.title),
+      matchedWord: getMatchedRegExp(
+        result!.matches![0].value!,
+        result!.matches![0].indices as [number, number][]
+      ),
     };
   });
 });
