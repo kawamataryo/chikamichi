@@ -1,5 +1,6 @@
 import { randCatchPhrase, randNumber, randUrl, randUuid } from "@ngneat/falso";
 import type { Bookmarks, History } from "webextension-polyfill";
+import { expect } from "vitest";
 import {
   convertToSearchItemsFromBookmarks,
   convertToSearchItemsFromHistories,
