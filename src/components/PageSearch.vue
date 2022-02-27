@@ -39,15 +39,15 @@ TODO:Split the component into the following units
         <template v-if="searchResult.length">
           <ul class="pl-0">
             <li
-              v-for="(result, i) in searchResult"
+              v-for="(item, i) in searchResult"
               :key="i"
               :ref="el => { if (el) searchResultRefs[i] = el as HTMLElement }"
               :aria-selected="i === selectedNumber"
               class="block"
               role="option"
-              :data-tabid="result.tabId"
-              :data-url="result.url"
-              @click="onClick(result.url, result.tabId)"
+              :data-tabid="item.tabId"
+              :data-url="item.url"
+              @click="onClick(item.url, item.tabId)"
             >
               <button
                 class="p-6px block text-13px flex items-center text-black justify-between border-none w-full cursor-pointer bg-white rounded-5px dark:bg-gray-800 dark:text-gray-200"
@@ -57,7 +57,7 @@ TODO:Split the component into the following units
               >
                 <span class="flex items-center">
                   <img
-                    :src="result.faviconUrl"
+                    :src="item.faviconUrl"
                     alt=""
                     class="w-16px h-16px mr-8px inline-block"
                   />
@@ -65,29 +65,29 @@ TODO:Split the component into the following units
                     <span
                       class="block break-all text-over overflow-ellipsis max-w-496px overflow-hidden"
                     >
-                      <span v-show="result.folderName" class="mr-5px"
+                      <span v-show="item.folderName" class="mr-5px"
                         >[<WordHighlighter
-                          :query="result.matchedWord"
+                          :query="item.matchedWord"
                           split-by-space
                           highlight-class="highlight-word"
-                          >{{ result.folderName }}</WordHighlighter
+                          >{{ item.folderName }}</WordHighlighter
                         >]</span
                       >
                       <WordHighlighter
                         class="whitespace-nowrap"
-                        :query="result.matchedWord"
+                        :query="item.matchedWord"
                         split-by-space
                         highlight-class="highlight-word"
-                        >{{ result.title }}</WordHighlighter
+                        >{{ item.title }}</WordHighlighter
                       >
                     </span>
                     <WordHighlighter
                       class="overflow-hidden text-gray-400 text-11px block whitespace-nowrap text-over overflow-ellipsis max-w-496px text-left mt-4px"
-                      :query="result.matchedWord"
+                      :query="item.matchedWord"
                       split-by-space
                       highlight-class="highlight-word"
                       :class="{ hidden: i !== selectedNumber }"
-                      >{{ result.url }}</WordHighlighter
+                      >{{ item.url }}</WordHighlighter
                     >
                   </span>
                 </span>
@@ -96,17 +96,14 @@ TODO:Split the component into the following units
                     class="px-8px py-3px rounded-5px text-gray-400 bg-gray-200 dark:bg-gray-600 dark:text-gray-200 mr-5px"
                     :data-cy="`search-result-type-${i}`"
                   >
-                    {{ result.type }}
+                    {{ item.type }}
                   </span>
                   <span
                     class="inline-block p-3px mr-15px"
                     :data-cy="`search-result-favorite-${i}`"
-                    @click.stop="onFavorite"
+                    @click.stop="onClickFavorite(item)"
                   >
-                    <ToggleStar
-                      v-if="!result.tabId"
-                      :value="result.isFavorite"
-                    />
+                    <ToggleStar v-if="!item.tabId" :value="item.isFavorite" />
                     <div v-else class="w-18px h-18px" />
                   </span>
                 </span>
@@ -118,12 +115,11 @@ TODO:Split the component into the following units
           <template v-if="searchWord">
             <ul class="pl-0">
               <li
-                :ref="el => { if (el) searchResultRefs[0] = el as HTMLElement }"
                 :aria-selected="true"
                 class="block rounded-5px"
                 role="option"
                 data-is-search
-                @click="browserSearch(searchWordFallback)"
+                @click="browserSearch(extractOnlySearchWord)"
               >
                 <button
                   class="p-6px block text-13px flex items-center text-black border-none w-full cursor-pointer rounded-5px bg-blue-100 dark:bg-blue-800 dark:text-gray-200"
@@ -131,13 +127,13 @@ TODO:Split the component into the following units
                   type="button"
                 >
                   <img
-                    :src="searchEngineRef?.favIconUrl"
+                    :src="searchEngine.favIconUrl"
                     alt=""
                     class="w-16px h-16px mr-8px inline-block text-gray-700 dark:text-gray-300"
                   /><span
                     class="overflow-hidden display-block whitespace-nowrap text-over overflow-ellipsis"
-                    >"{{ searchWordFallback }}" search with
-                    {{ searchEngineRef?.name }}</span
+                    >"{{ extractOnlySearchWord }}" search with
+                    {{ searchEngine.name }}</span
                   >
                 </button>
               </li>
@@ -214,117 +210,27 @@ TODO:Split the component into the following units
 
 <script lang="ts" setup>
 import "virtual:windi.css";
-import Fuse from "fuse.js";
-import { sendMessage } from "webext-bridge";
-import debounce from "lodash.debounce";
-import { nextTick } from "vue-demi";
-import type { Search } from "webextension-polyfill";
 import WordHighlighter from "vue-word-highlighter";
 import ToggleStar from "./ToggleStar.vue";
-import {
-  FUSE_OPTIONS,
-  SEARCH_ICON_DATA_URL_DARK,
-  SEARCH_ICON_DATA_URL_LIGHT,
-  SEARCH_ITEM_TYPE,
-  SEARCH_TARGET_REGEX,
-  THEME,
-} from "~/constants";
-import { defaultSearchPrefix, favoriteItems, theme } from "~/logic";
-import { getMatchedRegExp } from "~/popup/utils/getMatchedRegExp";
+import { useSearch } from "~/composables/useSearch";
 
-interface Props {
-  searchItems: SearchItem[];
-}
+const {
+  searchWord,
+  searchResult,
+  selectedNumber,
+  extractOnlySearchWord,
+  searchEngine,
+  changePage,
+  changePageWithClick,
+  toggleFavorite,
+  changeSelectedItem,
+  browserSearch,
+} = useSearch();
 
-const props = defineProps<Props>();
-
-const _searchWord = ref(defaultSearchPrefix.value);
-const searchWord = computed({
-  get() {
-    return _searchWord.value;
-  },
-  // NOTE: When hold the key, the character will be insert repeatedly. This causes the setter to be called repeatedly at high speed.
-  // Writing the store is expensive, so too many calls can cause performance problems. So use debounce to avoid this.
-  set: debounce((value: string) => {
-    _searchWord.value = value;
-  }, 100),
-});
-const searchWordFallback = computed(() => {
-  if (SEARCH_TARGET_REGEX.EITHER.test(searchWord.value))
-    return searchWord.value.match(SEARCH_TARGET_REGEX.EITHER)![1];
-
-  return searchWord.value;
-});
-
-const searchItems = computed(() => props.searchItems);
-const searchItemsOnlyHistory = computed(() =>
-  props.searchItems.filter((i) => i.type === SEARCH_ITEM_TYPE.HISTORY)
-);
-const searchItemsOnlyBookmark = computed(() =>
-  props.searchItems.filter((i) => i.type === SEARCH_ITEM_TYPE.BOOKMARK)
-);
-const searchItemsOnlyTab = computed(() =>
-  props.searchItems.filter((i) => i.type === SEARCH_ITEM_TYPE.TAB)
-);
-const selectedNumber = ref(0);
 const searchResultWrapperRef = ref<HTMLElement | null>(null);
-const parsedFavoriteItems = computed(
-  () => JSON.parse(favoriteItems.value) as FavoriteItem[]
-);
-
-const initialSearchItems = computed(() => {
-  return parsedFavoriteItems.value.map((i) => ({
-    ...i,
-    isFavorite: true,
-    tabId: undefined,
-    matchedWord: "",
-  }));
-});
-const isFavorite = (url: string, title: string) => {
-  return parsedFavoriteItems.value.some(
-    (i: FavoriteItem) => i.url === url && i.title === title
-  );
-};
-
-const searchResult = computed(() => {
-  if (!searchItems.value) return [];
-
-  let target = searchItems.value;
-  let word = searchWord.value;
-
-  if (!word) {
-    // initial display
-    return initialSearchItems.value.slice(0, 100);
-  }
-
-  // Selecting targets with the prefix
-  if (SEARCH_TARGET_REGEX.HISTORY.test(word)) {
-    target = searchItemsOnlyHistory.value;
-    word = word.match(SEARCH_TARGET_REGEX.HISTORY)![1] || "h"; // The 'h' in all URLs is set to fallback.
-  } else if (SEARCH_TARGET_REGEX.BOOKMARK.test(word)) {
-    target = searchItemsOnlyBookmark.value;
-    word = word.match(SEARCH_TARGET_REGEX.BOOKMARK)![1] || "h";
-  } else if (SEARCH_TARGET_REGEX.TAB.test(word)) {
-    target = searchItemsOnlyTab.value;
-    word = word.match(SEARCH_TARGET_REGEX.TAB)![1] || "h";
-  }
-
-  // fuzzy search powered by Fuse.js https://fusejs.io/
-  const fuse = new Fuse(target, FUSE_OPTIONS);
-  return fuse.search<SearchItem>(word, { limit: 100 }).map((result) => {
-    return {
-      ...result.item,
-      isFavorite: isFavorite(result.item.url, result.item.title),
-      matchedWord: getMatchedRegExp(
-        result!.matches![0].value!,
-        result!.matches![0].indices as [number, number][]
-      ),
-    };
-  });
-});
 
 watch(searchWord, () => {
-  selectedNumber.value = 0;
+  changeSelectedItem(0);
   searchResultWrapperRef.value?.scrollTo(0, 0);
 });
 
@@ -334,88 +240,19 @@ const closePopup = () => {
 
 // focus to input when modal open
 const searchInput = ref<HTMLInputElement | null>(null);
+
 // click event
 const onClick = async (url: string, tabId?: number) => {
-  // if selected tab link, send change tab message to background script
-  if (tabId) {
-    await sendMessage("change-current-tab", {
-      tabId,
-    });
-    return;
-  }
-  // otherwise, open the link.
-  await sendMessage("update-current-page", {
-    url,
-  });
+  await changePageWithClick(url, tabId);
   closePopup();
+};
+
+const onClickFavorite = (item: SearchItem) => {
+  toggleFavorite(item);
 };
 
 // Key event
 const searchResultRefs = ref<HTMLElement[]>([]);
-
-const browserSearch = async (query: string, inNewTab?: boolean) => {
-  if (browser.search.search) {
-    // Firefox API
-    await browser.search.search({
-      query,
-      tabId: inNewTab
-        ? undefined
-        : (
-            await browser.tabs.query({
-              active: true,
-              currentWindow: true,
-            })
-          )[0].id,
-    });
-  } else {
-    // Chrome API
-    await browser.search.query({
-      text: query,
-      disposition: inNewTab
-        ? browser.search.Disposition.NEW_TAB
-        : browser.search.Disposition.CURRENT_TAB,
-    });
-  }
-};
-
-const changePageWithKeyEvent = async (isNewTab = false) => {
-  if (searchResultRefs.value) {
-    const targetEl = searchResultRefs.value[selectedNumber.value];
-    if (targetEl.dataset.isSearch !== undefined) {
-      await browserSearch(searchWordFallback.value, isNewTab);
-      closePopup();
-      return;
-    }
-    // if selected tab link, send change tab message to background script
-    if (targetEl.dataset.tabid) {
-      await sendMessage("change-current-tab", {
-        tabId: parseInt(targetEl.dataset.tabid),
-      });
-      return;
-    }
-    // otherwise, open the link in the specified way.
-    const url = targetEl.dataset.url!;
-    if (isNewTab) {
-      await sendMessage("open-new-tab-page", {
-        url,
-      });
-    } else {
-      await sendMessage("update-current-page", {
-        url,
-      });
-    }
-    closePopup();
-  }
-};
-
-const onKeypress = async (keyEvent: {
-  code: string;
-  ctrlKey?: boolean;
-  metaKey?: boolean;
-}) => {
-  if (keyEvent.code === "Enter")
-    await changePageWithKeyEvent(!!keyEvent.ctrlKey || !!keyEvent.metaKey);
-};
 
 const fixScrollPosition = () => {
   if (!searchResultWrapperRef.value) return;
@@ -432,69 +269,41 @@ const fixScrollPosition = () => {
     wrapperElm.scrollTo(0, wrapperElm.scrollTop - selectedItemHeight);
 };
 
-const onArrowDown = () => {
-  if (searchResult.value.length > selectedNumber.value + 1) {
-    selectedNumber.value++;
-    fixScrollPosition();
-  }
-};
-const onArrowUp = () => {
-  if (selectedNumber.value > 0) {
-    selectedNumber.value--;
-    fixScrollPosition();
-  }
-};
-const onEsc = () => {
-  closePopup();
-};
-const onFavorite = () => {
-  const item = searchResult.value[selectedNumber.value];
-  if (item.tabId) {
-    return;
-  }
-  if (isFavorite(item.url, item.title)) {
-    favoriteItems.value = JSON.stringify(
-      parsedFavoriteItems.value.filter((i) => i.url !== item.url)
-    );
-  } else {
-    favoriteItems.value = JSON.stringify([
-      ...parsedFavoriteItems.value,
-      {
-        url: item.url,
-        title: item.title,
-        faviconUrl: item.faviconUrl,
-        type: item.type,
-        folderName: item.folderName,
-      },
-    ]);
+const onKeypress = async (keyEvent: {
+  code: string;
+  ctrlKey?: boolean;
+  metaKey?: boolean;
+}) => {
+  if (keyEvent.code === "Enter") {
+    await changePage(!!keyEvent.ctrlKey || !!keyEvent.metaKey);
+    closePopup();
   }
 };
 
-const searchEngineRef = ref<Pick<
-  Search.SearchEngine,
-  "name" | "favIconUrl"
-> | null>(null);
+const onArrowDown = () => {
+  if (searchResult.value.length > selectedNumber.value + 1) {
+    changeSelectedItem(selectedNumber.value + 1);
+    fixScrollPosition();
+  }
+};
+
+const onArrowUp = () => {
+  if (selectedNumber.value > 0) {
+    changeSelectedItem(selectedNumber.value - 1);
+    fixScrollPosition();
+  }
+};
+
+const onEsc = () => {
+  closePopup();
+};
+
+const onFavorite = () => {
+  toggleFavorite();
+};
 
 onMounted(async () => {
   await nextTick();
   if (searchInput.value) searchInput.value.focus();
-
-  const defaultSearchEngineValue = {
-    name: "browser",
-    favIconUrl:
-      theme.value === THEME.DARK
-        ? SEARCH_ICON_DATA_URL_DARK
-        : SEARCH_ICON_DATA_URL_LIGHT,
-  };
-
-  if (browser.search.get) {
-    // This API is only available in Firefox
-    searchEngineRef.value =
-      (await browser.search.get()).find(
-        (e: Search.SearchEngine) => e.isDefault
-      ) || defaultSearchEngineValue;
-  } else {
-    searchEngineRef.value = defaultSearchEngineValue;
-  }
 });
 </script>
