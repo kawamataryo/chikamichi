@@ -1,6 +1,11 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## 2.13.3
+### refactor
+- move search logic to useSearch
+- change highlight logic to use fuse matches
+
 ## 2.13.2
 ### chore
 - fix favorite logic
