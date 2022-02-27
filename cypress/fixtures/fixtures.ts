@@ -31,6 +31,7 @@ export const generateBookmark = (
 export const generateTab = (
   args: { title?: string; url?: string } = {}
 ): Partial<Tabs.Tab> => ({
+  id: randNumber(),
   url: args.url ?? randUrl(),
   title: args.title ?? randCatchPhrase(),
 });

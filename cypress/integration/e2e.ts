@@ -180,7 +180,7 @@ describe("App", () => {
     // check tabs can't be made favorites.
     cy.get("[data-cy=search-input]").type("tab-item");
     cy.get("[data-cy=search-result-0]").should("have.class", "selected-item");
-    cy.get("[data-cy=search-result-favorite-1]")
+    cy.get("[data-cy=search-result-favorite-0]")
       .get("[data-cy=toggle-star]")
       .should("not.exist");
     cy.get("[data-cy=search-input]").type("{ctrl}f"); // with shortcut

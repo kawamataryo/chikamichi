@@ -59,7 +59,7 @@
             data-cy="radio-auto"
           />
           <label for="auto" class="cursor-pointer">
-            <IconDarkLight width="50" class="h-50px mt-10px" />
+            <IconLightDark width="50" class="h-50px mt-10px" />
             Auto
           </label>
         </div>
@@ -117,5 +117,4 @@
 <script setup lang="ts">
 import { defaultSearchPrefix, theme } from "~/logic";
 import { SEARCH_PREFIX } from "~/constants";
-import IconDarkLight from "~/components/icons/IconLightDark.vue";
 </script>
