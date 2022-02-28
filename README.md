@@ -30,8 +30,9 @@ https://user-images.githubusercontent.com/11070996/151462764-4c196ea8-e5d0-4190-
 ## 📦 Install
 
 Please install from:
-- [Firefox Add-Ons Repository (AMO)](https://addons.mozilla.org/firefox/addon/chikamichi/)
 - [Chrome Web Store](https://chrome.google.com/webstore/detail/chikamichi/gkhobepjbiepngbeikhbpnfgjcjgmgha)
+- [Firefox Add-Ons Repository (AMO)](https://addons.mozilla.org/firefox/addon/chikamichi/)
+- [Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/chikamichi-quickly-find/kgbibnihcjkbcjbngneigamkphnoipli)
 
 ## 💻 Usage
 
