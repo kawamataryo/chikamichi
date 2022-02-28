@@ -2,20 +2,6 @@
   "extends": ["config:base", ":timezone(Asia/Tokyo)"],
   "labels": ["dependencies", "renovate"],
   "dependencyDashboard": true,
-  "pin": {
-    "automerge": true
-  },
   "prConcurrentLimit": 4,
-  "packageRules": [
-    {
-      "packagePatterns": ["^@types/"],
-      "automerge": true
-    },
-    {
-      "groupName": "linters",
-      "extends": ["packages:linters"],
-      "packageNames": ["prettier"],
-      "packagePatterns": ["^@typescript-eslint/"]
-    }
-  ]
+  "automerge": true
 }
