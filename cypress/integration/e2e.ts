@@ -7,7 +7,7 @@ import { setupExtensionEnvironment } from "cypress/support/support";
 import { SEARCH_PREFIX } from "~/constants";
 
 describe("App", () => {
-  before(() => {
+  beforeEach(() => {
     cy.visit("/dist/popup/index.html", {
       onBeforeLoad(win: Cypress.AUTWindow & { chrome: typeof chrome }) {
         setupExtensionEnvironment({
@@ -113,22 +113,31 @@ describe("App", () => {
     cy.window().its("close").should("be.called");
   });
 
-  it.skip("TODO: on Enter key", () => {
+  it("on Enter key", () => {
     cy.get("[data-cy=search-input]").type("history-item");
     cy.get("[data-cy=search-result-0]").should("have.class", "selected-item");
     cy.get("[data-cy=search-input]").type("{enter}");
+    cy.get("@connect-postMessage").should("be.calledWithMatch", {
+      messageID: "update-current-page",
+    });
   });
 
-  it.skip("TODO: on ctrl Enter key", () => {
+  it("on ctrl Enter key", () => {
     cy.get("[data-cy=search-input]").type("history-item");
     cy.get("[data-cy=search-result-0]").should("have.class", "selected-item");
     cy.get("[data-cy=search-input]").type("{ctrl}{enter}");
+    cy.get("@connect-postMessage").should("be.calledWithMatch", {
+      messageID: "open-new-tab-page",
+    });
   });
 
-  it.skip("TODO: on meta Enter key", () => {
+  it("on meta Enter key", () => {
     cy.get("[data-cy=search-input]").type("history-item");
     cy.get("[data-cy=search-result-0]").should("have.class", "selected-item");
     cy.get("[data-cy=search-input]").type("{meta}{enter}");
+    cy.get("@connect-postMessage").should("be.calledWithMatch", {
+      messageID: "open-new-tab-page",
+    });
   });
 
   it("on enter when browser search", () => {

@@ -1,5 +1,9 @@
-import { onMessage } from "webext-bridge";
 import { Bookmarks, History, Tabs } from "webextension-polyfill";
+
+class StubURL {
+  pathname = "/dist/popup";
+  constructor(public url: string) {}
+}
 
 export const setupExtensionEnvironment = ({
   win,
@@ -23,15 +27,39 @@ export const setupExtensionEnvironment = ({
           default_popup: "popup.html",
         },
       }),
-    getURL: cy.stub().as("getURL").returns(""),
+    getURL: cy.stub().as("getURL").returns("popup.html"),
     sendMessage: cy.stub(),
     onMessage: {
       addListener: cy.stub().as("onMessage.addListener"),
     } as any,
     onConnect: {
-      addListener: cy.stub().as("onConnect.addListener"),
+      addListener: (callback: (arg: any) => void) => {
+        // eslint-disable-next-line n/no-callback-literal
+        callback({
+          id: 0,
+          name: "",
+          sender: {
+            frameId: 0,
+            tab: {
+              id: 0,
+            },
+            postMessage: cy.stub().as("postMessage"),
+          },
+        });
+      },
     } as any,
-    connect: cy.stub().as("connect"),
+    connect: cy
+      .stub()
+      .as("connect")
+      .returns({
+        onMessage: {
+          addListener: cy.stub().as("connect-onMessage-addListener"),
+        },
+        onDisconnect: {
+          addListener: cy.stub().as("connect-onDisconnect-addListener"),
+        },
+        postMessage: cy.stub().as("connect-postMessage"),
+      }),
   };
   (win.chrome.history as Partial<typeof chrome.history>) = {
     search: ((_: any, callback: (data: any[]) => void) => {
@@ -49,10 +77,9 @@ export const setupExtensionEnvironment = ({
     }) as any,
   };
   win.chrome.search = {
-    query: cy.stub(),
+    query: cy.stub().as("chrome-search-query"),
     Disposition: { CURRENT_TAB: 1 },
   } as any;
-  win.close = cy.stub();
-  win.postMessage = cy.stub();
-  (win.URL as any) = cy.stub().as("URL").returns({ pathname: "/__/" });
+  win.close = cy.stub().as("close");
+  (win.URL as any) = StubURL;
 };
