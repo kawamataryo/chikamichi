@@ -19,7 +19,7 @@ specifiers:
   crx: 5.0.1
   cypress: 9.5.1
   eslint: 8.10.0
-  eslint-config-prettier: 8.4.0
+  eslint-config-prettier: 8.5.0
   esno: 0.14.1
   fs-extra: 10.0.1
   fuse.js: 6.5.3
@@ -67,7 +67,7 @@ devDependencies:
   crx: 5.0.1
   cypress: 9.5.1
   eslint: 8.10.0
-  eslint-config-prettier: 8.4.0_eslint@8.10.0
+  eslint-config-prettier: 8.5.0_eslint@8.10.0
   esno: 0.14.1
   fs-extra: 10.0.1
   fuse.js: 6.5.3
@@ -2352,8 +2352,8 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /eslint-config-prettier/8.4.0_eslint@8.10.0:
-    resolution: {integrity: sha512-CFotdUcMY18nGRo5KGsnNxpznzhkopOcOo0InID+sgQssPrzjvsyKZPvOgymTFeHrFuC3Tzdf2YndhXtULK9Iw==}
+  /eslint-config-prettier/8.5.0_eslint@8.10.0:
+    resolution: {integrity: sha512-obmWKLUNCnhtQRKc+tmnYuQl0pFU1ibYJQ5BGhTVB08bHe9wC8qUeG7c08dj9XX+AuPj1YSGSQIHl1pnDHZR0Q==}
     hasBin: true
     peerDependencies:
       eslint: '>=7.0.0'
