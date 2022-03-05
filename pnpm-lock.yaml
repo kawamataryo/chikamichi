@@ -36,7 +36,7 @@ specifiers:
   unplugin-icons: 0.13.2
   unplugin-vue-components: 0.17.21
   vite: 2.8.6
-  vite-plugin-windicss: 1.8.2
+  vite-plugin-windicss: 1.8.3
   vitest: 0.5.9
   vue: 3.2.31
   vue-demi: 0.12.1
@@ -84,7 +84,7 @@ devDependencies:
   unplugin-icons: 0.13.2_5dbb0cc878f3ab9caa0bd7b169eded43
   unplugin-vue-components: 0.17.21_vite@2.8.6+vue@3.2.31
   vite: 2.8.6
-  vite-plugin-windicss: 1.8.2_vite@2.8.6
+  vite-plugin-windicss: 1.8.3_vite@2.8.6
   vitest: 0.5.9
   vue: 3.2.31
   vue-demi: 0.12.1_vue@3.2.31
@@ -833,8 +833,8 @@ packages:
       vue-demi: 0.12.1_vue@3.2.31
     dev: true
 
-  /@windicss/config/1.8.2:
-    resolution: {integrity: sha512-dGXkzcH1Bnm9716/pE63YSewLQIZXGWerHEotUKf2EMlz/JqsI9Z3yBy/lXVL9HsEoTNpyvMPLk75oquH0vXGg==}
+  /@windicss/config/1.8.3:
+    resolution: {integrity: sha512-1fvfZhRD7WfV/Xh6uIAYKIdbQWrwEgSdkFlHiLPzMDS44KjwNZILDzLAz9Y2W5H2K4MLGgGMnzGS89ECyjc0Ww==}
     dependencies:
       debug: 4.3.3
       jiti: 1.13.0
@@ -843,11 +843,11 @@ packages:
       - supports-color
     dev: true
 
-  /@windicss/plugin-utils/1.8.2:
-    resolution: {integrity: sha512-UlinWxojyGxWV18AyQ1ISeGvtpbw4ITQpcRe0v4PyuJZHwnrrHmxp8o/pg10oEcDKnsTIbjGeZfW5DC+mkjYYQ==}
+  /@windicss/plugin-utils/1.8.3:
+    resolution: {integrity: sha512-emlMeDt73uNV1ZofLTDogcxqL9aZ5uIRYkjeHlrWiaDozFbX6Jc+a6eRo9Ieaar3JUryl6AnecTPHAiFDl4IXg==}
     dependencies:
       '@antfu/utils': 0.5.0
-      '@windicss/config': 1.8.2
+      '@windicss/config': 1.8.3
       debug: 4.3.3
       fast-glob: 3.2.11
       magic-string: 0.25.7
@@ -6023,12 +6023,12 @@ packages:
       extsprintf: 1.3.0
     dev: true
 
-  /vite-plugin-windicss/1.8.2_vite@2.8.6:
-    resolution: {integrity: sha512-tO9bCoqIW945ehwMr9D41YPods8b7HXtVtYVPx62dxadxlbcoD7PQ/8wSvLEiIkMMfuDG5WQ6LZaUdmfALC/vQ==}
+  /vite-plugin-windicss/1.8.3_vite@2.8.6:
+    resolution: {integrity: sha512-RIw2GD6H6cKNE8wZXVOBs4L1uTicVS0FaAkeqXvy1oyuXLC4SXmvnzEuoK0+qFuWJjW0ECNwE8eU+ZZhzNQKUg==}
     peerDependencies:
       vite: ^2.0.1
     dependencies:
-      '@windicss/plugin-utils': 1.8.2
+      '@windicss/plugin-utils': 1.8.3
       debug: 4.3.3
       kolorist: 1.5.1
       vite: 2.8.6
