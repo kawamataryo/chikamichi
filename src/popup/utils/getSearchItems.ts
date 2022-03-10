@@ -68,7 +68,7 @@ export const convertToSearchItemsFromBookmarks = (
           : folderNames.filter((name) => name).join("/"); // Exclude top level folder name
       result.push({
         url: node.url,
-        title: node.title,
+        title: node.title || node.url,
         faviconUrl: faviconUrl(node.url),
         type: SEARCH_ITEM_TYPE.BOOKMARK,
         folderName,
