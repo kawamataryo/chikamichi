@@ -10,7 +10,9 @@ import { SEARCH_ITEM_TYPE } from "~/constants";
 
 vi.mock("webextension-polyfill", () => ({}));
 
-const generateBookmark = (): Bookmarks.BookmarkTreeNode => ({
+const generateBookmark = (overwrites?: {
+  title?: string;
+}): Bookmarks.BookmarkTreeNode => ({
   id: randUuid(),
   parentId: randUuid(),
   index: randNumber(),
@@ -19,6 +21,7 @@ const generateBookmark = (): Bookmarks.BookmarkTreeNode => ({
   dateAdded: randNumber(),
   dateGroupModified: randNumber(),
   type: "bookmark" as const,
+  ...overwrites,
 });
 
 const generateHistory = (
@@ -34,6 +37,7 @@ describe("convertToSearchItemsFromBookmarks", () => {
     const bookmark1 = generateBookmark();
     const bookmark2 = generateBookmark();
     const bookmark3 = generateBookmark();
+    const bookmark4 = generateBookmark({ title: "" });
     const nestedFolder = {
       ...generateBookmark(),
       type: "folder" as const,
@@ -44,11 +48,11 @@ describe("convertToSearchItemsFromBookmarks", () => {
       type: "folder" as const,
       children: [bookmark2, nestedFolder],
     };
-    const bookmarks = [bookmark1, folder];
+    const bookmarks = [bookmark1, folder, bookmark4];
 
     const searchItems = convertToSearchItemsFromBookmarks(bookmarks);
 
-    expect(searchItems.length).toBe(3);
+    expect(searchItems.length).toBe(4);
     expect(searchItems).toEqual([
       {
         url: bookmark1.url,
@@ -73,6 +77,14 @@ describe("convertToSearchItemsFromBookmarks", () => {
         type: SEARCH_ITEM_TYPE.BOOKMARK,
         folderName: `${folder.title}/${nestedFolder.title}`,
         searchTerm: `${bookmark3.title} ${bookmark3.url} ${folder.title}/${nestedFolder.title}`,
+      },
+      {
+        url: bookmark4.url,
+        title: bookmark4.url,
+        faviconUrl: faviconUrl(bookmark4.url!),
+        type: SEARCH_ITEM_TYPE.BOOKMARK,
+        folderName: "",
+        searchTerm: `${bookmark4.url}`,
       },
     ]);
   });
