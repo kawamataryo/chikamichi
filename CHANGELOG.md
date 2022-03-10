@@ -1,6 +1,13 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## 2.14.0
+### feat
+- set url if bookmark title is empty by @yktakaha4
+
+### chore
+- update dependencies
+
 ## 2.13.3
 ### refactor
 - move search logic to useSearch
