@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## 2.14.1
+### bugfix
+- fixed degrading of url display
+
 ## 2.14.0
 ### feat
 - set url if bookmark title is empty by @yktakaha4
