@@ -28,7 +28,7 @@
             :query="item.matchedWord"
             split-by-space
             highlight-class="highlight-word"
-            >{{ item.title }}</WordHighlighter
+            >{{ item.title || item.url }}</WordHighlighter
           >
         </span>
         <WordHighlighter
@@ -36,7 +36,7 @@
           :query="item.matchedWord"
           split-by-space
           highlight-class="highlight-word"
-          :class="{ hidden: isSelected }"
+          :class="{ hidden: !isSelected }"
           >{{ item.url }}</WordHighlighter
         >
       </span>
