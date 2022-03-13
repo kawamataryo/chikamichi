@@ -19,12 +19,13 @@ Pull requests are always welcome.
 
 The following types of Pull Requests are accepted.  For basic Pull Requests (especially minor ones), you may send a Pull Request without creating an Issue.
 
-"How about this kind of fix/improvement?" If you have a question, please raise an Issue and discuss it with me.
 
 - Bug Fixes
 - Add functionality
 - Performance Fixes
 - Typo Fixes
+
+"How about this kind of fix/improvement?" If you have a question, please raise an Issue and discuss it with me.
 
 ## How to send Pull Request
 
@@ -71,13 +72,11 @@ $ pnpm run dev
 
 When the development server starts, the Extension build results are output to the `extension`.
 
-<img width="566" alt="image" src="https://user-images.githubusercontent.com/11070996/158058979-6d7f58a9-3d9b-46d3-ad14-f5e7a8c787e7.png">
-
 You can use extensions in your browser by loading the contents of the extensions folder in Chrome Exteinsions.
 
-<img width="566" alt="image" src="https://user-images.githubusercontent.com/11070996/158058979-6d7f58a9-3d9b-46d3-ad14-f5e7a8c787e7.png">
+<img width="560" alt="image" src="https://user-images.githubusercontent.com/11070996/158058979-6d7f58a9-3d9b-46d3-ad14-f5e7a8c787e7.png">
 
-<img width="591" alt="image" src="https://user-images.githubusercontent.com/11070996/158059064-c1773e32-ecd7-4a52-b01e-ba0ad2426502.png">
+<img width="560" alt="image" src="https://user-images.githubusercontent.com/11070996/158059064-c1773e32-ecd7-4a52-b01e-ba0ad2426502.png">
 
 When you modify the code, the change is automatically reflected.
 
@@ -97,4 +96,4 @@ Run e2e test.
 $ pnpm run cypress:open
 ```
 
-Happy coding 👍
+That's it. Happy coding 👍
