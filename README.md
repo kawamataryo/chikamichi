@@ -60,6 +60,8 @@ Items with a star to the right of the search item are registered as favorites. I
 ## 👨‍💻 Contributing
 Contributions are welcome 🎉 We accept contributions via Pull Requests.
 
+See [this guide](https://github.com/kawamataryo/chikamichi/blob/main/CONTRIBUTING.md) on how to make a contribution.
+
 ## 💕 Thanks
 This extension uses the following library.
 
