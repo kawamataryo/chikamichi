@@ -165,4 +165,13 @@ describe("convertToSearchItemsFromBookmarks", () => {
       searchTerm: `${histories[2].title!} ${histories[2].url}`,
     });
   });
+
+  describe("faviconUrl", () => {
+    it("get domain", () => {
+      const url = "https://www.google.com/search?q=Compiler+API";
+      expect(faviconUrl(url)).toBe(
+        "https://www.google.com/s2/favicons?domain=google.com"
+      );
+    });
+  });
 });

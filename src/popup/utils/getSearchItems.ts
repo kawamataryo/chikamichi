@@ -1,8 +1,15 @@
+import { fromUrl, parseDomain, ParseResultType } from "parse-domain";
 import type { Bookmarks, History, Tabs } from "webextension-polyfill";
 import { SEARCH_ITEM_TYPE } from "~/constants";
 
-export const faviconUrl = (url: string) =>
-  `https://www.google.com/s2/favicons?domain=${new URL(url).hostname}`;
+export const faviconUrl = (url: string) => {
+  const parseResult = parseDomain(fromUrl(url));
+  const domain =
+    parseResult.type === ParseResultType.Listed
+      ? `${parseResult.domain}.${parseResult.topLevelDomains.join(".")}`
+      : new URL(url).hostname;
+  return `https://www.google.com/s2/favicons?domain=${domain}`;
+};
 
 const generateSearchTerm = (...args: string[]): string => {
   return args.filter((arg) => arg).join(" ");

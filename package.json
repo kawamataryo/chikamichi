@@ -76,6 +76,7 @@
     "*.{json,ts,js,vue}": "prettier --write"
   },
   "dependencies": {
+    "parse-domain": "^7.0.0",
     "vue-word-highlighter": "1.0.4"
   }
 }
