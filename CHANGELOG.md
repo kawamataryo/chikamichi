@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## 2.14.2
+### bugfix
+- Fix favicons to be more visible
+
 ## 2.14.1
 ### bugfix
 - fixed degrading of url display
