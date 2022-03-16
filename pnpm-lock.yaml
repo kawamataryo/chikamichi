@@ -25,7 +25,7 @@ specifiers:
   fuse.js: 6.5.3
   husky: 7.0.4
   kolorist: 1.5.1
-  lint-staged: 12.3.5
+  lint-staged: 12.3.6
   lodash.debounce: 4.0.8
   npm-run-all: 4.1.5
   parse-domain: 7.0.0
@@ -75,7 +75,7 @@ devDependencies:
   fuse.js: 6.5.3
   husky: 7.0.4
   kolorist: 1.5.1
-  lint-staged: 12.3.5
+  lint-staged: 12.3.6
   lodash.debounce: 4.0.8
   npm-run-all: 4.1.5
   prettier: 2.6.0
@@ -3984,8 +3984,8 @@ packages:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
     dev: true
 
-  /lint-staged/12.3.5:
-    resolution: {integrity: sha512-oOH36RUs1It7b9U/C7Nl/a0sLfoIBcMB8ramiB3nuJ6brBqzsWiUAFSR5DQ3yyP/OR7XKMpijtgKl2DV1lQ3lA==}
+  /lint-staged/12.3.6:
+    resolution: {integrity: sha512-tVNyl/HsAnplKh4oaoRNzyZLm0PE/6VaBUXvd/gA9zhYCC/+ivZwiwpoT6jOxcLzuIOjP19wW+mfOi7/Bw4c1A==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     hasBin: true
     dependencies:
@@ -3999,6 +3999,7 @@ packages:
       micromatch: 4.0.4
       normalize-path: 3.0.0
       object-inspect: 1.12.0
+      pidtree: 0.5.0
       string-argv: 0.3.1
       supports-color: 9.2.1
       yaml: 1.10.2
@@ -4890,6 +4891,12 @@ packages:
 
   /pidtree/0.3.1:
     resolution: {integrity: sha512-qQbW94hLHEqCg7nhby4yRC7G2+jYHY4Rguc2bjw7Uug4GIJuu1tvf2uHaZv5Q8zdt+WKJ6qK1FOI6amaWUo5FA==}
+    engines: {node: '>=0.10'}
+    hasBin: true
+    dev: true
+
+  /pidtree/0.5.0:
+    resolution: {integrity: sha512-9nxspIM7OpZuhBxPg73Zvyq7j1QMPMPsGKTqRc2XOaFQauDvoNz9fM1Wdkjmeo7l9GXOZiRs97sPkuayl39wjA==}
     engines: {node: '>=0.10'}
     hasBin: true
     dev: true
