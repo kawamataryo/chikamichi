@@ -43,7 +43,7 @@ specifiers:
   vue-demi: 0.12.4
   vue-word-highlighter: 1.0.4
   web-ext: 6.7.0
-  webext-bridge: 5.0.3
+  webext-bridge: 5.0.4
   webextension-polyfill: 0.8.0
 
 dependencies:
@@ -91,7 +91,7 @@ devDependencies:
   vue: 3.2.31
   vue-demi: 0.12.4_vue@3.2.31
   web-ext: 6.7.0
-  webext-bridge: 5.0.3
+  webext-bridge: 5.0.4
   webextension-polyfill: 0.8.0
 
 packages:
@@ -6446,8 +6446,8 @@ packages:
     engines: {node: '>= 8'}
     dev: false
 
-  /webext-bridge/5.0.3:
-    resolution: {integrity: sha512-uGzFWi84oEFcOwBK0pxNTArP4aH6oYhainPHjjlem5rnMcVOZ+jK6Xid8hp93IjLEL7S1u1Wus+SGrLCJyld7w==}
+  /webext-bridge/5.0.4:
+    resolution: {integrity: sha512-y/qnOAjkqM5n6zc1IPKb5IUwOFfcJXcmR+mNHdAkinwDCST2BWEQ5WyvpZAtLNLnLd4w/YFmjdqzU8qctFYktg==}
     dependencies:
       '@types/webextension-polyfill': 0.8.2
       nanoevents: 6.0.2
