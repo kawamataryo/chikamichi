@@ -1,7 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@antfu/eslint-config': 0.19.1
+  '@antfu/eslint-config': 0.19.2
   '@ffflorian/jszip-cli': 3.1.6
   '@iconify/json': 2.1.22
   '@ngneat/falso': 3.1.0
@@ -51,7 +51,7 @@ dependencies:
   vue-word-highlighter: 1.0.4_vue@3.2.31
 
 devDependencies:
-  '@antfu/eslint-config': 0.19.1_eslint@8.12.0+typescript@4.6.3
+  '@antfu/eslint-config': 0.19.2_eslint@8.12.0+typescript@4.6.3
   '@ffflorian/jszip-cli': 3.1.6
   '@iconify/json': 2.1.22
   '@ngneat/falso': 3.1.0
@@ -158,8 +158,8 @@ packages:
       - typescript
     dev: true
 
-  /@antfu/eslint-config/0.19.1_eslint@8.12.0+typescript@4.6.3:
-    resolution: {integrity: sha512-GdSxK6zw03wRKgB6EWm73ZOH1AT/AiDbapAMijv1F8T6BvUJsZD0ZS1/Wy591aD0E2qWBYJN2sO6PNtT56uNYQ==}
+  /@antfu/eslint-config/0.19.2_eslint@8.12.0+typescript@4.6.3:
+    resolution: {integrity: sha512-dNi60iYYHpWPGJJ2ocThIrl4yNEMk7Y9KY8ndym0sXTGIW0Ryq6nLn43t6U13ClV36aCAdbPQoCTr/+jn2NJsw==}
     peerDependencies:
       eslint: '>=7.4.0'
     dependencies:
