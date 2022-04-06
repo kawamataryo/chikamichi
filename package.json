@@ -40,7 +40,7 @@
     "@typescript-eslint/eslint-plugin": "5.18.0",
     "@vitejs/plugin-vue": "2.3.1",
     "@vue/compiler-sfc": "3.2.31",
-    "@vueuse/core": "8.2.4",
+    "@vueuse/core": "8.2.5",
     "chokidar": "3.5.3",
     "cross-env": "7.0.3",
     "crx": "5.0.1",
