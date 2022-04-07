@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## 2.14.3
+### chore
+- fix Fixed maximum number of history retrieval
+
 ## 2.14.2
 ### bugfix
 - Fix favicons to be more visible
