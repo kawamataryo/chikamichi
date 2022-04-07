@@ -1,4 +1,4 @@
-import { fromUrl, parseDomain, ParseResultType } from "parse-domain";
+import { ParseResultType, fromUrl, parseDomain } from "parse-domain";
 import type { Bookmarks, History, Tabs } from "webextension-polyfill";
 import { SEARCH_ITEM_TYPE } from "~/constants";
 
@@ -106,7 +106,7 @@ export const getSearchItems = async () => {
   const bookmarks = await browser.bookmarks.getTree();
   const histories = await browser.history.search({
     text: "",
-    maxResults: 15000,
+    maxResults: 5000,
     startTime: new Date().setDate(new Date().getDate() - 180),
   });
 
