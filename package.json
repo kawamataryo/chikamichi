@@ -44,7 +44,7 @@
     "chokidar": "3.5.3",
     "cross-env": "7.0.3",
     "crx": "5.0.1",
-    "cypress": "9.5.3",
+    "cypress": "9.5.4",
     "eslint": "8.13.0",
     "eslint-config-prettier": "8.5.0",
     "esno": "0.14.1",
