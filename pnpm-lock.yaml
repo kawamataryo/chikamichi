@@ -33,7 +33,7 @@ specifiers:
   rimraf: 3.0.2
   serve: 13.0.2
   typescript: 4.6.3
-  unplugin-auto-import: 0.7.0
+  unplugin-auto-import: 0.7.1
   unplugin-icons: 0.14.1
   unplugin-vue-components: 0.19.2
   vite: 2.9.1
@@ -82,7 +82,7 @@ devDependencies:
   rimraf: 3.0.2
   serve: 13.0.2
   typescript: 4.6.3
-  unplugin-auto-import: 0.7.0_@vueuse+core@8.2.5+vite@2.9.1
+  unplugin-auto-import: 0.7.1_@vueuse+core@8.2.5+vite@2.9.1
   unplugin-icons: 0.14.1_2a7f71a739e067e9f167d7da071b72a6
   unplugin-vue-components: 0.19.2_vite@2.9.1+vue@3.2.32
   vite: 2.9.1
@@ -351,7 +351,7 @@ packages:
     resolution: {integrity: sha512-Hmr5TWeWZLcLr5/r8pSga2d1OfN7LVlaQilb41kpgFmiEKS7+JRmNKGtgT4dI82hGiAzNpFEgLC1hKeqNF+pbA==}
     dependencies:
       '@antfu/install-pkg': 0.1.0
-      '@antfu/utils': 0.5.0
+      '@antfu/utils': 0.5.1
       '@iconify/types': 1.1.0
       debug: 4.3.4
       kolorist: 1.5.1
@@ -6196,8 +6196,8 @@ packages:
     engines: {node: '>= 10.0.0'}
     dev: true
 
-  /unplugin-auto-import/0.7.0_@vueuse+core@8.2.5+vite@2.9.1:
-    resolution: {integrity: sha512-40oC7bxzSyyvJI4mXmk8gDD7gKjR10gYkeWBu/UigK8TusXwUsJOjwvIr+REgzOMBGH/5pUiVMoBYEZrLejk3w==}
+  /unplugin-auto-import/0.7.1_@vueuse+core@8.2.5+vite@2.9.1:
+    resolution: {integrity: sha512-9865OV9eP99PNxHR2mtTDExeN01m4M9boT5U2BtIwsU1wDRsaFIYWLwcCBEjvXzXfTTC2NNMskhHGVAMfL2WgA==}
     engines: {node: '>=14'}
     peerDependencies:
       '@vueuse/core': '*'
@@ -6205,7 +6205,7 @@ packages:
       '@vueuse/core':
         optional: true
     dependencies:
-      '@antfu/utils': 0.5.0
+      '@antfu/utils': 0.5.1
       '@rollup/pluginutils': 4.2.0
       '@vueuse/core': 8.2.5_vue@3.2.32
       local-pkg: 0.4.1
