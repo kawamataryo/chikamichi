@@ -35,7 +35,7 @@ specifiers:
   typescript: 4.6.3
   unplugin-auto-import: 0.7.1
   unplugin-icons: 0.14.1
-  unplugin-vue-components: 0.19.2
+  unplugin-vue-components: 0.19.3
   vite: 2.9.4
   vite-plugin-windicss: 1.8.4
   vitest: 0.9.3
@@ -84,7 +84,7 @@ devDependencies:
   typescript: 4.6.3
   unplugin-auto-import: 0.7.1_@vueuse+core@8.2.6+vite@2.9.4
   unplugin-icons: 0.14.1_c87400540f03a90910602f64bdd287f9
-  unplugin-vue-components: 0.19.2_vite@2.9.4+vue@3.2.32
+  unplugin-vue-components: 0.19.3_vite@2.9.4+vue@3.2.32
   vite: 2.9.4
   vite-plugin-windicss: 1.8.4_vite@2.9.4
   vitest: 0.9.3
@@ -3105,7 +3105,7 @@ packages:
       '@nodelib/fs.walk': 1.2.8
       glob-parent: 5.1.2
       merge2: 1.4.1
-      micromatch: 4.0.4
+      micromatch: 4.0.5
     dev: true
 
   /fast-json-patch/2.2.1:
@@ -6252,8 +6252,8 @@ packages:
       - webpack
     dev: true
 
-  /unplugin-vue-components/0.19.2_vite@2.9.4+vue@3.2.32:
-    resolution: {integrity: sha512-7DhQfTyHLyVIWR6VBQONLU6dDBOXtEYvZQYUpN9C+t11WOb5baIFoxfzDxkeFHTHGMhznyEOw6afHyV9JKWnig==}
+  /unplugin-vue-components/0.19.3_vite@2.9.4+vue@3.2.32:
+    resolution: {integrity: sha512-z/kpYJnqrJuWglDNs7fy0YRHr41oLc07y2TkP3by6DqPb1GG9xGC9SFigeFwd4J7GVTqyFVsnjoeup7uK7I2dA==}
     engines: {node: '>=14'}
     peerDependencies:
       '@babel/parser': ^7.15.8
@@ -6265,7 +6265,7 @@ packages:
       '@babel/traverse':
         optional: true
     dependencies:
-      '@antfu/utils': 0.5.0
+      '@antfu/utils': 0.5.1
       '@rollup/pluginutils': 4.2.0
       chokidar: 3.5.3
       debug: 4.3.4
