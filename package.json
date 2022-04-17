@@ -31,7 +31,7 @@
     "@antfu/eslint-config": "0.20.6",
     "@ffflorian/jszip-cli": "3.1.6",
     "@iconify/json": "2.1.28",
-    "@ngneat/falso": "4.0.0",
+    "@ngneat/falso": "5.0.0",
     "@types/chrome": "0.0.181",
     "@types/fs-extra": "9.0.13",
     "@types/lodash.debounce": "4.0.6",
