@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## 2.15.0
+### chore
+- Search processing has been changed to asynchronous processing to improve performance.
+
 ## 2.14.3
 ### chore
 - fix Fixed maximum number of history retrieval
