@@ -124,7 +124,6 @@ export const useSearch = () => {
       immediate: true,
     }
   );
-
   const changeSelectedItem = (number: number) => {
     selectedNumber.value = number;
   };
@@ -196,7 +195,7 @@ export const useSearch = () => {
     });
   };
 
-  const toggleFavorite = (searchItem?: SearchItem) => {
+  const toggleFavorite = async (searchItem?: SearchItem) => {
     const item = searchItem || searchResult.value[selectedNumber.value];
     if (item.tabId) {
       return;
@@ -218,6 +217,16 @@ export const useSearch = () => {
       ]);
     }
   };
+
+  watch(
+    favoriteItems,
+    async () => {
+      searchResult.value = await fussySearch();
+    },
+    {
+      immediate: true,
+    }
+  );
 
   const searchEngine = ref({
     name: "browser",
