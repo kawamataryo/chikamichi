@@ -29,7 +29,7 @@ export const useSearch = () => {
     // Writing the store is expensive, so too many calls can cause performance problems. So use debounce to avoid this.
     set: debounce((value: string) => {
       _searchWord.value = value;
-    }, 200),
+    }, 250),
   });
 
   const extractOnlySearchWord = computed(() => {
@@ -73,9 +73,7 @@ export const useSearch = () => {
     );
   };
 
-  const searchResult = ref<SearchItemWithFavoriteAndMatchedWord[]>([]);
-
-  const fussySearch = async () => {
+  const searchResult = computed<SearchItemWithFavoriteAndMatchedWord[]>(() => {
     if (!searchItems.value) return [];
 
     if (!searchWord.value) {
@@ -95,35 +93,20 @@ export const useSearch = () => {
       target = searchItemsOnlyTab.value;
     }
 
-    return await new Promise<SearchItemWithFavoriteAndMatchedWord[]>(
-      (resolve) => {
-        const fuse = new Fuse(target, FUSE_OPTIONS);
-        const result = fuse
-          .search<SearchItem>(word, { limit: 100 })
-          .map((result) => {
-            return {
-              ...result.item,
-              isFavorite: isFavorite(result.item.url, result.item.title),
-              matchedWord: getMatchedRegExp(
-                result!.matches![0].value!,
-                result!.matches![0].indices as [number, number][]
-              ),
-            };
-          });
-        resolve(result);
-      }
-    );
-  };
+    // fuzzy search powered by Fuse.js https://fusejs.io/
+    const fuse = new Fuse(target, FUSE_OPTIONS);
+    return fuse.search<SearchItem>(word, { limit: 100 }).map((result) => {
+      return {
+        ...result.item,
+        isFavorite: isFavorite(result.item.url, result.item.title),
+        matchedWord: getMatchedRegExp(
+          result!.matches![0].value!,
+          result!.matches![0].indices as [number, number][]
+        ),
+      };
+    });
+  });
 
-  watch(
-    searchWord,
-    async () => {
-      searchResult.value = await fussySearch();
-    },
-    {
-      immediate: true,
-    }
-  );
   const changeSelectedItem = (number: number) => {
     selectedNumber.value = number;
   };
@@ -195,7 +178,7 @@ export const useSearch = () => {
     });
   };
 
-  const toggleFavorite = async (searchItem?: SearchItem) => {
+  const toggleFavorite = (searchItem?: SearchItem) => {
     const item = searchItem || searchResult.value[selectedNumber.value];
     if (item.tabId) {
       return;
@@ -217,16 +200,6 @@ export const useSearch = () => {
       ]);
     }
   };
-
-  watch(
-    favoriteItems,
-    async () => {
-      searchResult.value = await fussySearch();
-    },
-    {
-      immediate: true,
-    }
-  );
 
   const searchEngine = ref({
     name: "browser",
