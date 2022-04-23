@@ -1,7 +1,7 @@
 {
   "name": "chikamichi",
   "displayName": "Chikamichi - Quickly find a page -",
-  "version": "2.14.3",
+  "version": "2.15.1",
   "description": "Command pallet for the browser. Enables fuzzy search for histories, tabs and bookmarks.",
   "private": true,
   "scripts": {
