@@ -81,7 +81,7 @@ export const useSearch = () => {
       return initialSearchItems.value.slice(0, 100);
     }
 
-    const word = extractOnlySearchWord.value || "h"; // "h" is included in all URLs;
+    const word = extractOnlySearchWord.value || "http"; // "http" is included in all URLs;
     let target = searchItems.value;
 
     // Selecting targets with the prefix

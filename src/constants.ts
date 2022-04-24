@@ -15,12 +15,26 @@ export const SEARCH_ITEM_TYPE = {
 
 export const FUSE_OPTIONS: Fuse.IFuseOptions<any> = {
   useExtendedSearch: true,
-  ignoreLocation: true,
+  distance: 300,
+  minMatchCharLength: 2,
   includeMatches: true,
+  shouldSort: true,
   keys: [
     {
+      name: "title",
+      weight: 0.4,
+    },
+    {
+      name: "folderName",
+      weight: 0.3,
+    },
+    {
+      name: "url",
+      weight: 0.2,
+    },
+    {
       name: "searchTerm",
-      weight: 1,
+      weight: 0.1,
     },
   ],
   threshold: 0.4,
