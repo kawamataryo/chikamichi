@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## 2.16.0
+### refactor
+- optimize Fuse.js option by @yamash723
+
 ## 2.15.1
 ### chore
 - adjust debounced time
