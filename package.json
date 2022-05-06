@@ -62,7 +62,7 @@
     "unplugin-auto-import": "0.7.1",
     "unplugin-icons": "0.14.3",
     "unplugin-vue-components": "0.19.3",
-    "vite": "2.9.6",
+    "vite": "2.9.8",
     "vite-plugin-windicss": "1.8.4",
     "vitest": "0.10.0",
     "vue": "3.2.33",
