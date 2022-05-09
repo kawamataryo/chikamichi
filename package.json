@@ -50,7 +50,7 @@
     "esno": "0.14.1",
     "fs-extra": "10.1.0",
     "fuse.js": "6.6.1",
-    "husky": "8.0.0",
+    "husky": "8.0.1",
     "kolorist": "1.5.1",
     "lint-staged": "12.4.1",
     "lodash.debounce": "4.0.8",
