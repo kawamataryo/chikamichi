@@ -27,6 +27,6 @@ jobs:
           pnpm run build
           pnpm run pack
       - name: Browser Plugin Publish
-        uses: plasmo-corp/bpp@v1
+        uses: PlasmoHQ/bpp@v2
         with:
           keys: ${{ secrets.SUBMIT_KEYS }}
