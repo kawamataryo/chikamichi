@@ -33,7 +33,7 @@ specifiers:
   rimraf: 3.0.2
   serve: 13.0.2
   typescript: 4.7.2
-  unplugin-auto-import: 0.8.2
+  unplugin-auto-import: 0.8.4
   unplugin-icons: 0.14.3
   unplugin-vue-components: 0.19.5
   vite: 2.9.9
@@ -82,7 +82,7 @@ devDependencies:
   rimraf: 3.0.2
   serve: 13.0.2
   typescript: 4.7.2
-  unplugin-auto-import: 0.8.2_@vueuse+core@8.5.0+vite@2.9.9
+  unplugin-auto-import: 0.8.4_@vueuse+core@8.5.0+vite@2.9.9
   unplugin-icons: 0.14.3_1612f465617005abdbfe69a33b973dee
   unplugin-vue-components: 0.19.5_vite@2.9.9+vue@3.2.36
   vite: 2.9.9
@@ -6398,8 +6398,8 @@ packages:
     engines: {node: '>= 10.0.0'}
     dev: true
 
-  /unplugin-auto-import/0.8.2_@vueuse+core@8.5.0+vite@2.9.9:
-    resolution: {integrity: sha512-iZjJ+3HEU3dn79SDDfgU0uVP6fGjufP4SnpU26pRVvTSLvh/en5YgTS8tNI06zWIwGhjYPruprtlbwV8SEQs8Q==}
+  /unplugin-auto-import/0.8.4_@vueuse+core@8.5.0+vite@2.9.9:
+    resolution: {integrity: sha512-YtUN80CzPBLK6qrzONQ0WWg191A0MMERq1nxcVSH+kUkKbs7L2QFiRv9eZrk3Rf9oe7hk0gLfYH85b1bPUG2yA==}
     engines: {node: '>=14'}
     peerDependencies:
       '@vueuse/core': '*'
