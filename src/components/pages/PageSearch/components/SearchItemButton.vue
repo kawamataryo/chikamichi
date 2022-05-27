@@ -53,8 +53,7 @@
         :data-cy="`search-result-favorite-${index}`"
         @click.stop="emit('click-star', item)"
       >
-        <ToggleStar v-if="!item.tabId" :value="item.isFavorite" />
-        <div v-else class="w-18px h-18px" />
+        <ToggleStar :value="item.isFavorite" />
       </span>
     </span>
   </button>

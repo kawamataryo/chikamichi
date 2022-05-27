@@ -180,21 +180,22 @@ export const useSearch = () => {
 
   const toggleFavorite = (searchItem?: SearchItem) => {
     const item = searchItem || searchResult.value[selectedNumber.value];
-    if (item.tabId) {
-      return;
-    }
     if (isFavorite(item.url, item.title)) {
       favoriteItems.value = JSON.stringify(
         parsedFavoriteItems.value.filter((i) => i.url !== item.url)
       );
     } else {
+      const type =
+        item.type !== SEARCH_ITEM_TYPE.TAB
+          ? item.type
+          : SEARCH_ITEM_TYPE.HISTORY;
       favoriteItems.value = JSON.stringify([
         ...parsedFavoriteItems.value,
         {
           url: item.url,
           title: item.title,
           faviconUrl: item.faviconUrl,
-          type: item.type,
+          type,
           folderName: item.folderName,
         },
       ]);
@@ -203,9 +204,6 @@ export const useSearch = () => {
 
   const copyUrlOfSelectedItem = async () => {
     const item = searchResult.value[selectedNumber.value];
-    if (item.tabId) {
-      return;
-    }
     await navigator.clipboard.writeText(item.url);
   };
 
