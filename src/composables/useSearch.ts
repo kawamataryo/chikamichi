@@ -201,6 +201,14 @@ export const useSearch = () => {
     }
   };
 
+  const copyUrlOfSelectedItem = async () => {
+    const item = searchResult.value[selectedNumber.value];
+    if (item.tabId) {
+      return;
+    }
+    await navigator.clipboard.writeText(item.url);
+  };
+
   const searchEngine = ref({
     name: "browser",
     favIconUrl:
@@ -232,5 +240,6 @@ export const useSearch = () => {
     changeSelectedItem,
     extractOnlySearchWord,
     browserSearch,
+    copyUrlOfSelectedItem,
   };
 };
