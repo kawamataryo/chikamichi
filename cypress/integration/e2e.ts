@@ -30,7 +30,10 @@ describe("App", () => {
             ),
           ],
           histories: [...Array(3)].map((_, i) =>
-            generateHistory({ title: `history-item-${i}` })
+            generateHistory({
+              title: `history-item-${i}`,
+              url: `https://history-item.com/${i}`,
+            })
           ),
           tabs: [...Array(3)].map((_, i) =>
             generateTab({ title: `tab-item-${i}` })
@@ -186,13 +189,17 @@ describe("App", () => {
       .should("be.visible");
     cy.get("[data-cy=search-input]").clear();
     cy.get("[data-cy=search-result-empty]").should("be.visible");
-    // check tabs can't be made favorites.
-    cy.get("[data-cy=search-input]").type("tab-item");
+  });
+
+  it("copy to url", () => {
+    // check favorite
+    cy.get("[data-cy=search-input]").type("history-item-1");
     cy.get("[data-cy=search-result-0]").should("have.class", "selected-item");
-    cy.get("[data-cy=search-result-favorite-0]")
-      .get("[data-cy=toggle-star]")
-      .should("not.exist");
-    cy.get("[data-cy=search-input]").type("{ctrl}f"); // with shortcut
+    cy.get("[data-cy=search-input]").type("{ctrl}c"); // with shortcut
+    cy.get("@copy").should(
+      "be.calledWithExactly",
+      "https://history-item.com/1"
+    );
   });
 
   it("show info page", () => {

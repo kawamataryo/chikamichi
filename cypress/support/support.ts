@@ -82,4 +82,5 @@ export const setupExtensionEnvironment = ({
   } as any;
   win.close = cy.stub().as("close");
   (win.URL as any) = StubURL;
+  cy.spy(win.navigator.clipboard, "writeText").as("copy");
 };
