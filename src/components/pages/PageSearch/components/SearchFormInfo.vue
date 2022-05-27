@@ -6,26 +6,6 @@
       <p class="mr-10px">
         <span
           class="bg-gray-200 dark:bg-gray-600 dark:text-gray-200 rounded-3px px-5px py-4px inline-block mr-3px"
-          >↑</span
-        >
-        <span
-          class="bg-gray-200 dark:bg-gray-600 dark:text-gray-200 rounded-3px px-5px py-4px inline-block"
-          >↓</span
-        >
-        or
-        <span
-          class="bg-gray-200 dark:bg-gray-600 dark:text-gray-200 rounded-3px px-5px py-4px inline-block mr-3px"
-          >Ctrl + n</span
-        >
-        <span
-          class="bg-gray-200 dark:bg-gray-600 dark:text-gray-200 rounded-3px px-5px py-4px inline-block mr-3px"
-          >Ctrl + p</span
-        >
-        Navigate,
-      </p>
-      <p class="mr-10px">
-        <span
-          class="bg-gray-200 dark:bg-gray-600 dark:text-gray-200 rounded-3px px-5px py-4px inline-block mr-3px"
           >Enter</span
         >Open,
       </p>
@@ -42,6 +22,13 @@
           >Ctrl + f</span
         >
         Add favorite
+      </p>
+      <p>
+        <span
+          class="bg-gray-200 dark:bg-gray-600 dark:text-white rounded-3px px-5px py-4px inline-block mr-3px"
+          >Ctrl + c</span
+        >
+        Copy URL
       </p>
     </div>
   </div>

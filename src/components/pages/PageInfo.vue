@@ -45,6 +45,9 @@
         <li class="mt-10px">
           ・<span class="info-key-text mr-5px">Ctrl + f</span>Add to Favorites
         </li>
+        <li class="mt-10px">
+          ・<span class="info-key-text mr-5px">Ctrl + c</span>Copy URL
+        </li>
       </ul>
     </div>
     <div
