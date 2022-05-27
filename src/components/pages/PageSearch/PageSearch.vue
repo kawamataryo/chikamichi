@@ -187,7 +187,6 @@ const onFavorite = () => {
 };
 
 const onCopy = async () => {
-  console.log("sssssss");
   await copyUrlOfSelectedItem();
 };
 
