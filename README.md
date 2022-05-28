@@ -45,6 +45,7 @@ Please install from:
 | `Enter`                               | Open the selected url            |
 | `Ctrl + Enter`                        | Open the selected url in new tab |
 | `Ctrl + f`                            | Add favorite |
+| `Ctrl + c`                            | Copy URL to the clipboard |
 
 ### Search commands
 
