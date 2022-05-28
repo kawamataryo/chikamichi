@@ -46,6 +46,8 @@
                 :item="item"
                 :is-selected="i === selectedNumber"
                 :index="i"
+                :show-badge="showBadge"
+                :badge-text="badgeText"
                 @click-star="onClickFavorite"
               />
             </li>
@@ -103,6 +105,7 @@ const {
   selectedNumber,
   extractOnlySearchWord,
   searchEngine,
+  badgeText,
   changePage,
   changePageWithClick,
   toggleFavorite,

@@ -63,3 +63,9 @@ export const SEARCH_ICON_DATA_URL_LIGHT =
 
 export const SEARCH_ICON_DATA_URL_DARK =
   'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" role="img" fill="none" stroke="lightgrey" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>';
+
+export const BADGE_TEXT = {
+  ADD_FAVORITE: "Favorite added",
+  REMOVE_FAVORITE: "Favorite removed",
+  COPY: "Copied",
+} as const;

@@ -11,34 +11,46 @@
         alt=""
         class="w-16px h-16px mr-8px inline-block"
       />
-      <span class="flex flex-col w-440px text-left">
+      <span class="relative">
         <span
-          class="block break-all text-over overflow-ellipsis max-w-496px overflow-hidden"
+          class="flex flex-col w-440px text-left transition-opacity"
+          :class="{ 'opacity-30': isSelected && !!badgeText }"
         >
-          <span v-show="item.folderName" class="mr-5px"
-            >[<WordHighlighter
+          <span
+            class="block break-all text-over overflow-ellipsis max-w-496px overflow-hidden"
+          >
+            <span v-show="item.folderName" class="mr-5px"
+              >[<WordHighlighter
+                :query="item.matchedWord"
+                split-by-space
+                highlight-class="highlight-word"
+                >{{ item.folderName }}</WordHighlighter
+              >]</span
+            >
+            <WordHighlighter
+              class="whitespace-nowrap"
               :query="item.matchedWord"
               split-by-space
               highlight-class="highlight-word"
-              >{{ item.folderName }}</WordHighlighter
-            >]</span
-          >
+              >{{ item.title || item.url }}</WordHighlighter
+            >
+          </span>
           <WordHighlighter
-            class="whitespace-nowrap"
+            class="overflow-hidden text-gray-400 text-11px block whitespace-nowrap text-over overflow-ellipsis max-w-496px text-left mt-4px"
             :query="item.matchedWord"
             split-by-space
             highlight-class="highlight-word"
-            >{{ item.title || item.url }}</WordHighlighter
+            :class="{ hidden: !isSelected }"
+            >{{ item.url }}</WordHighlighter
           >
         </span>
-        <WordHighlighter
-          class="overflow-hidden text-gray-400 text-11px block whitespace-nowrap text-over overflow-ellipsis max-w-496px text-left mt-4px"
-          :query="item.matchedWord"
-          split-by-space
-          highlight-class="highlight-word"
-          :class="{ hidden: !isSelected }"
-          >{{ item.url }}</WordHighlighter
-        >
+        <transition name="fade">
+          <span
+            v-if="isSelected && !!badgeText"
+            class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white text-blue-700 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded mr-2 dark:bg-blue-100 dark:text-blue-800"
+            >{{ badgeText }}</span
+          >
+        </transition>
       </span>
     </span>
     <span class="items-center flex">
@@ -73,6 +85,10 @@ const props = defineProps({
     type: Boolean,
     required: true,
   },
+  badgeText: {
+    type: String,
+    default: "",
+  },
   index: {
     type: Number,
     required: true,
@@ -81,3 +97,15 @@ const props = defineProps({
 
 const emit = defineEmits(["click-star"]);
 </script>
+
+<style>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.4s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>
