@@ -3,6 +3,7 @@ import debounce from "lodash.debounce";
 import { sendMessage } from "webext-bridge";
 import type { Search } from "webextension-polyfill";
 import {
+  BADGE_TEXT,
   FUSE_OPTIONS,
   SEARCH_ICON_DATA_URL_DARK,
   SEARCH_ICON_DATA_URL_LIGHT,
@@ -21,6 +22,9 @@ export const useSearch = () => {
   const searchItems = computed(() => store.state.searchItems);
 
   const _searchWord = ref(defaultSearchPrefix.value);
+
+  const badgeText = ref<typeof BADGE_TEXT[keyof typeof BADGE_TEXT] | "">("");
+
   const searchWord = computed({
     get() {
       return _searchWord.value;
@@ -109,6 +113,7 @@ export const useSearch = () => {
 
   const changeSelectedItem = (number: number) => {
     selectedNumber.value = number;
+    badgeText.value = "";
   };
 
   const browserSearch = async (query: string, inNewTab?: boolean) => {
@@ -178,27 +183,50 @@ export const useSearch = () => {
     });
   };
 
-  const toggleFavorite = (searchItem?: SearchItem) => {
-    const item = searchItem || searchResult.value[selectedNumber.value];
-    if (item.tabId) {
-      return;
+  let timerId: ReturnType<typeof setTimeout>;
+  const showBadge = async (
+    text: typeof BADGE_TEXT[keyof typeof BADGE_TEXT] | ""
+  ) => {
+    if (timerId) {
+      clearTimeout(timerId);
     }
+    badgeText.value = text;
+    await new Promise((resolve) => {
+      timerId = setTimeout(resolve, 1000);
+    });
+    badgeText.value = "";
+  };
+
+  const toggleFavorite = async (searchItem?: SearchItem) => {
+    const item = searchItem || searchResult.value[selectedNumber.value];
     if (isFavorite(item.url, item.title)) {
       favoriteItems.value = JSON.stringify(
         parsedFavoriteItems.value.filter((i) => i.url !== item.url)
       );
+      await showBadge(BADGE_TEXT.REMOVE_FAVORITE);
     } else {
+      const type =
+        item.type !== SEARCH_ITEM_TYPE.TAB
+          ? item.type
+          : SEARCH_ITEM_TYPE.HISTORY;
       favoriteItems.value = JSON.stringify([
         ...parsedFavoriteItems.value,
         {
           url: item.url,
           title: item.title,
           faviconUrl: item.faviconUrl,
-          type: item.type,
+          type,
           folderName: item.folderName,
         },
       ]);
+      await showBadge(BADGE_TEXT.ADD_FAVORITE);
     }
+  };
+
+  const copyUrlOfSelectedItem = async () => {
+    const item = searchResult.value[selectedNumber.value];
+    await navigator.clipboard.writeText(item.url);
+    await showBadge(BADGE_TEXT.COPY);
   };
 
   const searchEngine = ref({
@@ -232,5 +260,7 @@ export const useSearch = () => {
     changeSelectedItem,
     extractOnlySearchWord,
     browserSearch,
+    copyUrlOfSelectedItem,
+    badgeText,
   };
 };

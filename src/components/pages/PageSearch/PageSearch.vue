@@ -22,6 +22,7 @@
           @keydown.ctrl.n.prevent="onArrowDown"
           @keydown.ctrl.p.prevent="onArrowUp"
           @keydown.ctrl.f.prevent="onFavorite"
+          @keydown.ctrl.c.prevent="onCopy"
           @keydown.esc.prevent="onEsc"
         />
       </div>
@@ -45,6 +46,8 @@
                 :item="item"
                 :is-selected="i === selectedNumber"
                 :index="i"
+                :show-badge="showBadge"
+                :badge-text="badgeText"
                 @click-star="onClickFavorite"
               />
             </li>
@@ -102,11 +105,13 @@ const {
   selectedNumber,
   extractOnlySearchWord,
   searchEngine,
+  badgeText,
   changePage,
   changePageWithClick,
   toggleFavorite,
   changeSelectedItem,
   browserSearch,
+  copyUrlOfSelectedItem,
 } = useSearch();
 
 const searchResultWrapperRef = ref<HTMLElement | null>(null);
@@ -182,6 +187,10 @@ const onEsc = () => {
 
 const onFavorite = () => {
   toggleFavorite();
+};
+
+const onCopy = async () => {
+  await copyUrlOfSelectedItem();
 };
 
 onMounted(async () => {
