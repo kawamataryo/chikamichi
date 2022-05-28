@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## 2.17.0
+### feature
+- Add a feature to copy to the clipboard
+
 ## 2.16.0
 ### refactor
 - optimize Fuse.js option by @yamash723
