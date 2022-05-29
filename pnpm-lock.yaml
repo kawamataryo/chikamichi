@@ -33,7 +33,7 @@ specifiers:
   rimraf: 3.0.2
   serve: 13.0.2
   typescript: 4.7.2
-  unplugin-auto-import: 0.8.5
+  unplugin-auto-import: 0.8.6
   unplugin-icons: 0.14.3
   unplugin-vue-components: 0.19.6
   vite: 2.9.9
@@ -82,7 +82,7 @@ devDependencies:
   rimraf: 3.0.2
   serve: 13.0.2
   typescript: 4.7.2
-  unplugin-auto-import: 0.8.5_@vueuse+core@8.5.0+vite@2.9.9
+  unplugin-auto-import: 0.8.6_@vueuse+core@8.5.0+vite@2.9.9
   unplugin-icons: 0.14.3_1612f465617005abdbfe69a33b973dee
   unplugin-vue-components: 0.19.6_vite@2.9.9+vue@3.2.36
   vite: 2.9.9
@@ -6432,8 +6432,8 @@ packages:
       which-boxed-primitive: 1.0.2
     dev: true
 
-  /unimport/0.2.4_vite@2.9.9:
-    resolution: {integrity: sha512-7OEUIlZMS1s1h1uFAGkCPylMtE8hnlJ/cFurJQHdzKAqIyuGiOREFKaCLbkNtFloZicCpRAlqC0Ny2yMoz6mFg==}
+  /unimport/0.2.5_vite@2.9.9:
+    resolution: {integrity: sha512-1YreHVa6vUtRANhtKROtniBY01PXM0ol857tlI3HaQHNLcuQKqWUCAfvZC/GipotKrMVm4LV9ZQ4u1s9lrrDpg==}
     dependencies:
       '@rollup/pluginutils': 4.2.1
       escape-string-regexp: 5.0.0
@@ -6474,8 +6474,8 @@ packages:
     engines: {node: '>= 10.0.0'}
     dev: true
 
-  /unplugin-auto-import/0.8.5_@vueuse+core@8.5.0+vite@2.9.9:
-    resolution: {integrity: sha512-JT43zA89fMjxtdqz+sTSkTsL9J0PNdnGmMOvcwbkpDi45yL5SU0aDCZgj0E8+qWLyQSIvvBaDBW3VuBrcc2MXg==}
+  /unplugin-auto-import/0.8.6_@vueuse+core@8.5.0+vite@2.9.9:
+    resolution: {integrity: sha512-QRYwCmSzxZKHu8LQhUpTzF6t1YxYuo4b47e3cmE1kWsF4SQDO22Ysrj5/2BRY3jbYbiTZqOLopymRpov8SAYZQ==}
     engines: {node: '>=14'}
     peerDependencies:
       '@vueuse/core': '*'
@@ -6488,7 +6488,7 @@ packages:
       '@vueuse/core': 8.5.0_vue@3.2.36
       local-pkg: 0.4.1
       magic-string: 0.26.2
-      unimport: 0.2.4_vite@2.9.9
+      unimport: 0.2.5_vite@2.9.9
       unplugin: 0.6.3_vite@2.9.9
     transitivePeerDependencies:
       - esbuild
