@@ -30,7 +30,7 @@
   "devDependencies": {
     "@antfu/eslint-config": "0.25.1",
     "@ffflorian/jszip-cli": "3.1.6",
-    "@iconify/json": "2.1.56",
+    "@iconify/json": "2.1.57",
     "@ngneat/falso": "5.6.1",
     "@types/chrome": "0.0.188",
     "@types/fs-extra": "9.0.13",
