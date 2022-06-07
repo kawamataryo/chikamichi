@@ -4,7 +4,7 @@ specifiers:
   '@antfu/eslint-config': 0.25.1
   '@ffflorian/jszip-cli': 3.1.6
   '@iconify/json': 2.1.57
-  '@ngneat/falso': 5.6.1
+  '@ngneat/falso': 5.7.0
   '@types/chrome': 0.0.188
   '@types/fs-extra': 9.0.13
   '@types/lodash.debounce': 4.0.7
@@ -54,7 +54,7 @@ devDependencies:
   '@antfu/eslint-config': 0.25.1_eslint@8.17.0+typescript@4.7.3
   '@ffflorian/jszip-cli': 3.1.6
   '@iconify/json': 2.1.57
-  '@ngneat/falso': 5.6.1
+  '@ngneat/falso': 5.7.0
   '@types/chrome': 0.0.188
   '@types/fs-extra': 9.0.13
   '@types/lodash.debounce': 4.0.7
@@ -407,8 +407,8 @@ packages:
     resolution: {integrity: sha512-y3Ntio6hb5+m6asxcA3nnIN6URjAFMji2EZZVYGd2Ag5On4mmvPhMnXdiIScCMXgHjFX+5qXuKaojLLhJHZPAg==}
     dev: true
 
-  /@ngneat/falso/5.6.1:
-    resolution: {integrity: sha512-PqK03MGVEsr9PRt8IiZRwVlVHJba4LvEOJ1yKVib2LJDS2JCacYAenlvMKS0hzxXbiAQPdDsQT0wiKELH3t1Hg==}
+  /@ngneat/falso/5.7.0:
+    resolution: {integrity: sha512-VbV0dcVJ5ABFEByeGiuf5obcQAI6z9mcyaeS7wlozZQ/3QCybP0Mr/FqFnki/0/FyYIGSeFTxzH4cAH0VWQgvg==}
     dependencies:
       seedrandom: 3.0.5
       uuid: 8.3.2
