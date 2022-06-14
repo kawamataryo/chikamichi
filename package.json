@@ -64,7 +64,7 @@
     "unplugin-vue-components": "0.19.6",
     "vite": "2.9.12",
     "vite-plugin-windicss": "1.8.4",
-    "vitest": "0.14.2",
+    "vitest": "0.15.0",
     "vue": "3.2.37",
     "vue-demi": "0.13.1",
     "web-ext": "7.0.0",
