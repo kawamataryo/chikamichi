@@ -35,7 +35,7 @@ specifiers:
   typescript: 4.7.4
   unplugin-auto-import: 0.9.0
   unplugin-icons: 0.14.5
-  unplugin-vue-components: 0.19.6
+  unplugin-vue-components: 0.19.9
   vite: 2.9.12
   vite-plugin-windicss: 1.8.4
   vitest: 0.15.2
@@ -84,7 +84,7 @@ devDependencies:
   typescript: 4.7.4
   unplugin-auto-import: 0.9.0_@vueuse+core@8.7.5+vite@2.9.12
   unplugin-icons: 0.14.5_ce526d7e5b240a152db1b63d118f4f42
-  unplugin-vue-components: 0.19.6_vite@2.9.12+vue@3.2.37
+  unplugin-vue-components: 0.19.9_vite@2.9.12+vue@3.2.37
   vite: 2.9.12
   vite-plugin-windicss: 1.8.4_vite@2.9.12
   vitest: 0.15.2
@@ -3344,7 +3344,7 @@ packages:
       fs.realpath: 1.0.0
       inflight: 1.0.6
       inherits: 2.0.4
-      minimatch: 5.0.1
+      minimatch: 5.1.0
       once: 1.4.0
     dev: true
 
@@ -4461,8 +4461,8 @@ packages:
       brace-expansion: 1.1.11
     dev: true
 
-  /minimatch/5.0.1:
-    resolution: {integrity: sha512-nLDxIFRyhDblz3qMuq+SoRZED4+miJ/G+tdDrjkkkRnjAsBexeGpgjLEQ0blJy7rHhR2b93rhQY4SvyWu9v03g==}
+  /minimatch/5.1.0:
+    resolution: {integrity: sha512-9TPBGGak4nHfGZsPBohm9AWg6NoT7QTCehS3BIJABslyZbzxfV78QM2Y6+i741OPZIafFAaiiEMh5OyIrJPgtg==}
     engines: {node: '>=10'}
     dependencies:
       brace-expansion: 2.0.1
@@ -6303,8 +6303,8 @@ packages:
       - webpack
     dev: true
 
-  /unplugin-vue-components/0.19.6_vite@2.9.12+vue@3.2.37:
-    resolution: {integrity: sha512-APvrJ9Hpid1MLT0G4PWerMJgARhNw6dzz0pcCwCxaO2DR7VyvDacMqjOQNC6ukq7FSw3wzD8VH+9i3EFXwkGmw==}
+  /unplugin-vue-components/0.19.9_vite@2.9.12+vue@3.2.37:
+    resolution: {integrity: sha512-i5mZtg85euPWZrGswFkoa9pf4WjKCP5qOjnwOyg3KOKVzFjnP3osCdrunQMjtoMKehTdz1vV6baZH8bZR4PNgg==}
     engines: {node: '>=14'}
     peerDependencies:
       '@babel/parser': ^7.15.8
@@ -6323,9 +6323,9 @@ packages:
       fast-glob: 3.2.11
       local-pkg: 0.4.1
       magic-string: 0.26.2
-      minimatch: 5.0.1
+      minimatch: 5.1.0
       resolve: 1.22.0
-      unplugin: 0.6.3_vite@2.9.12
+      unplugin: 0.7.0_vite@2.9.12
       vue: 3.2.37
     transitivePeerDependencies:
       - esbuild
@@ -6333,29 +6333,6 @@ packages:
       - supports-color
       - vite
       - webpack
-    dev: true
-
-  /unplugin/0.6.3_vite@2.9.12:
-    resolution: {integrity: sha512-CoW88FQfCW/yabVc4bLrjikN9HC8dEvMU4O7B6K2jsYMPK0l6iAnd9dpJwqGcmXJKRCU9vwSsy653qg+RK0G6A==}
-    peerDependencies:
-      esbuild: '>=0.13'
-      rollup: ^2.50.0
-      vite: ^2.3.0
-      webpack: 4 || 5
-    peerDependenciesMeta:
-      esbuild:
-        optional: true
-      rollup:
-        optional: true
-      vite:
-        optional: true
-      webpack:
-        optional: true
-    dependencies:
-      chokidar: 3.5.3
-      vite: 2.9.12
-      webpack-sources: 3.2.3
-      webpack-virtual-modules: 0.4.3
     dev: true
 
   /unplugin/0.7.0_vite@2.9.12:
