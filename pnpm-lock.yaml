@@ -34,7 +34,7 @@ specifiers:
   serve: 13.0.2
   typescript: 4.7.4
   unplugin-auto-import: 0.9.1
-  unplugin-icons: 0.14.5
+  unplugin-icons: 0.14.6
   unplugin-vue-components: 0.20.1
   vite: 2.9.13
   vite-plugin-windicss: 1.8.5
@@ -83,7 +83,7 @@ devDependencies:
   serve: 13.0.2
   typescript: 4.7.4
   unplugin-auto-import: 0.9.1_@vueuse+core@8.7.5+vite@2.9.13
-  unplugin-icons: 0.14.5_0378b3318b8829ae3fc17d5ce6428f91
+  unplugin-icons: 0.14.6_0378b3318b8829ae3fc17d5ce6428f91
   unplugin-vue-components: 0.20.1_vite@2.9.13+vue@3.2.37
   vite: 2.9.13
   vite-plugin-windicss: 1.8.5_vite@2.9.13
@@ -6270,8 +6270,8 @@ packages:
       - webpack
     dev: true
 
-  /unplugin-icons/0.14.5_0378b3318b8829ae3fc17d5ce6428f91:
-    resolution: {integrity: sha512-fxi/fuBZXtZu64L8iAPj+ecu/rnSvTbfR14RO44xIWdsI/Ohpzs9Gve7+nHIgD6JFrdtCfzGnXWBEVPbMGWX3A==}
+  /unplugin-icons/0.14.6_0378b3318b8829ae3fc17d5ce6428f91:
+    resolution: {integrity: sha512-8sxDiL4l+TV4zufZfrskgHZZSDFoGOCBgYsefRMM4inQ3Z6KhgMSuNyew7U7D/xG//rwxgD7bN+Dv+YAZEEfEw==}
     peerDependencies:
       '@svgr/core': '>=5.5.0'
       '@vue/compiler-sfc': ^3.0.2
