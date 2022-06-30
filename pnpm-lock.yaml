@@ -28,7 +28,7 @@ specifiers:
   lint-staged: 13.0.3
   lodash.debounce: 4.0.8
   npm-run-all: 4.1.5
-  parse-domain: 7.0.0
+  parse-domain: 7.0.1
   prettier: 2.7.1
   rimraf: 3.0.2
   serve: 13.0.2
@@ -47,7 +47,7 @@ specifiers:
   webextension-polyfill: 0.9.0
 
 dependencies:
-  parse-domain: 7.0.0
+  parse-domain: 7.0.1
   vue-word-highlighter: 1.0.4_vue@3.2.37
 
 devDependencies:
@@ -4906,8 +4906,8 @@ packages:
       callsites: 3.1.0
     dev: true
 
-  /parse-domain/7.0.0:
-    resolution: {integrity: sha512-zTUcZpubnyZCb6h0cK3n9gTKYWm22klJyf01Ofx7SbD/mYZMcL3Z9C6vAwILC0bs2zfVFf6uac4+AsR1LqljWA==}
+  /parse-domain/7.0.1:
+    resolution: {integrity: sha512-HsVmJkfoZB/Rb7Ai/QYVqZa95zkemNMerP70ZzIFpvvnvWbSSp+ZmUOQsdY1wxuFrB8cdA33E9fwwAT/OjWViA==}
     hasBin: true
     dependencies:
       is-ip: 4.0.0
