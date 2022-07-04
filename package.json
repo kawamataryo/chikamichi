@@ -77,6 +77,6 @@
   },
   "dependencies": {
     "parse-domain": "7.0.1",
-    "vue-word-highlighter": "1.0.4"
+    "vue-word-highlighter": "1.0.5"
   }
 }
