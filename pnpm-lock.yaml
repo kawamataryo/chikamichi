@@ -41,14 +41,14 @@ specifiers:
   vitest: 0.17.0
   vue: 3.2.37
   vue-demi: 0.13.1
-  vue-word-highlighter: 1.0.4
+  vue-word-highlighter: 1.0.5
   web-ext: 7.1.0
   webext-bridge: 5.0.4
   webextension-polyfill: 0.9.0
 
 dependencies:
   parse-domain: 7.0.1
-  vue-word-highlighter: 1.0.4_vue@3.2.37
+  vue-word-highlighter: 1.0.5_vue@3.2.37
 
 devDependencies:
   '@antfu/eslint-config': 0.25.2_eslint@8.19.0+typescript@4.7.4
@@ -6600,21 +6600,6 @@ packages:
       - supports-color
     dev: true
 
-  /vue-demi/0.11.4_vue@3.2.37:
-    resolution: {integrity: sha512-/3xFwzSykLW2HiiLie43a+FFgNOcokbBJ+fzvFXd0r2T8MYohqvphUyDQ8lbAwzQ3Dlcrb1c9ykifGkhSIAk6A==}
-    engines: {node: '>=12'}
-    hasBin: true
-    requiresBuild: true
-    peerDependencies:
-      '@vue/composition-api': ^1.0.0-rc.1
-      vue: ^3.0.0-0 || ^2.6.0
-    peerDependenciesMeta:
-      '@vue/composition-api':
-        optional: true
-    dependencies:
-      vue: 3.2.37
-    dev: false
-
   /vue-demi/0.13.1_vue@3.2.37:
     resolution: {integrity: sha512-xmkJ56koG3ptpLnpgmIzk9/4nFf4CqduSJbUM0OdPoU87NwRuZ6x49OLhjSa/fC15fV+5CbEnrxU4oyE022svg==}
     engines: {node: '>=12'}
@@ -6628,7 +6613,6 @@ packages:
         optional: true
     dependencies:
       vue: 3.2.37
-    dev: true
 
   /vue-eslint-parser/9.0.2_eslint@8.19.0:
     resolution: {integrity: sha512-uCPQwTGjOtAYrwnU+76pYxalhjsh7iFBsHwBqDHiOPTxtICDaraO4Szw54WFTNZTAEsgHHzqFOu1mmnBOBRzDA==}
@@ -6648,8 +6632,8 @@ packages:
       - supports-color
     dev: true
 
-  /vue-word-highlighter/1.0.4_vue@3.2.37:
-    resolution: {integrity: sha512-jtwnkEBnwMzmKTvpStbffbEpWkW4Fpb2ErdqDqAGOZlrjCgTJczBCpIQiGyBF2jNvYxvCvN5HqIldoNaMS0XYQ==}
+  /vue-word-highlighter/1.0.5_vue@3.2.37:
+    resolution: {integrity: sha512-5Yj9AUNbxgzl1THxoLzMHjvJxzc+Vx5F64n7h2yhqx/+yYk/ch4AgFDnrs63e8rPfD67KZfcvKaJty9RxV8uOg==}
     peerDependencies:
       '@vue/composition-api': ^1.0.0-rc.1
       vue: ^2.0.0 || >=3.0.0
@@ -6658,7 +6642,7 @@ packages:
         optional: true
     dependencies:
       vue: 3.2.37
-      vue-demi: 0.11.4_vue@3.2.37
+      vue-demi: 0.13.1_vue@3.2.37
     dev: false
 
   /vue/3.2.37:
