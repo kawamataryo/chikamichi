@@ -68,7 +68,7 @@
     "vue": "3.2.37",
     "vue-demi": "0.13.2",
     "web-ext": "7.1.1",
-    "webext-bridge": "5.0.4",
+    "webext-bridge": "5.0.5",
     "webextension-polyfill": "0.9.0"
   },
   "lint-staged": {

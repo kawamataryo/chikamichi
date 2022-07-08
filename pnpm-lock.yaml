@@ -43,7 +43,7 @@ specifiers:
   vue-demi: 0.13.2
   vue-word-highlighter: 1.0.5
   web-ext: 7.1.1
-  webext-bridge: 5.0.4
+  webext-bridge: 5.0.5
   webextension-polyfill: 0.9.0
 
 dependencies:
@@ -91,7 +91,7 @@ devDependencies:
   vue: 3.2.37
   vue-demi: 0.13.2_vue@3.2.37
   web-ext: 7.1.1
-  webext-bridge: 5.0.4
+  webext-bridge: 5.0.5
   webextension-polyfill: 0.9.0
 
 packages:
@@ -1821,7 +1821,7 @@ packages:
     engines: {node: '>=12'}
     dependencies:
       dot-prop: 6.0.1
-      graceful-fs: 4.2.9
+      graceful-fs: 4.2.10
       unique-string: 3.0.0
       write-file-atomic: 3.0.3
       xdg-basedir: 5.1.0
@@ -3313,7 +3313,7 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       at-least-node: 1.0.0
-      graceful-fs: 4.2.9
+      graceful-fs: 4.2.10
       jsonfile: 6.1.0
       universalify: 1.0.0
     dev: true
@@ -4110,7 +4110,7 @@ packages:
     dependencies:
       universalify: 2.0.0
     optionalDependencies:
-      graceful-fs: 4.2.9
+      graceful-fs: 4.2.10
     dev: true
 
   /jsonwebtoken/8.5.1:
@@ -5747,7 +5747,7 @@ packages:
     resolution: {integrity: sha512-mqSMI2maV+Hb4/+DTpz4EzAPoDENirBx3eirEAhIUM00Ms1ZQ84fGempf2ZeYHbW3YLmYfkdGq9Ap3KnZthf+g==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dependencies:
-      type-fest: 2.12.0
+      type-fest: 2.16.0
     dev: true
 
   /serve-handler/6.1.3:
@@ -6341,11 +6341,6 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /type-fest/2.12.0:
-    resolution: {integrity: sha512-Qe5GRT+n/4GoqCNGGVp5Snapg1Omq3V7irBJB3EaKsp7HWDo5Gv2d/67gfNyV+d5EXD+x/RF5l1h4yJ7qNkcGA==}
-    engines: {node: '>=12.20'}
-    dev: true
-
   /type-fest/2.16.0:
     resolution: {integrity: sha512-qpaThT2HQkFb83gMOrdKVsfCN7LKxP26Yq+smPzY1FqoHRjqmjqHXA7n5Gkxi8efirtbeEUxzfEdePthQWCuHw==}
     engines: {node: '>=12.20'}
@@ -6786,7 +6781,7 @@ packages:
     engines: {node: '>=10.13.0'}
     dependencies:
       glob-to-regexp: 0.4.1
-      graceful-fs: 4.2.9
+      graceful-fs: 4.2.10
     dev: true
 
   /wcwidth/1.0.1:
@@ -6846,18 +6841,14 @@ packages:
     engines: {node: '>= 8'}
     dev: false
 
-  /webext-bridge/5.0.4:
-    resolution: {integrity: sha512-y/qnOAjkqM5n6zc1IPKb5IUwOFfcJXcmR+mNHdAkinwDCST2BWEQ5WyvpZAtLNLnLd4w/YFmjdqzU8qctFYktg==}
+  /webext-bridge/5.0.5:
+    resolution: {integrity: sha512-STCv6pLfQtUHmZQ96Tmov+CrdGjjc08xG6o/VH7TlDvchAPmXEG7faPdHfIzkcs0qp0sedDkq7oDzXAei19vtw==}
     dependencies:
       '@types/webextension-polyfill': 0.8.3
       nanoevents: 6.0.2
       serialize-error: 9.1.0
       tiny-uid: 1.1.1
-      webextension-polyfill: 0.8.0
-    dev: true
-
-  /webextension-polyfill/0.8.0:
-    resolution: {integrity: sha512-a19+DzlT6Kp9/UI+mF9XQopeZ+n2ussjhxHJ4/pmIGge9ijCDz7Gn93mNnjpZAk95T4Tae8iHZ6sSf869txqiQ==}
+      webextension-polyfill: 0.9.0
     dev: true
 
   /webextension-polyfill/0.9.0:
