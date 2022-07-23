@@ -34,7 +34,6 @@ export const setupExtensionEnvironment = ({
     } as any,
     onConnect: {
       addListener: (callback: (arg: any) => void) => {
-        // eslint-disable-next-line n/no-callback-literal
         callback({
           id: 0,
           name: "",
