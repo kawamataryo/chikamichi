@@ -27,7 +27,6 @@ export async function getManifest() {
         },
       },
     },
-    host_permissions: ["*://*/*"],
     icons: {
       16: "./assets/icon-512.png",
       48: "./assets/icon-512.png",
