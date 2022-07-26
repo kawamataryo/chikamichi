@@ -3,7 +3,7 @@ lockfileVersion: 5.3
 specifiers:
   '@antfu/eslint-config': 0.25.2
   '@ffflorian/jszip-cli': 3.1.6
-  '@iconify/json': 2.1.82
+  '@iconify/json': 2.1.83
   '@ngneat/falso': 6.0.3
   '@types/chrome': 0.0.193
   '@types/fs-extra': 9.0.13
@@ -56,7 +56,7 @@ dependencies:
 devDependencies:
   '@antfu/eslint-config': 0.25.2_eslint@8.20.0+typescript@4.7.4
   '@ffflorian/jszip-cli': 3.1.6
-  '@iconify/json': 2.1.82
+  '@iconify/json': 2.1.83
   '@ngneat/falso': 6.0.3
   '@types/chrome': 0.0.193
   '@types/fs-extra': 9.0.13
@@ -378,8 +378,8 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
-  /@iconify/json/2.1.82:
-    resolution: {integrity: sha512-0ruqhpYSqUwLbxVTGdfPw4QkAhl0i3aK3uuXbV++WS/QTCz7WndNnfXsyFJI07WqWyuH7NqPZMpK4R264/bqUQ==}
+  /@iconify/json/2.1.83:
+    resolution: {integrity: sha512-mapm/qoT4xbROvSI8Ol90P4lFb74vK4oSzWftg2GmiVYcdPO5TENwf9Odtx+xLhjiFHwfeZk+dn/NNqBbybr3w==}
     dependencies:
       '@iconify/types': 1.1.0
       pathe: 0.3.2
