@@ -21,9 +21,10 @@ export async function getManifest() {
       service_worker: "./dist/background/index.mjs",
     },
     commands: {
-      _execute_browser_action: {
+      _execute_action: {
         suggested_key: {
           default: "Alt+K",
+          mac: "Alt+K",
         },
       },
     },
