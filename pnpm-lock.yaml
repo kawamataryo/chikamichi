@@ -42,7 +42,7 @@ specifiers:
   vite-plugin-windicss: 1.8.7
   vitest: 0.21.1
   vue: 3.2.37
-  vue-demi: 0.13.6
+  vue-demi: 0.13.7
   vue-word-highlighter: 1.0.5
   web-ext: 7.1.1
   webext-bridge: 5.0.5
@@ -93,7 +93,7 @@ devDependencies:
   vite-plugin-windicss: 1.8.7_vite@3.0.5
   vitest: 0.21.1_terser@5.14.2
   vue: 3.2.37
-  vue-demi: 0.13.6_vue@3.2.37
+  vue-demi: 0.13.7_vue@3.2.37
   web-ext: 7.1.1
   webext-bridge: 5.0.5
   webextension-polyfill: 0.9.0
@@ -951,7 +951,7 @@ packages:
       '@vueuse/metadata': 8.9.4
       '@vueuse/shared': 8.9.4_vue@3.2.37
       vue: 3.2.37
-      vue-demi: 0.13.6_vue@3.2.37
+      vue-demi: 0.13.7_vue@3.2.37
     dev: true
 
   /@vueuse/metadata/8.9.4:
@@ -970,7 +970,7 @@ packages:
         optional: true
     dependencies:
       vue: 3.2.37
-      vue-demi: 0.13.6_vue@3.2.37
+      vue-demi: 0.13.7_vue@3.2.37
     dev: true
 
   /@windicss/config/1.8.7:
@@ -6997,8 +6997,8 @@ packages:
       vue: 3.2.37
     dev: false
 
-  /vue-demi/0.13.6_vue@3.2.37:
-    resolution: {integrity: sha512-02NYpxgyGE2kKGegRPYlNQSL1UWfA/+JqvzhGCOYjhfbLWXU5QQX0+9pAm/R2sCOPKr5NBxVIab7fvFU0B1RxQ==}
+  /vue-demi/0.13.7_vue@3.2.37:
+    resolution: {integrity: sha512-hbhlvpx1gFW3TB5HxJ0mNxyA9Jh5iQt409taOs6zkhpvfJ7YzLs1rsLufJmDsjH5PI1cOyfikY1fE/meyHfU5A==}
     engines: {node: '>=12'}
     hasBin: true
     requiresBuild: true
