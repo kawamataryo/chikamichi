@@ -72,7 +72,7 @@
     "vue-demi": "0.13.7",
     "web-ext": "7.2.0",
     "webext-bridge": "5.0.5",
-    "webextension-polyfill": "0.9.0"
+    "webextension-polyfill": "0.10.0"
   },
   "lint-staged": {
     "*.js": "eslint --cache --fix",

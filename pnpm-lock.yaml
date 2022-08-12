@@ -46,7 +46,7 @@ specifiers:
   vue-word-highlighter: 1.0.5
   web-ext: 7.2.0
   webext-bridge: 5.0.5
-  webextension-polyfill: 0.9.0
+  webextension-polyfill: 0.10.0
 
 dependencies:
   parse-domain: 7.0.1
@@ -96,7 +96,7 @@ devDependencies:
   vue-demi: 0.13.7_vue@3.2.37
   web-ext: 7.2.0
   webext-bridge: 5.0.5
-  webextension-polyfill: 0.9.0
+  webextension-polyfill: 0.10.0
 
 packages:
 
@@ -7042,6 +7042,10 @@ packages:
       serialize-error: 9.1.0
       tiny-uid: 1.1.1
       webextension-polyfill: 0.9.0
+    dev: true
+
+  /webextension-polyfill/0.10.0:
+    resolution: {integrity: sha512-c5s35LgVa5tFaHhrZDnr3FpQpjj1BB+RXhLTYUxGqBVN460HkbM8TBtEqdXWbpTKfzwCcjAZVF7zXCYSKtcp9g==}
     dev: true
 
   /webextension-polyfill/0.9.0:
