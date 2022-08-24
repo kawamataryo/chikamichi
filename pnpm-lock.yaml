@@ -42,7 +42,7 @@ specifiers:
   vite-plugin-windicss: 1.8.7
   vitest: 0.22.1
   vue: 3.2.37
-  vue-demi: 0.13.9
+  vue-demi: 0.13.10
   vue-word-highlighter: 1.0.5
   web-ext: 7.2.0
   webext-bridge: 5.0.5
@@ -93,7 +93,7 @@ devDependencies:
   vite-plugin-windicss: 1.8.7_vite@3.0.9
   vitest: 0.22.1_terser@5.15.0
   vue: 3.2.37
-  vue-demi: 0.13.9_vue@3.2.37
+  vue-demi: 0.13.10_vue@3.2.37
   web-ext: 7.2.0
   webext-bridge: 5.0.5
   webextension-polyfill: 0.10.0
@@ -940,7 +940,7 @@ packages:
       '@types/web-bluetooth': 0.0.15
       '@vueuse/metadata': 9.1.1
       '@vueuse/shared': 9.1.1_vue@3.2.37
-      vue-demi: 0.13.9_vue@3.2.37
+      vue-demi: 0.13.10_vue@3.2.37
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
@@ -953,7 +953,7 @@ packages:
   /@vueuse/shared/9.1.1_vue@3.2.37:
     resolution: {integrity: sha512-c+IfcOYmHiHqoEa3ED1Tbpue5GHmoUmTp8PtO4YbczthtY155Rt6DmWhjxMLXBF1Bcidagxljmp/7xtAzEHXLw==}
     dependencies:
-      vue-demi: 0.13.9_vue@3.2.37
+      vue-demi: 0.13.10_vue@3.2.37
     transitivePeerDependencies:
       - '@vue/composition-api'
       - vue
@@ -7175,6 +7175,21 @@ packages:
       - terser
     dev: true
 
+  /vue-demi/0.13.10_vue@3.2.37:
+    resolution: {integrity: sha512-/R4QhdqGyGqSysOfhkxmYHKwdETZq2z6HAf/fjeGErdJX9cJifX5ijHJS+VjNblGIhjXz/yQTwe/t7Cip+/aJw==}
+    engines: {node: '>=12'}
+    hasBin: true
+    requiresBuild: true
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0-rc.1
+      vue: ^3.0.0-0 || ^2.6.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
+      vue: 3.2.37
+    dev: true
+
   /vue-demi/0.13.1_vue@3.2.37:
     resolution: {integrity: sha512-xmkJ56koG3ptpLnpgmIzk9/4nFf4CqduSJbUM0OdPoU87NwRuZ6x49OLhjSa/fC15fV+5CbEnrxU4oyE022svg==}
     engines: {node: '>=12'}
@@ -7189,21 +7204,6 @@ packages:
     dependencies:
       vue: 3.2.37
     dev: false
-
-  /vue-demi/0.13.9_vue@3.2.37:
-    resolution: {integrity: sha512-+4hVlCaBMsX5O3cbYA8xyLAK6jFJVWhmHHmyYTFRkwPhGvyxJbBUfizZiuXCdmDnrGjj7k2n1mhHJ2JvT4JTtA==}
-    engines: {node: '>=12'}
-    hasBin: true
-    requiresBuild: true
-    peerDependencies:
-      '@vue/composition-api': ^1.0.0-rc.1
-      vue: ^3.0.0-0 || ^2.6.0
-    peerDependenciesMeta:
-      '@vue/composition-api':
-        optional: true
-    dependencies:
-      vue: 3.2.37
-    dev: true
 
   /vue-eslint-parser/9.0.2_eslint@8.22.0:
     resolution: {integrity: sha512-uCPQwTGjOtAYrwnU+76pYxalhjsh7iFBsHwBqDHiOPTxtICDaraO4Szw54WFTNZTAEsgHHzqFOu1mmnBOBRzDA==}
