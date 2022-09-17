@@ -81,6 +81,6 @@
   "dependencies": {
     "parse-domain": "7.0.1",
     "tsup": "6.2.3",
-    "vue-word-highlighter": "1.0.5"
+    "vue-word-highlighter": "1.0.6"
   }
 }
