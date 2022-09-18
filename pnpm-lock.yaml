@@ -40,7 +40,7 @@ specifiers:
   unplugin-vue-components: 0.22.7
   vite: 3.1.2
   vite-plugin-windicss: 1.8.8
-  vitest: 0.23.2
+  vitest: 0.23.4
   vue: 3.2.39
   vue-demi: 0.13.11
   vue-word-highlighter: 1.0.6
@@ -91,7 +91,7 @@ devDependencies:
   unplugin-vue-components: 0.22.7_vite@3.1.2+vue@3.2.39
   vite: 3.1.2_terser@5.15.0
   vite-plugin-windicss: 1.8.8_vite@3.1.2
-  vitest: 0.23.2_terser@5.15.0
+  vitest: 0.23.4_terser@5.15.0
   vue: 3.2.39
   vue-demi: 0.13.11_vue@3.2.39
   web-ext: 7.2.0
@@ -6546,8 +6546,8 @@ packages:
     engines: {node: '>=14.16'}
     dev: true
 
-  /strip-literal/0.4.0:
-    resolution: {integrity: sha512-ql/sBDoJOybTKSIOWrrh8kgUEMjXMwRAkZTD0EwiwxQH/6tTPkZvMIEjp0CRlpi6V5FMiJyvxeRkEi1KrGISoA==}
+  /strip-literal/0.4.2:
+    resolution: {integrity: sha512-pv48ybn4iE1O9RLgCAN0iU4Xv7RlBTiit6DKmMiErbs9x1wH6vXBs45tWc0H5wUIF6TLTrKweqkmYF/iraQKNw==}
     dependencies:
       acorn: 8.8.0
     dev: true
@@ -6866,7 +6866,7 @@ packages:
       mlly: 0.5.7
       pathe: 0.3.3
       scule: 0.3.2
-      strip-literal: 0.4.0
+      strip-literal: 0.4.2
       unplugin: 0.9.5_vite@3.1.2
     transitivePeerDependencies:
       - esbuild
@@ -7156,8 +7156,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitest/0.23.2_terser@5.15.0:
-    resolution: {integrity: sha512-kTBKp3ROPDkYC+x2zWt4znkDtnT08W1FQ6ngRFuqxpBGNuNVS+eWZKfffr8y2JGvEzZ9EzMAOcNaiqMj/FZqMw==}
+  /vitest/0.23.4_terser@5.15.0:
+    resolution: {integrity: sha512-iukBNWqQAv8EKDBUNntspLp9SfpaVFbmzmM0sNcnTxASQZMzRw3PsM6DMlsHiI+I6GeO5/sYDg3ecpC+SNFLrQ==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
     peerDependencies:
@@ -7184,7 +7184,7 @@ packages:
       chai: 4.3.6
       debug: 4.3.4
       local-pkg: 0.4.2
-      strip-literal: 0.4.0
+      strip-literal: 0.4.2
       tinybench: 2.1.5
       tinypool: 0.3.0
       tinyspy: 1.0.2
