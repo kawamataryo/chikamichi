@@ -43,7 +43,7 @@ specifiers:
   vitest: 0.24.0
   vue: 3.2.40
   vue-demi: 0.13.11
-  vue-word-highlighter: 1.0.6
+  vue-word-highlighter: 1.1.0
   web-ext: 7.2.0
   webext-bridge: 5.0.5
   webextension-polyfill: 0.10.0
@@ -51,7 +51,7 @@ specifiers:
 dependencies:
   parse-domain: 7.0.1
   tsup: 6.2.3_typescript@4.8.4
-  vue-word-highlighter: 1.0.6_vue@3.2.40
+  vue-word-highlighter: 1.1.0_vue@3.2.40
 
 devDependencies:
   '@antfu/eslint-config': 0.27.0_eslint@8.25.0+typescript@4.8.4
@@ -2146,6 +2146,10 @@ packages:
     resolution: {integrity: sha512-ZySD7Nf91aLB0RxL4KGrKHBXl7Eds1DAmEdcoVawXnLD7SDhpNgtuII2aAkg7a7QS41jxPSZ17p4VdGnMHk3MQ==}
     engines: {node: '>=0.4.0'}
     dev: true
+
+  /diacritics/1.3.0:
+    resolution: {integrity: sha512-wlwEkqcsaxvPJML+rDh/2iS824jbREk6DUMUKkEaSlxdYHeS43cClJtsWglvw2RfeXGm6ohKDqsXteJ5sP5enA==}
+    dev: false
 
   /dir-glob/3.0.1:
     resolution: {integrity: sha512-WkrWp9GR4KXfKGYzOLmTuGVi1UWFfws377n9cc55/tb6DuqyF6pcQ5AbiHEshaDpY9v6oaSr2XCDidGmMwdzIA==}
@@ -7062,8 +7066,8 @@ packages:
       - supports-color
     dev: true
 
-  /vue-word-highlighter/1.0.6_vue@3.2.40:
-    resolution: {integrity: sha512-JUI5qZwPM0eFxSlATZd/qSikofagspXcDObojUDQNbN2h8FWes7Qi/bbYJtLT9ZhM9ci2u1IkhObiFVEm3WXzg==}
+  /vue-word-highlighter/1.1.0_vue@3.2.40:
+    resolution: {integrity: sha512-Yy+DrEC1cAORuDIL++s4F0t2QqAQTS92l0kST8yby0j5AK2lSj8fpuoLIRR17b5OnI0mk8RkL6Z1nwIMcyaJqw==}
     peerDependencies:
       '@vue/composition-api': ^1.0.0-rc.1
       vue: ^2.0.0 || >=3.0.0
@@ -7071,6 +7075,7 @@ packages:
       '@vue/composition-api':
         optional: true
     dependencies:
+      diacritics: 1.3.0
       vue: 3.2.40
       vue-demi: 0.13.11_vue@3.2.40
     dev: false
