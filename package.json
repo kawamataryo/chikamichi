@@ -80,7 +80,7 @@
   },
   "dependencies": {
     "parse-domain": "7.0.1",
-    "tsup": "6.2.3",
+    "tsup": "6.3.0",
     "vue-word-highlighter": "1.1.1"
   }
 }
