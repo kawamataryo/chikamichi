@@ -44,7 +44,7 @@ specifiers:
   vue: 3.2.41
   vue-demi: 0.13.11
   vue-word-highlighter: 1.1.1
-  web-ext: 7.3.0
+  web-ext: 7.3.1
   webext-bridge: 5.0.5
   webextension-polyfill: 0.10.0
 
@@ -94,7 +94,7 @@ devDependencies:
   vitest: 0.24.3_terser@5.15.1
   vue: 3.2.41
   vue-demi: 0.13.11_vue@3.2.41
-  web-ext: 7.3.0
+  web-ext: 7.3.1
   webext-bridge: 5.0.5
   webextension-polyfill: 0.10.0
 
@@ -6804,8 +6804,8 @@ packages:
       defaults: 1.0.3
     dev: true
 
-  /web-ext/7.3.0:
-    resolution: {integrity: sha512-w8ZaeD4b+P84/RJJaGCRtuUu+3jEOWC3wT+xu1Sebt7WkO1zfDseBxXk+P3KaRf19dlvcH/1dYdMSMAtrH2dww==}
+  /web-ext/7.3.1:
+    resolution: {integrity: sha512-ZTfktd1zcQpWaFAM3U+IQW674G89d1IW/Oh0Ncw9LwFvKvAcW/nA5EB4pwqB8LiW/6OSYQhHBP4x2XUTBu1SKg==}
     engines: {node: '>=14.0.0', npm: '>=6.9.0'}
     hasBin: true
     dependencies:
