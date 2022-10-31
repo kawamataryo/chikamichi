@@ -1,7 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
-  '@antfu/eslint-config': 0.27.0
+  '@antfu/eslint-config': 0.29.2
   '@ffflorian/jszip-cli': 3.1.6
   '@iconify/json': 2.1.131
   '@ngneat/falso': 6.1.0
@@ -54,7 +54,7 @@ dependencies:
   vue-word-highlighter: 1.1.1_vue@3.2.41
 
 devDependencies:
-  '@antfu/eslint-config': 0.27.0_eslint@8.26.0+typescript@4.8.4
+  '@antfu/eslint-config': 0.29.2_eslint@8.26.0+typescript@4.8.4
   '@ffflorian/jszip-cli': 3.1.6
   '@iconify/json': 2.1.131
   '@ngneat/falso': 6.1.0
@@ -100,19 +100,20 @@ devDependencies:
 
 packages:
 
-  /@antfu/eslint-config-basic/0.27.0_e3301287a2984f96936e762083d8a799:
-    resolution: {integrity: sha512-QgQVCiNiV9ZF7h09uBqTHctHDfVqJGIIpe0ZHCicLvUv233nAYeu4adAr53buhKrxDeoalozSs2ePiDiCyceTg==}
+  /@antfu/eslint-config-basic/0.29.2_e3301287a2984f96936e762083d8a799:
+    resolution: {integrity: sha512-kx5iQ7AnG22XuyfFRKNPPlAjLkQ+YfwDjPP9733vjC8NWDDIDgsuqFyXlZGuwE4A8/Fc50BCksy22n+yZEM4lg==}
     peerDependencies:
       eslint: '>=7.4.0'
     dependencies:
       eslint: 8.26.0
-      eslint-plugin-antfu: 0.27.0_eslint@8.26.0+typescript@4.8.4
+      eslint-plugin-antfu: 0.29.2_eslint@8.26.0+typescript@4.8.4
       eslint-plugin-eslint-comments: 3.2.0_eslint@8.26.0
       eslint-plugin-html: 7.1.0
       eslint-plugin-import: 2.26.0_e14e42800f6e81a8a1eaa03ca5657a70
       eslint-plugin-jsonc: 2.4.0_eslint@8.26.0
       eslint-plugin-markdown: 3.0.0_eslint@8.26.0
       eslint-plugin-n: 15.2.5_eslint@8.26.0
+      eslint-plugin-no-only-tests: 3.1.0
       eslint-plugin-promise: 6.0.1_eslint@8.26.0
       eslint-plugin-unicorn: 43.0.2_eslint@8.26.0
       eslint-plugin-yml: 1.1.0_eslint@8.26.0
@@ -126,13 +127,13 @@ packages:
       - typescript
     dev: true
 
-  /@antfu/eslint-config-ts/0.27.0_eslint@8.26.0+typescript@4.8.4:
-    resolution: {integrity: sha512-h/ai9xe65lXtsUiSBRAvfcN47fqn5uGHcCA5c0LoBRX6fVFHk06BbPWMlSJRtqmc3uBTmv3gU8SrnWwrycnKag==}
+  /@antfu/eslint-config-ts/0.29.2_eslint@8.26.0+typescript@4.8.4:
+    resolution: {integrity: sha512-ZnsC0tTpt1ez31OCSB2QsNML+dAy0/Kb52TxXb7hj4f/dWS66Q2W0xP5ujGVriFTF7c2lW4i9XlmDzt76JGh4w==}
     peerDependencies:
       eslint: '>=7.4.0'
       typescript: '>=3.9'
     dependencies:
-      '@antfu/eslint-config-basic': 0.27.0_e3301287a2984f96936e762083d8a799
+      '@antfu/eslint-config-basic': 0.29.2_e3301287a2984f96936e762083d8a799
       '@typescript-eslint/eslint-plugin': 5.41.0_e3301287a2984f96936e762083d8a799
       '@typescript-eslint/parser': 5.36.1_eslint@8.26.0+typescript@4.8.4
       eslint: 8.26.0
@@ -143,12 +144,12 @@ packages:
       - supports-color
     dev: true
 
-  /@antfu/eslint-config-vue/0.27.0_eslint@8.26.0+typescript@4.8.4:
-    resolution: {integrity: sha512-Iw4GY4rXK1dPxzIl35bOwPE1vn6E5Wm8uljqdpQYQpTX1j6el7Yo30bpanCogWRcdPSMWKcS7GVlHjV47QB59w==}
+  /@antfu/eslint-config-vue/0.29.2_eslint@8.26.0+typescript@4.8.4:
+    resolution: {integrity: sha512-YaWM0ARGybAwYu22Yy81xzC8+bUt+vLJCUPMX4sk7Caw10eY6IoA4NfZehaUqJCevJ9Ie4n7A2xIX3tbgc4RYQ==}
     peerDependencies:
       eslint: '>=7.4.0'
     dependencies:
-      '@antfu/eslint-config-ts': 0.27.0_eslint@8.26.0+typescript@4.8.4
+      '@antfu/eslint-config-ts': 0.29.2_eslint@8.26.0+typescript@4.8.4
       eslint: 8.26.0
       eslint-plugin-vue: 9.4.0_eslint@8.26.0
     transitivePeerDependencies:
@@ -158,12 +159,12 @@ packages:
       - typescript
     dev: true
 
-  /@antfu/eslint-config/0.27.0_eslint@8.26.0+typescript@4.8.4:
-    resolution: {integrity: sha512-xM1In6/ueNyKxxWO86jd7a9IdKby66lZVT/fE8k2RlP+X0xe5/DTTQfwLbVvnRpn77jCPIhEjNKVWxDO/DUEIg==}
+  /@antfu/eslint-config/0.29.2_eslint@8.26.0+typescript@4.8.4:
+    resolution: {integrity: sha512-xggPT/SdOTW1DCZQ+T83F1hmRh8fXNDs6aiDvrmjHQDDtR2G/6wvieHFI8AQndrqZrJAOUqnilcPOX0MaKXpOg==}
     peerDependencies:
       eslint: '>=7.4.0'
     dependencies:
-      '@antfu/eslint-config-vue': 0.27.0_eslint@8.26.0+typescript@4.8.4
+      '@antfu/eslint-config-vue': 0.29.2_eslint@8.26.0+typescript@4.8.4
       '@typescript-eslint/eslint-plugin': 5.41.0_e3301287a2984f96936e762083d8a799
       '@typescript-eslint/parser': 5.36.1_eslint@8.26.0+typescript@4.8.4
       eslint: 8.26.0
@@ -2792,8 +2793,8 @@ packages:
       - supports-color
     dev: true
 
-  /eslint-plugin-antfu/0.27.0_eslint@8.26.0+typescript@4.8.4:
-    resolution: {integrity: sha512-xjNfATHonE3Do2igOlhwjfL2tlaGnm1EgbsLLkHgdk30oIvJU4bLNxF6wXIuaCdjqmwWIqF6smJbX2YhtaEC4w==}
+  /eslint-plugin-antfu/0.29.2_eslint@8.26.0+typescript@4.8.4:
+    resolution: {integrity: sha512-Qa4kVONuw9Sm2vGAfgA8/9aI4EXKBqHHIsERunBGrotIxwWxWZWIWpkQk1nfrsbJ0HXPeYpDCqaBrHTWHISvNQ==}
     dependencies:
       '@typescript-eslint/utils': 5.41.0_eslint@8.26.0+typescript@4.8.4
     transitivePeerDependencies:
@@ -2900,6 +2901,11 @@ packages:
       minimatch: 3.1.2
       resolve: 1.22.1
       semver: 7.3.8
+    dev: true
+
+  /eslint-plugin-no-only-tests/3.1.0:
+    resolution: {integrity: sha512-Lf4YW/bL6Un1R6A76pRZyE1dl1vr31G/ev8UzIc/geCgFWyrKil8hVjYqWVKGB/UIGmb6Slzs9T0wNezdSVegw==}
+    engines: {node: '>=5.0.0'}
     dev: true
 
   /eslint-plugin-no-unsanitized/4.0.1_eslint@8.25.0:
