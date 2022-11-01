@@ -40,7 +40,7 @@ specifiers:
   unplugin-vue-components: 0.22.9
   vite: 3.1.2
   vite-plugin-windicss: 1.8.8
-  vitest: 0.24.4
+  vitest: 0.24.5
   vue: 3.2.41
   vue-demi: 0.13.11
   vue-word-highlighter: 1.1.1
@@ -91,7 +91,7 @@ devDependencies:
   unplugin-vue-components: 0.22.9_vue@3.2.41
   vite: 3.1.2_terser@5.15.1
   vite-plugin-windicss: 1.8.8_vite@3.1.2
-  vitest: 0.24.4_terser@5.15.1
+  vitest: 0.24.5_terser@5.15.1
   vue: 3.2.41
   vue-demi: 0.13.11_vue@3.2.41
   web-ext: 7.3.1
@@ -6769,8 +6769,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vitest/0.24.4_terser@5.15.1:
-    resolution: {integrity: sha512-4ratHSyVEJPtBLV00uhL4Wj3Pmandc9rsxUkE0q9peNOfaOgGF4lEepdkaXGRi9AGFKr1GRVtjGOJ6Fp2lCpEg==}
+  /vitest/0.24.5_terser@5.15.1:
+    resolution: {integrity: sha512-zw6JhPUHtLILQDe5Q39b/SzoITkG+R7hcFjuthp4xsi6zpmfQPOZcHodZ+3bqoWl4EdGK/p1fuMiEwdxgbGLOA==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
     peerDependencies:
