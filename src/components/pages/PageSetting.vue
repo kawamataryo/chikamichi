@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defaultSearchPrefix, theme } from "~/logic";
+import { defaultSearchPrefix, openLinkInCurrentTab, theme } from "~/logic";
 import { SEARCH_PREFIX } from "~/constants";
 </script>
 
@@ -105,8 +105,39 @@ import { SEARCH_PREFIX } from "~/constants";
     <div
       class="border-gray-400 border-1px rounded-5px p-20px col-span-2 col-start-3 row-start-1"
     >
-      <div class="flex justify-center items-center h-full text-sm opacity-50">
-        Coming Soon
+      <h1 class="text-lg">📖 Open Link Action</h1>
+      <p class="mt-10px text-xs mb-4">
+        Configure the default action when a link is clicked.
+      </p>
+      <div class="flex items-center mb-4">
+        <input
+          id="radio-1"
+          v-model="openLinkInCurrentTab"
+          type="radio"
+          :value="true"
+          name="default-radio"
+          class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+        />
+        <label
+          for="radio-1"
+          class="ml-2 text-xs font-medium text-gray-900 dark:text-gray-300"
+          >Open Link in current tab</label
+        >
+      </div>
+      <div class="flex items-center">
+        <input
+          id="radio-2"
+          v-model="openLinkInCurrentTab"
+          type="radio"
+          :value="false"
+          name="default-radio"
+          class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+        />
+        <label
+          for="radio-2"
+          class="ml-2 text-xs font-medium text-gray-900 dark:text-gray-300"
+          >Open Link in new tab</label
+        >
       </div>
     </div>
     <div
