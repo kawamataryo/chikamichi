@@ -2,6 +2,7 @@
   "extends": ["@antfu", "prettier"],
   "rules": {
     "@typescript-eslint/consistent-type-imports": "off",
-    "node/no-callback-literal": "off"
+    "node/no-callback-literal": "off",
+    "vue/component-tags-order": "off"
   }
 }
