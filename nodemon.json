@@ -1,0 +1,5 @@
+{
+  "verbose": true,
+  "ignore": ["extension", "src/auto-imports.d.ts", "cypress"],
+  "ext": "vue,ts,js"
+}
