@@ -5,7 +5,18 @@
   >
     <div class="p-20px pb-0 flex flex-col h-full">
       <div>
-        <IconSearch width="20" height="20" class="absolute ml-12px mt-12px" />
+        <IconLoading
+          v-if="loading"
+          width="20"
+          height="20"
+          class="absolute ml-12px mt-12px"
+        />
+        <IconSearch
+          v-else
+          width="20"
+          height="20"
+          class="absolute ml-12px mt-12px"
+        />
         <input
           id="username"
           ref="searchInput"
@@ -54,7 +65,7 @@
           </ul>
         </template>
         <template v-else>
-          <template v-if="searchWord">
+          <template v-if="extractOnlySearchWord && !loading">
             <ul class="pl-0">
               <li
                 :aria-selected="true"
@@ -112,6 +123,7 @@ const {
   changeSelectedItem,
   browserSearch,
   copyUrlOfSelectedItem,
+  loading,
 } = useSearch();
 
 const searchResultWrapperRef = ref<HTMLElement | null>(null);
@@ -142,7 +154,9 @@ const onClickFavorite = (item: SearchItem) => {
 const searchResultRefs = ref<HTMLElement[]>([]);
 
 const fixScrollPosition = () => {
-  if (!searchResultWrapperRef.value) return;
+  if (!searchResultWrapperRef.value) {
+    return;
+  }
 
   const wrapperElm = searchResultWrapperRef.value;
   const { top: wrapperTop, height: wrapperHeight } =
@@ -195,6 +209,8 @@ const onCopy = async () => {
 
 onMounted(async () => {
   await nextTick();
-  if (searchInput.value) searchInput.value.focus();
+  if (searchInput.value) {
+    searchInput.value.focus();
+  }
 });
 </script>

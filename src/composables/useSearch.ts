@@ -1,40 +1,37 @@
-import Fuse from "fuse.js";
 import debounce from "lodash.debounce";
 import { sendMessage } from "webext-bridge";
 import type { Search } from "webextension-polyfill";
 import {
   BADGE_TEXT,
-  FUSE_OPTIONS,
   SEARCH_ICON_DATA_URL_DARK,
   SEARCH_ICON_DATA_URL_LIGHT,
   SEARCH_ITEM_TYPE,
   SEARCH_TARGET_REGEX,
   THEME,
 } from "~/constants";
-import { defaultSearchPrefix, favoriteItems, theme } from "~/logic";
+import { defaultSearchPrefix, favoriteItems, fuseSearch, theme } from "~/logic";
 import { getMatchedRegExp } from "~/popup/utils/getMatchedRegExp";
 import { STORE_KEY, useStore } from "~/popup/utils/store";
 
 export const useSearch = () => {
   const store = inject<ReturnType<typeof useStore>>(STORE_KEY);
-  if (!store) throw new Error("store is not provided");
+  if (!store) {
+    throw new Error("store is not provided");
+  }
 
+  const loading = ref(true);
   const searchItems = computed(() => store.state.searchItems);
 
   const _searchWord = ref(defaultSearchPrefix.value);
+  const searchWord = computed({
+    get: () => _searchWord.value,
+    set: (value) => {
+      loading.value = true;
+      _searchWord.value = value;
+    },
+  });
 
   const badgeText = ref<typeof BADGE_TEXT[keyof typeof BADGE_TEXT] | "">("");
-
-  const searchWord = computed({
-    get() {
-      return _searchWord.value;
-    },
-    // NOTE: When hold the key, the character will be insert repeatedly. This causes the setter to be called repeatedly at high speed.
-    // Writing the store is expensive, so too many calls can cause performance problems. So use debounce to avoid this.
-    set: debounce((value: string) => {
-      _searchWord.value = value;
-    }, 250),
-  });
 
   const extractOnlySearchWord = computed(() => {
     // Since searchWord may contain search prefix, if it does, return a value that excludes it.
@@ -71,45 +68,64 @@ export const useSearch = () => {
     }
   );
 
+  const searchResult = ref<SearchItemWithFavoriteAndMatchedWord[]>(
+    initialSearchItems.value.slice(0, 100)
+  );
+
   const isFavorite = (url: string, title: string) => {
     return parsedFavoriteItems.value.some(
       (i) => i.url === url && i.title === title
     );
   };
 
-  const searchResult = computed<SearchItemWithFavoriteAndMatchedWord[]>(() => {
-    if (!searchItems.value) return [];
+  watch(
+    [searchWord, searchItems],
+    debounce(async () => {
+      if (!(searchWord.value && searchItems)) {
+        // show initial display
+        searchResult.value = initialSearchItems.value.slice(0, 100);
+        loading.value = false;
+        return;
+      }
 
-    if (!searchWord.value) {
-      // initial display
-      return initialSearchItems.value.slice(0, 100);
+      if (!searchItems) {
+        loading.value = false;
+        return;
+      }
+
+      const word = extractOnlySearchWord.value || "http"; // "http" is included in all URLs;
+      let target = searchItems.value;
+
+      // Selecting targets with the prefix
+      if (SEARCH_TARGET_REGEX.HISTORY.test(searchWord.value)) {
+        target = searchItemsOnlyHistory.value;
+      } else if (SEARCH_TARGET_REGEX.BOOKMARK.test(searchWord.value)) {
+        target = searchItemsOnlyBookmark.value;
+      } else if (SEARCH_TARGET_REGEX.TAB.test(searchWord.value)) {
+        target = searchItemsOnlyTab.value;
+      }
+
+      // use Background Search API
+      try {
+        const fuseSearchResult = await fuseSearch(word, target);
+        searchResult.value = fuseSearchResult.map((result) => {
+          return {
+            ...result.item,
+            isFavorite: isFavorite(result.item.url, result.item.title),
+            matchedWord: getMatchedRegExp(
+              result!.matches![0].value!,
+              result!.matches![0].indices as [number, number][]
+            ),
+          };
+        });
+      } finally {
+        loading.value = false;
+      }
+    }, 250),
+    {
+      immediate: true,
     }
-
-    const word = extractOnlySearchWord.value || "http"; // "http" is included in all URLs;
-    let target = searchItems.value;
-
-    // Selecting targets with the prefix
-    if (SEARCH_TARGET_REGEX.HISTORY.test(searchWord.value)) {
-      target = searchItemsOnlyHistory.value;
-    } else if (SEARCH_TARGET_REGEX.BOOKMARK.test(searchWord.value)) {
-      target = searchItemsOnlyBookmark.value;
-    } else if (SEARCH_TARGET_REGEX.TAB.test(searchWord.value)) {
-      target = searchItemsOnlyTab.value;
-    }
-
-    // fuzzy search powered by Fuse.js https://fusejs.io/
-    const fuse = new Fuse(target, FUSE_OPTIONS);
-    return fuse.search<SearchItem>(word, { limit: 100 }).map((result) => {
-      return {
-        ...result.item,
-        isFavorite: isFavorite(result.item.url, result.item.title),
-        matchedWord: getMatchedRegExp(
-          result!.matches![0].value!,
-          result!.matches![0].indices as [number, number][]
-        ),
-      };
-    });
-  });
+  );
 
   const changeSelectedItem = (number: number) => {
     selectedNumber.value = number;
@@ -203,7 +219,17 @@ export const useSearch = () => {
       favoriteItems.value = JSON.stringify(
         parsedFavoriteItems.value.filter((i) => i.url !== item.url)
       );
-      await showBadge(BADGE_TEXT.REMOVE_FAVORITE);
+
+      // If the initial display is displayed, update the searchItems to initialSearchItems
+      if (searchWord.value) {
+        searchResult.value[selectedNumber.value] = {
+          ...searchResult.value[selectedNumber.value],
+          isFavorite: false,
+        };
+        await showBadge(BADGE_TEXT.REMOVE_FAVORITE);
+      } else {
+        searchResult.value = initialSearchItems.value.slice(0, 100);
+      }
     } else {
       const type =
         item.type !== SEARCH_ITEM_TYPE.TAB
@@ -219,6 +245,10 @@ export const useSearch = () => {
           folderName: item.folderName,
         },
       ]);
+      searchResult.value[selectedNumber.value] = {
+        ...searchResult.value[selectedNumber.value],
+        isFavorite: true,
+      };
       await showBadge(BADGE_TEXT.ADD_FAVORITE);
     }
   };
@@ -262,5 +292,6 @@ export const useSearch = () => {
     browserSearch,
     copyUrlOfSelectedItem,
     badgeText,
+    loading,
   };
 };

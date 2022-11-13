@@ -10,6 +10,7 @@
     "dev:web": "vite",
     "dev:bg": "tsup --watch ./src",
     "build": "cross-env NODE_ENV=production run-s clear build:web build:prepare build:bg",
+    "build:watch": "nodemon --exec pnpm build",
     "build:prepare": "esno scripts/prepare.ts",
     "build:web": "vite build",
     "build:bg": "tsup",
@@ -72,7 +73,9 @@
     "vue-demi": "0.13.11",
     "web-ext": "7.3.1",
     "webext-bridge": "5.0.5",
-    "webextension-polyfill": "0.10.0"
+    "webextension-polyfill": "0.10.0",
+    "nodemon": "^2.0.20",
+    "tsup": "6.4.0"
   },
   "lint-staged": {
     "*.js": "eslint --cache --fix",
@@ -80,7 +83,6 @@
   },
   "dependencies": {
     "parse-domain": "7.0.1",
-    "tsup": "6.4.0",
     "vue-word-highlighter": "1.1.1"
   }
 }
