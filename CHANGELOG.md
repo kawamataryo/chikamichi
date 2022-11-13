@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## 3.1.0
+### performance
+- Move fuse search to the service worker #638
+
 ## 2.17.0
 ### feature
 - Add a feature to copy to the clipboard
