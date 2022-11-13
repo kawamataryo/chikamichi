@@ -1,3 +1,13 @@
+<script setup lang="ts">
+import { sendMessage } from "webext-bridge";
+
+const openNewTab = async (url: string) => {
+  await sendMessage("open-new-tab-page", {
+    url,
+  });
+};
+</script>
+
 <template>
   <div
     class="h-full w-full flex flex-col p-20px overflow-hidden dark:text-gray-200 grid grid-flow-col grid-flow-row gap-4"
@@ -82,13 +92,3 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import { sendMessage } from "webext-bridge";
-
-const openNewTab = async (url: string) => {
-  await sendMessage("open-new-tab-page", {
-    url,
-  });
-};
-</script>

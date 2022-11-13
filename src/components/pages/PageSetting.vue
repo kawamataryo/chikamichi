@@ -1,3 +1,8 @@
+<script setup lang="ts">
+import { defaultSearchPrefix, theme } from "~/logic";
+import { SEARCH_PREFIX } from "~/constants";
+</script>
+
 <template>
   <div
     class="h-full w-full flex flex-col p-20px overflow-hidden dark:text-gray-200 grid grid-cols-4 grid-rows-2 gap-4"
@@ -113,8 +118,3 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import { defaultSearchPrefix, theme } from "~/logic";
-import { SEARCH_PREFIX } from "~/constants";
-</script>

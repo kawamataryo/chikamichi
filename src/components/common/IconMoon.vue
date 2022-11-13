@@ -1,3 +1,19 @@
+<script lang="ts">
+export default defineComponent({
+  name: "IconDark",
+  props: {
+    width: {
+      type: [Number, String],
+      default: 18,
+    },
+    height: {
+      type: [Number, String],
+      default: 18,
+    },
+  },
+});
+</script>
+
 <template>
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -15,19 +31,3 @@
     />
   </svg>
 </template>
-
-<script lang="ts">
-export default defineComponent({
-  name: "IconDark",
-  props: {
-    width: {
-      type: [Number, String],
-      default: 18,
-    },
-    height: {
-      type: [Number, String],
-      default: 18,
-    },
-  },
-});
-</script>

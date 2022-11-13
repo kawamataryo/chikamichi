@@ -35,7 +35,9 @@ export const convertToSearchItemsFromHistories = (
   const searchItems = histories
     .filter((history) => {
       // remove google search's history
-      if (/google\..+\/search/.test(history.url!)) return false;
+      if (/google\..+\/search/.test(history.url!)) {
+        return false;
+      }
       return true;
     })
     .map((history) => ({
@@ -67,7 +69,9 @@ export const convertToSearchItemsFromBookmarks = (
         return;
       }
 
-      if (!node.url) return;
+      if (!node.url) {
+        return;
+      }
 
       const folderName =
         node.parentId === "1"

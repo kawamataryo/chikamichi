@@ -1,3 +1,23 @@
+<script lang="ts">
+export default defineComponent({
+  name: "IconGear",
+  props: {
+    border: {
+      type: Boolean,
+      default: false,
+    },
+    width: {
+      type: [Number, String],
+      default: 18,
+    },
+    height: {
+      type: [Number, String],
+      default: 18,
+    },
+  },
+});
+</script>
+
 <template>
   <svg
     v-if="border"
@@ -36,23 +56,3 @@
     />
   </svg>
 </template>
-
-<script lang="ts">
-export default defineComponent({
-  name: "IconGear",
-  props: {
-    border: {
-      type: Boolean,
-      default: false,
-    },
-    width: {
-      type: [Number, String],
-      default: 18,
-    },
-    height: {
-      type: [Number, String],
-      default: 18,
-    },
-  },
-});
-</script>

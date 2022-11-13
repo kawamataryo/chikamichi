@@ -1,18 +1,3 @@
-<template>
-  <main
-    class="w-700px h-450px flex bg-white dark:bg-gray-800 text-gray-600 dark:text-bg-gray-100 overflow-hidden"
-  >
-    <div class="w-650px">
-      <PageSearch v-if="currentPage === PAGES.SEARCH" />
-      <PageInfo v-if="currentPage === PAGES.INFO" />
-      <PageSetting v-if="currentPage === PAGES.SETTING" />
-    </div>
-    <div class="w-50px border-l-1px dark:border-l-gray-700 border-l-gray-200">
-      <SideMenu :current-page="currentPage" @change="changePage" />
-    </div>
-  </main>
-</template>
-
 <script lang="ts" setup>
 import { PAGES, THEME } from "~/constants";
 import { theme } from "~/logic";
@@ -31,12 +16,31 @@ watch(
         document.documentElement.classList.add("dark");
       else document.documentElement.classList.remove("dark");
     }
-    if (next === THEME.DARK) document.documentElement.classList.add("dark");
+    if (next === THEME.DARK) {
+      document.documentElement.classList.add("dark");
+    }
 
-    if (next === THEME.LIGHT) document.documentElement.classList.remove("dark");
+    if (next === THEME.LIGHT) {
+      document.documentElement.classList.remove("dark");
+    }
   },
   {
     immediate: true,
   }
 );
 </script>
+
+<template>
+  <main
+    class="w-700px h-450px flex bg-white dark:bg-gray-800 text-gray-600 dark:text-bg-gray-100 overflow-hidden"
+  >
+    <div class="w-650px">
+      <PageSearch v-if="currentPage === PAGES.SEARCH" />
+      <PageInfo v-if="currentPage === PAGES.INFO" />
+      <PageSetting v-if="currentPage === PAGES.SETTING" />
+    </div>
+    <div class="w-50px border-l-1px dark:border-l-gray-700 border-l-gray-200">
+      <SideMenu :current-page="currentPage" @change="changePage" />
+    </div>
+  </main>
+</template>

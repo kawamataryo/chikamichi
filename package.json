@@ -21,7 +21,7 @@
     "start:chromium": "web-ext run --source-dir ./extension --target=chromium",
     "start:firefox": "web-ext run --source-dir ./extension --target=firefox-desktop",
     "clear": "rimraf extension extension.*",
-    "lint": "eslint 'src/**/*.{json,ts,js,vue}'",
+    "lint": "eslint --fix 'src/**/*.{json,ts,js,vue}'",
     "format": "prettier --write 'src/**/*.{json,ts,js,vue}'",
     "test": "vitest",
     "test:ci": "vitest run",

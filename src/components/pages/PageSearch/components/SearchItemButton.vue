@@ -1,3 +1,30 @@
+<script lang="ts" setup>
+import WordHighlighter from "vue-word-highlighter";
+import { PropType } from "vue";
+import ToggleStar from "./ToggleStar.vue";
+
+const props = defineProps({
+  item: {
+    type: Object as PropType<SearchItemWithFavoriteAndMatchedWord>,
+    required: true,
+  },
+  isSelected: {
+    type: Boolean,
+    required: true,
+  },
+  badgeText: {
+    type: String,
+    default: "",
+  },
+  index: {
+    type: Number,
+    required: true,
+  },
+});
+
+const emit = defineEmits(["click-star"]);
+</script>
+
 <template>
   <button
     class="p-6px block text-13px flex items-center text-black justify-between border-none w-full cursor-pointer bg-white rounded-5px dark:bg-gray-800 dark:text-gray-200"
@@ -70,33 +97,6 @@
     </span>
   </button>
 </template>
-
-<script lang="ts" setup>
-import WordHighlighter from "vue-word-highlighter";
-import { PropType } from "vue";
-import ToggleStar from "./ToggleStar.vue";
-
-const props = defineProps({
-  item: {
-    type: Object as PropType<SearchItemWithFavoriteAndMatchedWord>,
-    required: true,
-  },
-  isSelected: {
-    type: Boolean,
-    required: true,
-  },
-  badgeText: {
-    type: String,
-    default: "",
-  },
-  index: {
-    type: Number,
-    required: true,
-  },
-});
-
-const emit = defineEmits(["click-star"]);
-</script>
 
 <style>
 .fade-enter-active,
