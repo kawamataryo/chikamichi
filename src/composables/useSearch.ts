@@ -9,7 +9,13 @@ import {
   SEARCH_TARGET_REGEX,
   THEME,
 } from "~/constants";
-import { defaultSearchPrefix, favoriteItems, fuseSearch, theme } from "~/logic";
+import {
+  defaultSearchPrefix,
+  favoriteItems,
+  fuseSearch,
+  openLinkInCurrentTab,
+  theme,
+} from "~/logic";
 import { getMatchedRegExp } from "~/popup/utils/getMatchedRegExp";
 import { STORE_KEY, useStore } from "~/popup/utils/store";
 
@@ -168,7 +174,8 @@ export const useSearch = () => {
         return;
       }
       // otherwise, open the link in the specified way.
-      if (isNewTab) {
+      // swap the default action if openLinkInCurrentTab is false. #582
+      if (openLinkInCurrentTab.value ? isNewTab : !isNewTab) {
         await sendMessage("open-new-tab-page", {
           url: target.url,
         });
@@ -194,9 +201,15 @@ export const useSearch = () => {
       return;
     }
     // otherwise, open the link.
-    await sendMessage("update-current-page", {
-      url,
-    });
+    if (openLinkInCurrentTab.value) {
+      await sendMessage("update-current-page", {
+        url,
+      });
+    } else {
+      await sendMessage("open-new-tab-page", {
+        url,
+      });
+    }
   };
 
   let timerId: ReturnType<typeof setTimeout>;

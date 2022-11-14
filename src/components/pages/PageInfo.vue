@@ -1,5 +1,12 @@
 <script setup lang="ts">
 import { sendMessage } from "webext-bridge";
+import { openLinkInCurrentTab } from "~/logic";
+
+const openLinkActionText = computed(() =>
+  openLinkInCurrentTab.value
+    ? "Open link in new tab"
+    : "Open link in current tab"
+);
 
 const openNewTab = async (url: string) => {
   await sendMessage("open-new-tab-page", {
@@ -49,8 +56,8 @@ const openNewTab = async (url: string) => {
           ・<span class="info-key-text mr-5px">Enter</span>Open page
         </li>
         <li class="mt-10px">
-          ・<span class="info-key-text mr-5px">Ctrl + Enter</span>Open page in
-          new tab
+          ・<span class="info-key-text mr-5px">Ctrl + Enter</span
+          >{{ openLinkActionText }}
         </li>
         <li class="mt-10px">
           ・<span class="info-key-text mr-5px">Ctrl + f</span>Add to Favorites

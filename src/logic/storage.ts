@@ -14,3 +14,9 @@ export const favoriteItems = useLocalStorage(
 export const theme = useLocalStorage("chikamichi-theme", THEME.AUTO, {
   listenToStorageChanges: true,
 });
+
+export const openLinkInCurrentTab = useLocalStorage(
+  "chikamichi-open-link-in-current-tab",
+  true,
+  { listenToStorageChanges: true }
+);
