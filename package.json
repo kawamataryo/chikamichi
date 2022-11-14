@@ -75,7 +75,7 @@
     "webext-bridge": "5.0.5",
     "webextension-polyfill": "0.10.0",
     "nodemon": "^2.0.20",
-    "tsup": "6.4.0"
+    "tsup": "6.5.0"
   },
   "lint-staged": {
     "*.js": "eslint --cache --fix",
