@@ -262,4 +262,32 @@ describe("App", () => {
     cy.get("[data-cy=search-tab-btn]").click();
     cy.get("[data-cy=page-search]").should("be.visible");
   });
+
+  it("change open link action", () => {
+    // open link in new tab
+    cy.get("[data-cy=setting-tab-btn]").click();
+    cy.get("[data-cy=page-setting]").should("be.visible");
+    cy.get("[data-cy=open-link-in-new-tab]").check();
+    cy.get("[data-cy=search-tab-btn]").click();
+    cy.get("[data-cy=page-search]").should("be.visible");
+    cy.get("[data-cy=search-input]").type("history-item");
+    cy.get("[data-cy=search-result-0]").should("have.class", "selected-item");
+    cy.get("[data-cy=search-input]").type("{enter}");
+    cy.get("@connect-postMessage").should("be.calledWithMatch", {
+      messageID: "open-new-tab-page",
+    });
+
+    // open link in current tab
+    cy.get("[data-cy=setting-tab-btn]").click();
+    cy.get("[data-cy=page-setting]").should("be.visible");
+    cy.get("[data-cy=open-link-in-current-tab]").check();
+    cy.get("[data-cy=search-tab-btn]").click();
+    cy.get("[data-cy=page-search]").should("be.visible");
+    cy.get("[data-cy=search-input]").type("history-item");
+    cy.get("[data-cy=search-result-0]").should("have.class", "selected-item");
+    cy.get("[data-cy=search-input]").type("{enter}");
+    cy.get("@connect-postMessage").should("be.calledWithMatch", {
+      messageID: "update-current-page",
+    });
+  });
 });

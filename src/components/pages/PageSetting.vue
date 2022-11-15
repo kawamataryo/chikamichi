@@ -117,6 +117,7 @@ import { SEARCH_PREFIX } from "~/constants";
           :value="true"
           name="default-radio"
           class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+          data-cy="open-link-in-current-tab"
         />
         <label
           for="radio-1"
@@ -132,6 +133,7 @@ import { SEARCH_PREFIX } from "~/constants";
           :value="false"
           name="default-radio"
           class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
+          data-cy="open-link-in-new-tab"
         />
         <label
           for="radio-2"
