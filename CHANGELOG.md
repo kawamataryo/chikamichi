@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## 3.2.0
+### feature
+- Add config for default link clicking action  #639
+
 ## 3.1.0
 ### performance
 - Move fuse search to the service worker #638
