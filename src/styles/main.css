@@ -31,3 +31,13 @@ body,
 .highlight-word {
   @apply dark:text-blue-400 text-blue-600 inline-block font-bold bg-transparent
 }
+
+.scrollbar-hide::-webkit-scrollbar {
+    display: none;
+}
+
+/* For IE, Edge and Firefox */
+.scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}

@@ -148,7 +148,7 @@ onMounted(async () => {
       </div>
       <nav
         ref="searchResultWrapperRef"
-        class="m h-330px overflow-y-scroll"
+        class="m h-330px overflow-y-scroll scrollbar-hide"
         data-cy="search-result-wrapper"
       >
         <template v-if="searchResult.length">
