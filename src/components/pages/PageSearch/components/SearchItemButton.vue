@@ -27,7 +27,7 @@ const emit = defineEmits(["click-star"]);
 
 <template>
   <button
-    class="p-6px block text-13px flex items-center text-black justify-between border-none w-full cursor-pointer bg-white rounded-5px dark:bg-gray-800 dark:text-gray-200"
+    class="p-6px pl-18px block text-13px flex items-center text-black justify-between border-none w-full cursor-pointer bg-white rounded-5px dark:bg-gray-800 dark:text-gray-200"
     type="button"
     :data-cy="`search-result-${props.index}`"
     :class="{ 'selected-item': isSelected }"

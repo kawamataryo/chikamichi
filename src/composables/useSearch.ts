@@ -269,7 +269,7 @@ export const useSearch = () => {
   const searchEngine = ref({
     name: "browser",
     favIconUrl:
-      theme.value === THEME.DARK
+      theme.value !== THEME.LIGHT
         ? SEARCH_ICON_DATA_URL_DARK
         : SEARCH_ICON_DATA_URL_LIGHT,
   });

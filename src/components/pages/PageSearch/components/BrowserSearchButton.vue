@@ -17,7 +17,7 @@ defineProps({
 
 <template>
   <button
-    class="p-6px block text-13px flex items-center text-black border-none w-full cursor-pointer rounded-5px bg-blue-100 dark:bg-blue-800 dark:text-gray-200"
+    class="p-6px pl-18px block text-13px flex items-center text-black border-none w-full cursor-pointer rounded-5px bg-blue-100 dark:bg-blue-800 dark:text-gray-200"
     data-cy="browser-search-btn"
     type="button"
   >

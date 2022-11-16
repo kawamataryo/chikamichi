@@ -118,6 +118,7 @@ onMounted(async () => {
           v-if="loading"
           width="20"
           height="20"
+          stroke-color="rgb(59 130 246)"
           class="absolute ml-12px mt-12px"
         />
         <IconSearch
@@ -166,7 +167,6 @@ onMounted(async () => {
                 :item="item"
                 :is-selected="i === selectedNumber"
                 :index="i"
-                :show-badge="showBadge"
                 :badge-text="badgeText"
                 @click-star="onClickFavorite"
               />
