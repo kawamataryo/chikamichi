@@ -1,6 +1,10 @@
 # Change Log
 All notable changes to this project will be documented in this file.
 
+## 3.3.0
+### feature
+- Add last viewed date to search order determination #649
+
 ## 3.2.0
 ### feature
 - Add config for default link clicking action  #639
