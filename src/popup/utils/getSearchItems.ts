@@ -47,6 +47,7 @@ export const convertToSearchItemsFromHistories = (
       type: SEARCH_ITEM_TYPE.HISTORY,
       folderName: "",
       searchTerm: generateSearchTerm(history.title!, history.url!),
+      lastVisitTime: history.lastVisitTime!,
     }));
 
   // remove same title items

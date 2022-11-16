@@ -6,6 +6,7 @@ interface SearchItem {
   tabId?: number;
   folderName?: string;
   searchTerm: string;
+  lastVisitTime?: number;
 }
 
 type SearchItemWithFavoriteAndMatchedWord = SearchItem & {
