@@ -62,7 +62,7 @@
     "rimraf": "3.0.2",
     "serve": "14.1.1",
     "terser": "5.15.1",
-    "typescript": "4.8.4",
+    "typescript": "4.9.3",
     "unplugin-auto-import": "0.11.4",
     "unplugin-icons": "0.14.13",
     "unplugin-vue-components": "0.22.9",
