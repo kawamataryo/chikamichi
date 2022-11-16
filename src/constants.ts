@@ -17,6 +17,7 @@ export const FUSE_OPTIONS: Fuse.IFuseOptions<any> = {
   useExtendedSearch: true,
   distance: 300,
   minMatchCharLength: 2,
+  includeScore: true,
   includeMatches: true,
   shouldSort: true,
   keys: [

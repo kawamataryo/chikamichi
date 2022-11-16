@@ -7,6 +7,7 @@ export const generateHistory = (
   id: randUuid(),
   url: args.url ?? randUrl(),
   title: args.title ?? randCatchPhrase(),
+  lastVisitTime: Date.now(),
 });
 
 export const generateBookmark = (

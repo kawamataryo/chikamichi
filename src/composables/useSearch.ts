@@ -16,7 +16,7 @@ import {
   openLinkInCurrentTab,
   theme,
 } from "~/logic";
-import { getMatchedRegExp } from "~/popup/utils/getMatchedRegExp";
+import { sortAndFormatSearchResult } from "~/popup/utils/sortAndFormatSearchResult";
 import { STORE_KEY, useStore } from "~/popup/utils/store";
 
 export const useSearch = () => {
@@ -114,16 +114,10 @@ export const useSearch = () => {
       // use Background Search API
       try {
         const fuseSearchResult = await fuseSearch(word, target);
-        searchResult.value = fuseSearchResult.map((result) => {
-          return {
-            ...result.item,
-            isFavorite: isFavorite(result.item.url, result.item.title),
-            matchedWord: getMatchedRegExp(
-              result!.matches![0].value!,
-              result!.matches![0].indices as [number, number][]
-            ),
-          };
-        });
+        searchResult.value = sortAndFormatSearchResult(
+          fuseSearchResult,
+          parsedFavoriteItems.value
+        );
       } finally {
         loading.value = false;
       }
