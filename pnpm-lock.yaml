@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@antfu/eslint-config': 0.31.0
   '@ffflorian/jszip-cli': 3.1.6
-  '@iconify/json': 2.1.139
+  '@iconify/json': 2.1.140
   '@ngneat/falso': 6.2.0
   '@types/chrome': 0.0.202
   '@types/fs-extra': 9.0.13
@@ -32,7 +32,7 @@ specifiers:
   parse-domain: 7.0.1
   prettier: 2.7.1
   rimraf: 3.0.2
-  serve: 14.1.1
+  serve: 14.1.2
   terser: 5.15.1
   tsup: 6.5.0
   typescript: 4.9.3
@@ -56,7 +56,7 @@ dependencies:
 devDependencies:
   '@antfu/eslint-config': 0.31.0_e3uo4sehh4zr4i6m57mkkxxv7y
   '@ffflorian/jszip-cli': 3.1.6
-  '@iconify/json': 2.1.139
+  '@iconify/json': 2.1.140
   '@ngneat/falso': 6.2.0
   '@types/chrome': 0.0.202
   '@types/fs-extra': 9.0.13
@@ -84,7 +84,7 @@ devDependencies:
   npm-run-all: 4.1.5
   prettier: 2.7.1
   rimraf: 3.0.2
-  serve: 14.1.1
+  serve: 14.1.2
   terser: 5.15.1
   tsup: 6.5.0_typescript@4.9.3
   typescript: 4.9.3
@@ -401,8 +401,8 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
-  /@iconify/json/2.1.139:
-    resolution: {integrity: sha512-H/DQ/yVgdUk4x4hU696fy0mZOkvLQaR6REQU/okFLgaiIFOS+EWw6GV5JDSKbbkh0YVaxUrAUaqB8XTSFVrFeA==}
+  /@iconify/json/2.1.140:
+    resolution: {integrity: sha512-P0Omxi71evnAiPFb21nYZD2hnxhstYkQhatvVF+18esDYfDYcrjHjcm0SRfS3dzAALIo03m+jEmJzAj9nDXP5w==}
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 0.3.9
@@ -5952,8 +5952,8 @@ packages:
       range-parser: 1.2.0
     dev: true
 
-  /serve/14.1.1:
-    resolution: {integrity: sha512-7RhRDEirZ7Qyee4QWhBHO9qRtjIGsIPGecDDPzNzlOsjDiZWcq36GS8FioVJAuJPVJBBDTsGp33WWOO4B9A82g==}
+  /serve/14.1.2:
+    resolution: {integrity: sha512-luwVfJwbeE7dhCKeRU0vIBpt4bXdbAfzwsWJIQ5eqrIW2e+4nLWXbSlZ0WzelSFHQq+FlueOW6dr90jEewS9zw==}
     engines: {node: '>= 14'}
     hasBin: true
     dependencies:
