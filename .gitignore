@@ -17,3 +17,4 @@ src/components.d.ts
 components.d.ts
 yarn.lock
 keys.json
+cypress/videos
