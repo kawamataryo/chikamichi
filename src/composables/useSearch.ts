@@ -65,6 +65,10 @@ export const useSearch = () => {
 
   const initialSearchItems = computed<SearchItemWithFavoriteAndMatchedWord[]>(
     () => {
+      // If there is , return an empty array.
+      if (searchWord.value) {
+        return [];
+      }
       return parsedFavoriteItems.value.map((i) => ({
         ...i,
         isFavorite: true,
@@ -84,44 +88,52 @@ export const useSearch = () => {
     );
   };
 
+  const search = async () => {
+    const word = extractOnlySearchWord.value || "http"; // "http" is included in all URLs;
+    let target = searchItems.value;
+
+    // Selecting targets with the prefix
+    if (SEARCH_TARGET_REGEX.HISTORY.test(searchWord.value)) {
+      target = searchItemsOnlyHistory.value;
+    } else if (SEARCH_TARGET_REGEX.BOOKMARK.test(searchWord.value)) {
+      target = searchItemsOnlyBookmark.value;
+    } else if (SEARCH_TARGET_REGEX.TAB.test(searchWord.value)) {
+      target = searchItemsOnlyTab.value;
+    }
+
+    // use Background Search API
+    try {
+      const fuseSearchResult = await fuseSearch(word, target);
+      // If the searchWord is empty, do not update the search result.
+      if (searchWord.value) {
+        searchResult.value = sortAndFormatSearchResult(
+          fuseSearchResult,
+          parsedFavoriteItems.value
+        );
+      }
+    } finally {
+      loading.value = false;
+    }
+  };
+
+  const debouncedSearch = debounce(search, 100);
+
   watch(
     [searchWord, searchItems],
-    debounce(async () => {
-      if (!(searchWord.value && searchItems)) {
+    async () => {
+      if (!searchItems.value.length) {
+        return;
+      }
+
+      if (!searchWord.value) {
         // show initial display
         searchResult.value = initialSearchItems.value.slice(0, 100);
         loading.value = false;
         return;
       }
 
-      if (!searchItems) {
-        loading.value = false;
-        return;
-      }
-
-      const word = extractOnlySearchWord.value || "http"; // "http" is included in all URLs;
-      let target = searchItems.value;
-
-      // Selecting targets with the prefix
-      if (SEARCH_TARGET_REGEX.HISTORY.test(searchWord.value)) {
-        target = searchItemsOnlyHistory.value;
-      } else if (SEARCH_TARGET_REGEX.BOOKMARK.test(searchWord.value)) {
-        target = searchItemsOnlyBookmark.value;
-      } else if (SEARCH_TARGET_REGEX.TAB.test(searchWord.value)) {
-        target = searchItemsOnlyTab.value;
-      }
-
-      // use Background Search API
-      try {
-        const fuseSearchResult = await fuseSearch(word, target);
-        searchResult.value = sortAndFormatSearchResult(
-          fuseSearchResult,
-          parsedFavoriteItems.value
-        );
-      } finally {
-        loading.value = false;
-      }
-    }, 250),
+      await debouncedSearch();
+    },
     {
       immediate: true,
     }
