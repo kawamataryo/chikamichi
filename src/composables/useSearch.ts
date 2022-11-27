@@ -108,7 +108,8 @@ export const useSearch = () => {
       if (searchWord.value) {
         searchResult.value = sortAndFormatSearchResult(
           fuseSearchResult,
-          parsedFavoriteItems.value
+          parsedFavoriteItems.value,
+          !!extractOnlySearchWord.value
         );
       }
     } finally {
