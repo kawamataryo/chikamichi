@@ -12,6 +12,7 @@ interface SearchItem {
 type SearchItemWithFavoriteAndMatchedWord = SearchItem & {
   isFavorite: boolean;
   matchedWord: RegExp | string;
+  score: number | undefined;
 };
 
 type ValueOf<T> = T[keyof T];
