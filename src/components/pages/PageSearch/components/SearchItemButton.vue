@@ -5,7 +5,7 @@ import ToggleStar from "./ToggleStar.vue";
 
 const props = defineProps({
   item: {
-    type: Object as PropType<SearchItemWithFavoriteAndMatchedWord>,
+    type: Object as PropType<SearchResult>,
     required: true,
   },
   isSelected: {

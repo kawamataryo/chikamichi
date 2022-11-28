@@ -58,29 +58,20 @@ export const useSearch = () => {
   );
   const selectedNumber = ref(0);
 
-  const parsedFavoriteItems = computed(
-    () =>
-      JSON.parse(favoriteItems.value) as SearchItemWithFavoriteAndMatchedWord[]
+  const convertSearchResult = (items: SearchItem[], isFavorite = false) => {
+    return items.map((i) => ({
+      ...i,
+      score: 0,
+      isFavorite,
+      matchedWord: "",
+    }));
+  };
+
+  const parsedFavoriteItems = computed<SearchResult[]>(() =>
+    convertSearchResult(JSON.parse(favoriteItems.value), true)
   );
 
-  const initialSearchItems = computed<SearchItemWithFavoriteAndMatchedWord[]>(
-    () => {
-      // If there is , return an empty array.
-      if (searchWord.value) {
-        return [];
-      }
-      return parsedFavoriteItems.value.map((i) => ({
-        ...i,
-        isFavorite: true,
-        tabId: undefined,
-        matchedWord: "",
-      }));
-    }
-  );
-
-  const searchResult = ref<SearchItemWithFavoriteAndMatchedWord[]>(
-    initialSearchItems.value.slice(0, 100)
-  );
+  const searchResult = ref<SearchResult[]>([]);
 
   const isFavorite = (url: string, title: string) => {
     return parsedFavoriteItems.value.some(
@@ -88,8 +79,41 @@ export const useSearch = () => {
     );
   };
 
-  const search = async () => {
-    const word = extractOnlySearchWord.value || "http"; // "http" is included in all URLs;
+  const setInitialSearchResult = () => {
+    const filterSearchResultBySearchType = (
+      items: SearchResult[],
+      type: ItemType
+    ) => {
+      return items.filter((i) => i.type === type);
+    };
+
+    if (SEARCH_TARGET_REGEX.HISTORY.test(searchWord.value)) {
+      searchResult.value = convertSearchResult(
+        store.historyItems.value.slice(0, 50)
+      );
+    } else if (SEARCH_TARGET_REGEX.BOOKMARK.test(searchWord.value)) {
+      // if typed bookmark prefix , show favorite items.
+      const targetFavoriteItems = filterSearchResultBySearchType(
+        parsedFavoriteItems.value,
+        SEARCH_ITEM_TYPE.BOOKMARK
+      );
+      searchResult.value = [
+        ...targetFavoriteItems,
+        ...convertSearchResult(store.bookmarkItems.value.slice(0, 50)).filter(
+          (i) => !targetFavoriteItems.some((f) => f.url === i.url)
+        ),
+      ];
+    } else if (SEARCH_TARGET_REGEX.TAB.test(searchWord.value)) {
+      searchResult.value = convertSearchResult(
+        store.tabItems.value.slice(0, 50)
+      );
+    } else {
+      searchResult.value = parsedFavoriteItems.value;
+    }
+    loading.value = false;
+  };
+
+  const search = async (word: string) => {
     let target = searchItems.value;
 
     // Selecting targets with the prefix
@@ -105,11 +129,10 @@ export const useSearch = () => {
     try {
       const fuseSearchResult = await fuseSearch(word, target);
       // If the searchWord is empty, do not update the search result.
-      if (searchWord.value) {
+      if (extractOnlySearchWord.value) {
         searchResult.value = sortAndFormatSearchResult(
           fuseSearchResult,
-          parsedFavoriteItems.value,
-          !!extractOnlySearchWord.value
+          parsedFavoriteItems.value
         );
       }
     } finally {
@@ -122,18 +145,21 @@ export const useSearch = () => {
   watch(
     [searchWord, searchItems],
     async () => {
-      if (!searchItems.value.length) {
-        return;
-      }
-
       if (!searchWord.value) {
-        // show initial display
-        searchResult.value = initialSearchItems.value.slice(0, 100);
-        loading.value = false;
+        setInitialSearchResult();
         return;
       }
 
-      await debouncedSearch();
+      if (searchItems.value.length === 0) {
+        return;
+      }
+
+      if (!extractOnlySearchWord.value) {
+        setInitialSearchResult();
+        return;
+      }
+
+      await debouncedSearch(extractOnlySearchWord.value);
     },
     {
       immediate: true,
@@ -240,7 +266,7 @@ export const useSearch = () => {
         parsedFavoriteItems.value.filter((i) => i.url !== item.url)
       );
 
-      // If the initial display is displayed, update the searchItems to initialSearchItems
+      // If the initial display is displayed, update the searchItems to initialSearchResult
       if (searchWord.value) {
         searchResult.value[selectedNumber.value] = {
           ...searchResult.value[selectedNumber.value],
@@ -248,7 +274,7 @@ export const useSearch = () => {
         };
         await showBadge(BADGE_TEXT.REMOVE_FAVORITE);
       } else {
-        searchResult.value = initialSearchItems.value.slice(0, 100);
+        searchResult.value = parsedFavoriteItems.value.slice(0, 100);
       }
     } else {
       const type =

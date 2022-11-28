@@ -13,6 +13,9 @@ describe("App", () => {
         setupExtensionEnvironment({
           win,
           bookmarks: [
+            ...[...Array(3)].map((_, i) =>
+              generateBookmark({ title: `bookmark-item-${i}` })
+            ),
             generateBookmark({
               title: "folder",
               type: "folder",
@@ -25,9 +28,6 @@ describe("App", () => {
                 }),
               ],
             }),
-            ...[...Array(3)].map((_, i) =>
-              generateBookmark({ title: `bookmark-item-${i}` })
-            ),
           ],
           histories: [...Array(3)].map((_, i) =>
             generateHistory({
@@ -175,7 +175,7 @@ describe("App", () => {
       .get("[data-cy=icon-star]")
       .should("be.visible");
     // un check favorite
-    cy.get("[data-cy=search-input]").type("history-item");
+    cy.get("[data-cy=search-input]").type("history-item-0");
     cy.get("[data-cy=search-result-0]").should("have.class", "selected-item");
     cy.get("[data-cy=search-input]").type("{ctrl}f");
     cy.get("[data-cy=search-result-0]")

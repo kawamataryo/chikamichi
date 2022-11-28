@@ -3,7 +3,7 @@ import { sortSearchResult } from "../sortAndFormatSearchResult";
 
 describe("sortSearchResult", () => {
   // sort search result by last visit time of each score
-  const baseSearchResult: SearchItemWithFavoriteAndMatchedWord = {
+  const baseSearchResult: SearchResult = {
     title: "test",
     url: "test",
     faviconUrl: "test",
@@ -18,7 +18,7 @@ describe("sortSearchResult", () => {
   };
 
   it("sort items by last visits time", () => {
-    const target: SearchItemWithFavoriteAndMatchedWord[] = [
+    const target: SearchResult[] = [
       {
         ...baseSearchResult,
         lastVisitTime: 12,
@@ -110,7 +110,7 @@ describe("sortSearchResult", () => {
   });
 
   it("same order if don't have lastVisitTime", () => {
-    const target: SearchItemWithFavoriteAndMatchedWord[] = [
+    const target: SearchResult[] = [
       { ...baseSearchResult, score: 0.953, lastVisitTime: undefined },
       { ...baseSearchResult, score: 0.952, lastVisitTime: undefined },
       { ...baseSearchResult, score: 0.823, lastVisitTime: undefined },
@@ -124,7 +124,7 @@ describe("sortSearchResult", () => {
   });
 
   it("prefer favorite item if same score", () => {
-    const target: SearchItemWithFavoriteAndMatchedWord[] = [
+    const target: SearchResult[] = [
       { ...baseSearchResult, score: 0.814, isFavorite: true },
       { ...baseSearchResult, score: 0.813, isFavorite: true },
       { ...baseSearchResult, score: 0.952 },

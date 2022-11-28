@@ -1,9 +1,7 @@
 import Fuse from "fuse.js";
 import { getMatchedRegExp } from "./getMatchedRegExp";
 
-export const sortSearchResult = (
-  searchResult: SearchItemWithFavoriteAndMatchedWord[]
-) => {
+export const sortSearchResult = (searchResult: SearchResult[]) => {
   const roundingFunc = (num: number) => Math.round(num * 100);
 
   // group by score
@@ -17,7 +15,7 @@ export const sortSearchResult = (
       mapKeys.push(score);
     }
     return acc;
-  }, {} as Record<number, SearchItemWithFavoriteAndMatchedWord[]>);
+  }, {} as Record<number, SearchResult[]>);
 
   // sort by last visit time of each score
   return mapKeys
@@ -50,15 +48,13 @@ export const sortSearchResult = (
 
 export const sortAndFormatSearchResult = (
   searchResult: Fuse.FuseResult<SearchItem>[],
-  favoriteItems: SearchItemWithFavoriteAndMatchedWord[],
-  // TODO: fix variable name
-  isGroupByScore = true
+  favoriteItems: SearchResult[]
 ) => {
   return sortSearchResult(
     searchResult.map((result) => {
       return {
         ...result.item,
-        score: isGroupByScore ? result.score : 0,
+        score: result.score,
         isFavorite: favoriteItems.some(
           (i) => i.url === result.item.url && i.title === result.item.title
         ),
