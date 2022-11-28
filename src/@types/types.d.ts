@@ -1,3 +1,5 @@
+type ItemType = keyof typeof SEARCH_ITEM_TYPE;
+
 interface SearchItem {
   title: string;
   url: string;
@@ -9,7 +11,7 @@ interface SearchItem {
   lastVisitTime?: number;
 }
 
-type SearchItemWithFavoriteAndMatchedWord = SearchItem & {
+type SearchResult = SearchItem & {
   isFavorite: boolean;
   matchedWord: RegExp | string;
   score: number | undefined;

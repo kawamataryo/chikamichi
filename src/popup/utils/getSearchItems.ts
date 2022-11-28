@@ -115,9 +115,9 @@ export const getSearchItems = async () => {
     startTime: new Date().setDate(new Date().getDate() - 360),
   });
 
-  return [
-    ...convertToSearchItemsFromHistories(histories),
-    ...convertToSearchItemsFromBookmarks(bookmarks),
-    ...convertToSearchItemsFromTabs(tabs),
-  ];
+  return {
+    histories: convertToSearchItemsFromHistories(histories),
+    bookmarks: convertToSearchItemsFromBookmarks(bookmarks),
+    tabs: convertToSearchItemsFromTabs(tabs),
+  };
 };
