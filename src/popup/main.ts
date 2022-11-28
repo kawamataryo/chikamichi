@@ -11,6 +11,10 @@ import { STORE_KEY, useStore } from "~/popup/utils/store";
   app.mount("#app");
 
   // Run in this position to prevent delays in mounting to app
-  const searchItems = await getSearchItems();
-  store.changeSearchItems(searchItems);
+  const { histories, bookmarks, tabs } = await getSearchItems();
+  store.initialize({
+    histories,
+    bookmarks,
+    tabs,
+  });
 })();

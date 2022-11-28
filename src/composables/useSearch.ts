@@ -26,7 +26,7 @@ export const useSearch = () => {
   }
 
   const loading = ref(true);
-  const searchItems = computed(() => store.state.searchItems);
+  const searchItems = computed(() => store.allItems.value);
 
   const _searchWord = ref(defaultSearchPrefix.value);
   const searchWord = computed({
