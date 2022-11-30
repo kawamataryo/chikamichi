@@ -25,6 +25,10 @@ export const useSearch = () => {
     throw new Error("store is not provided");
   }
 
+  const searchInput = ref<HTMLInputElement | null>(null);
+  const searchResultWrapperRef = ref<HTMLElement | null>(null);
+  const searchResultRefs = ref<HTMLElement[]>([]);
+
   const loading = ref(true);
   const searchItems = computed(() => store.allItems.value);
 
@@ -275,6 +279,10 @@ export const useSearch = () => {
         await showBadge(BADGE_TEXT.REMOVE_FAVORITE);
       } else {
         searchResult.value = parsedFavoriteItems.value.slice(0, 100);
+        // if select last item, prevent out of range
+        if (selectedNumber.value > searchResult.value.length - 1) {
+          selectedNumber.value = searchResult.value.length - 1;
+        }
       }
     } else {
       const type =
@@ -297,6 +305,55 @@ export const useSearch = () => {
       };
       await showBadge(BADGE_TEXT.ADD_FAVORITE);
     }
+  };
+
+  const fixScrollPosition = () => {
+    if (!searchResultWrapperRef.value) {
+      return;
+    }
+
+    const wrapperElm = searchResultWrapperRef.value;
+    const { top: wrapperTop, height: wrapperHeight } =
+      wrapperElm.getBoundingClientRect();
+    const selectedItemRef = searchResultRefs.value[selectedNumber.value];
+    const { top: selectedItemTop, height: selectedItemHeight } =
+      selectedItemRef.getBoundingClientRect();
+    if (selectedItemTop + selectedItemHeight > wrapperTop + wrapperHeight)
+      wrapperElm.scrollTo(0, wrapperElm.scrollTop + selectedItemHeight);
+    if (selectedItemTop < wrapperTop)
+      wrapperElm.scrollTo(0, wrapperElm.scrollTop - selectedItemHeight);
+  };
+
+  const changeOrderOfSelectedFavoriteItems = (operation: "down" | "up") => {
+    const innerFavoriteItems = parsedFavoriteItems.value.slice();
+
+    if (
+      searchWord.value !== "" ||
+      innerFavoriteItems.length < 2 ||
+      (operation === "down" &&
+        selectedNumber.value === innerFavoriteItems.length - 1) ||
+      (operation === "up" && selectedNumber.value === 0)
+    ) {
+      return;
+    }
+
+    const targetIndex =
+      operation === "down"
+        ? selectedNumber.value + 1
+        : selectedNumber.value - 1;
+
+    // change favorite item's order
+    const currentSelectedItem = innerFavoriteItems[selectedNumber.value];
+    innerFavoriteItems[selectedNumber.value] = innerFavoriteItems[targetIndex];
+    innerFavoriteItems[targetIndex] = currentSelectedItem;
+    favoriteItems.value = JSON.stringify(innerFavoriteItems);
+
+    // update search result
+    searchResult.value = parsedFavoriteItems.value;
+
+    // change cursor position
+    changeSelectedItem(targetIndex);
+    fixScrollPosition();
   };
 
   const copyUrlOfSelectedItem = async () => {
@@ -339,5 +396,10 @@ export const useSearch = () => {
     copyUrlOfSelectedItem,
     badgeText,
     loading,
+    searchInput,
+    searchResultWrapperRef,
+    fixScrollPosition,
+    changeOrderOfSelectedFavoriteItems,
+    searchResultRefs,
   };
 };
