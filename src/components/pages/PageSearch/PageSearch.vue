@@ -16,9 +16,12 @@ const {
   browserSearch,
   copyUrlOfSelectedItem,
   loading,
+  searchInput,
+  searchResultWrapperRef,
+  fixScrollPosition,
+  changeOrderOfSelectedFavoriteItems,
+  searchResultRefs,
 } = useSearch();
-
-const searchResultWrapperRef = ref<HTMLElement | null>(null);
 
 watch(searchWord, () => {
   changeSelectedItem(0);
@@ -28,9 +31,6 @@ watch(searchWord, () => {
 const closePopup = () => {
   window.close();
 };
-
-// focus to input when modal open
-const searchInput = ref<HTMLInputElement | null>(null);
 
 // click event
 const onClick = async (url: string, tabId?: number) => {
@@ -43,24 +43,6 @@ const onClickFavorite = (item: SearchItem) => {
 };
 
 // Key event
-const searchResultRefs = ref<HTMLElement[]>([]);
-
-const fixScrollPosition = () => {
-  if (!searchResultWrapperRef.value) {
-    return;
-  }
-
-  const wrapperElm = searchResultWrapperRef.value;
-  const { top: wrapperTop, height: wrapperHeight } =
-    wrapperElm.getBoundingClientRect();
-  const selectedItemRef = searchResultRefs.value[selectedNumber.value];
-  const { top: selectedItemTop, height: selectedItemHeight } =
-    selectedItemRef.getBoundingClientRect();
-  if (selectedItemTop + selectedItemHeight > wrapperTop + wrapperHeight)
-    wrapperElm.scrollTo(0, wrapperElm.scrollTop + selectedItemHeight);
-  if (selectedItemTop < wrapperTop)
-    wrapperElm.scrollTo(0, wrapperElm.scrollTop - selectedItemHeight);
-};
 
 const onKeypress = async (keyEvent: {
   code: string;
@@ -140,8 +122,14 @@ onMounted(async () => {
           @keydown.meta.enter.exact.prevent="onKeypress"
           @keydown.down.prevent="onArrowDown"
           @keydown.up.prevent="onArrowUp"
-          @keydown.ctrl.n.prevent="onArrowDown"
-          @keydown.ctrl.p.prevent="onArrowUp"
+          @keydown.ctrl.n.exact.prevent="onArrowDown"
+          @keydown.shift.ctrl.n.prevent="
+            changeOrderOfSelectedFavoriteItems('down')
+          "
+          @keydown.ctrl.p.exact.prevent="onArrowUp"
+          @keydown.shift.ctrl.p.prevent="
+            changeOrderOfSelectedFavoriteItems('up')
+          "
           @keydown.ctrl.f.prevent="onFavorite"
           @keydown.ctrl.c.prevent="onCopy"
           @keydown.esc.prevent="onEsc"
