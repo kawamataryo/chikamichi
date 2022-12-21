@@ -35,7 +35,7 @@
     "@ffflorian/jszip-cli": "3.1.6",
     "@iconify/json": "2.1.154",
     "@ngneat/falso": "6.3.2",
-    "@types/chrome": "0.0.204",
+    "@types/chrome": "0.0.205",
     "@types/fs-extra": "9.0.13",
     "@types/lodash.debounce": "4.0.7",
     "@types/node": "18.11.17",
