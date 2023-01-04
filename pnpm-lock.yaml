@@ -17,7 +17,7 @@ specifiers:
   chokidar: 3.5.3
   cross-env: 7.0.3
   crx: 5.0.1
-  cypress: 12.2.0
+  cypress: 12.3.0
   eslint: 8.31.0
   eslint-config-prettier: 8.5.0
   esno: 0.16.3
@@ -70,7 +70,7 @@ devDependencies:
   chokidar: 3.5.3
   cross-env: 7.0.3
   crx: 5.0.1
-  cypress: 12.2.0
+  cypress: 12.3.0
   eslint: 8.31.0
   eslint-config-prettier: 8.5.0_eslint@8.31.0
   esno: 0.16.3
@@ -2203,8 +2203,8 @@ packages:
   /csstype/2.6.19:
     resolution: {integrity: sha512-ZVxXaNy28/k3kJg0Fou5MiYpp88j7H9hLZp8PDC3jV0WFjfH5E9xHb56L0W59cPbKbcHXeP4qyT8PrHp8t6LcQ==}
 
-  /cypress/12.2.0:
-    resolution: {integrity: sha512-kvl95ri95KK8mAy++tEU/wUgzAOMiIciZSL97LQvnOinb532m7dGvwN0mDSIGbOd71RREtmT9o4h088RjK5pKw==}
+  /cypress/12.3.0:
+    resolution: {integrity: sha512-ZQNebibi6NBt51TRxRMYKeFvIiQZ01t50HSy7z/JMgRVqBUey3cdjog5MYEbzG6Ktti5ckDt1tfcC47lmFwXkw==}
     engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
     hasBin: true
     requiresBuild: true
