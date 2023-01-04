@@ -39,7 +39,7 @@ specifiers:
   unplugin-auto-import: 0.12.1
   unplugin-icons: 0.14.15
   unplugin-vue-components: 0.22.12
-  vite: 4.0.3
+  vite: 4.0.4
   vite-plugin-windicss: 1.8.10
   vitest: 0.25.6
   vue: 3.2.45
@@ -64,7 +64,7 @@ devDependencies:
   '@types/node': 18.11.18
   '@types/webextension-polyfill': 0.9.2
   '@typescript-eslint/eslint-plugin': 5.48.0_iukboom6ndih5an6iafl45j2fe
-  '@vitejs/plugin-vue': 4.0.0_vite@4.0.3+vue@3.2.45
+  '@vitejs/plugin-vue': 4.0.0_vite@4.0.4+vue@3.2.45
   '@vue/compiler-sfc': 3.2.45
   '@vueuse/core': 9.9.0_vue@3.2.45
   chokidar: 3.5.3
@@ -91,8 +91,8 @@ devDependencies:
   unplugin-auto-import: 0.12.1_@vueuse+core@9.9.0
   unplugin-icons: 0.14.15_@vue+compiler-sfc@3.2.45
   unplugin-vue-components: 0.22.12_vue@3.2.45
-  vite: 4.0.3_qfz55zahqkp66vn23sxaaw3yfe
-  vite-plugin-windicss: 1.8.10_vite@4.0.3
+  vite: 4.0.4_qfz55zahqkp66vn23sxaaw3yfe
+  vite-plugin-windicss: 1.8.10_vite@4.0.4
   vitest: 0.25.6_terser@5.16.1
   vue: 3.2.45
   vue-demi: 0.13.11_vue@3.2.45
@@ -1073,14 +1073,14 @@ packages:
       eslint-visitor-keys: 3.3.0
     dev: true
 
-  /@vitejs/plugin-vue/4.0.0_vite@4.0.3+vue@3.2.45:
+  /@vitejs/plugin-vue/4.0.0_vite@4.0.4+vue@3.2.45:
     resolution: {integrity: sha512-e0X4jErIxAB5oLtDqbHvHpJe/uWNkdpYV83AOG2xo2tEVSzCzewgJMtREZM30wXnM5ls90hxiOtAuVU6H5JgbA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       vite: ^4.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 4.0.3_qfz55zahqkp66vn23sxaaw3yfe
+      vite: 4.0.4_qfz55zahqkp66vn23sxaaw3yfe
       vue: 3.2.45
     dev: true
 
@@ -7166,7 +7166,7 @@ packages:
       extsprintf: 1.3.0
     dev: true
 
-  /vite-plugin-windicss/1.8.10_vite@4.0.3:
+  /vite-plugin-windicss/1.8.10_vite@4.0.4:
     resolution: {integrity: sha512-scywsuzo46lcTBohspmF0WiwhWEte6p+OUVrX4yr7VMRvLHMHVfLtJReyD5pppjijG7YOwVsZn7XBWWZtF658Q==}
     peerDependencies:
       vite: ^2.0.1 || ^3.0.0 || ^4.0.0
@@ -7174,7 +7174,7 @@ packages:
       '@windicss/plugin-utils': 1.8.10
       debug: 4.3.4
       kolorist: 1.6.0
-      vite: 4.0.3_qfz55zahqkp66vn23sxaaw3yfe
+      vite: 4.0.4_qfz55zahqkp66vn23sxaaw3yfe
       windicss: 3.5.6
     transitivePeerDependencies:
       - supports-color
@@ -7208,8 +7208,8 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vite/4.0.3_qfz55zahqkp66vn23sxaaw3yfe:
-    resolution: {integrity: sha512-HvuNv1RdE7deIfQb8mPk51UKjqptO/4RXZ5yXSAvurd5xOckwS/gg8h9Tky3uSbnjYTgUm0hVCet1cyhKd73ZA==}
+  /vite/4.0.4_qfz55zahqkp66vn23sxaaw3yfe:
+    resolution: {integrity: sha512-xevPU7M8FU0i/80DMR+YhgrzR5KS2ORy1B4xcX/cXLsvnUWvfHuqMmVU6N0YiJ4JWGRJJsLCgjEzKjG9/GKoSw==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
     peerDependencies:
