@@ -37,7 +37,7 @@ specifiers:
   tsup: 6.5.0
   typescript: 4.9.4
   unplugin-auto-import: 0.12.1
-  unplugin-icons: 0.14.15
+  unplugin-icons: 0.15.0
   unplugin-vue-components: 0.22.12
   vite: 4.0.4
   vite-plugin-windicss: 1.8.10
@@ -89,7 +89,7 @@ devDependencies:
   tsup: 6.5.0_typescript@4.9.4
   typescript: 4.9.4
   unplugin-auto-import: 0.12.1_@vueuse+core@9.10.0
-  unplugin-icons: 0.14.15_@vue+compiler-sfc@3.2.45
+  unplugin-icons: 0.15.0_@vue+compiler-sfc@3.2.45
   unplugin-vue-components: 0.22.12_vue@3.2.45
   vite: 4.0.4_qfz55zahqkp66vn23sxaaw3yfe
   vite-plugin-windicss: 1.8.10_vite@4.0.4
@@ -7023,8 +7023,8 @@ packages:
       - rollup
     dev: true
 
-  /unplugin-icons/0.14.15_@vue+compiler-sfc@3.2.45:
-    resolution: {integrity: sha512-J6YBA+fUzVM2IZPXCK3Pnk36jYVwQ6lkjRgOnZaXNIxpMDsmwDqrE1AGJ0zUbfuEoOa90OBGc0OPfN1r+qlSIQ==}
+  /unplugin-icons/0.15.0_@vue+compiler-sfc@3.2.45:
+    resolution: {integrity: sha512-/BGtBL8y/2wjey4GLyb0w90mhc9d7XKlewWGMxBPROHS7mR84AV1Y0zDapYK0Q/cc/+u4WUcloreev5cABDa5w==}
     peerDependencies:
       '@svgr/core': '>=5.5.0'
       '@vue/compiler-sfc': ^3.0.2
