@@ -11,12 +11,10 @@
 
 <a href="https://www.producthunt.com/posts/chikamichi?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-chikamichi" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=328833&theme=light" alt="Chikamichi - Chrome extension that enables fuzzy search for anything | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
 
+Chikamichi is an extension that makes navigating pages in Chrome or Firefox very easy. You can search and navigate across your browser history, bookmarks and tabs. Simple shortcuts and a simple interface make it easy to use.
 
-Chikamichi is an extension that makes it very easy to navigate pages in Chrome or Firefox. You can search and navigate across browser history, bookmarks, and tabs.
-Simple shortcuts and a simple interface make it easy to use.  
-
-Inspired by [Sidekick](https://www.meetsidekick.com/) search dialog.  
-The Japanese meaning of `chikamichi` is a shorter way.
+Inspired by the [Sidekick](https://www.meetsidekick.com/) search dialogue.
+The Japanese meaning of chikamichi is shorter way.
   
 ## ✨ Features
 
