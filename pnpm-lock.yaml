@@ -33,7 +33,7 @@ specifiers:
   prettier: 2.8.4
   rimraf: 4.1.2
   serve: 14.2.0
-  terser: 5.16.1
+  terser: 5.16.5
   tsup: 6.5.0
   typescript: 4.9.4
   unplugin-auto-import: 0.12.2
@@ -85,15 +85,15 @@ devDependencies:
   prettier: 2.8.4
   rimraf: 4.1.2
   serve: 14.2.0
-  terser: 5.16.1
+  terser: 5.16.5
   tsup: 6.5.0_typescript@4.9.4
   typescript: 4.9.4
   unplugin-auto-import: 0.12.2_@vueuse+core@9.11.1
   unplugin-icons: 0.15.3_@vue+compiler-sfc@3.2.45
   unplugin-vue-components: 0.24.0_vue@3.2.45
-  vite: 4.0.4_qfz55zahqkp66vn23sxaaw3yfe
+  vite: 4.0.4_yrh3f3lqucw4getdshtiifi6fy
   vite-plugin-windicss: 1.8.10_vite@4.0.4
-  vitest: 0.25.6_terser@5.16.1
+  vitest: 0.25.6_terser@5.16.5
   vue: 3.2.45
   vue-demi: 0.13.11_vue@3.2.45
   web-ext: 7.5.0
@@ -107,7 +107,7 @@ packages:
     engines: {node: '>=6.0.0'}
     dependencies:
       '@jridgewell/gen-mapping': 0.1.1
-      '@jridgewell/trace-mapping': 0.3.14
+      '@jridgewell/trace-mapping': 0.3.17
     dev: true
 
   /@antfu/eslint-config-basic/0.34.1_bygotinrvxlxfcbny4zx3ds3gu:
@@ -841,7 +841,7 @@ packages:
     dependencies:
       '@jridgewell/set-array': 1.1.2
       '@jridgewell/sourcemap-codec': 1.4.14
-      '@jridgewell/trace-mapping': 0.3.14
+      '@jridgewell/trace-mapping': 0.3.17
     dev: true
 
   /@jridgewell/resolve-uri/3.1.0:
@@ -858,18 +858,11 @@ packages:
     resolution: {integrity: sha512-m7O9o2uR8k2ObDysZYzdfhb08VuEml5oWGiosa1VdaPZ/A6QyPkAJuwN0Q1lhULOf6B7MtQmHENS743hWtCrgw==}
     dependencies:
       '@jridgewell/gen-mapping': 0.3.2
-      '@jridgewell/trace-mapping': 0.3.14
+      '@jridgewell/trace-mapping': 0.3.17
     dev: true
 
   /@jridgewell/sourcemap-codec/1.4.14:
     resolution: {integrity: sha512-XPSJHWmi394fuUuzDnGz1wiKqWfo1yXecHQMRf2l6hztTO+nPru658AyDngaBe7isIxEkRsPR3FZh+s7iVa4Uw==}
-    dev: true
-
-  /@jridgewell/trace-mapping/0.3.14:
-    resolution: {integrity: sha512-bJWEfQ9lPTvm3SneWwRFVLzrh6nhjwqw7TUFFBEMzwvg7t7PCDenf2lDwqo4NQXzdpgBXyFgDWnQA+2vkruksQ==}
-    dependencies:
-      '@jridgewell/resolve-uri': 3.1.0
-      '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
   /@jridgewell/trace-mapping/0.3.17:
@@ -1356,7 +1349,7 @@ packages:
       vite: ^4.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 4.0.4_qfz55zahqkp66vn23sxaaw3yfe
+      vite: 4.0.4_yrh3f3lqucw4getdshtiifi6fy
       vue: 3.2.45
     dev: true
 
@@ -5026,7 +5019,7 @@ packages:
     resolution: {integrity: sha512-qCRJWlbP2v6HbmKW7R3lFbeiVWHo+oMJ0j+MizwvauqnCV/EvtAeEeuCgoc/ErtsuoKgYB8U4Ih8AxJbXoE6/g==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dependencies:
-      acorn: 8.8.1
+      acorn: 8.8.2
       eslint-visitor-keys: 3.3.0
       espree: 9.4.1
       semver: 7.3.8
@@ -7257,13 +7250,13 @@ packages:
       yallist: 4.0.0
     dev: true
 
-  /terser/5.16.1:
-    resolution: {integrity: sha512-xvQfyfA1ayT0qdK47zskQgRZeWLoOQ8JQ6mIgRGVNwZKdQMU+5FkCBjmv4QjcrTzyZquRw2FVtlJSRUmMKQslw==}
+  /terser/5.16.5:
+    resolution: {integrity: sha512-qcwfg4+RZa3YvlFh0qjifnzBHjKGNbtDo9yivMqMFDy9Q6FSaQWSB/j1xKhsoUFJIqDOM3TsN6D5xbrMrFcHbg==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
       '@jridgewell/source-map': 0.3.2
-      acorn: 8.8.1
+      acorn: 8.8.2
       commander: 2.20.3
       source-map-support: 0.5.21
     dev: true
@@ -7800,13 +7793,13 @@ packages:
       '@windicss/plugin-utils': 1.8.10
       debug: 4.3.4
       kolorist: 1.6.0
-      vite: 4.0.4_qfz55zahqkp66vn23sxaaw3yfe
+      vite: 4.0.4_yrh3f3lqucw4getdshtiifi6fy
       windicss: 3.5.6
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /vite/3.1.2_terser@5.16.1:
+  /vite/3.1.2_terser@5.16.5:
     resolution: {integrity: sha512-wTDKPkiVbeT+drTPdkuvjVIC/2vKKUc1w3qNOuwgpyvPCZF6fvdxB5v5WEcCsqaYea0zrwA4+XialJKCHM3oVQ==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -7829,12 +7822,12 @@ packages:
       postcss: 8.4.21
       resolve: 1.22.1
       rollup: 2.78.1
-      terser: 5.16.1
+      terser: 5.16.5
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
 
-  /vite/4.0.4_qfz55zahqkp66vn23sxaaw3yfe:
+  /vite/4.0.4_yrh3f3lqucw4getdshtiifi6fy:
     resolution: {integrity: sha512-xevPU7M8FU0i/80DMR+YhgrzR5KS2ORy1B4xcX/cXLsvnUWvfHuqMmVU6N0YiJ4JWGRJJsLCgjEzKjG9/GKoSw==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -7864,12 +7857,12 @@ packages:
       postcss: 8.4.20
       resolve: 1.22.1
       rollup: 3.7.0
-      terser: 5.16.1
+      terser: 5.16.5
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
 
-  /vitest/0.25.6_terser@5.16.1:
+  /vitest/0.25.6_terser@5.16.5:
     resolution: {integrity: sha512-jdPgmZ7BcDnm1+hmMPIl9BZjSy+b8Y8V0tQMsv7ECO90Qic7EZ5/+traILXLpsXgqK5KgVrUJmchevAUuKL/1w==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
@@ -7904,7 +7897,7 @@ packages:
       tinybench: 2.3.1
       tinypool: 0.3.0
       tinyspy: 1.0.2
-      vite: 3.1.2_terser@5.16.1
+      vite: 3.1.2_terser@5.16.5
     transitivePeerDependencies:
       - less
       - sass
