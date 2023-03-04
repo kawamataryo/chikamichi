@@ -44,14 +44,14 @@ specifiers:
   vitest: 0.25.6
   vue: 3.2.47
   vue-demi: 0.13.11
-  vue-word-highlighter: 1.2.2
+  vue-word-highlighter: 1.2.3
   web-ext: 7.5.0
   webext-bridge: 5.0.5
   webextension-polyfill: 0.10.0
 
 dependencies:
   parse-domain: 7.0.1
-  vue-word-highlighter: 1.2.2_vue@3.2.47
+  vue-word-highlighter: 1.2.3_vue@3.2.47
 
 devDependencies:
   '@antfu/eslint-config': 0.36.0_ycpbpc6yetojsgtrx3mwntkhsu
@@ -8113,8 +8113,8 @@ packages:
       - supports-color
     dev: true
 
-  /vue-word-highlighter/1.2.2_vue@3.2.47:
-    resolution: {integrity: sha512-aaWkZVAfiySETO3Nu3vAzifAYCXG4/9ZTdOXZrAi02y2HZIvnq9sn7+6cDsFmz+1dJvjAheZ+XxgqaQ4e18pUQ==}
+  /vue-word-highlighter/1.2.3_vue@3.2.47:
+    resolution: {integrity: sha512-SUJgI94+AepCK88YfkkE+JiyMZFxmkm9kd9xaZdpqbAiBJQ7YtfMTSKp8uPwJp5QhcLbJZEBzGsP/9ffmNb0ow==}
     peerDependencies:
       '@vue/composition-api': ^1.0.0-rc.1
       vue: ^2.0.0 || >=3.0.0
