@@ -8,7 +8,7 @@ specifiers:
   '@types/chrome': 0.0.220
   '@types/fs-extra': 11.0.1
   '@types/lodash.debounce': 4.0.7
-  '@types/node': 18.14.2
+  '@types/node': 18.14.6
   '@types/webextension-polyfill': 0.10.0
   '@typescript-eslint/eslint-plugin': 5.54.1
   '@vitejs/plugin-vue': 4.0.0
@@ -61,7 +61,7 @@ devDependencies:
   '@types/chrome': 0.0.220
   '@types/fs-extra': 11.0.1
   '@types/lodash.debounce': 4.0.7
-  '@types/node': 18.14.2
+  '@types/node': 18.14.6
   '@types/webextension-polyfill': 0.10.0
   '@typescript-eslint/eslint-plugin': 5.54.1_ycpbpc6yetojsgtrx3mwntkhsu
   '@vitejs/plugin-vue': 4.0.0_vite@4.0.4+vue@3.2.47
@@ -91,7 +91,7 @@ devDependencies:
   unplugin-auto-import: 0.12.2_@vueuse+core@9.13.0
   unplugin-icons: 0.15.3_@vue+compiler-sfc@3.2.47
   unplugin-vue-components: 0.24.1_vue@3.2.47
-  vite: 4.0.4_y6lmzpwd2pbvih6a6ro62gcin4
+  vite: 4.0.4_ztj2e2jex7igpdm76i6vnk3nci
   vite-plugin-windicss: 1.8.10_vite@4.0.4
   vitest: 0.25.6_terser@5.16.5
   vue: 3.2.47
@@ -763,7 +763,7 @@ packages:
     dependencies:
       '@types/http-cache-semantics': 4.0.1
       '@types/keyv': 3.1.4
-      '@types/node': 18.14.2
+      '@types/node': 18.14.6
       '@types/responselike': 1.0.0
     dev: true
 
@@ -802,7 +802,7 @@ packages:
     resolution: {integrity: sha512-MxObHvNl4A69ofaTRU8DFqvgzzv8s9yRtaPPm5gud9HDNvpB3GPQFvNuTWAI59B9huVGV5jXYJwbCsmBsOGYWA==}
     dependencies:
       '@types/jsonfile': 6.1.1
-      '@types/node': 18.14.2
+      '@types/node': 18.14.6
     dev: true
 
   /@types/har-format/1.2.8:
@@ -828,13 +828,13 @@ packages:
   /@types/jsonfile/6.1.1:
     resolution: {integrity: sha512-GSgiRCVeapDN+3pqA35IkQwasaCh/0YFH5dEF6S88iDvEn901DjOeH3/QPY+XYP1DFzDZPvIvfeEgk+7br5png==}
     dependencies:
-      '@types/node': 18.14.2
+      '@types/node': 18.14.6
     dev: true
 
   /@types/keyv/3.1.4:
     resolution: {integrity: sha512-BQ5aZNSCpj7D6K2ksrRCTmKRLEpnPvWDiLPfoGyhZ++8YtiK9d/3DBKPJgry359X/P1PfruyYwvnvwFjuEiEIg==}
     dependencies:
-      '@types/node': 18.14.2
+      '@types/node': 18.14.6
     dev: true
 
   /@types/lodash.debounce/4.0.7:
@@ -861,8 +861,8 @@ packages:
     resolution: {integrity: sha512-q4jlIR71hUpWTnGhXWcakgkZeHa3CCjcQcnuzU8M891BAWA2jHiziiWEPEkdS5pFsz7H9HJiy8BrK7tBRNrY7A==}
     dev: true
 
-  /@types/node/18.14.2:
-    resolution: {integrity: sha512-1uEQxww3DaghA0RxqHx0O0ppVlo43pJhepY51OxuQIKHpjbnYLA7vcdwioNPzIqmC2u3I/dmylcqjlh0e7AyUA==}
+  /@types/node/18.14.6:
+    resolution: {integrity: sha512-93+VvleD3mXwlLI/xASjw0FzKcwzl3OdTCzm1LaRfqgS21gfFtK3zDXM5Op9TeeMsJVOaJ2VRDpT9q4Y3d0AvA==}
     dev: true
 
   /@types/normalize-package-data/2.4.1:
@@ -872,7 +872,7 @@ packages:
   /@types/responselike/1.0.0:
     resolution: {integrity: sha512-85Y2BjiufFzaMIlvJDvTTB8Fxl2xfLo4HgmHzVBz08w4wDePCTjYw66PdrolO0kzli3yam/YCgRufyo1DdQVTA==}
     dependencies:
-      '@types/node': 18.14.2
+      '@types/node': 18.14.6
     dev: true
 
   /@types/semver/7.3.12:
@@ -906,7 +906,7 @@ packages:
   /@types/yauzl/2.10.0:
     resolution: {integrity: sha512-Cn6WYCm0tXv8p6k+A8PvbDG763EDpBoTzHdA+Q/MF6H3sapGjCm9NzoaJncJS9tUKSuCoDs9XHxYYsQDgxR6kw==}
     dependencies:
-      '@types/node': 18.14.2
+      '@types/node': 18.14.6
     dev: true
 
   /@typescript-eslint/eslint-plugin/5.54.1_6mj2wypvdnknez7kws2nfdgupi:
@@ -1115,7 +1115,7 @@ packages:
       vite: ^4.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 4.0.4_y6lmzpwd2pbvih6a6ro62gcin4
+      vite: 4.0.4_ztj2e2jex7igpdm76i6vnk3nci
       vue: 3.2.47
     dev: true
 
@@ -1892,7 +1892,7 @@ packages:
     engines: {node: '>=12.13.0'}
     hasBin: true
     dependencies:
-      '@types/node': 18.14.2
+      '@types/node': 18.14.6
       escape-string-regexp: 4.0.0
       is-wsl: 2.2.0
       lighthouse-logger: 1.3.0
@@ -7375,7 +7375,7 @@ packages:
       '@windicss/plugin-utils': 1.8.10
       debug: 4.3.4
       kolorist: 1.6.0
-      vite: 4.0.4_y6lmzpwd2pbvih6a6ro62gcin4
+      vite: 4.0.4_ztj2e2jex7igpdm76i6vnk3nci
       windicss: 3.5.6
     transitivePeerDependencies:
       - supports-color
@@ -7409,7 +7409,7 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vite/4.0.4_y6lmzpwd2pbvih6a6ro62gcin4:
+  /vite/4.0.4_ztj2e2jex7igpdm76i6vnk3nci:
     resolution: {integrity: sha512-xevPU7M8FU0i/80DMR+YhgrzR5KS2ORy1B4xcX/cXLsvnUWvfHuqMmVU6N0YiJ4JWGRJJsLCgjEzKjG9/GKoSw==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -7434,7 +7434,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 18.14.2
+      '@types/node': 18.14.6
       esbuild: 0.16.3
       postcss: 8.4.20
       resolve: 1.22.1
@@ -7468,7 +7468,7 @@ packages:
     dependencies:
       '@types/chai': 4.3.3
       '@types/chai-subset': 1.3.3
-      '@types/node': 18.14.2
+      '@types/node': 18.14.6
       acorn: 8.8.1
       acorn-walk: 8.2.0
       chai: 4.3.6
