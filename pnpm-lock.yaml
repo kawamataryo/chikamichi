@@ -31,7 +31,7 @@ specifiers:
   npm-run-all: 4.1.5
   parse-domain: 7.0.1
   prettier: 2.8.4
-  rimraf: 4.3.1
+  rimraf: 4.4.0
   serve: 14.2.0
   terser: 5.16.5
   tsup: 6.6.3
@@ -83,7 +83,7 @@ devDependencies:
   nodemon: 2.0.20
   npm-run-all: 4.1.5
   prettier: 2.8.4
-  rimraf: 4.3.1
+  rimraf: 4.4.0
   serve: 14.2.0
   terser: 5.16.5
   tsup: 6.6.3_typescript@4.9.5
@@ -6537,8 +6537,8 @@ packages:
       glob: 7.2.0
     dev: true
 
-  /rimraf/4.3.1:
-    resolution: {integrity: sha512-GfHJHBzFQra23IxDzIdBqhOWfbtdgS1/dCHrDy+yvhpoJY5TdwdT28oWaHWfRpKFDLd3GZnGTx6Mlt4+anbsxQ==}
+  /rimraf/4.4.0:
+    resolution: {integrity: sha512-X36S+qpCUR0HjXlkDe4NAOhS//aHH0Z+h8Ckf2auGJk3PTnx5rLmrHkwNdbVQuCSUhOyFrlRvFEllZOYE+yZGQ==}
     engines: {node: '>=14'}
     hasBin: true
     dependencies:
