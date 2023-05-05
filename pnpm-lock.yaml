@@ -21,7 +21,7 @@ specifiers:
   eslint: 8.36.0
   eslint-config-prettier: 8.7.0
   esno: 0.16.3
-  fs-extra: 11.1.0
+  fs-extra: 11.1.1
   fuse.js: 6.6.2
   husky: 8.0.3
   kolorist: 1.7.0
@@ -74,7 +74,7 @@ devDependencies:
   eslint: 8.36.0
   eslint-config-prettier: 8.7.0_eslint@8.36.0
   esno: 0.16.3
-  fs-extra: 11.1.0
+  fs-extra: 11.1.1
   fuse.js: 6.6.2
   husky: 8.0.3
   kolorist: 1.7.0
@@ -3908,6 +3908,15 @@ packages:
 
   /fs-extra/11.1.0:
     resolution: {integrity: sha512-0rcTq621PD5jM/e0a3EJoGC/1TC5ZBCERW82LQuwfGnCa1V8w7dpYH1yNu+SLb6E5dkeCBzKEyLGlFrnr+dUyw==}
+    engines: {node: '>=14.14'}
+    dependencies:
+      graceful-fs: 4.2.10
+      jsonfile: 6.1.0
+      universalify: 2.0.0
+    dev: true
+
+  /fs-extra/11.1.1:
+    resolution: {integrity: sha512-MGIE4HOvQCeUCzmlHs0vXpih4ysz4wg9qiSAu6cd42lVwPbTM1TjV7RusoyQqMmk/95gdQZX72u+YW+c3eEpFQ==}
     engines: {node: '>=14.14'}
     dependencies:
       graceful-fs: 4.2.10
