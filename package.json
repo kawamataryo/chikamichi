@@ -41,7 +41,7 @@
     "@types/node": "18.15.3",
     "@types/webextension-polyfill": "0.10.0",
     "@typescript-eslint/eslint-plugin": "5.55.0",
-    "@vitejs/plugin-vue": "4.2.1",
+    "@vitejs/plugin-vue": "4.2.3",
     "@vue/compiler-sfc": "3.2.47",
     "@vueuse/core": "9.13.0",
     "chokidar": "3.5.3",
