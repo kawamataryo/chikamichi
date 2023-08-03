@@ -9,7 +9,7 @@ specifiers:
   '@types/fs-extra': 11.0.1
   '@types/lodash.debounce': 4.0.7
   '@types/node': 18.15.3
-  '@types/webextension-polyfill': 0.10.0
+  '@types/webextension-polyfill': 0.10.1
   '@typescript-eslint/eslint-plugin': 5.55.0
   '@vitejs/plugin-vue': 4.2.3
   '@vue/compiler-sfc': 3.2.47
@@ -62,7 +62,7 @@ devDependencies:
   '@types/fs-extra': 11.0.1
   '@types/lodash.debounce': 4.0.7
   '@types/node': 18.15.3
-  '@types/webextension-polyfill': 0.10.0
+  '@types/webextension-polyfill': 0.10.1
   '@typescript-eslint/eslint-plugin': 5.55.0_vgl77cfdswitgr47lm5swmv43m
   '@vitejs/plugin-vue': 4.2.3_vite@4.3.9+vue@3.2.47
   '@vue/compiler-sfc': 3.2.47
@@ -908,8 +908,8 @@ packages:
     resolution: {integrity: sha512-oh8q2Zc32S6gd/j50GowEjKLoOVOwHP/bWVjKJInBwQqdOYMdPrf1oVlelTlyfFK3CKxL1uahMDAr+vy8T7yMQ==}
     dev: true
 
-  /@types/webextension-polyfill/0.10.0:
-    resolution: {integrity: sha512-If4EcaHzYTqcbNMp/FdReVdRmLL/Te42ivnJII551bYjhX19bWem5m14FERCqdJA732OloGuxCRvLBvcMGsn4A==}
+  /@types/webextension-polyfill/0.10.1:
+    resolution: {integrity: sha512-Sdg+E2F5JUbhkE1qX15QUxpyhfMFKRGJqND9nb1C0gNN4NR7kCV31/1GvNbg6Xe+m/JElJ9/lG5kepMzjGPuQw==}
     dev: true
 
   /@types/webextension-polyfill/0.8.3:
