@@ -37,7 +37,7 @@ specifiers:
   tsup: 6.6.3
   typescript: 4.9.5
   unplugin-auto-import: 0.16.6
-  unplugin-icons: 0.15.3
+  unplugin-icons: 0.16.5
   unplugin-vue-components: 0.24.1
   vite: 4.3.9
   vite-plugin-windicss: 1.8.10
@@ -89,7 +89,7 @@ devDependencies:
   tsup: 6.6.3_typescript@4.9.5
   typescript: 4.9.5
   unplugin-auto-import: 0.16.6_@vueuse+core@9.13.0
-  unplugin-icons: 0.15.3_@vue+compiler-sfc@3.2.47
+  unplugin-icons: 0.16.5_@vue+compiler-sfc@3.2.47
   unplugin-vue-components: 0.24.1_vue@3.2.47
   vite: 4.3.9_ftzyt473rlh5ldzy2ev6ovfihu
   vite-plugin-windicss: 1.8.10_vite@4.3.9
@@ -661,8 +661,8 @@ packages:
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
     dev: true
 
-  /@iconify/utils/2.1.4:
-    resolution: {integrity: sha512-7vzsYIvxv5Hng0MNEtSSnyMBD/+zqnORqmKiYsSgpMBGSz1r93URgBZHPYCZ1/gpoaVstYW4/SVLGCMJBNMCLQ==}
+  /@iconify/utils/2.1.7:
+    resolution: {integrity: sha512-P8S3z/L1LcV4Qem9AoCfVAaTFGySEMzFEY4CHZLkfRj0Fv9LiR+AwjDgrDrzyI93U2L2mg9JHsbTJ52mF8suNw==}
     dependencies:
       '@antfu/install-pkg': 0.1.1
       '@antfu/utils': 0.7.5
@@ -7243,15 +7243,18 @@ packages:
       - rollup
     dev: true
 
-  /unplugin-icons/0.15.3_@vue+compiler-sfc@3.2.47:
-    resolution: {integrity: sha512-YWgJqv5AahrokeOnta8uX/m1damZA6Rf6zPClgHg2Fa/45iyOe3Lj+Wn/Ba+CSsq9yBffn17YfKfJNyWCNZPvw==}
+  /unplugin-icons/0.16.5_@vue+compiler-sfc@3.2.47:
+    resolution: {integrity: sha512-laCCqMWfng1XZgB9yowGfjBdDhtmz8t8zVnhzRNEMhBNdy26QrVewVmdXk/zsiAQYnEWvIxTjvW1nQXrxdd2+w==}
     peerDependencies:
-      '@svgr/core': '>=5.5.0'
+      '@svgr/core': '>=7.0.0'
+      '@svgx/core': ^1.0.1
       '@vue/compiler-sfc': ^3.0.2 || ^2.7.0
       vue-template-compiler: ^2.6.12
       vue-template-es2015-compiler: ^1.9.0
     peerDependenciesMeta:
       '@svgr/core':
+        optional: true
+      '@svgx/core':
         optional: true
       '@vue/compiler-sfc':
         optional: true
@@ -7261,13 +7264,13 @@ packages:
         optional: true
     dependencies:
       '@antfu/install-pkg': 0.1.1
-      '@antfu/utils': 0.7.2
-      '@iconify/utils': 2.1.4
+      '@antfu/utils': 0.7.5
+      '@iconify/utils': 2.1.7
       '@vue/compiler-sfc': 3.2.47
       debug: 4.3.4
       kolorist: 1.8.0
       local-pkg: 0.4.3
-      unplugin: 1.0.1
+      unplugin: 1.4.0
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -7299,15 +7302,6 @@ packages:
     transitivePeerDependencies:
       - rollup
       - supports-color
-    dev: true
-
-  /unplugin/1.0.1:
-    resolution: {integrity: sha512-aqrHaVBWW1JVKBHmGo33T5TxeL0qWzfvjWokObHA9bYmN7eNDkwOxmLjhioHl9878qDFMAaT51XNroRyuz7WxA==}
-    dependencies:
-      acorn: 8.10.0
-      chokidar: 3.5.3
-      webpack-sources: 3.2.3
-      webpack-virtual-modules: 0.5.0
     dev: true
 
   /unplugin/1.1.0:
