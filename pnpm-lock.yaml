@@ -5,7 +5,7 @@ specifiers:
   '@ffflorian/jszip-cli': 3.4.1
   '@iconify/json': 2.2.133
   '@ngneat/falso': 6.4.0
-  '@types/chrome': 0.0.243
+  '@types/chrome': 0.0.248
   '@types/fs-extra': 11.0.1
   '@types/lodash.debounce': 4.0.7
   '@types/node': 18.17.4
@@ -58,7 +58,7 @@ devDependencies:
   '@ffflorian/jszip-cli': 3.4.1
   '@iconify/json': 2.2.133
   '@ngneat/falso': 6.4.0
-  '@types/chrome': 0.0.243
+  '@types/chrome': 0.0.248
   '@types/fs-extra': 11.0.1
   '@types/lodash.debounce': 4.0.7
   '@types/node': 18.17.4
@@ -1011,8 +1011,8 @@ packages:
     resolution: {integrity: sha512-hC7OMnszpxhZPduX+m+nrx+uFoLkWOMiR4oa/AZF3MuSETYTZmFfJAHqZEM8MVlvfG7BEUcgvtwoCTxBp6hm3g==}
     dev: true
 
-  /@types/chrome/0.0.243:
-    resolution: {integrity: sha512-4PHv0kxxxpZFHWPBiJJ9TWH8kbx0567j1b2djnhpJjpiSGNI7UKkz7dSEECBtQ0B3N5nQTMwSB/5IopkWGAbEA==}
+  /@types/chrome/0.0.248:
+    resolution: {integrity: sha512-qtBzxZD1v3eWZn8XxH1i07pAhzJDHnxJBBVy7bmntXxXKxjzNXYxD41teqa5yOcX/Yy8brRFGZESEzGoINvBDg==}
     dependencies:
       '@types/filesystem': 0.0.32
       '@types/har-format': 1.2.8
