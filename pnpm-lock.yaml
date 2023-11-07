@@ -7,7 +7,7 @@ specifiers:
   '@ngneat/falso': 6.4.0
   '@types/chrome': 0.0.248
   '@types/fs-extra': 11.0.1
-  '@types/lodash.debounce': 4.0.7
+  '@types/lodash.debounce': 4.0.9
   '@types/node': 18.17.4
   '@types/webextension-polyfill': 0.10.1
   '@typescript-eslint/eslint-plugin': 5.62.0
@@ -60,7 +60,7 @@ devDependencies:
   '@ngneat/falso': 6.4.0
   '@types/chrome': 0.0.248
   '@types/fs-extra': 11.0.1
-  '@types/lodash.debounce': 4.0.7
+  '@types/lodash.debounce': 4.0.9
   '@types/node': 18.17.4
   '@types/webextension-polyfill': 0.10.1
   '@typescript-eslint/eslint-plugin': 5.62.0_qzrgnijdkb26bxvpro4ocvcfk4
@@ -1067,8 +1067,8 @@ packages:
       '@types/node': 18.17.4
     dev: true
 
-  /@types/lodash.debounce/4.0.7:
-    resolution: {integrity: sha512-X1T4wMZ+gT000M2/91SYj0d/7JfeNZ9PeeOldSNoE/lunLeQXKvkmIumI29IaKMotU/ln/McOIvgzZcQ/3TrSA==}
+  /@types/lodash.debounce/4.0.9:
+    resolution: {integrity: sha512-Ma5JcgTREwpLRwMM+XwBR7DaWe96nC38uCBDFKZWbNKD+osjVzdpnUSwBcqCptrp16sSOLBAUb50Car5I0TCsQ==}
     dependencies:
       '@types/lodash': 4.14.178
     dev: true
