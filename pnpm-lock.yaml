@@ -6,7 +6,7 @@ specifiers:
   '@iconify/json': 2.2.138
   '@ngneat/falso': 6.4.0
   '@types/chrome': 0.0.250
-  '@types/fs-extra': 11.0.1
+  '@types/fs-extra': 11.0.4
   '@types/lodash.debounce': 4.0.9
   '@types/node': 18.17.4
   '@types/webextension-polyfill': 0.10.7
@@ -59,7 +59,7 @@ devDependencies:
   '@iconify/json': 2.2.138
   '@ngneat/falso': 6.4.0
   '@types/chrome': 0.0.250
-  '@types/fs-extra': 11.0.1
+  '@types/fs-extra': 11.0.4
   '@types/lodash.debounce': 4.0.9
   '@types/node': 18.17.4
   '@types/webextension-polyfill': 0.10.7
@@ -1032,8 +1032,8 @@ packages:
     resolution: {integrity: sha512-BsPXH/irW0ht0Ji6iw/jJaK8Lj3FJemon2gvEqHKpCdDCeemHa+rI3WBGq5z7cDMZgoLjY40oninGxqk+8NzNQ==}
     dev: true
 
-  /@types/fs-extra/11.0.1:
-    resolution: {integrity: sha512-MxObHvNl4A69ofaTRU8DFqvgzzv8s9yRtaPPm5gud9HDNvpB3GPQFvNuTWAI59B9huVGV5jXYJwbCsmBsOGYWA==}
+  /@types/fs-extra/11.0.4:
+    resolution: {integrity: sha512-yTbItCNreRooED33qjunPthRcSjERP1r4MqCZc7wv0u2sUkzTFp45tgUfS5+r7FrZPdmCCNflLhVSP/o+SemsQ==}
     dependencies:
       '@types/jsonfile': 6.1.1
       '@types/node': 18.17.4
