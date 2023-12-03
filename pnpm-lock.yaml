@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@antfu/eslint-config': 0.40.2
   '@ffflorian/jszip-cli': 3.4.1
-  '@iconify/json': 2.2.145
+  '@iconify/json': 2.2.151
   '@ngneat/falso': 6.4.0
   '@types/chrome': 0.0.253
   '@types/fs-extra': 11.0.4
@@ -56,7 +56,7 @@ dependencies:
 devDependencies:
   '@antfu/eslint-config': 0.40.2_qzrgnijdkb26bxvpro4ocvcfk4
   '@ffflorian/jszip-cli': 3.4.1
-  '@iconify/json': 2.2.145
+  '@iconify/json': 2.2.151
   '@ngneat/falso': 6.4.0
   '@types/chrome': 0.0.253
   '@types/fs-extra': 11.0.4
@@ -840,8 +840,8 @@ packages:
     resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
     dev: true
 
-  /@iconify/json/2.2.145:
-    resolution: {integrity: sha512-/j6Ahjc7ylGRsyZWI8HN3QWTRCGGQJOHaVBDI6cFBL2jPJAxwyZmSavScsr1OukOg32GL8GSQabqb1Q8Zbdo1g==}
+  /@iconify/json/2.2.151:
+    resolution: {integrity: sha512-Un9kUOTob8Q6yIYykWR6LlyR3gA65q+OZYi/h2mcg0lOwJnE4M8fvmUdherdQ74Jrhtspj1B6UyjskugRkjoXw==}
     dependencies:
       '@iconify/types': 2.0.0
       pathe: 1.1.1
@@ -3239,8 +3239,8 @@ packages:
     resolution: {integrity: sha512-gozW2blMLJCeFpBwugLTGyvVjNoeo1knonXAcatC6bjPBZitotxdWf7Gimr25N4c0AAOo4eOUfaG82IJPDpqCA==}
     dependencies:
       debug: 3.2.7
-      is-core-module: 2.12.1
-      resolve: 1.22.3
+      is-core-module: 2.13.1
+      resolve: 1.22.8
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -3326,7 +3326,7 @@ packages:
       get-tsconfig: 4.6.2
       is-glob: 4.0.3
       minimatch: 3.1.2
-      resolve: 1.22.3
+      resolve: 1.22.8
       semver: 7.5.4
     transitivePeerDependencies:
       - '@typescript-eslint/parser'
@@ -5551,7 +5551,7 @@ packages:
     resolution: {integrity: sha512-/5CMN3T0R4XTj4DcGaexo+roZSdSFW/0AOOTROrjxzCG1wrWXEsGbRKevjlIL+ZDE4sZlJr5ED4YW0yqmkK+eA==}
     dependencies:
       hosted-git-info: 2.8.9
-      resolve: 1.22.3
+      resolve: 1.22.8
       semver: 5.7.1
       validate-npm-package-license: 3.0.4
     dev: true
@@ -7594,7 +7594,7 @@ packages:
     dependencies:
       esbuild: 0.15.7
       postcss: 8.4.27
-      resolve: 1.22.3
+      resolve: 1.22.8
       rollup: 2.78.1
       terser: 5.19.2
     optionalDependencies:
