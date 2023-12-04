@@ -38,7 +38,7 @@
     "@types/chrome": "0.0.253",
     "@types/fs-extra": "11.0.4",
     "@types/lodash.debounce": "4.0.9",
-    "@types/node": "18.17.4",
+    "@types/node": "18.19.2",
     "@types/webextension-polyfill": "0.10.7",
     "@typescript-eslint/eslint-plugin": "5.62.0",
     "@vitejs/plugin-vue": "4.2.3",
