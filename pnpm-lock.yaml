@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@antfu/eslint-config': 0.43.1
-  '@ffflorian/jszip-cli': 3.4.1
+  '@ffflorian/jszip-cli': 3.5.6
   '@iconify/json': 2.2.152
   '@ngneat/falso': 6.4.0
   '@types/chrome': 0.0.253
@@ -55,7 +55,7 @@ dependencies:
 
 devDependencies:
   '@antfu/eslint-config': 0.43.1_qzrgnijdkb26bxvpro4ocvcfk4
-  '@ffflorian/jszip-cli': 3.4.1
+  '@ffflorian/jszip-cli': 3.5.6_typescript@4.9.5
   '@iconify/json': 2.2.152
   '@ngneat/falso': 6.4.0
   '@types/chrome': 0.0.253
@@ -339,7 +339,7 @@ packages:
     resolution: {integrity: sha512-BDXFbYOJzT/NBEtp71cvsrGPwGAMGRB/349rwKuoxNSiKjPraNNnlK6MIIabViCjqZugu6j+xeMDlEkWdHHJSg==}
     dependencies:
       '@esbuild-kit/core-utils': 3.1.0
-      get-tsconfig: 4.6.2
+      get-tsconfig: 4.7.2
     dev: true
 
   /@esbuild-kit/core-utils/3.1.0:
@@ -353,7 +353,7 @@ packages:
     resolution: {integrity: sha512-Qwfvj/qoPbClxCRNuac1Du01r9gvNOT+pMYtJDapfB1eoGN1YlJ1BixLyL9WVENRx5RXgNLdfYdx/CuswlGhMw==}
     dependencies:
       '@esbuild-kit/core-utils': 3.1.0
-      get-tsconfig: 4.6.2
+      get-tsconfig: 4.7.2
     dev: true
 
   /@esbuild/android-arm/0.17.11:
@@ -813,18 +813,20 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@ffflorian/jszip-cli/3.4.1:
-    resolution: {integrity: sha512-NJV7WF4/zkWwlJzngpffXuTHAWdwXtu4EoFwdx4iVG32DJ0ZPdGF2Y4yskUAH/lFc6eNWufXzunz7GPnluMe6g==}
+  /@ffflorian/jszip-cli/3.5.6_typescript@4.9.5:
+    resolution: {integrity: sha512-h8ALZZ/Hqcw3vH124Ba5WPth6PKAO4ijBY/hhrWRtz8rIpg2LGCWbk7rQSlvgW6pYWbAMpASs8PJq0wGfWaOIg==}
     engines: {node: '>= 10.9'}
     hasBin: true
     dependencies:
-      commander: 10.0.1
-      cosmiconfig: 8.1.3
+      commander: 11.1.0
+      cosmiconfig: 8.3.6_typescript@4.9.5
       fs-extra: 11.1.1
-      glob: 10.2.2
+      glob: 10.3.10
       jszip: 3.10.1
       logdown: 3.3.1
       progress: 2.0.3
+    transitivePeerDependencies:
+      - typescript
     dev: true
 
   /@fluent/syntax/0.19.0:
@@ -2335,9 +2337,9 @@ packages:
     engines: {node: '>=14'}
     dev: true
 
-  /commander/10.0.1:
-    resolution: {integrity: sha512-y4Mg2tXshplEbSGzx7amzPwKKOCGuoSRP/CjEdwwk0FOGlUbq6lKuoyDZTNZkmxHdJtp54hdfY/JUrdL7Xfdug==}
-    engines: {node: '>=14'}
+  /commander/11.1.0:
+    resolution: {integrity: sha512-yPVavfyCcRhmorC7rWlkHn15b4wDVgVmBA7kV4QVBsF7kv/9TKJAbAXVTxvTnwP8HHKjRCJDClKbciiYS7p0DQ==}
+    engines: {node: '>=16'}
     dev: true
 
   /commander/2.20.3:
@@ -2466,14 +2468,20 @@ packages:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
     dev: true
 
-  /cosmiconfig/8.1.3:
-    resolution: {integrity: sha512-/UkO2JKI18b5jVMJUp0lvKFMpa/Gye+ZgZjKD+DGEN9y7NRcf/nK1A0sp67ONmKtnDCNMS44E6jrk0Yc3bDuUw==}
+  /cosmiconfig/8.3.6_typescript@4.9.5:
+    resolution: {integrity: sha512-kcZ6+W5QzcJ3P1Mt+83OUv/oHFqZHIx8DuxG6eZ5RGMERoLqp4BuGjhHLYGK+Kf5XVkQvqBSmAy/nGWN3qDgEA==}
     engines: {node: '>=14'}
+    peerDependencies:
+      typescript: '>=4.9.5'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
     dependencies:
       import-fresh: 3.3.0
       js-yaml: 4.1.0
       parse-json: 5.2.0
       path-type: 4.0.0
+      typescript: 4.9.5
     dev: true
 
   /crc/3.8.0:
@@ -4150,12 +4158,6 @@ packages:
       get-intrinsic: 1.2.0
     dev: true
 
-  /get-tsconfig/4.6.2:
-    resolution: {integrity: sha512-E5XrT4CbbXcXWy+1jChlZmrmCwd5KGx502kDCXJJ7y898TtWW9FwoG5HfOLVRKmlmDGkWN2HM9Ho+/Y8F0sJDg==}
-    dependencies:
-      resolve-pkg-maps: 1.0.0
-    dev: true
-
   /get-tsconfig/4.7.2:
     resolution: {integrity: sha512-wuMsz4leaj5hbGgg4IvDU0bqJagpftG5l5cXIAvo8uZrqn0NJqwtfupTN00VnkQJPcIRrxYrm1Ue24btpCha2A==}
     dependencies:
@@ -4192,13 +4194,13 @@ packages:
     resolution: {integrity: sha512-lkX1HJXwyMcprw/5YUZc2s7DrpAiHB21/V+E1rHUrVNokkvB6bqMzT0VfV6/86ZNabt1k14YOIaT7nDvOX3Iiw==}
     dev: true
 
-  /glob/10.2.2:
-    resolution: {integrity: sha512-Xsa0BcxIC6th9UwNjZkhrMtNo/MnyRL8jGCP+uEwhA5oFOCY1f2s1/oNKY47xQ0Bg5nkjsfAEIej1VeH62bDDQ==}
+  /glob/10.3.10:
+    resolution: {integrity: sha512-fa46+tv1Ak0UPK1TOy/pZrIybNNt4HCv7SDzwyfiOZkvZLEbjsZkJBPtDHVshZjbecAoAGSC20MjLDG/qr679g==}
     engines: {node: '>=16 || 14 >=14.17'}
     hasBin: true
     dependencies:
       foreground-child: 3.1.1
-      jackspeak: 2.2.2
+      jackspeak: 2.3.6
       minimatch: 9.0.3
       minipass: 5.0.0
       path-scurry: 1.10.1
@@ -4846,8 +4848,8 @@ packages:
     resolution: {integrity: sha512-Yljz7ffyPbrLpLngrMtZ7NduUgVvi6wG9RJ9IUcyCd59YQ911PBJphODUcbOVbqYfxe1wuYf/LJ8PauMRwsM/g==}
     dev: true
 
-  /jackspeak/2.2.2:
-    resolution: {integrity: sha512-mgNtVv4vUuaKA97yxUHoA3+FkuhtxkjdXEWOyB/N76fjy0FjezEt34oy3epBtvCvS+7DyKwqCFWx/oJLV5+kCg==}
+  /jackspeak/2.3.6:
+    resolution: {integrity: sha512-N3yCS/NegsOBokc8GAdM8UcmfsKiSS8cipheD/nivzr700H+nsMOxJjQnvwOcRYVuFkdH0wGUvW2WbXGmrZGbQ==}
     engines: {node: '>=14'}
     dependencies:
       '@isaacs/cliui': 8.0.2
