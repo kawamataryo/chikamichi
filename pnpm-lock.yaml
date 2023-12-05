@@ -33,7 +33,7 @@ specifiers:
   prettier: 2.8.8
   rimraf: 4.4.1
   serve: 14.2.1
-  terser: 5.19.2
+  terser: 5.25.0
   tsup: 6.7.0
   typescript: 4.9.5
   unplugin-auto-import: 0.16.7
@@ -85,15 +85,15 @@ devDependencies:
   prettier: 2.8.8
   rimraf: 4.4.1
   serve: 14.2.1
-  terser: 5.19.2
+  terser: 5.25.0
   tsup: 6.7.0_typescript@4.9.5
   typescript: 4.9.5
   unplugin-auto-import: 0.16.7_@vueuse+core@9.13.0
   unplugin-icons: 0.16.5_@vue+compiler-sfc@3.3.9
   unplugin-vue-components: 0.26.0_vue@3.3.9
-  vite: 4.4.9_y3mtfqtk4bqxgzwqs5wmczegrm
+  vite: 4.4.9_svv5tnom43rzzn4tyivzryrv5i
   vite-plugin-windicss: 1.9.2_vite@4.4.9
-  vitest: 0.25.6_terser@5.19.2
+  vitest: 0.25.6_terser@5.25.0
   vue: 3.3.9_typescript@4.9.5
   vue-demi: 0.14.6_vue@3.3.9
   web-ext: 7.6.2
@@ -1470,7 +1470,7 @@ packages:
       vite: ^4.0.0 || ^5.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 4.4.9_y3mtfqtk4bqxgzwqs5wmczegrm
+      vite: 4.4.9_svv5tnom43rzzn4tyivzryrv5i
       vue: 3.3.9_typescript@4.9.5
     dev: true
 
@@ -1630,12 +1630,6 @@ packages:
   /acorn-walk/8.2.0:
     resolution: {integrity: sha512-k+iyHEuPgSw6SbuDpGQM+06HQUa04DZ3o+F6CSzXMvvI5KMvnaEqXe+YVe555R9nn6GPt404fos4wcgpw12SDA==}
     engines: {node: '>=0.4.0'}
-    dev: true
-
-  /acorn/8.10.0:
-    resolution: {integrity: sha512-F0SAmZ8iUtS//m8DmCTA0jlh6TDKkHQyK6xc6V4KDTyZKA9dnvX9/3sRTVQrWm79glUAZbnmmNcdYwUIHWVybw==}
-    engines: {node: '>=0.4.0'}
-    hasBin: true
     dev: true
 
   /acorn/8.11.2:
@@ -7202,13 +7196,13 @@ packages:
       readable-stream: 3.6.0
     dev: true
 
-  /terser/5.19.2:
-    resolution: {integrity: sha512-qC5+dmecKJA4cpYxRa5aVkKehYsQKc+AHeKl0Oe62aYjBL8ZA33tTljktDHJSaxxMnbI5ZYw+o/S2DxxLu8OfA==}
+  /terser/5.25.0:
+    resolution: {integrity: sha512-we0I9SIsfvNUMP77zC9HG+MylwYYsGFSBG8qm+13oud2Yh+O104y614FRbyjpxys16jZwot72Fpi827YvGzuqg==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
       '@jridgewell/source-map': 0.3.5
-      acorn: 8.10.0
+      acorn: 8.11.2
       commander: 2.20.3
       source-map-support: 0.5.21
     dev: true
@@ -7739,13 +7733,13 @@ packages:
       '@windicss/plugin-utils': 1.9.2
       debug: 4.3.4
       kolorist: 1.8.0
-      vite: 4.4.9_y3mtfqtk4bqxgzwqs5wmczegrm
+      vite: 4.4.9_svv5tnom43rzzn4tyivzryrv5i
       windicss: 3.5.6
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /vite/3.1.2_terser@5.19.2:
+  /vite/3.1.2_terser@5.25.0:
     resolution: {integrity: sha512-wTDKPkiVbeT+drTPdkuvjVIC/2vKKUc1w3qNOuwgpyvPCZF6fvdxB5v5WEcCsqaYea0zrwA4+XialJKCHM3oVQ==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -7768,12 +7762,12 @@ packages:
       postcss: 8.4.31
       resolve: 1.22.8
       rollup: 2.78.1
-      terser: 5.19.2
+      terser: 5.25.0
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
 
-  /vite/4.4.9_y3mtfqtk4bqxgzwqs5wmczegrm:
+  /vite/4.4.9_svv5tnom43rzzn4tyivzryrv5i:
     resolution: {integrity: sha512-2mbUn2LlUmNASWwSCNSJ/EG2HuSRTnVNaydp6vMCm5VIqJsjMfbIWtbH2kDuwUVW5mMUKKZvGPX/rqeqVvv1XA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -7805,12 +7799,12 @@ packages:
       esbuild: 0.18.20
       postcss: 8.4.27
       rollup: 3.27.2
-      terser: 5.19.2
+      terser: 5.25.0
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
 
-  /vitest/0.25.6_terser@5.19.2:
+  /vitest/0.25.6_terser@5.25.0:
     resolution: {integrity: sha512-jdPgmZ7BcDnm1+hmMPIl9BZjSy+b8Y8V0tQMsv7ECO90Qic7EZ5/+traILXLpsXgqK5KgVrUJmchevAUuKL/1w==}
     engines: {node: '>=v14.16.0'}
     hasBin: true
@@ -7845,7 +7839,7 @@ packages:
       tinybench: 2.3.1
       tinypool: 0.3.0
       tinyspy: 1.0.2
-      vite: 3.1.2_terser@5.19.2
+      vite: 3.1.2_terser@5.25.0
     transitivePeerDependencies:
       - less
       - sass
