@@ -40,7 +40,7 @@
     "@types/lodash.debounce": "4.0.9",
     "@types/node": "20.10.5",
     "@types/webextension-polyfill": "0.10.7",
-    "@typescript-eslint/eslint-plugin": "6.14.0",
+    "@typescript-eslint/eslint-plugin": "6.15.0",
     "@vitejs/plugin-vue": "4.5.2",
     "@vue/compiler-sfc": "3.3.13",
     "@vueuse/core": "9.13.0",
