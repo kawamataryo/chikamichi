@@ -52,7 +52,7 @@
     "eslint-config-prettier": "9.1.0",
     "esno": "4.0.0",
     "fs-extra": "11.2.0",
-    "fuse.js": "6.6.2",
+    "fuse.js": "7.0.0",
     "husky": "8.0.3",
     "kolorist": "1.8.0",
     "lint-staged": "13.3.0",
