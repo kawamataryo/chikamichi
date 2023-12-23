@@ -74,7 +74,7 @@
     "web-ext": "7.9.0",
     "webext-bridge": "5.0.5",
     "webextension-polyfill": "0.10.0",
-    "nodemon": "^2.0.20",
+    "nodemon": "^3.0.0",
     "tsup": "6.7.0"
   },
   "lint-staged": {
