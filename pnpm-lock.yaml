@@ -2,7 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@antfu/eslint-config': 2.4.6
-  '@ffflorian/jszip-cli': 3.5.6
+  '@ffflorian/jszip-cli': 3.5.8
   '@iconify/json': 2.2.161
   '@ngneat/falso': 7.1.1
   '@types/chrome': 0.0.254
@@ -55,7 +55,7 @@ dependencies:
 
 devDependencies:
   '@antfu/eslint-config': 2.4.6_xnhmxa56dxxicknmwz75r4qwiu
-  '@ffflorian/jszip-cli': 3.5.6_typescript@5.3.3
+  '@ffflorian/jszip-cli': 3.5.8_typescript@5.3.3
   '@iconify/json': 2.2.161
   '@ngneat/falso': 7.1.1
   '@types/chrome': 0.0.254
@@ -594,14 +594,14 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@ffflorian/jszip-cli/3.5.6_typescript@5.3.3:
-    resolution: {integrity: sha512-h8ALZZ/Hqcw3vH124Ba5WPth6PKAO4ijBY/hhrWRtz8rIpg2LGCWbk7rQSlvgW6pYWbAMpASs8PJq0wGfWaOIg==}
+  /@ffflorian/jszip-cli/3.5.8_typescript@5.3.3:
+    resolution: {integrity: sha512-3jk9ALpZJkMNKEY6Wn1PbNl4Ovxs7npDMBBHefALD8+XFUJvTl8odHuJS2E2JvBufr+snwHQQIiTR7GbOE/4Qw==}
     engines: {node: '>= 10.9'}
     hasBin: true
     dependencies:
       commander: 11.1.0
-      cosmiconfig: 8.3.6_typescript@5.3.3
-      fs-extra: 11.1.1
+      cosmiconfig: 9.0.0_typescript@5.3.3
+      fs-extra: 11.2.0
       glob: 10.3.10
       jszip: 3.10.1
       logdown: 3.3.1
@@ -2397,8 +2397,8 @@ packages:
     resolution: {integrity: sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==}
     dev: true
 
-  /cosmiconfig/8.3.6_typescript@5.3.3:
-    resolution: {integrity: sha512-kcZ6+W5QzcJ3P1Mt+83OUv/oHFqZHIx8DuxG6eZ5RGMERoLqp4BuGjhHLYGK+Kf5XVkQvqBSmAy/nGWN3qDgEA==}
+  /cosmiconfig/9.0.0_typescript@5.3.3:
+    resolution: {integrity: sha512-itvL5h8RETACmOTFc4UfIyB2RfEHi71Ax6E/PivVxq9NseKbOWpeyHEOIbmAw1rs8Ak0VursQNww7lf7YtUwzg==}
     engines: {node: '>=14'}
     peerDependencies:
       typescript: '>=4.9.5'
@@ -2406,10 +2406,10 @@ packages:
       typescript:
         optional: true
     dependencies:
+      env-paths: 2.2.1
       import-fresh: 3.3.0
       js-yaml: 4.1.0
       parse-json: 5.2.0
-      path-type: 4.0.0
       typescript: 5.3.3
     dev: true
 
@@ -2820,6 +2820,11 @@ packages:
   /entities/4.3.0:
     resolution: {integrity: sha512-/iP1rZrSEJ0DTlPiX+jbzlA3eVkY/e8L8SozroF395fIqE3TYF/Nz7YOMAawta+vLmyJ/hkGNNPcSbMADCCXbg==}
     engines: {node: '>=0.12'}
+    dev: true
+
+  /env-paths/2.2.1:
+    resolution: {integrity: sha512-+h1lkLKhZMTYjog1VEpJNG7NZJWcuc2DDk/qsqSTRRCOXiLjeQ1d1/udrUGhqMxUgAlwKNZ0cf2uqan5GLuS2A==}
+    engines: {node: '>=6'}
     dev: true
 
   /error-ex/1.3.2:
@@ -3952,15 +3957,6 @@ packages:
 
   /fs-extra/11.1.0:
     resolution: {integrity: sha512-0rcTq621PD5jM/e0a3EJoGC/1TC5ZBCERW82LQuwfGnCa1V8w7dpYH1yNu+SLb6E5dkeCBzKEyLGlFrnr+dUyw==}
-    engines: {node: '>=14.14'}
-    dependencies:
-      graceful-fs: 4.2.10
-      jsonfile: 6.1.0
-      universalify: 2.0.0
-    dev: true
-
-  /fs-extra/11.1.1:
-    resolution: {integrity: sha512-MGIE4HOvQCeUCzmlHs0vXpih4ysz4wg9qiSAu6cd42lVwPbTM1TjV7RusoyQqMmk/95gdQZX72u+YW+c3eEpFQ==}
     engines: {node: '>=14.14'}
     dependencies:
       graceful-fs: 4.2.10
