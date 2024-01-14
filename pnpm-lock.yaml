@@ -30,7 +30,7 @@ specifiers:
   nodemon: ^3.0.0
   npm-run-all: 4.1.5
   parse-domain: 8.0.1
-  prettier: 3.2.1
+  prettier: 3.2.2
   rimraf: 5.0.5
   serve: 14.2.1
   terser: 5.26.0
@@ -82,7 +82,7 @@ devDependencies:
   lodash.debounce: 4.0.8
   nodemon: 3.0.2
   npm-run-all: 4.1.5
-  prettier: 3.2.1
+  prettier: 3.2.2
   rimraf: 5.0.5
   serve: 14.2.1
   terser: 5.26.0
@@ -6047,8 +6047,8 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
-  /prettier/3.2.1:
-    resolution: {integrity: sha512-qSUWshj1IobVbKc226Gw2pync27t0Kf0EdufZa9j7uBSJay1CC+B3K5lAAZoqgX3ASiKuWsk6OmzKRetXNObWg==}
+  /prettier/3.2.2:
+    resolution: {integrity: sha512-HTByuKZzw7utPiDO523Tt2pLtEyK7OibUD9suEJQrPUCYQqrHr74GGX6VidMrovbf/I50mPqr8j/II6oBAuc5A==}
     engines: {node: '>=14'}
     hasBin: true
     dev: true
