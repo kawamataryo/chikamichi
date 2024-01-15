@@ -8,7 +8,7 @@ specifiers:
   '@types/chrome': 0.0.256
   '@types/fs-extra': 11.0.4
   '@types/lodash.debounce': 4.0.9
-  '@types/node': 20.11.0
+  '@types/node': 20.11.1
   '@types/webextension-polyfill': 0.10.7
   '@typescript-eslint/eslint-plugin': 6.18.1
   '@vitejs/plugin-vue': 5.0.3
@@ -61,7 +61,7 @@ devDependencies:
   '@types/chrome': 0.0.256
   '@types/fs-extra': 11.0.4
   '@types/lodash.debounce': 4.0.9
-  '@types/node': 20.11.0
+  '@types/node': 20.11.1
   '@types/webextension-polyfill': 0.10.7
   '@typescript-eslint/eslint-plugin': 6.18.1_xdgzedli73k7lw4xlyzszm74om
   '@vitejs/plugin-vue': 5.0.3_vite@5.0.11+vue@3.4.13
@@ -91,7 +91,7 @@ devDependencies:
   unplugin-auto-import: 0.17.3_@vueuse+core@10.7.2
   unplugin-icons: 0.18.2_@vue+compiler-sfc@3.4.13
   unplugin-vue-components: 0.26.0_vue@3.4.13
-  vite: 5.0.11_zqhc4wpy55bqeamzyuka463hey
+  vite: 5.0.11_znzblewsdirf3zu4xfybbqjxqi
   vite-plugin-windicss: 1.9.3_vite@5.0.11
   vitest: 0.25.6_terser@5.26.0
   vue: 3.4.13_typescript@5.3.3
@@ -974,7 +974,7 @@ packages:
     dependencies:
       '@types/http-cache-semantics': 4.0.1
       '@types/keyv': 3.1.4
-      '@types/node': 20.11.0
+      '@types/node': 20.11.1
       '@types/responselike': 1.0.0
     dev: true
 
@@ -1013,7 +1013,7 @@ packages:
     resolution: {integrity: sha512-yTbItCNreRooED33qjunPthRcSjERP1r4MqCZc7wv0u2sUkzTFp45tgUfS5+r7FrZPdmCCNflLhVSP/o+SemsQ==}
     dependencies:
       '@types/jsonfile': 6.1.1
-      '@types/node': 20.11.0
+      '@types/node': 20.11.1
     dev: true
 
   /@types/har-format/1.2.8:
@@ -1035,13 +1035,13 @@ packages:
   /@types/jsonfile/6.1.1:
     resolution: {integrity: sha512-GSgiRCVeapDN+3pqA35IkQwasaCh/0YFH5dEF6S88iDvEn901DjOeH3/QPY+XYP1DFzDZPvIvfeEgk+7br5png==}
     dependencies:
-      '@types/node': 20.11.0
+      '@types/node': 20.11.1
     dev: true
 
   /@types/keyv/3.1.4:
     resolution: {integrity: sha512-BQ5aZNSCpj7D6K2ksrRCTmKRLEpnPvWDiLPfoGyhZ++8YtiK9d/3DBKPJgry359X/P1PfruyYwvnvwFjuEiEIg==}
     dependencies:
-      '@types/node': 20.11.0
+      '@types/node': 20.11.1
     dev: true
 
   /@types/lodash.debounce/4.0.9:
@@ -1070,8 +1070,8 @@ packages:
       undici-types: 5.26.5
     dev: true
 
-  /@types/node/20.11.0:
-    resolution: {integrity: sha512-o9bjXmDNcF7GbM4CNQpmi+TutCgap/K3w1JyKgxAjqx41zp9qlIAVFi0IhCNsJcXolEqLWhbFbEeL0PvYm4pcQ==}
+  /@types/node/20.11.1:
+    resolution: {integrity: sha512-DsXojJUES2M+FE8CpptJTKpg+r54moV9ZEncPstni1WHFmTcCzeFLnMFfyhCVS8XNOy/OQG+8lVxRLRrVHmV5A==}
     dependencies:
       undici-types: 5.26.5
     dev: true
@@ -1083,7 +1083,7 @@ packages:
   /@types/responselike/1.0.0:
     resolution: {integrity: sha512-85Y2BjiufFzaMIlvJDvTTB8Fxl2xfLo4HgmHzVBz08w4wDePCTjYw66PdrolO0kzli3yam/YCgRufyo1DdQVTA==}
     dependencies:
-      '@types/node': 20.11.0
+      '@types/node': 20.11.1
     dev: true
 
   /@types/semver/7.5.0:
@@ -1118,7 +1118,7 @@ packages:
     resolution: {integrity: sha512-oJoftv0LSuaDZE3Le4DbKX+KS9G36NzOeSap90UIK0yMA/NhKJhqlSGtNDORNRaIbQfzjXDrQa0ytJ6mNRGz/Q==}
     requiresBuild: true
     dependencies:
-      '@types/node': 20.11.0
+      '@types/node': 20.11.1
     dev: true
 
   /@typescript-eslint/eslint-plugin/6.18.1_afkgb2wwn76tzuu6zv3qkxtif4:
@@ -1354,7 +1354,7 @@ packages:
       vite: ^5.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 5.0.11_zqhc4wpy55bqeamzyuka463hey
+      vite: 5.0.11_znzblewsdirf3zu4xfybbqjxqi
       vue: 3.4.13_typescript@5.3.3
     dev: true
 
@@ -2129,7 +2129,7 @@ packages:
     engines: {node: '>=12.13.0'}
     hasBin: true
     dependencies:
-      '@types/node': 20.11.0
+      '@types/node': 20.11.1
       escape-string-regexp: 4.0.0
       is-wsl: 2.2.0
       lighthouse-logger: 1.3.0
@@ -7612,7 +7612,7 @@ packages:
       '@windicss/plugin-utils': 1.9.3
       debug: 4.3.4
       kolorist: 1.8.0
-      vite: 5.0.11_zqhc4wpy55bqeamzyuka463hey
+      vite: 5.0.11_znzblewsdirf3zu4xfybbqjxqi
       windicss: 3.5.6
     transitivePeerDependencies:
       - supports-color
@@ -7646,7 +7646,7 @@ packages:
       fsevents: 2.3.3
     dev: true
 
-  /vite/5.0.11_zqhc4wpy55bqeamzyuka463hey:
+  /vite/5.0.11_znzblewsdirf3zu4xfybbqjxqi:
     resolution: {integrity: sha512-XBMnDjZcNAw/G1gEiskiM1v6yzM4GE5aMGvhWTlHAYYhxb7S3/V1s3m2LDHa8Vh6yIWYYB0iJwsEaS523c4oYA==}
     engines: {node: ^18.0.0 || >=20.0.0}
     hasBin: true
@@ -7674,7 +7674,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 20.11.0
+      '@types/node': 20.11.1
       esbuild: 0.19.10
       postcss: 8.4.32
       rollup: 4.9.1
@@ -7707,7 +7707,7 @@ packages:
     dependencies:
       '@types/chai': 4.3.3
       '@types/chai-subset': 1.3.3
-      '@types/node': 20.11.0
+      '@types/node': 20.11.1
       acorn: 8.8.1
       acorn-walk: 8.2.0
       chai: 4.3.6
