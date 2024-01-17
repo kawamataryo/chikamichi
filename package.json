@@ -61,7 +61,7 @@
     "prettier": "3.2.4",
     "rimraf": "5.0.5",
     "serve": "14.2.1",
-    "terser": "5.26.0",
+    "terser": "5.27.0",
     "typescript": "5.3.3",
     "unplugin-auto-import": "0.17.3",
     "unplugin-icons": "0.18.2",
