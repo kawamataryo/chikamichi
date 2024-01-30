@@ -37,7 +37,7 @@ specifiers:
   tsup: 8.0.1
   typescript: 5.3.3
   unplugin-auto-import: 0.17.5
-  unplugin-icons: 0.18.2
+  unplugin-icons: 0.18.3
   unplugin-vue-components: 0.26.0
   vite: 5.0.12
   vite-plugin-windicss: 1.9.3
@@ -89,7 +89,7 @@ devDependencies:
   tsup: 8.0.1_typescript@5.3.3
   typescript: 5.3.3
   unplugin-auto-import: 0.17.5_@vueuse+core@10.7.2
-  unplugin-icons: 0.18.2_@vue+compiler-sfc@3.4.15
+  unplugin-icons: 0.18.3_@vue+compiler-sfc@3.4.15
   unplugin-vue-components: 0.26.0_vue@3.4.15
   vite: 5.0.12_xjvgkbrhjfkwcrczduu2ot7npq
   vite-plugin-windicss: 1.9.3_vite@5.0.12
@@ -640,15 +640,15 @@ packages:
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
     dev: true
 
-  /@iconify/utils/2.1.12:
-    resolution: {integrity: sha512-7vf3Uk6H7TKX4QMs2gbg5KR1X9J0NJzKSRNWhMZ+PWN92l0t6Q3tj2ZxLDG07rC3ppWBtTtA4FPmkQphuEmdsg==}
+  /@iconify/utils/2.1.20:
+    resolution: {integrity: sha512-t8TeKlYK/5i9yTY9VAGAE4P0qQHd/0vH+VSRO+bdpxlt8wqB6f2I0/IrciRsdeFZPMoL8IICgP7lgl2ZtbG8Tw==}
     dependencies:
       '@antfu/install-pkg': 0.1.1
       '@antfu/utils': 0.7.7
       '@iconify/types': 2.0.0
       debug: 4.3.4
       kolorist: 1.8.0
-      local-pkg: 0.4.3
+      local-pkg: 0.5.0
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -6963,8 +6963,8 @@ packages:
       - rollup
     dev: true
 
-  /unplugin-icons/0.18.2_@vue+compiler-sfc@3.4.15:
-    resolution: {integrity: sha512-OgZoIJHGubeJmc3KePMOy62ovtxPEJfNMlr5tU+1ZqHGpSXubg3fnqq28VPvLL0D5vKj2PRCJF9tVGbQ7vBXJQ==}
+  /unplugin-icons/0.18.3_@vue+compiler-sfc@3.4.15:
+    resolution: {integrity: sha512-6EHPMXOq7XL8JAULzX0o3KqOsJHhYfpDfB1WvBWwZJH/PutIkV/ahRpHytucQ1evfRFuv/DVIozEmFIhP1xRxA==}
     peerDependencies:
       '@svgr/core': '>=7.0.0'
       '@svgx/core': ^1.0.1
@@ -6985,7 +6985,7 @@ packages:
     dependencies:
       '@antfu/install-pkg': 0.3.1
       '@antfu/utils': 0.7.7
-      '@iconify/utils': 2.1.12
+      '@iconify/utils': 2.1.20
       '@vue/compiler-sfc': 3.4.15
       debug: 4.3.4
       kolorist: 1.8.0
