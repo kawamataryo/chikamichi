@@ -70,7 +70,7 @@
     "vite-plugin-windicss": "1.9.3",
     "vitest": "0.25.6",
     "vue": "3.4.15",
-    "vue-demi": "0.14.6",
+    "vue-demi": "0.14.7",
     "web-ext": "7.11.0",
     "webext-bridge": "5.0.5",
     "webextension-polyfill": "0.10.0",
