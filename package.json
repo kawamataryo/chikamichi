@@ -31,7 +31,7 @@
     "cypress:open": "cypress open"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "2.6.3",
+    "@antfu/eslint-config": "2.6.4",
     "@ffflorian/jszip-cli": "3.6.2",
     "@iconify/json": "2.2.179",
     "@ngneat/falso": "7.1.1",
