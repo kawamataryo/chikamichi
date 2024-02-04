@@ -37,7 +37,7 @@ specifiers:
   tsup: 8.0.1
   typescript: 5.3.3
   unplugin-auto-import: 0.17.5
-  unplugin-icons: 0.18.4
+  unplugin-icons: 0.18.5
   unplugin-vue-components: 0.26.0
   vite: 5.0.12
   vite-plugin-windicss: 1.9.3
@@ -89,7 +89,7 @@ devDependencies:
   tsup: 8.0.1_typescript@5.3.3
   typescript: 5.3.3
   unplugin-auto-import: 0.17.5_@vueuse+core@10.7.2
-  unplugin-icons: 0.18.4_@vue+compiler-sfc@3.4.15
+  unplugin-icons: 0.18.5_@vue+compiler-sfc@3.4.15
   unplugin-vue-components: 0.26.0_vue@3.4.15
   vite: 5.0.12_rftlmeddbuiz7fywhlygic6vae
   vite-plugin-windicss: 1.9.3_vite@5.0.12
@@ -640,8 +640,8 @@ packages:
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
     dev: true
 
-  /@iconify/utils/2.1.21:
-    resolution: {integrity: sha512-JB4KSorNlNFC2dhi6Qu6aQw6uysTByOZEokMPqxbqqb+tpCOWkb8z5SIWwnmGCMu6dQqXoL7OYp73XitWpDTbQ==}
+  /@iconify/utils/2.1.22:
+    resolution: {integrity: sha512-6UHVzTVXmvO8uS6xFF+L/QTSpTzA/JZxtgU+KYGFyDYMEObZ1bu/b5l+zNJjHy+0leWjHI+C0pXlzGvv3oXZMA==}
     dependencies:
       '@antfu/install-pkg': 0.1.1
       '@antfu/utils': 0.7.7
@@ -4734,7 +4734,7 @@ packages:
     resolution: {integrity: sha512-ok6z3qlYyCDS4ZEU27HaU6x/xZa9Whf8jD4ptH5UZTQYZVYeb9bnZ3ojVhiJNLiXK1Hfc0GNbLXcmZ5plLDDBg==}
     engines: {node: '>=14'}
     dependencies:
-      mlly: 1.4.2
+      mlly: 1.5.0
       pkg-types: 1.0.3
     dev: true
 
@@ -5585,7 +5585,7 @@ packages:
     resolution: {integrity: sha512-nN7pYi0AQqJnoLPC9eHFQ8AcyaixBUOwvqc5TDnIKCMEE6I0y8P7OKA7fPexsXGCGxQDl/cmrLAp26LhcwxZ4A==}
     dependencies:
       jsonc-parser: 3.2.0
-      mlly: 1.4.2
+      mlly: 1.5.0
       pathe: 1.1.2
     dev: true
 
@@ -6926,8 +6926,8 @@ packages:
       - rollup
     dev: true
 
-  /unplugin-icons/0.18.4_@vue+compiler-sfc@3.4.15:
-    resolution: {integrity: sha512-89J3zPTfJLJIyka8SMk5rkwiykzAlnKYNUC58gbNbfmuA7aE3Vbh5BjDCeRS8UkTXLR72cs+ywCF/9EE9c/SoQ==}
+  /unplugin-icons/0.18.5_@vue+compiler-sfc@3.4.15:
+    resolution: {integrity: sha512-KVNAohXbZ7tVcG1C3p6QaC7wU9Qrj7etv4XvsMMJAxr5LccQZ+Iuv5LOIv/7GtqXaGN1BuFCqRO1ErsHEgEXdQ==}
     peerDependencies:
       '@svgr/core': '>=7.0.0'
       '@svgx/core': ^1.0.1
@@ -6948,7 +6948,7 @@ packages:
     dependencies:
       '@antfu/install-pkg': 0.3.1
       '@antfu/utils': 0.7.7
-      '@iconify/utils': 2.1.21
+      '@iconify/utils': 2.1.22
       '@vue/compiler-sfc': 3.4.15
       debug: 4.3.4
       kolorist: 1.8.0
