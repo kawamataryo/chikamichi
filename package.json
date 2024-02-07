@@ -44,7 +44,7 @@
     "@vitejs/plugin-vue": "5.0.3",
     "@vue/compiler-sfc": "3.4.15",
     "@vueuse/core": "10.7.2",
-    "chokidar": "3.5.3",
+    "chokidar": "3.6.0",
     "cross-env": "7.0.3",
     "crx": "5.0.1",
     "cypress": "13.6.4",
