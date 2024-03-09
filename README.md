@@ -44,6 +44,8 @@ Please install from:
 | `Ctrl + Enter`                        | Open the selected url in new tab |
 | `Ctrl + f`                            | Add favorite |
 | `Ctrl + c`                            | Copy URL to the clipboard |
+| `Shift + Ctrl + n`                    | Move the selected favorite item down    |
+| `Shift + Ctrl + p`                    | Move the selected favorite item up      |
 
 ### Search commands
 
