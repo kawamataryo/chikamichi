@@ -14,7 +14,7 @@ specifiers:
   '@vitejs/plugin-vue': 5.0.3
   '@vue/compiler-sfc': 3.4.15
   '@vueuse/core': 10.7.2
-  chokidar: 3.5.3
+  chokidar: 3.6.0
   cross-env: 7.0.3
   crx: 5.0.1
   cypress: 13.6.4
@@ -67,7 +67,7 @@ devDependencies:
   '@vitejs/plugin-vue': 5.0.3_vite@5.0.13+vue@3.4.15
   '@vue/compiler-sfc': 3.4.15
   '@vueuse/core': 10.7.2_vue@3.4.15
-  chokidar: 3.5.3
+  chokidar: 3.6.0
   cross-env: 7.0.3
   crx: 5.0.1
   cypress: 13.6.4
@@ -2093,8 +2093,8 @@ packages:
       parse5-htmlparser2-tree-adapter: 7.0.0
     dev: true
 
-  /chokidar/3.5.3:
-    resolution: {integrity: sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw==}
+  /chokidar/3.6.0:
+    resolution: {integrity: sha512-7VT13fmjotKpGipCW9JEQAusEPE+Ei8nl6/g4FBAmIm0GOOLMua9NDDo/DWp0ZAxCr3cPq5ZpBqmPAQgDda2Pw==}
     engines: {node: '>= 8.10.0'}
     dependencies:
       anymatch: 3.1.2
@@ -5231,7 +5231,7 @@ packages:
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
-      chokidar: 3.5.3
+      chokidar: 3.6.0
       debug: 4.3.4_supports-color@5.5.0
       ignore-by-default: 1.0.1
       minimatch: 3.1.2
@@ -6802,7 +6802,7 @@ packages:
     dependencies:
       bundle-require: 4.0.1_esbuild@0.19.10
       cac: 6.7.12
-      chokidar: 3.5.3
+      chokidar: 3.6.0
       debug: 4.3.4
       esbuild: 0.19.10
       execa: 5.1.1
@@ -7035,7 +7035,7 @@ packages:
     dependencies:
       '@antfu/utils': 0.7.6
       '@rollup/pluginutils': 5.0.5
-      chokidar: 3.5.3
+      chokidar: 3.6.0
       debug: 4.3.4
       fast-glob: 3.3.2
       local-pkg: 0.4.3
@@ -7053,7 +7053,7 @@ packages:
     resolution: {integrity: sha512-0QkvG13z6RD+1L1FoibQqnvTwVBXvS4XSPwAyinVgoOCl2jAgwzdUKmEj05o4Lt8xwQI85Hb6mSyYkcAGwZPew==}
     dependencies:
       acorn: 8.11.3
-      chokidar: 3.5.3
+      chokidar: 3.6.0
       webpack-sources: 3.2.3
       webpack-virtual-modules: 0.6.1
     dev: true
@@ -7062,7 +7062,7 @@ packages:
     resolution: {integrity: sha512-BfJEpWBu3aE/AyHx8VaNE/WgouoQxgH9baAiH82JjX8cqVyi3uJQstqwD5J+SZxIK326SZIhsSZlALXVBCknTQ==}
     dependencies:
       acorn: 8.11.3
-      chokidar: 3.5.3
+      chokidar: 3.6.0
       webpack-sources: 3.2.3
       webpack-virtual-modules: 0.6.1
     dev: true
