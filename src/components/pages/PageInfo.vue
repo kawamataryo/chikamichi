@@ -17,11 +17,11 @@ const openNewTab = async (url: string) => {
 
 <template>
   <div
-    class="h-full w-full flex flex-col p-20px overflow-hidden dark:text-gray-200 grid grid-flow-col grid-flow-row gap-4"
+    class="h-full w-full flex flex-col p-20px overflow-hidden dark:text-gray-200 grid grid-flow-col grid-cols-5 grid-rows-10 gap-4"
     data-cy="page-info"
   >
     <div
-      class="border-gray-400 border-1px rounded-5px p-20px col-span-2 col-start-1"
+      class="border-gray-400 border-1px rounded-5px p-20px row-span-5 col-span-2 col-start-1"
     >
       <h1 class="text-lg">🔍 Search commands</h1>
       <ul class="text-sm mt-10px text-xs">
@@ -37,7 +37,25 @@ const openNewTab = async (url: string) => {
       </ul>
     </div>
     <div
-      class="border-gray-400 border-1px rounded-5px p-20px col-span-2 col-start-1"
+      class="border-gray-400 border-1px rounded-5px p-20px row-span-5 col-span-2 col-start-1"
+    >
+      <h1 class="text-lg">📮 Feedback & Support</h1>
+      <p class="mt-10px text-xs">
+        If you have any questions, feature requests, or bug reports, please let
+        us know.
+      </p>
+      <button
+        type="button"
+        class="bg-blue-100 dark:bg-blue-800 dark:text-white font-bold py-2 px-4 rounded mt-15px"
+        @click="
+          openNewTab('https://github.com/kawamataryo/chikamichi/issues/new')
+        "
+      >
+        Open GitHub issue
+      </button>
+    </div>
+    <div
+      class="border-gray-400 border-1px rounded-5px p-20px row-span-7 col-span-3 col-start-3"
     >
       <h1 class="text-lg">⌨ Shortcut</h1>
       <ul class="text-sm mt-10px text-xs">
@@ -65,28 +83,18 @@ const openNewTab = async (url: string) => {
         <li class="mt-10px">
           ・<span class="info-key-text mr-5px">Ctrl + c</span>Copy URL
         </li>
+        <li class="mt-10px">
+          ・<span class="info-key-text mr-5px">Shift + Ctrl + n</span>Move
+          selected favorite item down
+        </li>
+        <li class="mt-10px">
+          ・<span class="info-key-text mr-5px">Shift + Ctrl + p</span>Move
+          selected favorite item up
+        </li>
       </ul>
     </div>
     <div
-      class="border-gray-400 border-1px rounded-5px row-span-1 col-start-3 col-span-1 p-20px"
-    >
-      <h1 class="text-lg">📮 Feedback & Support</h1>
-      <p class="mt-10px text-xs">
-        If you have any questions, feature requests, or bug reports, please let
-        us know.
-      </p>
-      <button
-        type="button"
-        class="bg-blue-100 dark:bg-blue-800 dark:text-white font-bold py-2 px-4 rounded mt-15px"
-        @click="
-          openNewTab('https://github.com/kawamataryo/chikamichi/issues/new')
-        "
-      >
-        Open GitHub issue
-      </button>
-    </div>
-    <div
-      class="row-span-1 col-start-3 col-span-1 flex items-center justify-center flex-col opacity-40"
+      class="flex items-center justify-center flex-col opacity-40 row-span-3 col-span-3 col-start-3"
     >
       <Logo width="70" height="70" class="dark:hidden" />
       <Logo width="70" height="70" class="hidden dark:block" dark />
