@@ -23,7 +23,7 @@ specifiers:
   esno: 4.0.0
   fs-extra: 11.2.0
   fuse.js: 7.0.0
-  husky: 9.0.10
+  husky: 9.1.6
   kolorist: 1.8.0
   lint-staged: 15.2.2
   lodash.debounce: 4.0.8
@@ -76,7 +76,7 @@ devDependencies:
   esno: 4.0.0
   fs-extra: 11.2.0
   fuse.js: 7.0.0
-  husky: 9.0.10
+  husky: 9.1.6
   kolorist: 1.8.0
   lint-staged: 15.2.2
   lodash.debounce: 4.0.8
@@ -4192,8 +4192,8 @@ packages:
     engines: {node: '>=16.17.0'}
     dev: true
 
-  /husky/9.0.10:
-    resolution: {integrity: sha512-TQGNknoiy6bURzIO77pPRu+XHi6zI7T93rX+QnJsoYFf3xdjKOur+IlfqzJGMHIK/wXrLg+GsvMs8Op7vI2jVA==}
+  /husky/9.1.6:
+    resolution: {integrity: sha512-sqbjZKK7kf44hfdE94EoX8MZNk0n7HeW37O4YrVGCF4wzgQjp+akPAkfUK5LZ6KuR/6sqeAVuXHji+RzQgOn5A==}
     engines: {node: '>=18'}
     hasBin: true
     dev: true
