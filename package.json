@@ -59,7 +59,7 @@
     "lodash.debounce": "4.0.8",
     "npm-run-all2": "6.1.2",
     "prettier": "3.2.5",
-    "rimraf": "5.0.5",
+    "rimraf": "5.0.10",
     "serve": "14.2.1",
     "terser": "5.27.0",
     "typescript": "5.3.3",
