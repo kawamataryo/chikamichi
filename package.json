@@ -46,7 +46,7 @@
     "autoprefixer": "^10.5.0",
     "fuse.js": "7.3.0",
     "lefthook": "2.1.6",
-    "lint-staged": "17.0.4",
+    "lint-staged": "17.0.5",
     "oxfmt": "0.50.0",
     "oxlint": "1.65.0",
     "postcss": "^8.5.14",
