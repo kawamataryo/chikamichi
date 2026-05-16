@@ -35,7 +35,7 @@
     "tailwind-merge": "^3.6.0"
   },
   "devDependencies": {
-    "@iconify/json": "2.2.473",
+    "@iconify/json": "2.2.474",
     "@ngneat/falso": "8.0.2",
     "@playwright/test": "^1.60.0",
     "@types/chrome": "0.1.42",
