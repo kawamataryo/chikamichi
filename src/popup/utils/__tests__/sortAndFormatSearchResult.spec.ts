@@ -161,11 +161,58 @@ describe("sortSearchResult", () => {
       },
     ] as any;
 
-    const result = sortAndFormatSearchResult(target, new Set(), {
-      activeHostname: null,
-      recentHostnames: new Set<string>(["recent.example.com"]),
+    const result = sortAndFormatSearchResult(target, {
+      favoriteLookup: new Set(),
+      recentContext: {
+        activeHostname: null,
+        recentHostnames: new Set<string>(["recent.example.com"]),
+      },
     });
 
     expect(result[0]?.url).toBe("https://recent.example.com/page");
+  });
+
+  it("boosts results opened through Chikamichi recently", () => {
+    const now = new Date("2026-05-17T00:00:00.000Z").getTime();
+    const target = [
+      {
+        item: {
+          ...baseSearchResult,
+          title: "plain-result",
+          url: "https://plain.example.com/page",
+        },
+        matches: [{ indices: [[0, 3]], key: "title", value: "plain-result" }],
+        score: 0.12,
+      },
+      {
+        item: {
+          ...baseSearchResult,
+          title: "learned-result",
+          url: "https://learned.example.com/page",
+        },
+        matches: [{ indices: [[0, 3]], key: "title", value: "learned-result" }],
+        score: 0.12,
+      },
+    ] as any;
+
+    const result = sortAndFormatSearchResult(target, {
+      favoriteLookup: new Set(),
+      now,
+      openStatsLookup: new Map([
+        [
+          "https://learned.example.com/page",
+          {
+            lastOpenedAt: now,
+            openCount: 3,
+          },
+        ],
+      ]),
+      recentContext: {
+        activeHostname: null,
+        recentHostnames: new Set<string>(),
+      },
+    });
+
+    expect(result[0]?.url).toBe("https://learned.example.com/page");
   });
 });

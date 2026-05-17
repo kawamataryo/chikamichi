@@ -1,4 +1,6 @@
 pre-commit:
   commands:
+    typecheck:
+      run: pnpm typecheck
     lint-staged:
       run: pnpm lint-staged

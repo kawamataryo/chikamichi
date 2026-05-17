@@ -1,0 +1,12 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema.json",
+  "entry": [
+    "src/popup.tsx",
+    "src/background/index.ts",
+    "src/background/messages/**/*.ts",
+    "scripts/*.mjs"
+  ],
+  "ignore": ["src/components/ui/**"],
+  "ignoreDependencies": ["@iconify/json", "shadcn"],
+  "project": ["src/**/*.{ts,tsx}", "tests/**/*.ts", "scripts/**/*.mjs", "*.config.{js,ts}"]
+}

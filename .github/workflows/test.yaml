@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
@@ -36,6 +36,12 @@ jobs:
 
       - name: Check lint
         run: pnpm lint:check
+
+      - name: Check types
+        run: pnpm typecheck
+
+      - name: Check unused files and dependencies
+        run: pnpm knip
 
       - name: Run unit tests
         run: pnpm test:ci

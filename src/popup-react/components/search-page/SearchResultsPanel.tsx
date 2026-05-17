@@ -78,12 +78,12 @@ export function SearchResultsPanel({
 
       return (
         <div
-          className="flex min-h-[180px] items-center justify-center rounded-[16px] border border-dashed border-search-border/[0.1] bg-background/[0.16] px-5 text-center dark:border-search-border/[0.2]"
+          className="flex min-h-[180px] items-center justify-center rounded-panel border border-dashed border-search-border/[0.1] bg-background/[0.16] px-5 text-center dark:border-search-border/[0.2]"
           data-cy="action-result-empty"
         >
           <div className="space-y-1">
-            <h2 className="text-base font-semibold">{t("actionModeTitle")}</h2>
-            <p className="text-[13px] text-muted-foreground">{t("actionModeEmpty")}</p>
+            <h2 className="text-body font-semibold">{t("actionModeTitle")}</h2>
+            <p className="text-body-sm text-muted-foreground">{t("actionModeEmpty")}</p>
           </div>
         </div>
       );
@@ -118,7 +118,7 @@ export function SearchResultsPanel({
         <button
           aria-selected={browserSearchSelected}
           className={cn(
-            "grid w-full grid-cols-[18px_minmax(0,1fr)_auto_auto] items-center gap-2.5 rounded-[14px] px-3 py-2 text-left",
+            "grid w-full grid-cols-[18px_minmax(0,1fr)_auto_auto] items-center gap-2.5 rounded-row px-3 py-2 text-left",
             browserSearchSelected ? "interactive-row-selected" : "interactive-row",
           )}
           data-cy="browser-search-btn"
@@ -135,15 +135,15 @@ export function SearchResultsPanel({
             width="18"
           />
           <div className="min-w-0">
-            <div className="truncate text-[14px] font-medium leading-[1.25] text-foreground">
+            <div className="text-body truncate font-medium text-foreground">
               {t("browserSearch", extractedSearchWord)}
             </div>
-            <div className="truncate text-[11px] leading-[1.25] text-foreground/[0.56] dark:text-muted-foreground">
+            <div className="text-caption truncate text-foreground/[0.56] dark:text-muted-foreground">
               {searchEngine.name || t("browserSearchEngine")}
             </div>
           </div>
           <Badge variant="secondary">{t("browserSearchEngine")}</Badge>
-          <div className="inline-flex size-7 items-center justify-center rounded-lg border border-transparent bg-slate-100/[0.88] text-foreground/[0.52] dark:bg-background/[0.52] dark:text-muted-foreground">
+          <div className="inline-flex size-7 items-center justify-center rounded-lg border border-transparent bg-control-surface/[0.88] text-foreground/[0.52] dark:bg-control-surface/[0.52] dark:text-muted-foreground">
             <ExternalLink className="size-3.5" />
           </div>
         </button>
@@ -152,7 +152,7 @@ export function SearchResultsPanel({
 
     return (
       <div
-        className="flex min-h-[180px] items-center justify-center rounded-[16px] border border-dashed border-search-border/[0.1] bg-background/[0.16] px-5 text-center dark:border-search-border/[0.2]"
+        className="flex min-h-[180px] items-center justify-center rounded-panel border border-dashed border-search-border/[0.1] bg-background/[0.16] px-5 text-center dark:border-search-border/[0.2]"
         data-cy="search-result-empty"
       >
         <div className="space-y-2">
@@ -160,8 +160,8 @@ export function SearchResultsPanel({
             <Search className="size-4" />
           </div>
           <div className="space-y-1">
-            <h2 className="text-base font-semibold">{t("searchEmptyTitle")}</h2>
-            <p className="text-[13px] text-foreground/[0.56] dark:text-muted-foreground">
+            <h2 className="text-body font-semibold">{t("searchEmptyTitle")}</h2>
+            <p className="text-body-sm text-foreground/[0.56] dark:text-muted-foreground">
               {t("searchEmptyBody")}
             </p>
           </div>
@@ -172,10 +172,10 @@ export function SearchResultsPanel({
 
   return (
     <div
-      className="relative h-[367px] shrink-0 overflow-y-auto overflow-x-hidden rounded-[18px] border border-search-border/[0.24] bg-slate-100/[0.72] p-1.5 dark:border-search-border/[0.28] dark:bg-card/[0.12]"
+      className="search-surface relative h-[375px] shrink-0 overflow-y-auto overflow-x-hidden p-1.5"
       data-cy="search-result-wrapper"
     >
-      <div className="space-y-1.5 pb-1">{renderResults()}</div>
+      <div>{renderResults()}</div>
     </div>
   );
 }

@@ -81,16 +81,23 @@ export async function setupExtensionEnvironment(
   {
     bookmarks,
     histories,
+    storage,
     tabs,
   }: {
     bookmarks: Bookmarks.BookmarkTreeNode[];
     histories: History.HistoryItem[];
+    storage?: StorageState;
     tabs: Partial<Tabs.Tab>[];
   },
 ) {
   await page.addInitScript(
-    ({ bookmarks: initialBookmarks, histories: initialHistories, tabs: initialTabs }) => {
-      const storageState: StorageState = {};
+    ({
+      bookmarks: initialBookmarks,
+      histories: initialHistories,
+      storage: initialStorage,
+      tabs: initialTabs,
+    }) => {
+      const storageState: StorageState = { ...initialStorage };
       const storageListeners: StorageListener[] = [];
       const faviconUrl = (url: string) => {
         const hostname = new URL(url).hostname.replace(/^www\./u, "");
@@ -430,7 +437,7 @@ export async function setupExtensionEnvironment(
         mockCalls.close.push([]);
       };
     },
-    { bookmarks, histories, tabs },
+    { bookmarks, histories, storage, tabs },
   );
 }
 
@@ -452,4 +459,15 @@ export async function getLastMockCall<T = unknown>(
 export async function getLastRuntimeMessage(page: Page): Promise<unknown> {
   const lastCall = await getLastMockCall<MockCallArgs>(page, "runtimeSendMessage");
   return lastCall?.[1];
+}
+
+export function getMockStorageValue<T = unknown>(page: Page, key: string): Promise<T> {
+  return page.evaluate(async (storageKey) => {
+    const mockWindow = window as MockWindow;
+    const result = await mockWindow.browser?.storage.local.get(storageKey);
+    if (!result) {
+      return undefined as T;
+    }
+    return result[storageKey] as T;
+  }, key);
 }

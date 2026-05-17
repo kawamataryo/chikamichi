@@ -51,9 +51,9 @@ function App() {
   }, [settings.theme]);
 
   return (
-    <main className="h-[500px] w-[760px] overflow-hidden rounded-[24px] bg-[radial-gradient(circle_at_top,rgba(86,126,255,0.14),transparent_40%),linear-gradient(180deg,rgba(252,253,255,0.98),rgba(239,244,251,0.98))] p-1 shadow-[0_24px_60px_rgba(85,102,140,0.18)] dark:bg-[radial-gradient(circle_at_top,rgba(74,138,255,0.14),transparent_38%),linear-gradient(180deg,rgba(17,24,39,0.96),rgba(16,23,38,0.98))] dark:shadow-[0_24px_80px_rgba(3,8,20,0.52)]">
+    <main className="popup-window h-[500px] w-[760px] overflow-hidden p-1">
       <div className="grid h-full grid-cols-[minmax(0,1fr)_62px] gap-0">
-        <div className="flex h-full min-w-0 flex-col overflow-hidden rounded-[20px] bg-white/58 p-3.5 dark:bg-background/10">
+        <div className="popup-content flex h-full min-w-0 flex-col overflow-hidden p-2.5">
           {currentPage === PAGES.SEARCH ? (
             <SearchPage onUpdateSettings={saveSettings} settings={settings} />
           ) : null}

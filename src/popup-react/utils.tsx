@@ -20,7 +20,7 @@ export function reportError(error: unknown) {
   );
 }
 
-export function toSearchResult(item: SearchItem): SearchResult {
+function toSearchResult(item: SearchItem): SearchResult {
   return {
     ...item,
     isFavorite: false,
@@ -29,7 +29,7 @@ export function toSearchResult(item: SearchItem): SearchResult {
   };
 }
 
-export function toFavoriteResult(item: AppSettings["favoriteItems"][number]): SearchResult {
+function toFavoriteResult(item: AppSettings["favoriteItems"][number]): SearchResult {
   return {
     ...item,
     isFavorite: true,

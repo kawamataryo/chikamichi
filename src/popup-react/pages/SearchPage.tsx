@@ -2,7 +2,13 @@ import { sendToBackground } from "@plasmohq/messaging";
 import { useCallback, useDeferredValue, useEffect, useMemo, useRef, useState } from "react";
 import { flushSync } from "react-dom";
 import browser, { type Search } from "webextension-polyfill";
-import { type AppSettings, DEFAULT_SETTINGS } from "~/core/storage";
+import {
+  type AppSettings,
+  DEFAULT_SETTINGS,
+  type OpenStatsRecord,
+  getOpenStats,
+  recordOpenedUrl,
+} from "~/core/storage";
 import {
   SEARCH_ICON_DATA_URL_DARK,
   SEARCH_ICON_DATA_URL_LIGHT,
@@ -68,6 +74,7 @@ export function SearchPage({
   const [collections, setCollections] = useState<SearchCollections>(EMPTY_COLLECTIONS);
   const [favoriteItems, setFavoriteItems] = useState(settings.favoriteItems);
   const [loadingCollections, setLoadingCollections] = useState(true);
+  const [openStats, setOpenStats] = useState<OpenStatsRecord[]>([]);
   const [searchWord, setSearchWord] = useState(settings.defaultSearchPrefix);
   const [selectedNumber, setSelectedNumber] = useState(0);
   const [selectedKey, setSelectedKey] = useState("");
@@ -123,6 +130,19 @@ export function SearchPage({
   const favoriteLookup = useMemo(
     () => new Set(favoriteItems.map((item) => `${item.url}::${item.title}`)),
     [favoriteItems],
+  );
+  const openStatsLookup = useMemo(
+    () =>
+      new Map(
+        openStats.map((item) => [
+          item.url,
+          {
+            lastOpenedAt: item.lastOpenedAt,
+            openCount: item.openCount,
+          },
+        ]),
+      ),
+    [openStats],
   );
   const recentContext = useMemo(() => {
     const activeHostname = getHostname(activeTab?.url);
@@ -197,6 +217,8 @@ export function SearchPage({
       .finally(() => {
         setLoadingCollections(false);
       });
+
+    getOpenStats().then(setOpenStats).catch(reportError);
 
     inputRef.current?.focus();
   }, [loadActiveTab]);
@@ -282,8 +304,11 @@ export function SearchPage({
       targetFuse.search(extractedSearchWord, {
         limit: SEARCH_RESULT_LIMIT,
       }),
-      favoriteLookup,
-      recentContext,
+      {
+        favoriteLookup,
+        openStatsLookup,
+        recentContext,
+      },
     );
   }, [
     activeTab,
@@ -293,6 +318,7 @@ export function SearchPage({
     favoriteItems,
     favoriteLookup,
     fuseIndexes,
+    openStatsLookup,
     recentContext,
   ]);
 
@@ -458,6 +484,15 @@ export function SearchPage({
     });
   };
 
+  const updateOpenStats = useCallback(async (url: string) => {
+    try {
+      await recordOpenedUrl(url);
+      setOpenStats(await getOpenStats());
+    } catch (error) {
+      reportError(error);
+    }
+  }, []);
+
   const openResult = useCallback(
     async (item: SearchResult, inNewTab: boolean) => {
       if (item.tabId !== undefined) {
@@ -467,6 +502,7 @@ export function SearchPage({
           },
           name: "change-current-tab",
         });
+        await updateOpenStats(item.url);
         return;
       }
 
@@ -479,8 +515,9 @@ export function SearchPage({
         },
         name: messageName,
       });
+      await updateOpenStats(item.url);
     },
-    [settings.openLinkInCurrentTab],
+    [settings.openLinkInCurrentTab, updateOpenStats],
   );
 
   const toggleFavorite = useCallback(
@@ -729,7 +766,11 @@ export function SearchPage({
             toggleFavoriteItem={toggleFavoriteItem}
           />
         </div>
-        <SearchFooter badgeText={badgeText} badgeVisible={badgeVisible} />
+        <SearchFooter
+          badgeText={badgeText}
+          badgeVisible={badgeVisible}
+          openLinkInCurrentTab={settings.openLinkInCurrentTab}
+        />
       </div>
     </section>
   );

@@ -5,6 +5,7 @@ import {
   getLastMockCall,
   getLastRuntimeMessage,
   getMockCalls,
+  getMockStorageValue,
   setupExtensionEnvironment,
 } from "./support";
 
@@ -22,7 +23,11 @@ async function pressMany(
 }
 
 test.describe("popup", () => {
-  test.beforeEach(async ({ page }) => {
+  test.beforeEach(async ({ page }, testInfo) => {
+    if (testInfo.title === "boosts previously opened results in search ranking") {
+      return;
+    }
+
     const tabs = [...Array(16)].map((_, i) =>
       generateTab({
         id: i + 1,
@@ -151,6 +156,60 @@ test.describe("popup", () => {
 
     const runtimeSendMessage = await getMockCalls(page, "runtimeSendMessage");
     expect(runtimeSendMessage.length).toBeGreaterThan(0);
+  });
+
+  test("records opened results for learned ranking", async ({ page }) => {
+    const input = page.locator("[data-cy=search-input]");
+    await input.fill("/h history-item-0");
+    await expect(page.locator("[data-cy=search-result-0]")).toContainText("history-item-0");
+    await input.press("Enter");
+
+    await expect
+      .poll(async () => {
+        const value = await getMockStorageValue<string | Array<{ openCount: number; url: string }>>(
+          page,
+          "chikamichi-open-stats",
+        );
+        return typeof value === "string" ? JSON.parse(value) : value;
+      })
+      .toEqual([
+        expect.objectContaining({
+          openCount: 1,
+          url: "https://history-item.com/0",
+        }),
+      ]);
+  });
+
+  test("boosts previously opened results in search ranking", async ({ page }) => {
+    await setupExtensionEnvironment(page, {
+      bookmarks: [],
+      histories: [14, 15].map((i) =>
+        generateHistory({
+          lastVisitTime: 2000 + i,
+          title: `shared-history-${i}`,
+          url: `https://history-item.com/${i}`,
+        }),
+      ),
+      storage: {
+        "chikamichi-open-stats": JSON.stringify([
+          {
+            lastOpenedAt: Date.now(),
+            openCount: 10,
+            url: "https://history-item.com/14",
+          },
+        ]),
+      },
+      tabs: [],
+    });
+    await page.goto("/popup.html");
+    await expect(page.locator("[data-cy=search-input]")).toBeVisible();
+
+    const input = page.locator("[data-cy=search-input]");
+    await input.fill("/h shared-history");
+
+    await expect(page.locator("[data-cy=search-result-0]")).toContainText(
+      "https://history-item.com/14",
+    );
   });
 
   test("keeps keyboard selection stable while scrolling long results", async ({ page }) => {

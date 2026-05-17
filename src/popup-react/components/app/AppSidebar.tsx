@@ -11,7 +11,7 @@ const NAVIGATION_PAGES = [PAGES.SEARCH, PAGES.SETTING, PAGES.INFO] as const;
 
 export function AppSidebar({ currentPage, setCurrentPage }: AppSidebarProps) {
   return (
-    <aside className="flex h-full min-h-0 flex-col items-center bg-white/48 p-2.5 dark:bg-background/10">
+    <aside className="flex h-full min-h-0 flex-col items-center bg-panel-surface/[0.48] p-2.5 dark:bg-panel-surface/[0.1]">
       <nav aria-label="Navigation" className="space-y-2.5">
         {NAVIGATION_PAGES.map((page) => (
           <PageMenuButton

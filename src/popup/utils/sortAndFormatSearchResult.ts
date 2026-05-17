@@ -1,4 +1,5 @@
 import type { FuseResult } from "fuse.js";
+import { SEARCH_RANKING_CONFIG } from "~/constants";
 import { getMatchedRegExp } from "./getMatchedRegExp";
 
 type RecentContextBoost = {
@@ -6,7 +7,14 @@ type RecentContextBoost = {
   recentHostnames: Set<string>;
 };
 
-const RECENT_HOSTNAME_BOOST = 0.025;
+export type OpenStatsLookup = Map<string, { lastOpenedAt: number; openCount: number }>;
+
+type SortAndFormatSearchResultOptions = {
+  favoriteLookup: Set<string>;
+  now?: number;
+  openStatsLookup?: OpenStatsLookup;
+  recentContext?: RecentContextBoost;
+};
 
 function getHostname(value: string) {
   try {
@@ -24,14 +32,37 @@ function getRecentContextBoostScore(item: SearchItem, recentContext: RecentConte
   }
 
   if (recentContext.recentHostnames.has(hostname)) {
-    return RECENT_HOSTNAME_BOOST;
+    return SEARCH_RANKING_CONFIG.recentHostnameBoost;
   }
 
   return 0;
 }
 
+function getOpenStatsBoostScore(
+  item: SearchItem,
+  openStatsLookup: OpenStatsLookup,
+  now = Date.now(),
+) {
+  const stats = openStatsLookup.get(item.url);
+
+  if (!stats) {
+    return 0;
+  }
+
+  const frequencyBoost = Math.min(
+    Math.log2(stats.openCount + 1) * SEARCH_RANKING_CONFIG.openStatsBoost.frequencyMultiplier,
+    SEARCH_RANKING_CONFIG.openStatsBoost.frequencyMax,
+  );
+  const age = Math.max(0, now - stats.lastOpenedAt);
+  const recencyBoost =
+    Math.max(0, 1 - age / SEARCH_RANKING_CONFIG.openStatsBoost.recencyWindowMs) *
+    SEARCH_RANKING_CONFIG.openStatsBoost.recencyMax;
+
+  return Math.min(SEARCH_RANKING_CONFIG.openStatsBoost.maxTotal, frequencyBoost + recencyBoost);
+}
+
 export function sortSearchResult(searchResult: SearchResult[]) {
-  const roundingFunc = (num: number) => Math.round(num * 100);
+  const roundingFunc = (num: number) => Math.round(num * SEARCH_RANKING_CONFIG.scoreRoundingFactor);
 
   // Group by score
   const mapKeys: number[] = [];
@@ -70,11 +101,15 @@ export function sortSearchResult(searchResult: SearchResult[]) {
 
 export function sortAndFormatSearchResult(
   searchResult: FuseResult<SearchItem>[],
-  favoriteLookup: Set<string>,
-  recentContext: RecentContextBoost = {
-    activeHostname: null,
-    recentHostnames: new Set<string>(),
-  },
+  {
+    favoriteLookup,
+    now = Date.now(),
+    openStatsLookup = new Map(),
+    recentContext = {
+      activeHostname: null,
+      recentHostnames: new Set<string>(),
+    },
+  }: SortAndFormatSearchResultOptions,
 ) {
   return sortSearchResult(
     searchResult.map((result) => ({
@@ -84,10 +119,10 @@ export function sortAndFormatSearchResult(
         result!.matches![0].value!,
         result!.matches![0].indices as [number, number][],
       ),
-      score: Math.max(
-        0,
-        (result.score ?? 0) - getRecentContextBoostScore(result.item, recentContext),
-      ),
+      score:
+        (result.score ?? 0) -
+        getRecentContextBoostScore(result.item, recentContext) -
+        getOpenStatsBoostScore(result.item, openStatsLookup, now),
     })),
   );
 }

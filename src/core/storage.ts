@@ -1,5 +1,5 @@
 import { Storage } from "@plasmohq/storage";
-import { THEME } from "~/constants";
+import { OPEN_STATS_CONFIG, THEME } from "~/constants";
 
 export interface FavoriteItemRecord {
   faviconUrl: string;
@@ -14,6 +14,12 @@ export interface AppSettings {
   favoriteItems: FavoriteItemRecord[];
   openLinkInCurrentTab: boolean;
   theme: ValueOf<typeof THEME>;
+}
+
+export interface OpenStatsRecord {
+  lastOpenedAt: number;
+  openCount: number;
+  url: string;
 }
 
 const STORAGE_KEYS = {
@@ -47,6 +53,54 @@ function parseFavoriteItems(value: unknown): FavoriteItemRecord[] {
     }
   }
   return [];
+}
+
+function parseOpenStats(value: unknown): OpenStatsRecord[] {
+  if (Array.isArray(value)) {
+    return value.filter(
+      (item): item is OpenStatsRecord =>
+        typeof item === "object" &&
+        item !== null &&
+        typeof (item as OpenStatsRecord).url === "string" &&
+        typeof (item as OpenStatsRecord).openCount === "number" &&
+        typeof (item as OpenStatsRecord).lastOpenedAt === "number",
+    );
+  }
+  if (typeof value === "string") {
+    try {
+      return parseOpenStats(JSON.parse(value));
+    } catch {
+      return [];
+    }
+  }
+  return [];
+}
+
+export async function getOpenStats(): Promise<OpenStatsRecord[]> {
+  return parseOpenStats(
+    await storage.get<OpenStatsRecord[] | string>(OPEN_STATS_CONFIG.storageKey),
+  );
+}
+
+export async function recordOpenedUrl(url: string, now = Date.now()) {
+  if (!url) {
+    return;
+  }
+
+  const stats = await getOpenStats();
+  const current = stats.find((item) => item.url === url);
+  const nextStats = [
+    {
+      lastOpenedAt: now,
+      openCount: (current?.openCount ?? 0) + 1,
+      url,
+    },
+    ...stats.filter((item) => item.url !== url),
+  ]
+    .sort((a, b) => b.lastOpenedAt - a.lastOpenedAt)
+    .slice(0, OPEN_STATS_CONFIG.limit);
+
+  await storage.set(OPEN_STATS_CONFIG.storageKey, nextStats);
 }
 
 export async function getSettings(): Promise<AppSettings> {

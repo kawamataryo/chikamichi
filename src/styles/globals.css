@@ -4,6 +4,12 @@
 
 :root {
   --radius: 18px;
+  --radius-window: 24px;
+  --radius-app: 20px;
+  --radius-surface: 16px;
+  --radius-panel: 16px;
+  --radius-row: 14px;
+  --radius-control: 12px;
   --background: 218 35% 97%;
   --foreground: 222 30% 18%;
   --card: 220 38% 99%;
@@ -29,6 +35,11 @@
   --input: 220 26% 84%;
   --ring: 221 71% 57%;
   --search-border: var(--border-product);
+  --search-surface: 0 0% 100%;
+  --search-surface-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55);
+  --panel-surface: 0 0% 100%;
+  --control-surface: 0 0% 100%;
+  --segmented-surface: 220 28% 93%;
 }
 
 .dark {
@@ -57,6 +68,11 @@
   --input: 223 20% 34%;
   --ring: 213 89% 76%;
   --search-border: var(--border-product);
+  --search-surface: var(--background);
+  --search-surface-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
+  --panel-surface: var(--background);
+  --control-surface: var(--background);
+  --segmented-surface: var(--background);
 }
 
 @layer base {
@@ -84,6 +100,30 @@
 @layer components {
   .interactive-row {
     @apply bg-transparent;
+  }
+
+  .search-surface {
+    @apply rounded-surface border border-search-border/[0.42] bg-search-surface/[0.78] shadow-[var(--search-surface-shadow)] dark:border-search-border/[0.32] dark:bg-search-surface/[0.68];
+  }
+
+  .panel-surface {
+    @apply rounded-panel border border-border-panel/[0.4] bg-panel-surface/[0.74] dark:border-border-panel/[0.24] dark:bg-panel-surface/[0.1];
+  }
+
+  .control-surface {
+    @apply rounded-control border border-border-control/[0.45] bg-control-surface/[0.86] dark:border-border-control/[0.26] dark:bg-control-surface/[0.72];
+  }
+
+  .segmented-control {
+    @apply rounded-control bg-segmented-surface/[0.82] p-0.5 dark:bg-segmented-surface/[0.18];
+  }
+
+  .popup-window {
+    @apply rounded-window bg-[radial-gradient(circle_at_top,rgba(86,126,255,0.14),transparent_40%),linear-gradient(180deg,rgba(252,253,255,0.98),rgba(239,244,251,0.98))] shadow-[0_24px_60px_rgba(85,102,140,0.18)] dark:bg-[radial-gradient(circle_at_top,rgba(74,138,255,0.14),transparent_38%),linear-gradient(180deg,rgba(17,24,39,0.96),rgba(16,23,38,0.98))] dark:shadow-[0_24px_80px_rgba(3,8,20,0.52)];
+  }
+
+  .popup-content {
+    @apply rounded-app bg-panel-surface/[0.58] dark:bg-background/[0.1];
   }
 
   .interactive-row-selected {
