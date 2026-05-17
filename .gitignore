@@ -10,6 +10,9 @@
 *.zip
 dist
 dist-ssr
+/.vitepress/
+/docs/.vitepress/cache/
+/docs/.vitepress/dist/
 extension/
 build/
 .plasmo/

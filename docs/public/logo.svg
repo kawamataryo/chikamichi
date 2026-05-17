@@ -1,0 +1,6 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">chikamichi logo</title>
+  <desc id="desc">Flat blue rounded square icon with a balanced white shortcut curve.</desc>
+  <rect x="4" y="4" width="120" height="120" rx="30" fill="#386DF2"/>
+  <path d="M25 91C42 87 54 79 61 67C68 55 74 42 89 38C93 37 97 37 100 37" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round"/>
+</svg>
