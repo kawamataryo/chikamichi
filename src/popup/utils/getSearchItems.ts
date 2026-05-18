@@ -10,15 +10,40 @@ function generateSearchTerm(...args: string[]): string {
   return args.filter((arg) => arg).join(" ");
 }
 
-function removeDeprecatedItem(searchItems: SearchItem[], key: "title" | "url") {
-  return Array.from(
-    searchItems
-      .reduce(
-        (map, currentItem) => map.set(currentItem[key], currentItem),
-        new Map<string, SearchItem>(),
-      )
-      .values(),
-  );
+const TRACKING_SEARCH_PARAMS = new Set(["fbclid", "gclid", "ref"]);
+
+function isTrackingSearchParam(paramName: string) {
+  return paramName.startsWith("utm_") || TRACKING_SEARCH_PARAMS.has(paramName);
+}
+
+function removeDuplicatedItems(
+  searchItems: SearchItem[],
+  getKey: (searchItem: SearchItem) => string,
+) {
+  const seenKeys = new Set<string>();
+  return searchItems.filter((searchItem) => {
+    const key = getKey(searchItem);
+    if (seenKeys.has(key)) {
+      return false;
+    }
+
+    seenKeys.add(key);
+    return true;
+  });
+}
+
+function comparableHistoryUrl(url: string) {
+  try {
+    const parsedUrl = new URL(url);
+    parsedUrl.hash = "";
+    Array.from(parsedUrl.searchParams.keys())
+      .filter(isTrackingSearchParam)
+      .forEach((paramName) => parsedUrl.searchParams.delete(paramName));
+    parsedUrl.pathname = parsedUrl.pathname.replace(/\/+$/u, "") || "/";
+    return parsedUrl.toString();
+  } catch {
+    return url;
+  }
 }
 
 export function convertToSearchItemsFromHistories(histories: History.HistoryItem[]): SearchItem[] {
@@ -41,8 +66,10 @@ export function convertToSearchItemsFromHistories(histories: History.HistoryItem
     }))
     .sort((a, b) => (b.lastVisitTime ?? 0) - (a.lastVisitTime ?? 0));
 
-  // Remove same title items
-  return removeDeprecatedItem(searchItems, "title");
+  return removeDuplicatedItems(
+    removeDuplicatedItems(searchItems, (searchItem) => comparableHistoryUrl(searchItem.url)),
+    (searchItem) => searchItem.title,
+  );
 }
 
 export function convertToSearchItemsFromBookmarks(

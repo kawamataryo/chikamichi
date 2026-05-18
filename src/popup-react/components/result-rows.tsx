@@ -1,11 +1,43 @@
-import { memo } from "react";
-import { ArrowUpRight, GripVertical, Pin, PinOff } from "lucide-react";
+import { memo, useEffect, useState } from "react";
+import { ArrowUpRight, Globe2, GripVertical, Pin, PinOff } from "lucide-react";
 import { Badge } from "~/components/ui/badge";
 import { cn } from "~/lib/utils";
 import { t } from "~/i18n";
 import { highlightText } from "~/popup-react/utils";
 import type { ActionItem } from "~/popup-react/types";
 import type { CommandItem } from "~/popup-react/command-items";
+
+function FaviconImage({ src }: { src: string }) {
+  const [failed, setFailed] = useState(false);
+
+  useEffect(() => {
+    setFailed(false);
+  }, [src]);
+
+  if (!src || failed) {
+    return (
+      <span
+        aria-hidden="true"
+        className="flex size-[18px] items-center justify-center rounded-sm border border-border-product bg-control-surface text-foreground/46 dark:bg-control-surface/70 dark:text-muted-foreground"
+      >
+        <Globe2 className="size-3" />
+      </span>
+    );
+  }
+
+  return (
+    <img
+      alt=""
+      className="size-[18px] rounded-sm"
+      height="18"
+      src={src}
+      width="18"
+      onError={() => {
+        setFailed(true);
+      }}
+    />
+  );
+}
 
 // oxlint-disable-next-line prefer-arrow-callback
 const SearchResultRow = memo(function SearchResultRow({
@@ -108,7 +140,7 @@ const SearchResultRow = memo(function SearchResultRow({
           <GripVertical className="size-3.5" />
         </button>
       ) : null}
-      <img alt="" className="size-[18px] rounded-sm" height="18" src={item.faviconUrl} width="18" />
+      <FaviconImage src={item.faviconUrl} />
       <div className="min-w-0">
         <div className="text-body truncate font-medium">
           {highlightText(item.title, item.matchedWord)}
@@ -291,13 +323,7 @@ export const CommandResultRow = memo(function CommandResultRow({
         handlePointerSelection(index, event.clientX, event.clientY);
       }}
     >
-      <img
-        alt=""
-        className="size-[18px] rounded-sm"
-        height="18"
-        src={commandItem.faviconUrl}
-        width="18"
-      />
+      <FaviconImage src={commandItem.faviconUrl} />
       <div className="min-w-0">
         <div className="text-body truncate font-medium text-foreground">{commandItem.title}</div>
         <div className="text-caption truncate text-foreground/[0.56] dark:text-muted-foreground">

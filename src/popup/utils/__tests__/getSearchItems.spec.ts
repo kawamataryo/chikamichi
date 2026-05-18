@@ -184,9 +184,9 @@ describe("convertToSearchItemsFromBookmarks", () => {
 
   it("remove same title histories", () => {
     const histories = [
-      generateHistory({ title: "titleA" }),
+      { ...generateHistory({ title: "titleA" }), lastVisitTime: 100 },
       generateHistory({ title: "titleB" }),
-      generateHistory({ title: "titleA" }),
+      { ...generateHistory({ title: "titleA" }), lastVisitTime: 200 },
     ];
 
     const searchItems = convertToSearchItemsFromHistories(histories);
@@ -203,10 +203,75 @@ describe("convertToSearchItemsFromBookmarks", () => {
     expect(searchItems).toContainEqual({
       faviconUrl: faviconUrl(histories[2].url!),
       folderName: "",
+      lastVisitTime: 200,
       searchTerm: `${histories[2].title!} ${histories[2].url}`,
       title: histories[2].title!,
       type: SEARCH_ITEM_TYPE.HISTORY,
       url: histories[2].url,
+    });
+  });
+
+  it("remove histories with the same comparable url", () => {
+    const histories = [
+      {
+        ...generateHistory({
+          title: "older docs",
+          url: "https://docs.example.com/path/?utm_source=newsletter#intro",
+        }),
+        lastVisitTime: 100,
+      },
+      {
+        ...generateHistory({
+          title: "latest docs",
+          url: "https://docs.example.com/path?ref=popup",
+        }),
+        lastVisitTime: 200,
+      },
+      {
+        ...generateHistory({
+          title: "other docs",
+          url: "https://docs.example.com/other",
+        }),
+        lastVisitTime: 150,
+      },
+      {
+        ...generateHistory({
+          title: "search docs",
+          url: "https://docs.example.com/path?q=api",
+        }),
+        lastVisitTime: 50,
+      },
+    ];
+
+    const searchItems = convertToSearchItemsFromHistories(histories);
+
+    expect(searchItems.length).toBe(3);
+    expect(searchItems).toContainEqual({
+      faviconUrl: faviconUrl(histories[1].url!),
+      folderName: "",
+      lastVisitTime: 200,
+      searchTerm: `${histories[1].title!} ${histories[1].url}`,
+      title: histories[1].title!,
+      type: SEARCH_ITEM_TYPE.HISTORY,
+      url: histories[1].url,
+    });
+    expect(searchItems).toContainEqual({
+      faviconUrl: faviconUrl(histories[2].url!),
+      folderName: "",
+      lastVisitTime: 150,
+      searchTerm: `${histories[2].title!} ${histories[2].url}`,
+      title: histories[2].title!,
+      type: SEARCH_ITEM_TYPE.HISTORY,
+      url: histories[2].url,
+    });
+    expect(searchItems).toContainEqual({
+      faviconUrl: faviconUrl(histories[3].url!),
+      folderName: "",
+      lastVisitTime: 50,
+      searchTerm: `${histories[3].title!} ${histories[3].url}`,
+      title: histories[3].title!,
+      type: SEARCH_ITEM_TYPE.HISTORY,
+      url: histories[3].url,
     });
   });
 
