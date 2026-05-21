@@ -40,7 +40,7 @@
     "@ngneat/falso": "8.0.2",
     "@playwright/test": "^1.60.0",
     "@types/chrome": "0.1.42",
-    "@types/node": "25.8.0",
+    "@types/node": "25.9.1",
     "@types/react": "19.2.15",
     "@types/react-dom": "19.2.3",
     "@types/webextension-polyfill": "^0.12.5",
