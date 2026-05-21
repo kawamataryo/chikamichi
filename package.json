@@ -61,7 +61,7 @@
     "*.{js,ts,tsx}": "oxlint --fix --deny-warnings",
     "*.{json,ts,js,tsx,css}": "oxfmt --write"
   },
-  "packageManager": "pnpm@11.1.2",
+  "packageManager": "pnpm@11.2.2",
   "manifest": {
     "default_locale": "en",
     "description": "__MSG_manifestDescription__",
