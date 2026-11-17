@@ -45,6 +45,8 @@ Please install from:
 | `Ctrl + f`                            | Pin or unpin the selected item in Chikamichi                            |
 | `Ctrl + c`                            | Copy the selected URL to the clipboard                                  |
 | `Ctrl + d`                            | Delete the selected history, remove bookmark, or close tab by item type |
+| `Ctrl + Shift + N`                    | Move the selected pinned item down (when search input is empty)         |
+| `Ctrl + Shift + P`                    | Move the selected pinned item up (when search input is empty)           |
 
 ### Search commands
 
@@ -77,6 +79,15 @@ Open Help from the sidebar to see a command-style reference for search, navigati
 ### Favorite
 
 Items with a star to the right of the search item are registered as favorites. Items registered as favorites will be displayed in the initial view. However, if a search prefix has been set, the search prefix will take precedence.
+
+### Reordering Favorites
+
+When the search input is empty and you have two or more pinned items, a drag handle (⠿) appears to the left of each favorite. You can change the display order in two ways:
+
+- **Drag and drop** — grab the handle on the left side of any pinned item and drop it onto another item to swap positions.
+- **Keyboard** — select a pinned item with `↑` / `↓`, then press `Ctrl + Shift + N` to move it down or `Ctrl + Shift + P` to move it up.
+
+The new order is saved automatically and persists across sessions.
 
 ## 👨‍💻 Contributing
 
